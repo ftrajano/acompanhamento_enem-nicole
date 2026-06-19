@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cartão de referência — Porcentagem (ENEM)</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#dcd6c8; --accent:#7a1f2b; --bg:#fbf9f4; --hi:#fdf3d6; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 24px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.7; }
+  .card{ max-width:760px; margin:0 auto; }
+  header{ border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:24px; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:27px; margin:6px 0 0; font-weight:600; }
+  h2{ font-size:16px; font-family:-apple-system,Helvetica,Arial,sans-serif; letter-spacing:.02em;
+      margin:30px 0 8px; color:var(--accent); border-bottom:1px solid var(--line); padding-bottom:4px; }
+  p{margin:8px 0}
+  .lead{ color:var(--soft); font-style:italic; margin-top:6px; }
+  table{ border-collapse:collapse; width:100%; margin:10px 0; font-size:15px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:12px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  code,.m{ font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace; background:var(--hi);
+           padding:1px 5px; border-radius:3px; font-size:14px; }
+  .rule{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; }
+  .rule b{ color:var(--accent); }
+  ul{margin:8px 0 8px 0; padding-left:22px} li{margin:5px 0}
+  .foot{ margin-top:34px; padding-top:12px; border-top:1px solid var(--line);
+         font-size:13px; color:var(--soft); }
+  a{color:var(--accent)}
+  @media print{ body{background:#fff;padding:0} .card{max-width:100%} h2{break-after:avoid} }
+  mjx-container{ color:var(--accent); }
+  /* dá respiro vertical onde há frações inline, evitando que a linha de baixo cole na de cima */
+  .rule{ line-height:2; }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+</style>
+<!-- MathJax: notação matemática. Delimitadores só \( \) e \[ \] — NUNCA $...$, para não conflitar com "R$". -->
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+    options: { ignoreHtmlClass: 'tex2jax_ignore' }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div class="card">
+  <header>
+    <div class="kicker">Cartão de referência · Matemática ENEM</div>
+    <h1>Porcentagem & Variação Percentual</h1>
+    <p class="lead">O método do multiplicador — a forma mais rápida e segura de não errar porcentagem na prova.</p>
+  </header>
+
+  <h2>1. Toda porcentagem é um número</h2>
+  <table>
+    <tr><th>Porcentagem</th><th>Fração</th><th>Decimal (multiplicador)</th></tr>
+    <tr><td>10%</td><td>\(\frac{10}{100}\)</td><td>\(0{,}10\)</td></tr>
+    <tr><td>25%</td><td>\(\frac{25}{100}\)</td><td>\(0{,}25\)</td></tr>
+    <tr><td>50%</td><td>\(\frac{50}{100}\)</td><td>\(0{,}50\)</td></tr>
+    <tr><td>150%</td><td>\(\frac{150}{100}\)</td><td>\(1{,}50\)</td></tr>
+  </table>
+  <p>Para achar \(x\%\) de um valor, multiplique: \(30\% \text{ de } 200 = 0{,}30 \times 200 = 60\).</p>
+
+  <h2>2. Aumentar ou reduzir = multiplicar por um fator</h2>
+  <div class="rule">
+    <b>Aumentar em <i>p%</i></b> → multiplicar por \(\left(1 + \frac{p}{100}\right)\)<br>
+    +20% → \(\times 1{,}20\) &nbsp;·&nbsp; +50% → \(\times 1{,}50\) &nbsp;·&nbsp; +7% → \(\times 1{,}07\)
+  </div>
+  <div class="rule">
+    <b>Reduzir em <i>p%</i></b> → multiplicar por \(\left(1 - \frac{p}{100}\right)\)<br>
+    −20% → \(\times 0{,}80\) &nbsp;·&nbsp; −50% → \(\times 0{,}50\) &nbsp;·&nbsp; −7% → \(\times 0{,}93\)
+  </div>
+
+  <h2>3. Variações em sequência → multiplica os fatores</h2>
+  <p>Aplicou +10% e depois −10%? <b>Não volta ao original.</b></p>
+  <p>\[ 1{,}10 \times 0{,}90 = 0{,}99 \quad\Longrightarrow\quad \text{resultado final é 1% MENOR} \]</p>
+  <p>Aumentar 50% e depois reduzir 50%: \(1{,}50 \times 0{,}50 = 0{,}75\) → 25% menor.</p>
+
+  <h2>4. "Que porcentagem A é de B?"</h2>
+  <p>\[ \frac{\text{parte}}{\text{todo}} \times 100 \]</p>
+  <p>Ex.: a redução de R$ 1,50 sobre R$ 5,00 é \(\frac{1{,}50}{5{,}00} = 0{,}30 = 30\%\).</p>
+
+  <h2>5. Achar o valor original (desfazer o aumento)</h2>
+  <p>Preço já com +20% é R$ 60. Original \(= 60 \div 1{,}20 = 50\). <i>Divida</i> pelo fator, não subtraia 20%.</p>
+
+  <div class="foot">
+    Pertence ao workspace de estudo da Nicole · Missão: Matemática ENEM 2026 → TO/Fono USP-RP.<br>
+    Usado nas lições: <a href="../lessons/0001-variacao-percentual.html">Lição 0001 — Variação percentual</a>.
+    Fonte recomendada: <a href="https://pt.khanacademy.org/math/arithmetic/arith-review-intro-to-percentages">Khan Academy — Porcentagem</a>.
+  </div>
+</div>
+</body>
+</html>

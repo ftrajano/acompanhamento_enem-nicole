@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lição 0001 — Variação percentual (o método do multiplicador)</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#e2dccd; --accent:#7a1f2b; --green:#1c6b3f;
+         --red:#9b2226; --bg:#fbf9f4; --hi:#fdf3d6; --card:#ffffff; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 22px 80px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.62; }
+  .wrap{ max-width:720px; margin:0 auto; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:30px; line-height:1.2; margin:6px 0 4px; font-weight:600; }
+  .sub{ color:var(--soft); font-style:italic; margin:0 0 8px; }
+  .mission{ background:var(--hi); border-radius:8px; padding:12px 16px; font-size:14.5px; margin:18px 0 8px; }
+  .mission b{color:var(--accent)}
+  h2{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:15px; letter-spacing:.03em;
+      text-transform:uppercase; color:var(--accent); margin:34px 0 8px;
+      border-bottom:1px solid var(--line); padding-bottom:5px; }
+  p{margin:10px 0}
+  .m{ font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace; background:var(--hi);
+      padding:1px 6px; border-radius:3px; font-size:.92em; }
+  .keybox{ background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+           border-radius:0 8px 8px 0; padding:14px 18px; margin:16px 0; }
+  .keybox b{color:var(--accent)}
+  a{color:var(--accent)}
+  /* quiz */
+  .q{ background:var(--card); border:1px solid var(--line); border-radius:10px;
+      padding:18px 20px; margin:20px 0; }
+  .q .tag{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+           letter-spacing:.08em; text-transform:uppercase; color:var(--soft); }
+  .q .stem{ margin:6px 0 14px; }
+  .opt{ display:block; width:100%; text-align:left; font-family:inherit; font-size:16px;
+        background:#fff; border:1.5px solid var(--line); border-radius:8px; padding:11px 14px;
+        margin:7px 0; cursor:pointer; transition:.12s; }
+  .opt:hover{ border-color:var(--accent); background:var(--hi); }
+  .opt:disabled{ cursor:default; opacity:.95; }
+  .opt.correct{ border-color:var(--green); background:#e9f5ee; color:var(--green); font-weight:600; }
+  .opt.wrong{ border-color:var(--red); background:#fbeaea; color:var(--red); }
+  .fb{ display:none; margin-top:12px; padding:12px 14px; border-radius:8px; font-size:14.5px;
+       background:#f4f1e8; border:1px dashed var(--line); }
+  .fb.show{ display:block; }
+  .fb b{color:var(--accent)}
+  .score{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-align:center; font-size:15px;
+          color:var(--soft); margin:26px 0; }
+  .foot{ margin-top:40px; padding-top:14px; border-top:1px solid var(--line); font-size:13.5px; color:var(--soft); }
+  .ask{ background:#eef4ef; border-radius:8px; padding:12px 16px; font-size:14.5px; color:var(--ink); }
+  mjx-container{ color:inherit; }
+  /* dá respiro vertical onde há frações inline, evitando que a linha de baixo cole na de cima */
+  .keybox{ line-height:2.1; }
+  .fb, .stem{ line-height:1.8; }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+</style>
+<!-- MathJax: notação matemática. Delimitadores só \( \) e \[ \] — NUNCA $...$, para não conflitar com "R$". -->
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+    options: { ignoreHtmlClass: 'tex2jax_ignore' }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Lição 0001 · Matemática ENEM · Porcentagem</div>
+  <h1>O método do multiplicador</h1>
+  <p class="sub">Pare de errar aumentos e reduções percentuais — a forma rápida que o ENEM premia.</p>
+
+  <div class="mission">
+    <b>Por que esta lição?</b> No seu simulado (ENEM 2021), você acertou quase todo o bloco de
+    estatística e gráficos — muito bom. Os pontos que escaparam estavam em <b>porcentagem</b>
+    (questões 155, 158, 145, 174), que é o tema <b>mais cobrado</b> da prova. Consertar isso é o
+    caminho mais curto para subir a nota rumo a Terapia Ocupacional / Fonoaudiologia na USP-RP.
+  </div>
+
+  <h2>A ideia central (30 segundos)</h2>
+  <p>Aumentar ou reduzir uma porcentagem é só <b>multiplicar por um número</b>. Nunca some/subtraia "à mão".</p>
+  <div class="keybox">
+    <b>Aumentar em p%</b> → multiplicar por \(\left(1 + \frac{p}{100}\right)\) &nbsp;·&nbsp; +50% → \(\times 1{,}50\)<br>
+    <b>Reduzir em p%</b> &nbsp;→ multiplicar por \(\left(1 - \frac{p}{100}\right)\) &nbsp;·&nbsp; −10% → \(\times 0{,}90\)<br>
+    <b>Em sequência</b> &nbsp;&nbsp;→ <b>multiplica os fatores</b> &nbsp;·&nbsp; +10% e −10% → \(1{,}10 \times 0{,}90 = 0{,}99\)
+  </div>
+  <p>Detalhes e mais casos no <a href="../reference/porcentagem.html">cartão de referência de Porcentagem</a>. Leia-o antes de praticar.</p>
+
+  <h2>Pratique (resposta na hora)</h2>
+
+  <div class="q" data-correct="1">
+    <div class="tag">Aquecimento</div>
+    <div class="stem">Um produto custa <b>R$ 80,00</b> e sofre um aumento de <b>25%</b>. O novo preço é:</div>
+    <button class="opt">R$ 64,00</button>
+    <button class="opt">R$ 100,00</button>
+    <button class="opt">R$ 105,00</button>
+    <button class="opt">R$ 125,00</button>
+    <div class="fb"><b>Multiplicador \(\times 1{,}25\).</b> \(80 \times 1{,}25 = 100\). Aumentar 25% é multiplicar por \(1{,}25\) — não por \(0{,}25\).</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">Conceito-chave · (era a questão 158 do seu simulado)</div>
+    <div class="stem">Um valor sofre um aumento de <b>10%</b> e, em seguida, uma redução de <b>10%</b>. Em relação ao original, ele fica:</div>
+    <button class="opt">1% menor.</button>
+    <button class="opt">2% menor.</button>
+    <button class="opt">1% maior.</button>
+    <button class="opt">igual ele.</button>
+    <div class="fb"><b>\(1{,}10 \times 0{,}90 = 0{,}99\).</b> Multiplica os fatores: o resultado é 1% MENOR. +10% e −10% <i>não</i> se cancelam — essa foi a pegadinha da 158.</div>
+  </div>
+
+  <div class="q" data-correct="3">
+    <div class="tag">Aplicação · (a lógica da questão 155)</div>
+    <div class="stem">Numa receita de R$ 5,00 de frango, a batata encareceu e passou a custar R$ 1,50 a mais.
+      Para manter o custo total, o gasto com frango (R$ 5,00) precisa cair em quanto?</div>
+    <button class="opt">15,0%</button>
+    <button class="opt">25,0%</button>
+    <button class="opt">28,0%</button>
+    <button class="opt">30,0%</button>
+    <div class="fb"><b>parte ÷ todo:</b> \(\frac{1{,}50}{5{,}00} = 0{,}30 = 30\%\). Para saber "que % é R$ 1,50 de R$ 5,00", divide a parte pelo todo. (No simulado você marcou 28% — chute por estimativa; o método dá 30% exato.)</div>
+  </div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">Desfazer um aumento</div>
+    <div class="stem">Um preço <b>já com 20% de aumento</b> está em <b>R$ 60,00</b>. Qual era o preço original?</div>
+    <button class="opt">R$ 40,00</button>
+    <button class="opt">R$ 48,00</button>
+    <button class="opt">R$ 50,00</button>
+    <button class="opt">R$ 72,00</button>
+    <div class="fb"><b>Divida pelo fator:</b> \(60 \div 1{,}20 = 50\). Para voltar ao original, NÃO tire 20% de 60 (daria 48, errado) — desfaça a multiplicação dividindo por \(1{,}20\).</div>
+  </div>
+
+  <div class="score" id="score">Responda as 4 questões acima ☝️</div>
+
+  <h2>Para fixar (faça depois)</h2>
+  <p>• <b>Fonte primária recomendada:</b> assista/leia
+     <a href="https://pt.khanacademy.org/math/arithmetic/arith-review-intro-to-percentages" target="_blank">Khan Academy — Introdução à porcentagem</a> (gratuito, em português).</p>
+  <p>• <b>Daqui a 2 dias</b> (prática espaçada), refaça estas 4 questões <i>de memória</i>, sem olhar o cartão. Se acertar todas, o método "pegou".</p>
+
+  <div class="foot">
+    <p class="ask">👩‍🏫 <b>Eu sou sua professora aqui.</b> Travou em algum passo, quer que eu explique de outro jeito,
+    ou quer mais questões reais de porcentagem do ENEM? É só me perguntar — esse é o ponto da lição.</p>
+    <p>Workspace de estudo · Missão: Matemática ENEM 2026 → TO/Fono USP Ribeirão Preto ·
+    Referência: <a href="../reference/porcentagem.html">Cartão de Porcentagem</a></p>
+  </div>
+
+</div>
+
+<script>
+  let answered = 0, hits = 0;
+  document.querySelectorAll('.q').forEach(function(q){
+    const correct = parseInt(q.dataset.correct, 10);
+    const opts = q.querySelectorAll('.opt');
+    const fb = q.querySelector('.fb');
+    opts.forEach(function(btn, i){
+      btn.addEventListener('click', function(){
+        opts.forEach(function(b){ b.disabled = true; });
+        if(i === correct){ btn.classList.add('correct'); hits++; }
+        else { btn.classList.add('wrong'); opts[correct].classList.add('correct'); }
+        fb.classList.add('show');
+        answered++;
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    const el = document.getElementById('score');
+    if(answered < 4){ el.textContent = answered + ' de 4 respondidas — continue 💪'; return; }
+    let msg = 'Você acertou ' + hits + ' de 4. ';
+    if(hits === 4) msg += 'O multiplicador pegou! Marque pra refazer em 2 dias. 🎯';
+    else if(hits >= 2) msg += 'Bom começo — releia o cartão nos pontos que errou e me chame se algo ficou confuso.';
+    else msg += 'Sem problema — me chame que a gente refaz juntas, passo a passo.';
+    el.textContent = msg;
+  }
+</script>
+</body>
+</html>
