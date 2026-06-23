@@ -36,6 +36,13 @@
 - [ ] 0003 — Funções e seus gráficos (linear vs quadrática) — questões 161, 162, 141, 180.
 - [ ] Manter estatística/gráficos aquecida com prática espaçada (ponto forte).
 
+## Publicação (GitHub Pages)
+- Site publicado a partir da pasta **`docs/`** (Settings → Pages → branch `main`, pasta `/docs`).
+- `docs/` é gerado por **`./publish.sh`** e contém SÓ material do aluno (`index.html`, `lessons/`, `reference/`).
+- Privados (não vão pro ar): `MISSION.md`, `NOTES.md`, `RESOURCES.md`, `learning-records/`.
+- **Fluxo após criar/editar lição:** salvar em `lessons/` ou `reference/` → `./publish.sh` → `git add -A && git commit && git push`.
+- `index.html` (hub) lista as lições — marcar como ativa (remover classe `soon`) quando uma nova lição sair.
+
 ## Pendências
 - [ ] Confirmar pesos das áreas no ENEM-USP para TO/Fono.
 - [ ] Após a Nicole fazer a Lição 0001, registrar desempenho e decidir se aprofunda porcentagem ou avança.

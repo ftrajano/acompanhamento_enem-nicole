@@ -33,6 +33,11 @@
   .q .tag{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
            letter-spacing:.08em; text-transform:uppercase; color:var(--soft); }
   .q .stem{ margin:6px 0 14px; }
+  .level{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-weight:700; letter-spacing:.04em;
+          color:var(--accent); margin:30px 0 6px; display:flex; align-items:center; gap:10px; font-size:14px; }
+  .level::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .level .lv{ background:var(--accent); color:#fff; border-radius:20px; padding:2px 11px; font-size:11px; letter-spacing:.06em; white-space:nowrap; }
+  .ladder-intro{ font-size:14.5px; color:var(--soft); margin:4px 0 0; }
   .opt{ display:block; width:100%; text-align:left; font-family:inherit; font-size:16px;
         background:#fff; border:1.5px solid var(--line); border-radius:8px; padding:11px 14px;
         margin:7px 0; cursor:pointer; transition:.12s; }
@@ -86,55 +91,183 @@
   </div>
   <p>Detalhes e mais casos no <a href="../reference/porcentagem.html">cartão de referência de Porcentagem</a>. Leia-o antes de praticar.</p>
 
-  <h2>Pratique (resposta na hora)</h2>
+  <h2>Pratique — a escada de dificuldade</h2>
+  <p class="ladder-intro">As questões <b>sobem de nível</b>: começam na mecânica e terminam no <b>nível da prova</b> — incluindo questões reais do ENEM 2021 que você errou no simulado. Faça na ordem; cada degrau prepara o próximo.</p>
+
+  <div class="level"><span class="lv">Nível 1</span> Mecânica — o multiplicador</div>
 
   <div class="q" data-correct="1">
-    <div class="tag">Aquecimento</div>
+    <div class="tag">N1 · achar porcentagem</div>
+    <div class="stem">Quanto é <b>30% de 200</b>?</div>
+    <button class="opt">50</button>
+    <button class="opt">60</button>
+    <button class="opt">70</button>
+    <button class="opt">90</button>
+    <div class="fb"><b>\(0{,}30 \times 200 = 60\).</b> "30% de" significa multiplicar por \(0{,}30\).</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N1 · aumento</div>
     <div class="stem">Um produto custa <b>R$ 80,00</b> e sofre um aumento de <b>25%</b>. O novo preço é:</div>
     <button class="opt">R$ 64,00</button>
     <button class="opt">R$ 100,00</button>
     <button class="opt">R$ 105,00</button>
     <button class="opt">R$ 125,00</button>
-    <div class="fb"><b>Multiplicador \(\times 1{,}25\).</b> \(80 \times 1{,}25 = 100\). Aumentar 25% é multiplicar por \(1{,}25\) — não por \(0{,}25\).</div>
+    <div class="fb"><b>\(80 \times 1{,}25 = 100\).</b> Aumentar 25% é multiplicar por \(1{,}25\) — não por \(0{,}25\).</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N1 · redução</div>
+    <div class="stem">Um produto de <b>R$ 200,00</b> recebe um desconto de <b>15%</b>. O novo preço é:</div>
+    <button class="opt">R$ 30,00</button>
+    <button class="opt">R$ 170,00</button>
+    <button class="opt">R$ 185,00</button>
+    <button class="opt">R$ 215,00</button>
+    <div class="fb"><b>\(200 \times 0{,}85 = 170\).</b> Reduzir 15% é multiplicar por \(0{,}85 = 1 - 0{,}15\).</div>
   </div>
 
   <div class="q" data-correct="0">
-    <div class="tag">Conceito-chave · (era a questão 158 do seu simulado)</div>
+    <div class="tag">N1 · conceito</div>
+    <div class="stem">Aumentar um valor em <b>100%</b> é o mesmo que:</div>
+    <button class="opt">dobrá-lo.</button>
+    <button class="opt">mantê-lo.</button>
+    <button class="opt">zerá-lo.</button>
+    <button class="opt">reduzi-lo.</button>
+    <div class="fb"><b>\(\times (1 + 1) = \times 2\).</b> +100% → multiplicar por 2 → dobrar. (+50% seria \(\times 1{,}5\).)</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 2</span> Aplicação — um passo do dia a dia</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · desconto</div>
+    <div class="stem">Um tênis de <b>R$ 150,00</b> está com <b>20% de desconto</b>. Quanto se paga por ele?</div>
+    <button class="opt">R$ 120,00</button>
+    <button class="opt">R$ 130,00</button>
+    <button class="opt">R$ 170,00</button>
+    <button class="opt">R$ 180,00</button>
+    <div class="fb"><b>\(150 \times 0{,}80 = 120\).</b> 20% de desconto → paga 80% → \(\times 0{,}80\).</div>
+  </div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N2 · parte ÷ todo</div>
+    <div class="stem">Que porcentagem o valor <b>R$ 1,50</b> representa de <b>R$ 5,00</b>?</div>
+    <button class="opt">20,0%</button>
+    <button class="opt">25,0%</button>
+    <button class="opt">30,0%</button>
+    <button class="opt">35,0%</button>
+    <div class="fb"><b>\(\frac{1{,}50}{5{,}00} = 0{,}30 = 30\%\).</b> "Que % A é de B" → divide a parte pelo todo.</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N2 · variação percentual</div>
+    <div class="stem">Uma conta de luz subiu de <b>R$ 120,00</b> para <b>R$ 150,00</b>. O aumento percentual foi de:</div>
+    <button class="opt">12,5%</button>
+    <button class="opt">25,0%</button>
+    <button class="opt">30,0%</button>
+    <button class="opt">50,0%</button>
+    <div class="fb"><b>\(\frac{150 - 120}{120} = \frac{30}{120} = 0{,}25 = 25\%\).</b> A variação % é sempre sobre o valor <i>inicial</i> (120), não sobre 150.</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N2 · porcentagem de um total</div>
+    <div class="stem">Numa turma de <b>40 alunos</b>, <b>30%</b> foram aprovados. Quantos alunos foram aprovados?</div>
+    <button class="opt">10</button>
+    <button class="opt">12</button>
+    <button class="opt">15</button>
+    <button class="opt">28</button>
+    <div class="fb"><b>\(0{,}30 \times 40 = 12\).</b> 30% de 40 = 12 alunos.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 3</span> Duas etapas e pegadinhas</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · variações em sequência</div>
     <div class="stem">Um valor sofre um aumento de <b>10%</b> e, em seguida, uma redução de <b>10%</b>. Em relação ao original, ele fica:</div>
     <button class="opt">1% menor.</button>
     <button class="opt">2% menor.</button>
     <button class="opt">1% maior.</button>
     <button class="opt">igual ele.</button>
-    <div class="fb"><b>\(1{,}10 \times 0{,}90 = 0{,}99\).</b> Multiplica os fatores: o resultado é 1% MENOR. +10% e −10% <i>não</i> se cancelam — essa foi a pegadinha da 158.</div>
-  </div>
-
-  <div class="q" data-correct="3">
-    <div class="tag">Aplicação · (a lógica da questão 155)</div>
-    <div class="stem">Numa receita de R$ 5,00 de frango, a batata encareceu e passou a custar R$ 1,50 a mais.
-      Para manter o custo total, o gasto com frango (R$ 5,00) precisa cair em quanto?</div>
-    <button class="opt">15,0%</button>
-    <button class="opt">25,0%</button>
-    <button class="opt">28,0%</button>
-    <button class="opt">30,0%</button>
-    <div class="fb"><b>parte ÷ todo:</b> \(\frac{1{,}50}{5{,}00} = 0{,}30 = 30\%\). Para saber "que % é R$ 1,50 de R$ 5,00", divide a parte pelo todo. (No simulado você marcou 28% — chute por estimativa; o método dá 30% exato.)</div>
+    <div class="fb"><b>\(1{,}10 \times 0{,}90 = 0{,}99\).</b> Multiplica os fatores → 1% MENOR. +10% e −10% <i>não</i> se cancelam.</div>
   </div>
 
   <div class="q" data-correct="2">
-    <div class="tag">Desfazer um aumento</div>
+    <div class="tag">N3 · desfazer um aumento</div>
     <div class="stem">Um preço <b>já com 20% de aumento</b> está em <b>R$ 60,00</b>. Qual era o preço original?</div>
     <button class="opt">R$ 40,00</button>
     <button class="opt">R$ 48,00</button>
     <button class="opt">R$ 50,00</button>
     <button class="opt">R$ 72,00</button>
-    <div class="fb"><b>Divida pelo fator:</b> \(60 \div 1{,}20 = 50\). Para voltar ao original, NÃO tire 20% de 60 (daria 48, errado) — desfaça a multiplicação dividindo por \(1{,}20\).</div>
+    <div class="fb"><b>\(60 \div 1{,}20 = 50\).</b> Para voltar ao original, divide pelo fator. NÃO tire 20% de 60 (daria 48, errado).</div>
   </div>
 
-  <div class="score" id="score">Responda as 4 questões acima ☝️</div>
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · descontos sucessivos</div>
+    <div class="stem">Um produto recebe <b>30% de desconto</b> e, sobre o valor já com desconto, mais <b>20%</b>. O desconto total, em relação ao preço original, é de:</div>
+    <button class="opt">44,0%</button>
+    <button class="opt">50,0%</button>
+    <button class="opt">56,0%</button>
+    <button class="opt">10,0%</button>
+    <div class="fb"><b>\(0{,}70 \times 0{,}80 = 0{,}56\)</b> → paga 56%, logo o desconto é \(100\% - 56\% = 44\%\). Descontos sucessivos NÃO somam (não é 50%).</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · a ordem não importa</div>
+    <div class="stem">Um valor é <b>reduzido em 20%</b> e depois <b>aumentado em 20%</b>. Em relação ao original, ele fica:</div>
+    <button class="opt">4% menor.</button>
+    <button class="opt">2% menor.</button>
+    <button class="opt">4% maior.</button>
+    <button class="opt">igual ele.</button>
+    <div class="fb"><b>\(0{,}80 \times 1{,}20 = 0{,}96\)</b> → 4% MENOR. Tanto faz a ordem: \(1{,}20 \times 0{,}80\) também dá \(0{,}96\).</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 4</span> Nível ENEM — incluindo as que você errou</div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N4 · ENEM 2021 (Q155) · você errou esta no simulado</div>
+    <div class="stem">Uma refeição custa <b>R$ 10,00</b>: R$ 5,00 de frango, R$ 3,00 de batata e R$ 2,00 de hortaliça. A batata sofre um aumento e passa a custar <b>R$ 1,50 a mais</b>. Para manter o custo total em R$ 10,00 (sem alterar batata e hortaliça), a quantia gasta com frango deve ser reduzida em:</div>
+    <button class="opt">15,0%</button>
+    <button class="opt">28,0%</button>
+    <button class="opt">30,0%</button>
+    <button class="opt">50,0%</button>
+    <div class="fb"><b>O frango precisa cair R$ 1,50</b> (para compensar a batata). Sobre os R$ 5,00 do frango: \(\frac{1{,}50}{5{,}00} = 30\%\). No simulado você marcou 28% (estimativa) — o método dá 30% exato. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N4 · ENEM 2021 (Q158) · você errou esta no simulado</div>
+    <div class="stem">A aeronave B transporta <b>10% mais passageiros</b> que a A e consome <b>10% menos combustível por passageiro</b>. Num voo lotado, na mesma rota, o combustível total gasto por B, em relação ao gasto por A, é:</div>
+    <button class="opt">1% menor.</button>
+    <button class="opt">igual a A.</button>
+    <button class="opt">1% maior.</button>
+    <button class="opt">2% menor.</button>
+    <div class="fb"><b>\(1{,}10 \times 0{,}90 = 0{,}99\)</b> → 1% MENOR (mais passageiros × menos consumo por passageiro). No simulado você marcou "igual" — a pegadinha é achar que +10% e −10% se anulam. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N4 · estilo ENEM · reajustes acumulados</div>
+    <div class="stem">Um produto teve dois reajustes no ano: <b>+20%</b> e, depois, <b>+10%</b> sobre o preço já reajustado. O aumento percentual <b>acumulado</b> no ano foi de:</div>
+    <button class="opt">30,0%</button>
+    <button class="opt">32,0%</button>
+    <button class="opt">22,0%</button>
+    <button class="opt">36,0%</button>
+    <div class="fb"><b>\(1{,}20 \times 1{,}10 = 1{,}32\)</b> → 32%. Aumentos sucessivos também se multiplicam — não somam (não é 30%).</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N4 · estilo ENEM · preço encadeado</div>
+    <div class="stem">Um produto custa <b>R$ 50,00</b>. Numa promoção, o preço cai <b>20%</b>. Sem conseguir vender, a loja aumenta o preço promocional em <b>20%</b>. O preço final é:</div>
+    <button class="opt">R$ 48,00</button>
+    <button class="opt">R$ 50,00</button>
+    <button class="opt">R$ 52,00</button>
+    <button class="opt">R$ 60,00</button>
+    <div class="fb"><b>\(50 \times 0{,}80 \times 1{,}20 = 48\).</b> Cai para R$ 40 (×0,80) e sobe para R$ 48 (×1,20). Não volta aos R$ 50 — o aumento de 20% incide sobre um valor menor.</div>
+  </div>
+
+  <div class="score" id="score">Responda as questões acima ☝️</div>
 
   <h2>Para fixar (faça depois)</h2>
   <p>• <b>Fonte primária recomendada:</b> assista/leia
      <a href="https://pt.khanacademy.org/math/arithmetic/arith-review-intro-to-percentages" target="_blank">Khan Academy — Introdução à porcentagem</a> (gratuito, em português).</p>
-  <p>• <b>Daqui a 2 dias</b> (prática espaçada), refaça estas 4 questões <i>de memória</i>, sem olhar o cartão. Se acertar todas, o método "pegou".</p>
+  <p>• <b>Daqui a 2 dias</b> (prática espaçada), refaça a escada <i>de memória</i>, sem olhar o cartão — foque nos níveis 3 e 4. Se chegar nas questões do ENEM e acertar, o método "pegou".</p>
 
   <div class="foot">
     <p class="ask">👩‍🏫 <b>Eu sou sua professora aqui.</b> Travou em algum passo, quer que eu explique de outro jeito,
@@ -147,6 +280,7 @@
 
 <script>
   let answered = 0, hits = 0;
+  const total = document.querySelectorAll('.q').length;
   document.querySelectorAll('.q').forEach(function(q){
     const correct = parseInt(q.dataset.correct, 10);
     const opts = q.querySelectorAll('.opt');
@@ -164,10 +298,11 @@
   });
   function updateScore(){
     const el = document.getElementById('score');
-    if(answered < 4){ el.textContent = answered + ' de 4 respondidas — continue 💪'; return; }
-    let msg = 'Você acertou ' + hits + ' de 4. ';
-    if(hits === 4) msg += 'O multiplicador pegou! Marque pra refazer em 2 dias. 🎯';
-    else if(hits >= 2) msg += 'Bom começo — releia o cartão nos pontos que errou e me chame se algo ficou confuso.';
+    if(answered < total){ el.textContent = answered + ' de ' + total + ' respondidas — continue 💪'; return; }
+    let msg = 'Você acertou ' + hits + ' de ' + total + '. ';
+    const pct = hits / total;
+    if(pct === 1) msg += 'Escada inteira, incluindo as do ENEM! Refaça em 2 dias pra fixar. 🎯';
+    else if(pct >= 0.6) msg += 'Bom! Releia o cartão nos pontos que errou e me chame se algo ficou confuso.';
     else msg += 'Sem problema — me chame que a gente refaz juntas, passo a passo.';
     el.textContent = msg;
   }
