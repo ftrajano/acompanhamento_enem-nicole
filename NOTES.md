@@ -20,6 +20,17 @@
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
   ```
 
+## Padrão pedagógico das lições — ESCADA DE DIFICULDADE (aplicar em todas)
+- Quiz com **15–20 questões** (a Nicole pediu) organizadas em **4 níveis** que sobem de dificuldade:
+  - **N1 Mecânica** — a operação pura / o método isolado.
+  - **N2 Aplicação** — um passo do mundo real.
+  - **N3 Duas etapas / pegadinhas** — combina sub-habilidades, expõe misconceptions.
+  - **N4 Nível ENEM** — enunciados no nível da prova; quando existir, usar as **questões reais que ela errou** no simulado (marcar "você errou esta") + itens **estilo ENEM** autorais.
+- **Não** exigir fidelidade à prova: o critério é a **dificuldade-alvo**, não reproduzir a questão original. Quando não há questão real, criar item autoral no nível ENEM.
+- Cada questão com feedback imediato (JS) e MathJax. Placar conta o total dinamicamente (`document.querySelectorAll('.q').length`).
+- Opções de resposta com formato uniforme dentro da questão (não dar pista pelo tamanho).
+- Distratores devem refletir erros reais dela (ex.: marcou 28% na Q155 → 28% vira distrator).
+
 ## Estratégia
 - Priorizar tópicos por **frequência no ENEM** (porcentagem, regra de três, gráficos/tabelas, funções, geometria, estatística, probabilidade).
 - Garantir acerto nas fáceis/médias antes de caçar as difíceis (a maioria das questões é de nível básico/médio).
