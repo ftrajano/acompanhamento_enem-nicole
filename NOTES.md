@@ -44,7 +44,8 @@
 ## Sequência de lições planejada
 - [x] 0001 — Variação percentual (método do multiplicador).
 - [x] 0002 — Razão, proporção e regra de três (incl. inversa) — questões 154, 159, 165.
-- [ ] 0003 — Funções e seus gráficos (linear vs quadrática) — questões 161, 162, 141, 180.
+- [x] 0003 — Funções e seus gráficos (linear vs quadrática) — questões 141, 161, 162, 180.
+- [ ] 0004 — (a definir) candidatos: geometria espacial/visualização 3D (137, 168, 175); ou revisão espaçada interleaved de 0001–0003.
 - [ ] Manter estatística/gráficos aquecida com prática espaçada (ponto forte).
 
 ## Publicação (GitHub Pages)
