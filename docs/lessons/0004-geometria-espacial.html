@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lição 0004 — Geometria espacial e visualização 3D</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#e2dccd; --accent:#7a1f2b; --green:#1c6b3f;
+         --red:#9b2226; --bg:#fbf9f4; --hi:#fdf3d6; --card:#ffffff; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 22px 80px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.62; }
+  .wrap{ max-width:720px; margin:0 auto; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:30px; line-height:1.2; margin:6px 0 4px; font-weight:600; }
+  .sub{ color:var(--soft); font-style:italic; margin:0 0 8px; }
+  .mission{ background:var(--hi); border-radius:8px; padding:12px 16px; font-size:14.5px; margin:18px 0 8px; }
+  .mission b{color:var(--accent)}
+  h2{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:15px; letter-spacing:.03em;
+      text-transform:uppercase; color:var(--accent); margin:34px 0 8px;
+      border-bottom:1px solid var(--line); padding-bottom:5px; }
+  p{margin:10px 0}
+  .keybox{ background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+           border-radius:0 8px 8px 0; padding:14px 18px; margin:16px 0; line-height:2; }
+  .keybox b{color:var(--accent)}
+  a{color:var(--accent)}
+  .q{ background:var(--card); border:1px solid var(--line); border-radius:10px;
+      padding:18px 20px; margin:20px 0; }
+  .q .tag{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+           letter-spacing:.08em; text-transform:uppercase; color:var(--soft); }
+  .q .stem{ margin:6px 0 14px; }
+  .fig{ text-align:center; margin:12px 0; color:var(--accent); }
+  .fig svg{ max-width:100%; }
+  .fig .cap{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:12px; color:var(--soft); margin-top:4px; }
+  .level{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-weight:700; letter-spacing:.04em;
+          color:var(--accent); margin:30px 0 6px; display:flex; align-items:center; gap:10px; font-size:14px; }
+  .level::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .level .lv{ background:var(--accent); color:#fff; border-radius:20px; padding:2px 11px; font-size:11px; letter-spacing:.06em; white-space:nowrap; }
+  .ladder-intro{ font-size:14.5px; color:var(--soft); margin:4px 0 0; }
+  .opt{ display:block; width:100%; text-align:left; font-family:inherit; font-size:16px;
+        background:#fff; border:1.5px solid var(--line); border-radius:8px; padding:11px 14px;
+        margin:7px 0; cursor:pointer; transition:.12s; }
+  .opt:hover{ border-color:var(--accent); background:var(--hi); }
+  .opt:disabled{ cursor:default; opacity:.95; }
+  .opt.correct{ border-color:var(--green); background:#e9f5ee; color:var(--green); font-weight:600; }
+  .opt.wrong{ border-color:var(--red); background:#fbeaea; color:var(--red); }
+  .fb{ display:none; margin-top:12px; padding:12px 14px; border-radius:8px; font-size:14.5px;
+       background:#f4f1e8; border:1px dashed var(--line); line-height:1.8; }
+  .fb.show{ display:block; }
+  .fb b{color:var(--accent)}
+  .score{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-align:center; font-size:15px;
+          color:var(--soft); margin:26px 0; }
+  .foot{ margin-top:40px; padding-top:14px; border-top:1px solid var(--line); font-size:13.5px; color:var(--soft); }
+  .ask{ background:#eef4ef; border-radius:8px; padding:12px 16px; font-size:14.5px; color:var(--ink); }
+  mjx-container{ color:inherit; }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+</style>
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Lição 0004 · Matemática ENEM · Geometria espacial</div>
+  <h1>Geometria espacial &amp; visualização 3D</h1>
+  <p class="sub">Contar, planificar e projetar — enxergar o sólido na cabeça.</p>
+
+  <div class="mission">
+    <b>Por que esta lição?</b> Você já manda bem na geometria de <b>contas</b> (volumes, áreas — acertou várias!).
+    O que escapou no simulado foi a parte de <b>visualização</b>: as questões <b>137</b> (projeção de um cubo),
+    <b>168</b> (planificação) e <b>175</b> (figuras dentro de uma estrutura 3D). É um músculo que se treina — e
+    rende pontos rumo a Terapia Ocupacional / Fonoaudiologia na USP-RP.
+  </div>
+
+  <h2>A ideia central (1 minuto)</h2>
+  <div class="keybox">
+    <b>Contar:</b> Vértices (cantos), Arestas (quinas), Faces (superfícies). Euler: \(V - A + F = 2\).<br>
+    <b>Planificar:</b> desdobrar o sólido. <b>Faces opostas nunca se tocam</b> na planificação.<br>
+    <b>Projetar:</b> a "sombra" do sólido visto de cima / frente / lado.
+  </div>
+  <p>Os elementos dos sólidos, a relação de Euler e as vistas estão no <a href="../reference/geometria-espacial.html">cartão de Geometria Espacial</a>. Leia-o antes de praticar.</p>
+
+  <h2>Pratique — a escada de dificuldade</h2>
+  <p class="ladder-intro">As questões <b>sobem de nível</b>: de contar elementos até o <b>nível da prova</b> — incluindo as reais do ENEM 2021 que você errou. Faça na ordem.</p>
+
+  <div class="level"><span class="lv">Nível 1</span> Contar elementos &amp; Euler</div>
+
+  <div class="fig" aria-hidden="true">
+    <svg width="130" height="120" viewBox="0 0 130 120" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="20" y="40" width="64" height="64"/>
+      <rect x="46" y="14" width="64" height="64"/>
+      <line x1="20" y1="40" x2="46" y2="14"/>
+      <line x1="84" y1="40" x2="110" y2="14"/>
+      <line x1="20" y1="104" x2="46" y2="78"/>
+      <line x1="84" y1="104" x2="110" y2="78"/>
+    </svg>
+    <div class="cap">um cubo</div>
+  </div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N1 · faces</div>
+    <div class="stem">Quantas <b>faces</b> tem um cubo?</div>
+    <button class="opt">4</button>
+    <button class="opt">5</button>
+    <button class="opt">6</button>
+    <button class="opt">8</button>
+    <div class="fb"><b>6 faces.</b> Como um dado: cada lado é um quadrado.</div>
+  </div>
+
+  <div class="q" data-correct="3">
+    <div class="tag">N1 · vértices</div>
+    <div class="stem">Quantos <b>vértices</b> (cantos) tem um cubo?</div>
+    <button class="opt">4</button>
+    <button class="opt">6</button>
+    <button class="opt">12</button>
+    <button class="opt">8</button>
+    <div class="fb"><b>8 vértices.</b> 4 embaixo + 4 em cima.</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N1 · arestas</div>
+    <div class="stem">Quantas <b>arestas</b> (quinas) tem um cubo?</div>
+    <button class="opt">8</button>
+    <button class="opt">12</button>
+    <button class="opt">6</button>
+    <button class="opt">16</button>
+    <div class="fb"><b>12 arestas.</b> 4 embaixo + 4 em cima + 4 verticais.</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N1 · relação de Euler</div>
+    <div class="stem">Um poliedro convexo tem 6 faces e 8 vértices. Pela relação de Euler \((V - A + F = 2)\), quantas arestas ele tem?</div>
+    <button class="opt">10</button>
+    <button class="opt">12</button>
+    <button class="opt">14</button>
+    <button class="opt">16</button>
+    <div class="fb"><b>\(A = V + F - 2 = 8 + 6 - 2 = 12\).</b> Sabendo dois elementos, Euler dá o terceiro.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 2</span> Planificações &amp; projeções</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · reconhecer pela planificação</div>
+    <div class="stem">Uma planificação formada por <b>6 quadrados iguais</b> (em cruz) monta qual sólido?</div>
+    <button class="opt">um cubo.</button>
+    <button class="opt">uma pirâmide.</button>
+    <button class="opt">um cilindro.</button>
+    <button class="opt">um cone.</button>
+    <div class="fb"><b>Um cubo.</b> 6 faces quadradas iguais → cubo.</div>
+  </div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N2 · planificação de prisma</div>
+    <div class="stem">Uma planificação com <b>2 triângulos</b> e <b>3 retângulos</b> monta:</div>
+    <button class="opt">uma pirâmide.</button>
+    <button class="opt">um cubo.</button>
+    <button class="opt">um prisma triangular.</button>
+    <button class="opt">um cilindro.</button>
+    <div class="fb"><b>Prisma triangular.</b> As 2 bases são triângulos e as 3 laterais são retângulos.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · vista de cima</div>
+    <div class="stem">Um cilindro em pé, visto <b>de cima</b>, projeta no chão a figura de:</div>
+    <button class="opt">um círculo.</button>
+    <button class="opt">um retângulo.</button>
+    <button class="opt">um triângulo.</button>
+    <button class="opt">um quadrado.</button>
+    <div class="fb"><b>Um círculo.</b> De cima você vê a tampa redonda. (De frente seria um retângulo.)</div>
+  </div>
+
+  <div class="q" data-correct="3">
+    <div class="tag">N2 · vista de frente</div>
+    <div class="stem">Um cone em pé, visto <b>de frente</b> (de lado), aparece como:</div>
+    <button class="opt">um círculo.</button>
+    <button class="opt">um retângulo.</button>
+    <button class="opt">um losango.</button>
+    <button class="opt">um triângulo.</button>
+    <div class="fb"><b>Um triângulo.</b> De frente o cone é um triângulo; de cima seria um círculo.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 3</span> Visualização — planificar e projetar</div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N3 · faces opostas na planificação</div>
+    <div class="stem">Na planificação do cubo abaixo, qual face fica <b>oposta</b> à face cinza (A) quando o cubo é montado?</div>
+    <div class="fig">
+      <svg width="170" height="210" viewBox="0 0 170 210" fill="none" stroke="currentColor" stroke-width="1.5" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="18">
+        <rect x="55" y="6"   width="50" height="50" fill="#e7c9cd"/>
+        <text x="80" y="37" fill="#7a1f2b" text-anchor="middle">A</text>
+        <rect x="5"   y="56" width="50" height="50"/>
+        <text x="30" y="87" fill="#7a1f2b" text-anchor="middle">B</text>
+        <rect x="55"  y="56" width="50" height="50"/>
+        <text x="80" y="87" fill="#7a1f2b" text-anchor="middle">C</text>
+        <rect x="105" y="56" width="50" height="50"/>
+        <text x="130" y="87" fill="#7a1f2b" text-anchor="middle">D</text>
+        <rect x="55" y="106" width="50" height="50"/>
+        <text x="80" y="137" fill="#7a1f2b" text-anchor="middle">E</text>
+        <rect x="55" y="156" width="50" height="50"/>
+        <text x="80" y="187" fill="#7a1f2b" text-anchor="middle">F</text>
+      </svg>
+      <div class="cap">planificação em cruz</div>
+    </div>
+    <button class="opt">a face B.</button>
+    <button class="opt">a face C.</button>
+    <button class="opt">a face E.</button>
+    <button class="opt">a face F.</button>
+    <div class="fb"><b>A face E.</b> Na coluna A–C–E–F (que dá a volta no cubo), a 1ª (A) é oposta à 3ª (E); C é oposta a F; e as abas B e D são opostas entre si.</div>
+  </div>
+
+  <div class="q" data-correct="3">
+    <div class="tag">N3 · projeção na diagonal</div>
+    <div class="stem">Olhando um cubo exatamente na direção da sua <b>diagonal principal</b> (de um vértice ao vértice oposto), o contorno que você vê é:</div>
+    <button class="opt">um quadrado.</button>
+    <button class="opt">um triângulo.</button>
+    <button class="opt">um círculo.</button>
+    <button class="opt">um hexágono.</button>
+    <div class="fb"><b>Um hexágono regular.</b> Os 6 vértices "do meio" do cubo formam um hexágono — é a base da Q137. (De frente, na direção de uma face, é que dá um quadrado.)</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N3 · definição de faces opostas</div>
+    <div class="stem">Numa planificação, dizemos que duas faces são <b>opostas</b> quando, no sólido montado, elas:</div>
+    <button class="opt">compartilham uma aresta.</button>
+    <button class="opt">não têm aresta nem vértice em comum.</button>
+    <button class="opt">têm o mesmo tamanho.</button>
+    <button class="opt">se encontram num vértice.</button>
+    <div class="fb"><b>Não têm aresta nem vértice em comum.</b> Faces opostas ficam "frente a frente", sem se tocar. Essa é a definição usada na Q168.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · seção (corte)</div>
+    <div class="stem">Cortando um cubo com um plano <b>paralelo a uma das faces</b>, a figura que aparece no corte é:</div>
+    <button class="opt">um quadrado.</button>
+    <button class="opt">um triângulo.</button>
+    <button class="opt">um círculo.</button>
+    <button class="opt">um hexágono.</button>
+    <div class="fb"><b>Um quadrado.</b> Corte paralelo a uma face repete a forma da face. (Cortes inclinados podem dar retângulos, triângulos ou até hexágonos.)</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 4</span> Nível ENEM — as que você errou</div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N4 · ENEM 2021 (Q137) · você errou esta no simulado</div>
+    <div class="stem">Uma estrutura tem forma de <b>cubo</b>, apoiada por um vértice, com a diagonal principal na vertical (perpendicular ao chão). A <b>projeção (sombra) no chão</b> do contorno desse cubo tem a forma de:</div>
+    <button class="opt">um quadrado.</button>
+    <button class="opt">um triângulo.</button>
+    <button class="opt">um hexágono.</button>
+    <button class="opt">um círculo.</button>
+    <div class="fb"><b>Um hexágono (regular).</b> Com a diagonal principal vertical, os 6 vértices restantes se projetam formando um hexágono. Visualizar a direção do olhar é a chave da Q137. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N4 · ENEM 2021 (Q168) · você errou esta no simulado</div>
+    <div class="stem">Num <b>octaedro regular</b> (8 faces triangulares), duas faces são opostas quando não têm aresta nem vértice em comum. Cada face de um octaedro regular tem <b>quantas</b> faces opostas?</div>
+    <button class="opt">exatamente 1.</button>
+    <button class="opt">exatamente 2.</button>
+    <button class="opt">exatamente 3.</button>
+    <button class="opt">exatamente 4.</button>
+    <div class="fb"><b>Exatamente 1.</b> As 8 faces formam 4 pares paralelos; cada face tem uma única oposta. Por isso, na Q168, só uma das faces numeradas era a oposta à cinza. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N4 · ENEM 2021 (Q175) · você errou esta no simulado</div>
+    <div class="stem">A estrutura abaixo é um <b>cubo dentro de outro cubo</b>, com cada vértice de um ligado ao vértice correspondente do outro (só hastes). Quantas figuras planas de cada tipo se formam?</div>
+    <div class="fig">
+      <svg width="170" height="170" viewBox="0 0 170 170" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="12" y="12" width="146" height="146"/>
+        <rect x="58" y="58" width="54" height="54"/>
+        <line x1="12" y1="12" x2="58" y2="58"/>
+        <line x1="158" y1="12" x2="112" y2="58"/>
+        <line x1="12" y1="158" x2="58" y2="112"/>
+        <line x1="158" y1="158" x2="112" y2="112"/>
+      </svg>
+      <div class="cap">cubo dentro de cubo (projeção)</div>
+    </div>
+    <button class="opt">12 trapézios isósceles e 12 quadrados.</button>
+    <button class="opt">24 trapézios isósceles e 12 quadrados.</button>
+    <button class="opt">12 paralelogramos e 12 quadrados.</button>
+    <button class="opt">8 trapézios isósceles e 12 quadrados.</button>
+    <div class="fb"><b>12 trapézios isósceles e 12 quadrados.</b> Os quadrados vêm das 6 faces do cubo externo + 6 do interno. Entre os dois cubos, cada par de arestas correspondentes fecha um <b>trapézio isósceles</b> — contando todos, são 12. As laterais são trapézios (lados inclinados iguais), não paralelogramos. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N4 · estilo ENEM · contar arestas</div>
+    <div class="stem">Um <b>prisma de base hexagonal</b> tem 8 faces e 12 vértices. Pela relação de Euler, quantas arestas ele tem?</div>
+    <button class="opt">16</button>
+    <button class="opt">18</button>
+    <button class="opt">20</button>
+    <button class="opt">24</button>
+    <div class="fb"><b>\(A = V + F - 2 = 12 + 8 - 2 = 18\).</b> Confere: 6 na base de baixo + 6 na de cima + 6 verticais = 18.</div>
+  </div>
+
+  <div class="score" id="score">Responda as questões acima ☝️</div>
+
+  <h2>Para fixar (faça depois)</h2>
+  <p>• <b>Fonte primária recomendada:</b>
+     <a href="https://pt.khanacademy.org/math/geometry-home" target="_blank">Khan Academy — Geometria</a> (gratuito, em português).</p>
+  <p>• <b>Dica de ouro:</b> pegue uma caixa (de remédio, de creme dental) e gire na mão enquanto faz as questões — ver o sólido de verdade treina a visualização mais rápido que qualquer desenho.</p>
+  <p>• <b>Daqui a 2 dias</b> (prática espaçada), refaça a escada de memória.</p>
+
+  <div class="foot">
+    <p class="ask">👨‍🏫 <b>Eu sou seu professor aqui.</b> Não conseguiu "ver" alguma figura na cabeça? Me chame que eu descrevo de outro jeito.</p>
+    <p>Workspace de estudo · Missão: Matemática ENEM 2026 → TO/Fono USP Ribeirão Preto ·
+    Referência: <a href="../reference/geometria-espacial.html">Cartão de Geometria Espacial</a> ·
+    Anterior: <a href="0003-funcoes-graficos.html">Lição 0003 — Funções</a></p>
+  </div>
+
+</div>
+
+<script>
+  let answered = 0, hits = 0;
+  const total = document.querySelectorAll('.q').length;
+  document.querySelectorAll('.q').forEach(function(q){
+    const correct = parseInt(q.dataset.correct, 10);
+    const opts = q.querySelectorAll('.opt');
+    const fb = q.querySelector('.fb');
+    opts.forEach(function(btn, i){
+      btn.addEventListener('click', function(){
+        opts.forEach(function(b){ b.disabled = true; });
+        if(i === correct){ btn.classList.add('correct'); hits++; }
+        else { btn.classList.add('wrong'); opts[correct].classList.add('correct'); }
+        fb.classList.add('show');
+        answered++;
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    const el = document.getElementById('score');
+    if(answered < total){ el.textContent = answered + ' de ' + total + ' respondidas — continue 💪'; return; }
+    let msg = 'Você acertou ' + hits + ' de ' + total + '. ';
+    const pct = hits / total;
+    if(pct === 1) msg += 'Escada inteira, incluindo as do ENEM! Refaça em 2 dias pra fixar. 🎯';
+    else if(pct >= 0.6) msg += 'Bom! Releia o cartão nos pontos que errou e me chame se algo ficou confuso.';
+    else msg += 'Sem problema — me chame que a gente refaz juntos, passo a passo.';
+    el.textContent = msg;
+  }
+</script>
+</body>
+</html>

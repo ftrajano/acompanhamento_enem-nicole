@@ -45,8 +45,13 @@
 - [x] 0001 — Variação percentual (método do multiplicador).
 - [x] 0002 — Razão, proporção e regra de três (incl. inversa) — questões 154, 159, 165.
 - [x] 0003 — Funções e seus gráficos (linear vs quadrática) — questões 141, 161, 162, 180.
-- [ ] 0004 — (a definir) candidatos: geometria espacial/visualização 3D (137, 168, 175); ou revisão espaçada interleaved de 0001–0003.
+- [x] 0004 — Geometria espacial / visualização 3D (137, 168, 175) — com figuras SVG.
 - [ ] Manter estatística/gráficos aquecida com prática espaçada (ponto forte).
+
+## Cadência de trabalho (definida pelo ftrajano)
+- Produzir as lições em **grupos de 4**. A cada grupo, **PARAR e coletar feedback** do desempenho real da Nicole antes de seguir.
+- **GRUPO 1 = lições 0001–0004 (COMPLETO).** → Próximo passo é o ftrajano trazer como a Nicole foi (acertos por nível em cada lição) para calibrar o Grupo 2.
+- Candidatos ao Grupo 2 (com base nos erros restantes do simulado 2021): combinatória 179, matrizes 157, sequências 136, probabilidade 142, trigonometria 156, bases numéricas 177, análise dimensional 163, comparação de áreas 171 — priorizar por frequência no ENEM; e incluir 1 lição de **revisão espaçada interleaved** misturando 0001–0004.
 
 ## Publicação (GitHub Pages)
 - Site publicado a partir da pasta **`docs/`** (Settings → Pages → branch `main`, pasta `/docs`).
