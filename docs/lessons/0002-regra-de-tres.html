@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lição 0002 — Regra de três: direta e inversa</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#e2dccd; --accent:#7a1f2b; --green:#1c6b3f;
+         --red:#9b2226; --bg:#fbf9f4; --hi:#fdf3d6; --card:#ffffff; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 22px 80px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.62; }
+  .wrap{ max-width:720px; margin:0 auto; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:30px; line-height:1.2; margin:6px 0 4px; font-weight:600; }
+  .sub{ color:var(--soft); font-style:italic; margin:0 0 8px; }
+  .mission{ background:var(--hi); border-radius:8px; padding:12px 16px; font-size:14.5px; margin:18px 0 8px; }
+  .mission b{color:var(--accent)}
+  h2{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:15px; letter-spacing:.03em;
+      text-transform:uppercase; color:var(--accent); margin:34px 0 8px;
+      border-bottom:1px solid var(--line); padding-bottom:5px; }
+  p{margin:10px 0}
+  .m{ font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace; background:var(--hi);
+      padding:1px 6px; border-radius:3px; font-size:.92em; }
+  .keybox{ background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+           border-radius:0 8px 8px 0; padding:14px 18px; margin:16px 0; line-height:2; }
+  .keybox b{color:var(--accent)}
+  a{color:var(--accent)}
+  .q{ background:var(--card); border:1px solid var(--line); border-radius:10px;
+      padding:18px 20px; margin:20px 0; }
+  .q .tag{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+           letter-spacing:.08em; text-transform:uppercase; color:var(--soft); }
+  .q .stem{ margin:6px 0 14px; }
+  .level{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-weight:700; letter-spacing:.04em;
+          color:var(--accent); margin:30px 0 6px; display:flex; align-items:center; gap:10px; font-size:14px; }
+  .level::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .level .lv{ background:var(--accent); color:#fff; border-radius:20px; padding:2px 11px; font-size:11px; letter-spacing:.06em; white-space:nowrap; }
+  .ladder-intro{ font-size:14.5px; color:var(--soft); margin:4px 0 0; }
+  .opt{ display:block; width:100%; text-align:left; font-family:inherit; font-size:16px;
+        background:#fff; border:1.5px solid var(--line); border-radius:8px; padding:11px 14px;
+        margin:7px 0; cursor:pointer; transition:.12s; }
+  .opt:hover{ border-color:var(--accent); background:var(--hi); }
+  .opt:disabled{ cursor:default; opacity:.95; }
+  .opt.correct{ border-color:var(--green); background:#e9f5ee; color:var(--green); font-weight:600; }
+  .opt.wrong{ border-color:var(--red); background:#fbeaea; color:var(--red); }
+  .fb{ display:none; margin-top:12px; padding:12px 14px; border-radius:8px; font-size:14.5px;
+       background:#f4f1e8; border:1px dashed var(--line); line-height:1.8; }
+  .fb.show{ display:block; }
+  .fb b{color:var(--accent)}
+  .score{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-align:center; font-size:15px;
+          color:var(--soft); margin:26px 0; }
+  .foot{ margin-top:40px; padding-top:14px; border-top:1px solid var(--line); font-size:13.5px; color:var(--soft); }
+  .ask{ background:#eef4ef; border-radius:8px; padding:12px 16px; font-size:14.5px; color:var(--ink); }
+  mjx-container{ color:inherit; }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+</style>
+<!-- MathJax: delimitadores só \( \) e \[ \] — NUNCA $...$, para não conflitar com "R$". -->
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Lição 0002 · Matemática ENEM · Proporcionalidade</div>
+  <h1>Regra de três: direta e inversa</h1>
+  <p class="sub">Uma pergunta resolve quase tudo: <i>quando uma cresce, a outra cresce ou diminui?</i></p>
+
+  <div class="mission">
+    <b>Por que esta lição?</b> No simulado (ENEM 2021), os pontos que escaparam por aqui foram as questões
+    <b>154, 159 e 165</b> — todas de razão/proporção, e a <b>159 era regra de três inversa</b>, o tipo que
+    mais derruba gente. Dominar isso soma pontos certeiros rumo a Terapia Ocupacional / Fonoaudiologia na USP-RP.
+  </div>
+
+  <h2>A ideia central (1 minuto)</h2>
+  <p>Toda regra de três tem 3 passos: <b>(1)</b> montar as colunas, <b>(2)</b> decidir <b>direta ou inversa</b>, <b>(3)</b> resolver.</p>
+  <div class="keybox">
+    <b>Direta</b> — uma sobe, a outra sobe → <b>produto cruzado</b>. Ex.: \(\frac{2}{5} = \frac{10}{x}\)<br>
+    <b>Inversa</b> — uma sobe, a outra desce → <b>produto constante</b>: \(a \times b = c \times d\)<br>
+    <b>Como saber?</b> Pergunte: “se eu aumento esta, a outra aumenta (direta) ou diminui (inversa)?”
+  </div>
+  <p>Mais exemplos e os modelos resolvidos no <a href="../reference/razao-proporcao.html">cartão de Razão e Regra de Três</a>. Leia-o antes de praticar.</p>
+
+  <h2>Pratique — a escada de dificuldade</h2>
+  <p class="ladder-intro">As questões <b>sobem de nível</b>: da mecânica até o <b>nível da prova</b> — incluindo as reais do ENEM 2021 que você errou. Faça na ordem.</p>
+
+  <div class="level"><span class="lv">Nível 1</span> Mecânica — razão e proporção</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · razão</div>
+    <div class="stem">A razão \(\frac{3}{12}\), simplificada, é igual a:</div>
+    <button class="opt">1/4</button>
+    <button class="opt">1/3</button>
+    <button class="opt">4/1</button>
+    <button class="opt">3/1</button>
+    <div class="fb"><b>\(\frac{3}{12} = \frac{1}{4}\).</b> Divide em cima e embaixo por 3.</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N1 · produto cruzado</div>
+    <div class="stem">Na proporção \(\frac{3}{4} = \frac{x}{20}\), o valor de \(x\) é:</div>
+    <button class="opt">12</button>
+    <button class="opt">15</button>
+    <button class="opt">16</button>
+    <button class="opt">24</button>
+    <div class="fb"><b>\(3 \times 20 = 4x \Rightarrow x = \frac{60}{4} = 15\).</b> Produto cruzado.</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N1 · regra de três direta</div>
+    <div class="stem">Se 2 kg de arroz custam <b>R$ 10,00</b>, quanto custam 5 kg?</div>
+    <button class="opt">R$ 12,50</button>
+    <button class="opt">R$ 25,00</button>
+    <button class="opt">R$ 20,00</button>
+    <button class="opt">R$ 50,00</button>
+    <div class="fb"><b>\(\frac{2}{5} = \frac{10}{x} \Rightarrow 2x = 50 \Rightarrow x = 25\).</b> Mais kg → mais R$ (direta).</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N1 · direta ou inversa?</div>
+    <div class="stem">Quanto mais operários trabalham, menos tempo a obra leva. Essas grandezas são:</div>
+    <button class="opt">diretas entre si.</button>
+    <button class="opt">inversas entre si.</button>
+    <button class="opt">iguais entre si.</button>
+    <button class="opt">não proporcionais.</button>
+    <div class="fb"><b>Inversas.</b> Uma aumenta e a outra DIMINUI → grandezas inversamente proporcionais.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 2</span> Aplicação — um passo do dia a dia</div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N2 · direta</div>
+    <div class="stem">Um carro faz 12 km com 1 litro de gasolina. Com 8 litros, percorre:</div>
+    <button class="opt">84 km</button>
+    <button class="opt">20 km</button>
+    <button class="opt">96 km</button>
+    <button class="opt">108 km</button>
+    <div class="fb"><b>\(12 \times 8 = 96\) km.</b> Mais litros → mais km (direta).</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N2 · escala</div>
+    <div class="stem">Num mapa, 1 cm representa 5 km. Uma estrada que mede 7 cm no mapa tem, na realidade:</div>
+    <button class="opt">12 km</button>
+    <button class="opt">35 km</button>
+    <button class="opt">57 km</button>
+    <button class="opt">75 km</button>
+    <div class="fb"><b>\(7 \times 5 = 35\) km.</b> Cada cm vale 5 km (direta).</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · inversa</div>
+    <div class="stem">6 operários constroem um muro em 10 dias. No mesmo ritmo, 12 operários levam:</div>
+    <button class="opt">5 dias</button>
+    <button class="opt">20 dias</button>
+    <button class="opt">2 dias</button>
+    <button class="opt">8 dias</button>
+    <div class="fb"><b>Inversa:</b> \(6 \times 10 = 12 \times d \Rightarrow d = \frac{60}{12} = 5\) dias. Mais operários → menos dias.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · inversa (velocidade × tempo)</div>
+    <div class="stem">A 60 km/h, uma viagem leva 4 horas. A 80 km/h, a mesma viagem levará:</div>
+    <button class="opt">3 horas</button>
+    <button class="opt">5 horas</button>
+    <button class="opt">6 horas</button>
+    <button class="opt">2 horas</button>
+    <div class="fb"><b>Inversa:</b> \(60 \times 4 = 80 \times t \Rightarrow t = \frac{240}{80} = 3\) horas. Mais rápido → menos tempo.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 3</span> Escolher o caminho certo (pegadinhas)</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · inversa</div>
+    <div class="stem">Para encher um tanque, 3 torneiras iguais levam 8 horas. Com 4 torneiras, o tempo será:</div>
+    <button class="opt">6 horas</button>
+    <button class="opt">10 horas</button>
+    <button class="opt">11 horas</button>
+    <button class="opt">32 horas</button>
+    <div class="fb"><b>Inversa:</b> \(3 \times 8 = 4 \times t \Rightarrow t = \frac{24}{4} = 6\) horas. Mais torneiras → menos tempo (não é direta!).</div>
+  </div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N3 · direta com dois passos</div>
+    <div class="stem">3 máquinas produzem 600 peças em 2 horas. Em 2 horas, 5 máquinas produzem:</div>
+    <button class="opt">360 peças</button>
+    <button class="opt">200 peças</button>
+    <button class="opt">1000 peças</button>
+    <button class="opt">1200 peças</button>
+    <div class="fb"><b>\(600 \div 3 = 200\) por máquina; \(5 \times 200 = 1000\).</b> Mais máquinas → mais peças (direta).</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · inversa (achar a velocidade)</div>
+    <div class="stem">Um trajeto a 90 km/h dura 2 horas. Para fazê-lo em 3 horas, a velocidade deve ser:</div>
+    <button class="opt">60 km/h</button>
+    <button class="opt">45 km/h</button>
+    <button class="opt">135 km/h</button>
+    <button class="opt">30 km/h</button>
+    <div class="fb"><b>Inversa:</b> \(90 \times 2 = v \times 3 \Rightarrow v = \frac{180}{3} = 60\) km/h. Mais tempo disponível → pode ir mais devagar.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · a pegadinha clássica</div>
+    <div class="stem">Se 4 pintores pintam 4 casas em 4 dias, quantos dias 8 pintores levam para pintar 8 casas?</div>
+    <button class="opt">4 dias</button>
+    <button class="opt">8 dias</button>
+    <button class="opt">2 dias</button>
+    <button class="opt">16 dias</button>
+    <div class="fb"><b>4 dias.</b> 4 pintores → 4 casas em 4 dias significa: cada pintor pinta 1 casa em 4 dias. 8 pintores pintam 8 casas (1 cada) nos mesmos <b>4 dias</b>. A pegadinha é responder 8.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 4</span> Nível ENEM — incluindo as que você errou</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N4 · estilo ENEM · inversa</div>
+    <div class="stem">Uma obra seria feita por 15 operários em 24 dias. Contando com apenas 9 operários (mesmo ritmo), a obra levará:</div>
+    <button class="opt">40 dias</button>
+    <button class="opt">30 dias</button>
+    <button class="opt">14 dias</button>
+    <button class="opt">45 dias</button>
+    <div class="fb"><b>Inversa:</b> \(15 \times 24 = 9 \times d \Rightarrow d = \frac{360}{9} = 40\) dias. Menos operários → mais dias.</div>
+  </div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N4 · ENEM 2021 (Q165) · você errou esta no simulado</div>
+    <div class="stem">Um automóvel faz <b>16 km/L</b>. Um novo motor economiza <b>0,1 L a cada 20 km</b> rodados. O novo desempenho, em km/L (uma casa decimal), é:</div>
+    <button class="opt">15,9</button>
+    <button class="opt">16,1</button>
+    <button class="opt">17,4</button>
+    <button class="opt">18,0</button>
+    <div class="fb"><b>A cada 20 km</b> o motor antigo gasta \(\frac{20}{16} = 1{,}25\) L; o novo gasta \(1{,}25 - 0{,}1 = 1{,}15\) L. Logo \(\frac{20}{1{,}15} \approx 17{,}4\) km/L. No simulado você marcou 16,1. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N4 · ENEM 2021 (Q154) · você errou esta no simulado</div>
+    <div class="stem">Médicos no Brasil: 1990 = 219 000, 2000 = 292 000, 2010 = 365 000. População (em mil): 1990 = 147 000, 2000 = 170 000, 2010 = 191 000. A variação de 2010 para 2020 é a <b>média</b> das variações 1990→2000 e 2000→2010. O nº de médicos por mil habitantes em 2020 será aproximadamente:</div>
+    <button class="opt">0,49</button>
+    <button class="opt">1,71</button>
+    <button class="opt">2,06</button>
+    <button class="opt">3,32</button>
+    <div class="fb"><b>Médicos:</b> variações 73 000 e 73 000 → média 73 000 → 2020 = \(365\,000 + 73\,000 = 438\,000\). <b>População:</b> variações 23 000 e 21 000 → média 22 000 → 2020 = \(191\,000 + 22\,000 = 213\,000\) mil. <b>Razão:</b> \(\frac{438\,000}{213\,000} \approx 2{,}06\) médicos por mil hab. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="3">
+    <div class="tag">N4 · ENEM 2021 (Q159) · você errou esta no simulado</div>
+    <div class="stem">Quatro grupos trocam, ao mesmo tempo, os 4 pneus de um carro. Cada grupo tem 3 pessoas e leva 4 s (o tempo é <b>inversamente proporcional</b> ao nº de pessoas). Se um dos grupos fica com apenas 2 pessoas, o tempo para trocar os quatro pneus passa a ser:</div>
+    <button class="opt">4,4 s</button>
+    <button class="opt">4,5 s</button>
+    <button class="opt">5,0 s</button>
+    <button class="opt">6,0 s</button>
+    <div class="fb"><b>Inversa:</b> 3 pessoas → 4 s, então \(3 \times 4 = 12\). Com 2 pessoas: \(t = \frac{12}{2} = 6\) s. Como os grupos trabalham juntos, o tempo total é o do grupo <b>mais lento</b> = 6 s. No simulado você marcou 4,4. 🎯</div>
+  </div>
+
+  <div class="score" id="score">Responda as questões acima ☝️</div>
+
+  <h2>Para fixar (faça depois)</h2>
+  <p>• <b>Fonte primária recomendada:</b>
+     <a href="https://pt.khanacademy.org/math/pt-7-ano/x4ca80f463b3dba0e:proporcionalidade" target="_blank">Khan Academy — Proporcionalidade</a> (gratuito, em português).</p>
+  <p>• <b>Daqui a 2 dias</b> (prática espaçada), refaça a escada <i>de memória</i> — antes de cada conta, diga em voz alta “direta ou inversa?”. É esse reflexo que você está treinando.</p>
+
+  <div class="foot">
+    <p class="ask">👩‍🏫 <b>Eu sou sua professora aqui.</b> Travou em decidir direta × inversa, ou quer mais questões de algum tipo? É só me perguntar.</p>
+    <p>Workspace de estudo · Missão: Matemática ENEM 2026 → TO/Fono USP Ribeirão Preto ·
+    Referência: <a href="../reference/razao-proporcao.html">Cartão de Razão e Regra de Três</a> ·
+    Anterior: <a href="0001-variacao-percentual.html">Lição 0001 — Porcentagem</a></p>
+  </div>
+
+</div>
+
+<script>
+  let answered = 0, hits = 0;
+  const total = document.querySelectorAll('.q').length;
+  document.querySelectorAll('.q').forEach(function(q){
+    const correct = parseInt(q.dataset.correct, 10);
+    const opts = q.querySelectorAll('.opt');
+    const fb = q.querySelector('.fb');
+    opts.forEach(function(btn, i){
+      btn.addEventListener('click', function(){
+        opts.forEach(function(b){ b.disabled = true; });
+        if(i === correct){ btn.classList.add('correct'); hits++; }
+        else { btn.classList.add('wrong'); opts[correct].classList.add('correct'); }
+        fb.classList.add('show');
+        answered++;
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    const el = document.getElementById('score');
+    if(answered < total){ el.textContent = answered + ' de ' + total + ' respondidas — continue 💪'; return; }
+    let msg = 'Você acertou ' + hits + ' de ' + total + '. ';
+    const pct = hits / total;
+    if(pct === 1) msg += 'Escada inteira, incluindo as do ENEM! Refaça em 2 dias pra fixar. 🎯';
+    else if(pct >= 0.6) msg += 'Bom! Releia o cartão nos pontos que errou e me chame se algo ficou confuso.';
+    else msg += 'Sem problema — me chame que a gente refaz juntas, passo a passo.';
+    el.textContent = msg;
+  }
+</script>
+</body>
+</html>

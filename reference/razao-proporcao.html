@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cartão de referência — Razão, Proporção e Regra de Três (ENEM)</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#dcd6c8; --accent:#7a1f2b; --bg:#fbf9f4; --hi:#fdf3d6; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 24px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.7; }
+  .card{ max-width:760px; margin:0 auto; }
+  header{ border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:24px; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:27px; margin:6px 0 0; font-weight:600; }
+  h2{ font-size:16px; font-family:-apple-system,Helvetica,Arial,sans-serif; letter-spacing:.02em;
+      margin:30px 0 8px; color:var(--accent); border-bottom:1px solid var(--line); padding-bottom:4px; }
+  p{margin:8px 0}
+  .lead{ color:var(--soft); font-style:italic; margin-top:6px; }
+  table{ border-collapse:collapse; width:100%; margin:10px 0; font-size:15px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:12px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  code,.m{ font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace; background:var(--hi);
+           padding:1px 5px; border-radius:3px; font-size:14px; }
+  .rule{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:2; }
+  .rule b{ color:var(--accent); }
+  ul{margin:8px 0 8px 0; padding-left:22px} li{margin:5px 0}
+  .foot{ margin-top:34px; padding-top:12px; border-top:1px solid var(--line);
+         font-size:13px; color:var(--soft); }
+  a{color:var(--accent)}
+  mjx-container{ color:var(--accent); }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+  @media print{ body{background:#fff;padding:0} .card{max-width:100%} h2{break-after:avoid} }
+</style>
+<!-- MathJax: delimitadores só \( \) e \[ \] — NUNCA $...$, para não conflitar com "R$". -->
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div class="card">
+  <header>
+    <div class="kicker">Cartão de referência · Matemática ENEM</div>
+    <h1>Razão, Proporção &amp; Regra de Três</h1>
+    <p class="lead">A pergunta que decide tudo: <i>direta ou inversa?</i></p>
+  </header>
+
+  <h2>1. Razão e proporção</h2>
+  <p><b>Razão</b> é a comparação de dois números por divisão: \(\frac{a}{b}\). Ex.: \(\frac{3}{12} = \frac{1}{4}\).</p>
+  <p><b>Proporção</b> é a igualdade de duas razões. Resolve-se com o <b>produto cruzado</b>:</p>
+  <p>\[ \frac{a}{b} = \frac{c}{d} \quad\Longleftrightarrow\quad a \cdot d = b \cdot c \]</p>
+  <p>Ex.: \(\frac{3}{4} = \frac{x}{20} \Rightarrow 3 \cdot 20 = 4x \Rightarrow x = 15\).</p>
+
+  <h2>2. Regra de três simples — os 3 passos</h2>
+  <div class="rule">
+    <b>1)</b> Monte duas colunas, uma para cada grandeza (alinhe as unidades).<br>
+    <b>2)</b> Decida: as grandezas são <b>diretas</b> ou <b>inversas</b>?<br>
+    <b>3)</b> Direta → produto cruzado normal. &nbsp; Inversa → <b>inverta</b> uma das razões.
+  </div>
+
+  <h2>3. A pergunta-chave: direta ou inversa?</h2>
+  <p>“Se uma grandeza <b>aumenta</b>, a outra aumenta ou diminui?”</p>
+  <table>
+    <tr><th>Tipo</th><th>Regra</th><th>Exemplos</th></tr>
+    <tr><td><b>Direta</b></td><td>uma sobe → a outra sobe<br>(multiplica cruzado)</td>
+        <td>kg × preço · km × litros · horas × salário</td></tr>
+    <tr><td><b>Inversa</b></td><td>uma sobe → a outra desce<br>(produto constante \(a\cdot b = c\cdot d\))</td>
+        <td>operários × tempo · velocidade × tempo · torneiras × tempo</td></tr>
+  </table>
+
+  <h2>4. Modelo: direta</h2>
+  <p>2 kg de arroz custam R$ 10,00. Quanto custam 5 kg? (mais kg → mais R$ → <b>direta</b>)</p>
+  <p>\[ \frac{2}{5} = \frac{10}{x} \;\Rightarrow\; 2x = 50 \;\Rightarrow\; x = 25 \]</p>
+
+  <h2>5. Modelo: inversa</h2>
+  <p>6 operários fazem um muro em 10 dias. Em quantos dias 12 operários fazem? (mais operários → menos dias → <b>inversa</b>)</p>
+  <p>Produto constante: \(\;6 \times 10 = 12 \times d \;\Rightarrow\; d = \dfrac{60}{12} = 5\) dias.</p>
+  <p class="lead">Atenção: na inversa NÃO se multiplica cruzado direto — iguala-se os produtos (ou inverte-se uma razão).</p>
+
+  <h2>6. Escala</h2>
+  <p>Escala \(= \dfrac{\text{medida no desenho}}{\text{medida real}}\). Ex.: 1 cm no mapa = 5 km reais → 7 cm = \(7 \times 5 = 35\) km.</p>
+
+  <div class="foot">
+    Workspace de estudo da Nicole · Missão: Matemática ENEM 2026 → TO/Fono USP-RP.<br>
+    Usado na <a href="../lessons/0002-regra-de-tres.html">Lição 0002 — Regra de três</a>.
+    Fonte recomendada: <a href="https://pt.khanacademy.org/math/pt-7-ano/x4ca80f463b3dba0e:proporcionalidade">Khan Academy — Proporcionalidade</a>.
+  </div>
+</div>
+</body>
+</html>
