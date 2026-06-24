@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lição 0003 — Funções e seus gráficos</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#e2dccd; --accent:#7a1f2b; --green:#1c6b3f;
+         --red:#9b2226; --bg:#fbf9f4; --hi:#fdf3d6; --card:#ffffff; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 22px 80px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.62; }
+  .wrap{ max-width:720px; margin:0 auto; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:30px; line-height:1.2; margin:6px 0 4px; font-weight:600; }
+  .sub{ color:var(--soft); font-style:italic; margin:0 0 8px; }
+  .mission{ background:var(--hi); border-radius:8px; padding:12px 16px; font-size:14.5px; margin:18px 0 8px; }
+  .mission b{color:var(--accent)}
+  h2{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:15px; letter-spacing:.03em;
+      text-transform:uppercase; color:var(--accent); margin:34px 0 8px;
+      border-bottom:1px solid var(--line); padding-bottom:5px; }
+  p{margin:10px 0}
+  .m{ font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace; background:var(--hi);
+      padding:1px 6px; border-radius:3px; font-size:.92em; }
+  .keybox{ background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+           border-radius:0 8px 8px 0; padding:14px 18px; margin:16px 0; line-height:2; }
+  .keybox b{color:var(--accent)}
+  a{color:var(--accent)}
+  .q{ background:var(--card); border:1px solid var(--line); border-radius:10px;
+      padding:18px 20px; margin:20px 0; }
+  .q .tag{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+           letter-spacing:.08em; text-transform:uppercase; color:var(--soft); }
+  .q .stem{ margin:6px 0 14px; }
+  .level{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-weight:700; letter-spacing:.04em;
+          color:var(--accent); margin:30px 0 6px; display:flex; align-items:center; gap:10px; font-size:14px; }
+  .level::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .level .lv{ background:var(--accent); color:#fff; border-radius:20px; padding:2px 11px; font-size:11px; letter-spacing:.06em; white-space:nowrap; }
+  .ladder-intro{ font-size:14.5px; color:var(--soft); margin:4px 0 0; }
+  .opt{ display:block; width:100%; text-align:left; font-family:inherit; font-size:16px;
+        background:#fff; border:1.5px solid var(--line); border-radius:8px; padding:11px 14px;
+        margin:7px 0; cursor:pointer; transition:.12s; }
+  .opt:hover{ border-color:var(--accent); background:var(--hi); }
+  .opt:disabled{ cursor:default; opacity:.95; }
+  .opt.correct{ border-color:var(--green); background:#e9f5ee; color:var(--green); font-weight:600; }
+  .opt.wrong{ border-color:var(--red); background:#fbeaea; color:var(--red); }
+  .fb{ display:none; margin-top:12px; padding:12px 14px; border-radius:8px; font-size:14.5px;
+       background:#f4f1e8; border:1px dashed var(--line); line-height:1.8; }
+  .fb.show{ display:block; }
+  .fb b{color:var(--accent)}
+  .score{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-align:center; font-size:15px;
+          color:var(--soft); margin:26px 0; }
+  .foot{ margin-top:40px; padding-top:14px; border-top:1px solid var(--line); font-size:13.5px; color:var(--soft); }
+  .ask{ background:#eef4ef; border-radius:8px; padding:12px 16px; font-size:14.5px; color:var(--ink); }
+  mjx-container{ color:inherit; }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+</style>
+<!-- MathJax: delimitadores só \( \) e \[ \] — NUNCA $...$, para não conflitar com "R$". -->
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Lição 0003 · Matemática ENEM · Funções</div>
+  <h1>Funções e seus gráficos</h1>
+  <p class="sub">Reta ou parábola? Como <i>montar</i> a expressão e como <i>ler</i> o gráfico.</p>
+
+  <div class="mission">
+    <b>Por que esta lição?</b> No simulado (ENEM 2021), os pontos de funções que escaparam foram as questões
+    <b>141, 161, 162 e 180</b> — montar a expressão de um preço, reconhecer uma parábola, ler uma função por
+    partes e comparar custos. São situações que o ENEM adora. Dominar isso rende muitos pontos rumo a
+    Terapia Ocupacional / Fonoaudiologia na USP-RP.
+  </div>
+
+  <h2>A ideia central (1 minuto)</h2>
+  <p>Quase tudo cai em dois tipos. A pergunta é: a grandeza varia a uma <b>taxa constante</b> (reta) ou você está <b>multiplicando duas coisas que mudam</b> (parábola)?</p>
+  <div class="keybox">
+    <b>1º grau (reta):</b> \(y = b + a\,x\) — \(b\) = valor inicial, \(a\) = taxa fixa. \(a>0\) sobe, \(a<0\) desce.<br>
+    <b>2º grau (parábola):</b> \(y = a x^2 + bx + c\) — \(a<0\) tem ponto de <b>máximo</b>; \(a>0\), de <b>mínimo</b>.<br>
+    <b>Montar:</b> valor fixo \(+\) valor variável \(\times\) quantidade. Ex.: \(P = 5 + 2x\).
+  </div>
+  <p>Os modelos resolvidos e as “4 perguntas para ler um gráfico” estão no <a href="../reference/funcoes.html">cartão de Funções e Gráficos</a>. Leia-o antes de praticar.</p>
+
+  <h2>Pratique — a escada de dificuldade</h2>
+  <p class="ladder-intro">As questões <b>sobem de nível</b>: da mecânica até o <b>nível da prova</b> — incluindo as reais do ENEM 2021 que você errou. Faça na ordem.</p>
+
+  <div class="level"><span class="lv">Nível 1</span> Mecânica — ler a expressão</div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N1 · avaliar f(x)</div>
+    <div class="stem">Se \(f(x) = 2x + 3\), quanto vale \(f(4)\)?</div>
+    <button class="opt">9</button>
+    <button class="opt">10</button>
+    <button class="opt">11</button>
+    <button class="opt">14</button>
+    <div class="fb"><b>\(2 \times 4 + 3 = 11\).</b> Substitui \(x\) por 4.</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N1 · valor inicial</div>
+    <div class="stem">Na função \(y = 5 + 2x\), o valor de \(y\) quando \(x = 0\) é:</div>
+    <button class="opt">2</button>
+    <button class="opt">5</button>
+    <button class="opt">7</button>
+    <button class="opt">0</button>
+    <div class="fb"><b>\(y = 5 + 2\cdot 0 = 5\).</b> O valor inicial é o termo sem \(x\) (onde o gráfico corta o eixo vertical).</div>
+  </div>
+
+  <div class="q" data-correct="3">
+    <div class="tag">N1 · taxa de variação</div>
+    <div class="stem">Na função \(y = 100 - 8x\), a cada aumento de 1 em \(x\), o valor de \(y\):</div>
+    <button class="opt">aumenta 8.</button>
+    <button class="opt">aumenta 1.</button>
+    <button class="opt">não muda.</button>
+    <button class="opt">diminui 8.</button>
+    <div class="fb"><b>Diminui 8.</b> A taxa é \(-8\) (negativa) → reta decrescente.</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N1 · reta ou parábola?</div>
+    <div class="stem">Qual destas é uma função do 2º grau (gráfico em parábola)?</div>
+    <button class="opt">\(y = 3x + 1\)</button>
+    <button class="opt">\(y = x^2 - 2x\)</button>
+    <button class="opt">\(y = 5\)</button>
+    <button class="opt">\(y = 7 - x\)</button>
+    <div class="fb"><b>\(y = x^2 - 2x\).</b> Tem \(x^2\) → 2º grau → parábola. As outras são retas/constante.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 2</span> Aplicação — montar e usar</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · montar (modelagem)</div>
+    <div class="stem">Um táxi cobra R$ 5,00 fixos mais R$ 2,00 por km. O preço de uma corrida de \(x\) km é:</div>
+    <button class="opt">\(P = 5 + 2x\)</button>
+    <button class="opt">\(P = 2 + 5x\)</button>
+    <button class="opt">\(P = 7x\)</button>
+    <button class="opt">\(P = 5 \cdot 2x\)</button>
+    <div class="fb"><b>\(P = 5 + 2x\).</b> Valor fixo (5) + valor por km (2) vezes a quantidade de km.</div>
+  </div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N2 · usar a função</div>
+    <div class="stem">Um plano de celular custa R$ 30,00 fixos + R$ 0,50 por minuto. Falando 40 minutos, a conta é:</div>
+    <button class="opt">R$ 20,00</button>
+    <button class="opt">R$ 40,00</button>
+    <button class="opt">R$ 50,00</button>
+    <button class="opt">R$ 70,00</button>
+    <div class="fb"><b>\(30 + 0{,}50 \times 40 = 30 + 20 = 50\).</b> Fixo mais a parte variável.</div>
+  </div>
+
+  <div class="q" data-correct="3">
+    <div class="tag">N2 · ler uma reta</div>
+    <div class="stem">Uma reta corta o eixo vertical em \(y = 10\) e sobe 5 a cada unidade de \(x\). Em \(x = 4\), o valor de \(y\) é:</div>
+    <button class="opt">14</button>
+    <button class="opt">20</button>
+    <button class="opt">25</button>
+    <button class="opt">30</button>
+    <div class="fb"><b>\(y = 10 + 5x = 10 + 5\cdot 4 = 30\).</b> Inicial 10 + taxa 5 × 4.</div>
+  </div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N2 · comportamento quadrático</div>
+    <div class="stem">A área de um quadrado de lado \(L\) é \(A = L^2\). Se o lado <b>dobra</b>, a área fica:</div>
+    <button class="opt">o dobro.</button>
+    <button class="opt">o triplo.</button>
+    <button class="opt">o quádruplo.</button>
+    <button class="opt">a metade.</button>
+    <div class="fb"><b>Quádruplo.</b> \((2L)^2 = 4L^2\). Como é 2º grau, dobrar a entrada multiplica a saída por \(2^2 = 4\).</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 3</span> Ler o formato do gráfico</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · forma do gráfico</div>
+    <div class="stem">O gráfico da função \(y = 2x + 1\) é:</div>
+    <button class="opt">uma reta crescente.</button>
+    <button class="opt">uma reta decrescente.</button>
+    <button class="opt">uma parábola aberta.</button>
+    <button class="opt">uma curva qualquer.</button>
+    <div class="fb"><b>Reta crescente.</b> 1º grau → reta; taxa \(+2\) (positiva) → sobe.</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N3 · máximo da parábola</div>
+    <div class="stem">Uma função do 2º grau com \(a < 0\) (concavidade para baixo) tem um gráfico que:</div>
+    <button class="opt">só cresce sempre.</button>
+    <button class="opt">tem ponto de máximo.</button>
+    <button class="opt">tem ponto de mínimo.</button>
+    <button class="opt">é uma reta fixa.</button>
+    <div class="fb"><b>Tem ponto de máximo.</b> Concavidade para baixo → sobe, atinge o topo e desce (ex.: arrecadação que cresce e depois cai).</div>
+  </div>
+
+  <div class="q" data-correct="3">
+    <div class="tag">N3 · discreto × contínuo (lógica da Q161)</div>
+    <div class="stem">Uma arrecadação depende do <b>nº de pessoas</b>, que só pode ser inteiro. O gráfico que representa isso deve ser desenhado como:</div>
+    <button class="opt">uma reta cheia.</button>
+    <button class="opt">uma curva cheia.</button>
+    <button class="opt">uma área pintada.</button>
+    <button class="opt">pontos separados.</button>
+    <div class="fb"><b>Pontos separados.</b> Como a quantidade é discreta (não existe "meia pessoa"), o gráfico é uma sequência de pontos — não uma linha contínua. Essa foi a sutileza da Q161.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · função por partes (lógica da Q162)</div>
+    <div class="stem">Um imposto é <b>R$ 0</b> para preços até R$ 5 000 e, acima disso, passa a crescer. No gráfico (imposto × preço), o trecho até R$ 5 000 é:</div>
+    <button class="opt">reto, colado no zero.</button>
+    <button class="opt">uma subida íngreme.</button>
+    <button class="opt">uma parábola.</button>
+    <button class="opt">uma descida.</button>
+    <div class="fb"><b>Reto, no zero.</b> Se o imposto é 0 nessa faixa, o gráfico fica sobre o eixo (valor 0) e só começa a subir depois de R$ 5 000. É uma função <b>por partes</b>.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 4</span> Nível ENEM — as que você errou</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N4 · ENEM 2021 (Q141) · você errou esta no simulado</div>
+    <div class="stem">Uma hospedagem cobra: um preço por diária \(d\), uma taxa fixa de limpeza \(L\), e uma taxa de serviço de valor percentual \(s\) calculada <b>sobre o total das diárias</b>. O preço \(P\) para \(n\) diárias é:</div>
+    <button class="opt">\(P = d\,n + L + d\,n\,s\)</button>
+    <button class="opt">\(P = d\,n + L + d\,s\)</button>
+    <button class="opt">\(P = d + L + d\,n\,s\)</button>
+    <button class="opt">\(P = d\,n\,s + L\)</button>
+    <div class="fb"><b>\(P = d\,n + L + d\,n\,s\).</b> Total das diárias \(= d\,n\); taxa de serviço \(= s\) sobre esse total \(= d\,n\,s\); soma-se a limpeza fixa \(L\). 🎯</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N4 · ENEM 2021 (Q180) · você errou esta no simulado</div>
+    <div class="stem">Laboratório A: 100 usuários, custo R$ 180 mil + R$ 60 mil/ano de manutenção. Laboratório B: 80 usuários, custo R$ 120 mil + R$ 16 mil/ano. Em 4 anos, a economia <b>por usuário</b> ao usar B em vez de A é (em mil reais):</div>
+    <button class="opt">1,31</button>
+    <button class="opt">1,90</button>
+    <button class="opt">2,30</button>
+    <button class="opt">2,36</button>
+    <div class="fb"><b>A:</b> \(180 + 4\times 60 = 420\) mil ÷ 100 = 4,20 por usuário. <b>B:</b> \(120 + 4\times 16 = 184\) mil ÷ 80 = 2,30 por usuário. <b>Economia:</b> \(4{,}20 - 2{,}30 = 1{,}90\) mil. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N4 · ENEM 2021 (Q162) · você errou esta no simulado</div>
+    <div class="stem">Imposto: isento até R$ 5 000; 10% sobre o que passar de R$ 5 000 (até R$ 10 000); e R$ 500 + 30% sobre o que passar de R$ 10 000. Para um preço de <b>R$ 12 000</b>, o imposto é:</div>
+    <button class="opt">R$ 600</button>
+    <button class="opt">R$ 900</button>
+    <button class="opt">R$ 1 100</button>
+    <button class="opt">R$ 3 600</button>
+    <div class="fb"><b>R$ 1 100.</b> Acima de 10 000 usa-se a 3ª faixa: \(500 + 30\% \text{ de } (12\,000 - 10\,000) = 500 + 0{,}30\times 2\,000 = 500 + 600 = 1\,100\). Escolher a faixa certa é a chave da função por partes. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="3">
+    <div class="tag">N4 · ENEM 2021 (Q161) · você errou esta no simulado</div>
+    <div class="stem">Um show: ingresso a R$ 20 atrai 200 pessoas; a cada R$ 1 de desconto, chegam +40 pessoas. A arrecadação para um desconto \(x\) é \((20 - x)(200 + 40x)\). Para um desconto de <b>R$ 5</b>, a arrecadação é:</div>
+    <button class="opt">R$ 4 000</button>
+    <button class="opt">R$ 4 800</button>
+    <button class="opt">R$ 5 400</button>
+    <button class="opt">R$ 6 000</button>
+    <div class="fb"><b>\((20 - 5)(200 + 40\times 5) = 15 \times 400 = 6\,000\).</b> É o produto de duas quantidades que variam → função do 2º grau (parábola), e como o público é inteiro, o gráfico são pontos. 🎯</div>
+  </div>
+
+  <div class="score" id="score">Responda as questões acima ☝️</div>
+
+  <h2>Para fixar (faça depois)</h2>
+  <p>• <b>Fonte primária recomendada:</b>
+     <a href="https://pt.khanacademy.org/math/algebra-home/alg-functions" target="_blank">Khan Academy — Funções</a> (gratuito, em português).</p>
+  <p>• <b>Daqui a 2 dias</b> (prática espaçada), refaça a escada <i>de memória</i> — antes de cada questão, pergunte “é reta ou parábola? o que é fixo e o que varia?”.</p>
+
+  <div class="foot">
+    <p class="ask">👨‍🏫 <b>Eu sou seu professor aqui.</b> Travou em montar a expressão ou em escolher o gráfico? Me chame que a gente destrincha juntos.</p>
+    <p>Workspace de estudo · Missão: Matemática ENEM 2026 → TO/Fono USP Ribeirão Preto ·
+    Referência: <a href="../reference/funcoes.html">Cartão de Funções e Gráficos</a> ·
+    Anterior: <a href="0002-regra-de-tres.html">Lição 0002 — Regra de três</a></p>
+  </div>
+
+</div>
+
+<script>
+  let answered = 0, hits = 0;
+  const total = document.querySelectorAll('.q').length;
+  document.querySelectorAll('.q').forEach(function(q){
+    const correct = parseInt(q.dataset.correct, 10);
+    const opts = q.querySelectorAll('.opt');
+    const fb = q.querySelector('.fb');
+    opts.forEach(function(btn, i){
+      btn.addEventListener('click', function(){
+        opts.forEach(function(b){ b.disabled = true; });
+        if(i === correct){ btn.classList.add('correct'); hits++; }
+        else { btn.classList.add('wrong'); opts[correct].classList.add('correct'); }
+        fb.classList.add('show');
+        answered++;
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    const el = document.getElementById('score');
+    if(answered < total){ el.textContent = answered + ' de ' + total + ' respondidas — continue 💪'; return; }
+    let msg = 'Você acertou ' + hits + ' de ' + total + '. ';
+    const pct = hits / total;
+    if(pct === 1) msg += 'Escada inteira, incluindo as do ENEM! Refaça em 2 dias pra fixar. 🎯';
+    else if(pct >= 0.6) msg += 'Bom! Releia o cartão nos pontos que errou e me chame se algo ficou confuso.';
+    else msg += 'Sem problema — me chame que a gente refaz juntos, passo a passo.';
+    el.textContent = msg;
+  }
+</script>
+</body>
+</html>
