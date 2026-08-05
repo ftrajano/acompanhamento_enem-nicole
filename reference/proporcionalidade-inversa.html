@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cartão de referência — Proporcionalidade Inversa e Grandezas Compostas (ENEM)</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#dcd6c8; --accent:#7a1f2b; --bg:#fbf9f4; --hi:#fdf3d6; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 24px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.7; }
+  .card{ max-width:760px; margin:0 auto; }
+  header{ border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:24px; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:27px; margin:6px 0 0; font-weight:600; }
+  h2{ font-size:16px; font-family:-apple-system,Helvetica,Arial,sans-serif; letter-spacing:.02em;
+      margin:30px 0 8px; color:var(--accent); border-bottom:1px solid var(--line); padding-bottom:4px; }
+  p{margin:8px 0}
+  .lead{ color:var(--soft); font-style:italic; margin-top:6px; }
+  table{ border-collapse:collapse; width:100%; margin:10px 0; font-size:15px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:12px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  code,.m{ font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace; background:var(--hi);
+           padding:1px 5px; border-radius:3px; font-size:14px; }
+  .rule{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:2; }
+  .rule b{ color:var(--accent); }
+  .flag{ background:#fdf0f0; border:1px solid #e6c9c9; border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:1.9; font-size:14.5px; }
+  .flag b{ color:var(--accent); }
+  ul{margin:8px 0 8px 0; padding-left:22px} li{margin:5px 0}
+  .foot{ margin-top:34px; padding-top:12px; border-top:1px solid var(--line);
+         font-size:13px; color:var(--soft); }
+  a{color:var(--accent)}
+  mjx-container{ color:var(--accent); }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+  @media print{ body{background:#fff;padding:0} .card{max-width:100%} h2{break-after:avoid} .flag{break-inside:avoid} }
+</style>
+<!-- MathJax: delimitadores só \( \) e \[ \] — NUNCA $...$, para não conflitar com "R$". -->
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div class="card">
+  <header>
+    <div class="kicker">Cartão de referência · Matemática ENEM</div>
+    <h1>Proporcionalidade Inversa &amp; Grandezas Compostas</h1>
+    <p class="lead">Multiplique o par que você conhece. Dê um nome ao resultado.</p>
+  </header>
+
+  <h2>1. A pergunta que decide tudo</h2>
+  <p><b>“Se a primeira grandeza aumenta, a segunda sobe ou desce?”</b></p>
+  <table>
+    <tr><th>Resposta</th><th>Tipo</th><th>Fica constante</th><th>Você faz</th></tr>
+    <tr><td>sobe junto</td><td><b>Direta</b></td><td>a razão \(\frac{a}{b}\)</td><td>produto cruzado</td></tr>
+    <tr><td>desce</td><td><b>Inversa</b></td><td>o produto \(a \times b\)</td><td>multiplica, depois divide</td></tr>
+  </table>
+
+  <h2>2. O roteiro da inversa — 2 passos</h2>
+  <div class="rule">
+    <b>1)</b> Multiplique o par que você <b>conhece</b> → esse é o total, e ele não muda.<br>
+    <b>2)</b> Divida o total pelo <b>valor novo</b> → essa é a resposta.
+  </div>
+  <p>Em fórmula: \(\;a_1 \times b_1 = a_2 \times b_2\).</p>
+
+  <h2>3. Dê nome ao produto (o teste de sanidade)</h2>
+  <p>Na inversa o produto quase sempre é uma <b>coisa real</b>. Se o nome faz sentido, o tipo está certo:</p>
+  <table>
+    <tr><th>Situação</th><th>Produto</th><th>Significa</th></tr>
+    <tr><td>15 operários × 24 dias</td><td>360 operário-dias</td><td>o tamanho da obra</td></tr>
+    <tr><td>90 km/h × 2 h</td><td>180 km</td><td>a distância do trajeto</td></tr>
+    <tr><td>3 pessoas × 4 s</td><td>12 pessoa-segundos</td><td>o trabalho de trocar 1 pneu</td></tr>
+    <tr><td>6 máquinas × 10 h</td><td>60 máquina-horas</td><td>o serviço inteiro</td></tr>
+    <tr><td>8 cavalos × 15 dias</td><td>120 cavalo-dias</td><td>a ração disponível</td></tr>
+  </table>
+  <p class="lead">Se o produto não significar nada, provavelmente a relação era direta.</p>
+
+  <h2>4. Casos clássicos de inversa no ENEM</h2>
+  <ul>
+    <li>operários (ou máquinas) × tempo, para a <b>mesma</b> obra</li>
+    <li>velocidade × tempo, para a <b>mesma</b> distância</li>
+    <li>torneiras × tempo, para o <b>mesmo</b> tanque</li>
+    <li>nº de pessoas × ração, para o <b>mesmo</b> estoque</li>
+    <li>largura × comprimento, para a <b>mesma</b> área</li>
+  </ul>
+  <p>O padrão: sempre há um <b>total fixo</b> sendo dividido de outro jeito.</p>
+
+  <h2>5. Taxas invertidas — a gêmea de toda taxa</h2>
+  <p>Toda taxa tem uma versão de cabeça para baixo. Para trocar: \(\;\text{gêmea} = \frac{1}{\text{taxa}}\).</p>
+  <table>
+    <tr><th>Taxa</th><th>Gêmea invertida</th><th>Exemplo</th></tr>
+    <tr><td>km/L (rendimento)</td><td>L/km (consumo)</td><td>12 km/L \(\to \frac{1}{12} \approx 0{,}083\) L/km</td></tr>
+    <tr><td>hab/km² (densidade)</td><td>km²/hab (área por pessoa)</td><td>200 hab/km² \(\to 0{,}005\) km²/hab</td></tr>
+    <tr><td>R$/kg (preço)</td><td>kg/R$ (quanto compra)</td><td>R$ 8,00/kg \(\to 0{,}125\) kg por real</td></tr>
+    <tr><td>peças/hora</td><td>horas/peça</td><td>20 peças/h \(\to 0{,}05\) h por peça</td></tr>
+  </table>
+  <div class="flag">
+    <b>⚑ Armadilha nº 1 do ENEM.</b> Quando o enunciado dá uma taxa (ex.: <b>16 km/L</b>) e uma quantidade
+    da unidade <b>de baixo</b> (ex.: economiza <b>0,1 L</b>), <b>não dá para somar direto</b> — são unidades
+    diferentes. Converta primeiro: escolha uma distância de referência, calcule os litros, aplique a mudança,
+    e só então volte para km/L.<br>
+    <i>Q165/2021:</i> em 20 km, o antigo gasta \(20 \div 16 = 1{,}25\) L; o novo gasta \(1{,}15\) L;
+    logo \(20 \div 1{,}15 \approx 17{,}4\) km/L.
+  </div>
+
+  <h2>6. Regra de três composta (3+ grandezas)</h2>
+  <p>Não arme tudo de uma vez. <b>Reduza ao rendimento por unidade</b> — é mais seguro:</p>
+  <div class="rule">
+    <b>1)</b> Multiplique tudo da situação conhecida → total de "unidade-tempo".<br>
+    <b>2)</b> Divida a produção por esse total → <b>rendimento unitário</b>.<br>
+    <b>3)</b> Monte o total novo e multiplique pelo rendimento.
+  </div>
+  <p><i>Exemplo:</i> 4 máquinas em 6 dias fazem 240 peças. E 6 máquinas em 10 dias?<br>
+  \(4 \times 6 = 24\) máquina-dias → \(240 \div 24 = 10\) peças por máquina-dia.<br>
+  \(6 \times 10 = 60\) máquina-dias → \(60 \times 10 = 600\) peças.</p>
+
+  <h2>7. Trabalho em paralelo — a lógica do gargalo</h2>
+  <div class="flag">
+    <b>⚑ Armadilha nº 2 do ENEM.</b> Quando várias equipes trabalham <b>ao mesmo tempo</b>, cada uma na sua
+    parte, o serviço termina quando a <b>mais lenta</b> termina. <b>Não é média, não é soma.</b><br>
+    <i>Q159/2021:</i> quatro grupos trocam quatro pneus simultaneamente; três levam 4 s e um leva 6 s
+    → o carro fica pronto em <b>6 s</b>.
+  </div>
+  <p>Cuidado para não confundir com o caso em que todos trabalham <b>na mesma</b> tarefa (duas torneiras
+  no mesmo tanque) — aí os esforços <b>se somam</b> e o tempo <b>cai</b>.</p>
+  <table>
+    <tr><th>Situação</th><th>Regra</th></tr>
+    <tr><td>Cada um na <b>sua</b> parte, em paralelo</td><td>tempo = o do <b>mais lento</b></td></tr>
+    <tr><td>Todos na <b>mesma</b> tarefa</td><td>somam-se os rendimentos → tempo cai</td></tr>
+  </table>
+
+  <h2>8. Conferência final (3 segundos)</h2>
+  <div class="rule">
+    Antes de marcar, pergunte: <b>“a resposta foi na direção que o bom senso manda?”</b><br>
+    Menos operários → <b>mais</b> dias. Mais velocidade → <b>menos</b> tempo. Mais bocas → ração dura <b>menos</b>.<br>
+    Se deu ao contrário, você tratou uma inversa como direta.
+  </div>
+
+  <div class="foot">
+    Workspace de estudo da Nicole · Missão: Matemática ENEM 2026 → TO/Fono USP-RP.<br>
+    Usado na <a href="../lessons/0005-proporcionalidade-inversa.html">Lição 0005</a> ·
+    Cartão irmão: <a href="razao-proporcao.html">Razão, Proporção e Regra de Três</a>.<br>
+    Fonte recomendada: <a href="https://pt.khanacademy.org/math/pt-7-ano/x4ca80f463b3dba0e:proporcionalidade">Khan Academy — Proporcionalidade</a>.
+  </div>
+</div>
+</body>
+</html>

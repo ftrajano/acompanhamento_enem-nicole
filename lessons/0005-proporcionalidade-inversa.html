@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lição 0005 — Proporcionalidade inversa e grandezas compostas</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#e2dccd; --accent:#7a1f2b; --green:#1c6b3f;
+         --red:#9b2226; --bg:#fbf9f4; --hi:#fdf3d6; --card:#ffffff; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 22px 80px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.62; }
+  .wrap{ max-width:720px; margin:0 auto; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:30px; line-height:1.2; margin:6px 0 4px; font-weight:600; }
+  .sub{ color:var(--soft); font-style:italic; margin:0 0 8px; }
+  .mission{ background:var(--hi); border-radius:8px; padding:12px 16px; font-size:14.5px; margin:18px 0 8px; }
+  .mission b{color:var(--accent)}
+  h2{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:15px; letter-spacing:.03em;
+      text-transform:uppercase; color:var(--accent); margin:34px 0 8px;
+      border-bottom:1px solid var(--line); padding-bottom:5px; }
+  p{margin:10px 0}
+  .keybox{ background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+           border-radius:0 8px 8px 0; padding:14px 18px; margin:16px 0; line-height:2; }
+  .keybox b{color:var(--accent)}
+  .big{ text-align:center; background:var(--hi); border-radius:8px; padding:14px 16px; margin:16px 0;
+        font-size:17px; line-height:2; }
+  .big b{ color:var(--accent); }
+  table{ border-collapse:collapse; width:100%; margin:12px 0; font-size:14.5px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11.5px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  a{color:var(--accent)}
+  .q{ background:var(--card); border:1px solid var(--line); border-radius:10px;
+      padding:18px 20px; margin:20px 0; }
+  .q .tag{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+           letter-spacing:.08em; text-transform:uppercase; color:var(--soft); }
+  .q .stem{ margin:6px 0 14px; }
+  .level{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-weight:700; letter-spacing:.04em;
+          color:var(--accent); margin:30px 0 6px; display:flex; align-items:center; gap:10px; font-size:14px; }
+  .level::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .level .lv{ background:var(--accent); color:#fff; border-radius:20px; padding:2px 11px; font-size:11px; letter-spacing:.06em; white-space:nowrap; }
+  .ladder-intro{ font-size:14.5px; color:var(--soft); margin:4px 0 0; }
+  .opt{ display:block; width:100%; text-align:left; font-family:inherit; font-size:16px;
+        background:#fff; border:1.5px solid var(--line); border-radius:8px; padding:11px 14px;
+        margin:7px 0; cursor:pointer; transition:.12s; }
+  .opt:hover{ border-color:var(--accent); background:var(--hi); }
+  .opt:disabled{ cursor:default; opacity:.95; }
+  .opt.correct{ border-color:var(--green); background:#e9f5ee; color:var(--green); font-weight:600; }
+  .opt.wrong{ border-color:var(--red); background:#fbeaea; color:var(--red); }
+  .fb{ display:none; margin-top:12px; padding:12px 14px; border-radius:8px; font-size:14.5px;
+       background:#f4f1e8; border:1px dashed var(--line); line-height:1.8; }
+  .fb.show{ display:block; }
+  .fb b{color:var(--accent)}
+  .score{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-align:center; font-size:15px;
+          color:var(--soft); margin:26px 0; }
+  .foot{ margin-top:40px; padding-top:14px; border-top:1px solid var(--line); font-size:13.5px; color:var(--soft); }
+  .ask{ background:#eef4ef; border-radius:8px; padding:12px 16px; font-size:14.5px; color:var(--ink); }
+  mjx-container{ color:inherit; }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+</style>
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Lição 0005 · Matemática ENEM · Proporcionalidade</div>
+  <h1>Proporcionalidade inversa &amp; grandezas compostas</h1>
+  <p class="sub">Dê um nome ao produto — e a inversa para de escorregar.</p>
+
+  <div class="mission">
+    <b>Por que esta lição existe?</b> Na Lição 0002 você acertou <b>todas</b> as questões de proporção
+    direta e errou <b>as três</b> de inversa — inclusive duas do ENEM real que você já tinha errado no
+    simulado. Isso não é falta de esforço: é sinal de que o método "multiplica cruzado" não gruda na inversa.
+    Então aqui a gente troca o método. <b>E vale muito a pena:</b> proporcionalidade (direta e indireta) é o
+    tema <b>mais cobrado da história do ENEM</b> — 213 questões, à frente de estatística e geometria.
+    Destravar isso é o maior ganho de nota disponível pra você agora.
+  </div>
+
+  <h2>A ideia central (2 minutos)</h2>
+
+  <p>Esqueça o "multiplica cruzado" por um instante. Comece sempre por <b>uma pergunta só</b>:</p>
+
+  <div class="big">
+    Se a primeira grandeza <b>aumenta</b>,<br>
+    a segunda <b>sobe</b> ou <b>desce</b>?
+  </div>
+
+  <table>
+    <tr><th>Resposta</th><th>Tipo</th><th>O que fica constante</th><th>O que você faz</th></tr>
+    <tr><td>sobe junto</td><td><b>Direta</b></td><td>a <b>razão</b> \(a \div b\)</td><td>divide e multiplica</td></tr>
+    <tr><td>desce</td><td><b>Inversa</b></td><td>o <b>produto</b> \(a \times b\)</td><td><b>multiplica o par que você conhece</b></td></tr>
+  </table>
+
+  <p>O truque novo é este: na inversa, <b>dê um nome ao produto</b>. Ele quase sempre é uma coisa
+  real do problema — e se o nome faz sentido, você acertou o tipo.</p>
+
+  <div class="keybox">
+    <b>15 operários × 24 dias = 360</b> <i>operário-dias</i> → o tamanho da obra.<br>
+    <b>90 km/h × 2 h = 180</b> <i>km</i> → a distância do trajeto.<br>
+    <b>3 pessoas × 4 s = 12</b> <i>pessoa-segundos</i> → o trabalho de trocar um pneu.<br>
+    <b>6 máquinas × 10 h = 60</b> <i>máquina-horas</i> → o serviço todo.
+  </div>
+
+  <p>Esse número <b>não muda</b> quando a situação muda. Então o roteiro inteiro da inversa vira:</p>
+
+  <div class="big">
+    <b>1.</b> multiplique o par que você conhece &nbsp;→&nbsp; achou o total<br>
+    <b>2.</b> divida o total pelo valor novo &nbsp;→&nbsp; achou a resposta
+  </div>
+
+  <p><b>Por que isso é melhor que decorar "inverte a razão"?</b> Porque dá pra <b>conferir</b>. Se você
+  calcula \(90 \times 2 = 180\) e pensa "180 quilômetros — é a distância, faz sentido", você tem certeza de que
+  é inversa. Se o produto não significa nada, provavelmente era direta.</p>
+
+  <p>Tudo isso, mais taxas invertidas e regra de três composta, está no
+  <a href="../reference/proporcionalidade-inversa.html">cartão de Proporcionalidade Inversa</a> — leia antes de praticar.</p>
+
+  <h2>Pratique — a escada de dificuldade</h2>
+  <p class="ladder-intro">17 questões que <b>sobem de nível</b>. Nas últimas estão as três que você errou —
+  duas delas você errou duas vezes (no simulado e na Lição 0002). Hoje elas caem. Faça na ordem.</p>
+
+  <div class="level"><span class="lv">Nível 1</span> Reconhecer o tipo &amp; achar o produto</div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N1 · o teste dos 30 segundos</div>
+    <div class="stem">Mais pedreiros construindo <b>o mesmo muro</b> → o tempo da obra:</div>
+    <button class="opt">aumenta — proporção direta.</button>
+    <button class="opt">diminui — proporção inversa.</button>
+    <button class="opt">não muda — fica constante.</button>
+    <button class="opt">dobra — sempre em dobro.</button>
+    <div class="fb"><b>Diminui → inversa.</b> Mais gente trabalhando no mesmo serviço, menos tempo. O produto <i>pedreiros × dias</i> é o tamanho do muro e não muda.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · o teste dos 30 segundos</div>
+    <div class="stem">Mais litros de gasolina no tanque → a distância que dá para rodar:</div>
+    <button class="opt">aumenta — proporção direta.</button>
+    <button class="opt">diminui — proporção inversa.</button>
+    <button class="opt">não muda — fica constante.</button>
+    <button class="opt">cai — sempre pela metade.</button>
+    <div class="fb"><b>Aumenta → direta.</b> Cuidado: nem tudo é inversa. O teste é sempre o mesmo, e aqui as duas sobem juntas.</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N1 · o que fica constante</div>
+    <div class="stem">Quando duas grandezas \(a\) e \(b\) são <b>inversamente</b> proporcionais, o que se mantém constante é:</div>
+    <button class="opt">a soma \(a + b\).</button>
+    <button class="opt">o produto \(a \times b\).</button>
+    <button class="opt">a razão \(a \div b\).</button>
+    <button class="opt">a diferença \(a - b\).</button>
+    <div class="fb"><b>O produto.</b> Guarde este par: <b>direta → razão constante</b>; <b>inversa → produto constante</b>. É a única coisa que você precisa lembrar.</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N1 · dando nome ao produto</div>
+    <div class="stem">6 máquinas fazem um serviço em 10 horas. O produto constante — o serviço inteiro — vale:</div>
+    <button class="opt">16 máquina-horas.</button>
+    <button class="opt">60 máquina-horas.</button>
+    <button class="opt">0,6 máquina-hora.</button>
+    <button class="opt">10 máquina-horas.</button>
+    <div class="fb"><b>\(6 \times 10 = 60\) máquina-horas.</b> Multiplicou o par que conhecia → achou o total. Repare que o nome faz sentido: o serviço "custa" 60 horas de máquina.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · usando o produto</div>
+    <div class="stem">Sabendo que o serviço vale 60 máquina-horas, <b>12 máquinas</b> levam:</div>
+    <button class="opt">5 horas.</button>
+    <button class="opt">20 horas.</button>
+    <button class="opt">2 horas.</button>
+    <button class="opt">72 horas.</button>
+    <div class="fb"><b>\(60 \div 12 = 5\) horas.</b> Passo 2: divida o total pelo valor novo. Confere com o bom senso — dobrou as máquinas, o tempo caiu pela metade.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 2</span> Aplicação — um passo do mundo real</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · obra</div>
+    <div class="stem">20 operários levam 18 dias numa obra. Com apenas <b>12 operários</b> (mesmo ritmo), a obra leva:</div>
+    <button class="opt">30 dias.</button>
+    <button class="opt">24 dias.</button>
+    <button class="opt">10,8 dias.</button>
+    <button class="opt">40 dias.</button>
+    <div class="fb"><b>\(20 \times 18 = 360\) operário-dias; \(360 \div 12 = 30\) dias.</b> Menos gente → mais tempo. Se você achou 10,8, tratou como direta.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · velocidade e tempo</div>
+    <div class="stem">Um carro a 60 km/h faz um trajeto em 4 horas. A <b>80 km/h</b>, o mesmo trajeto leva:</div>
+    <button class="opt">3 horas.</button>
+    <button class="opt">5 horas.</button>
+    <button class="opt">3,2 horas.</button>
+    <button class="opt">2 horas.</button>
+    <div class="fb"><b>\(60 \times 4 = 240\) km; \(240 \div 80 = 3\) horas.</b> O produto tem nome: é a <b>distância</b>. Guarde este caso — ele volta no Nível 4.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · torneiras</div>
+    <div class="stem">Uma torneira enche um tanque em 12 minutos. <b>Duas</b> torneiras iguais, juntas, enchem em:</div>
+    <button class="opt">6 minutos.</button>
+    <button class="opt">24 minutos.</button>
+    <button class="opt">12 minutos.</button>
+    <button class="opt">3 minutos.</button>
+    <div class="fb"><b>\(1 \times 12 = 12\) torneira-minutos; \(12 \div 2 = 6\) minutos.</b> O tanque é o produto constante.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · ração</div>
+    <div class="stem">Uma quantidade de ração dura 15 dias para 8 cavalos. Para <b>10 cavalos</b>, a mesma ração dura:</div>
+    <button class="opt">12 dias.</button>
+    <button class="opt">18,75 dias.</button>
+    <button class="opt">20 dias.</button>
+    <button class="opt">13 dias.</button>
+    <div class="fb"><b>\(8 \times 15 = 120\) cavalo-dias; \(120 \div 10 = 12\) dias.</b> Mais bocas para alimentar → a ração acaba antes.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 3</span> Taxas invertidas, composta e a lógica do gargalo</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · lendo uma taxa</div>
+    <div class="stem">Um carro faz <b>12 km/L</b>. Para rodar 60 km ele gasta:</div>
+    <button class="opt">5 litros.</button>
+    <button class="opt">720 litros.</button>
+    <button class="opt">0,2 litro.</button>
+    <button class="opt">48 litros.</button>
+    <div class="fb"><b>\(60 \div 12 = 5\) L.</b> "km por litro" quer dizer: cada litro rende 12 km. Para saber os litros, <b>divida</b> a distância pelo rendimento.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · virando a taxa de cabeça para baixo</div>
+    <div class="stem">Um carro faz <b>12 km/L</b>. Esse mesmo consumo, expresso em <b>litros por quilômetro</b>, é:</div>
+    <button class="opt">0,083 L/km.</button>
+    <button class="opt">12,0 L/km.</button>
+    <button class="opt">1,2 L/km.</button>
+    <button class="opt">8,3 L/km.</button>
+    <div class="fb"><b>\(\frac{1}{12} \approx 0{,}083\) L/km.</b> Toda taxa tem uma <b>gêmea invertida</b>: km/L ↔ L/km, hab/km² ↔ km²/hab, R$/kg ↔ kg/R$. Para trocar de uma para a outra, é \(\frac{1}{\text{taxa}}\). Esta é a manobra que decide a questão do ENEM lá embaixo.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · regra de três composta</div>
+    <div class="stem">4 máquinas, em 6 dias, produzem 240 peças. Quantas peças produzem <b>6 máquinas em 10 dias</b>?</div>
+    <button class="opt">600 peças.</button>
+    <button class="opt">360 peças.</button>
+    <button class="opt">400 peças.</button>
+    <button class="opt">900 peças.</button>
+    <div class="fb"><b>600 peças.</b> Ache primeiro o <b>rendimento por máquina-dia</b>: \(240 \div (4 \times 6) = 240 \div 24 = 10\) peças por máquina-dia. A nova situação tem \(6 \times 10 = 60\) máquina-dias → \(60 \times 10 = 600\) peças. Com três ou mais grandezas, sempre reduza a "por unidade" primeiro — é mais seguro que armar tudo de uma vez.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · a lógica do gargalo</div>
+    <div class="stem">Três equipes pintam, <b>ao mesmo tempo</b>, três paredes (uma parede cada). Duas equipes levam 5 h e a terceira leva 8 h. O tempo até as <b>três</b> paredes ficarem prontas é:</div>
+    <button class="opt">8 horas.</button>
+    <button class="opt">6 horas.</button>
+    <button class="opt">18 horas.</button>
+    <button class="opt">5 horas.</button>
+    <div class="fb"><b>8 horas.</b> Trabalhando <b>em paralelo</b>, o serviço só termina quando o <b>mais lento</b> termina. Não é a média (6 h) nem a soma (18 h). Guarde isto: é exatamente a armadilha da questão dos pneus, no Nível 4.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 4</span> Nível ENEM — as que você errou</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N4 · você errou esta na Lição 0002</div>
+    <div class="stem">Um trajeto a <b>90 km/h</b> dura 2 horas. Para fazê-lo em <b>3 horas</b>, a velocidade deve ser:</div>
+    <button class="opt">60 km/h.</button>
+    <button class="opt">45 km/h.</button>
+    <button class="opt">135 km/h.</button>
+    <button class="opt">30 km/h.</button>
+    <div class="fb"><b>60 km/h.</b> Passo 1: \(90 \times 2 = 180\) — e 180 <b>km</b> é a distância, faz sentido. Passo 2: \(180 \div 3 = 60\) km/h. Confere com o bom senso: mais tempo disponível → dá para ir <b>mais devagar</b>. Os distratores: <b>45</b> é dividir 90 por 2 (tratou como direta) e <b>135</b> é aumentar 50% (inverteu o sentido). 🎯</div>
+  </div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N4 · ENEM 2021 (Q165) · você errou duas vezes</div>
+    <div class="stem">Um automóvel faz <b>16 km/L</b>. Um novo motor economiza <b>0,1 L a cada 20 km</b> rodados. O novo desempenho, em km/L (uma casa decimal), é:</div>
+    <button class="opt">15,9 km/L.</button>
+    <button class="opt">16,1 km/L.</button>
+    <button class="opt">17,4 km/L.</button>
+    <button class="opt">18,0 km/L.</button>
+    <div class="fb"><b>17,4 km/L.</b> A economia é dada <b>em litros</b>, e o consumo em km/L — então vire a taxa. Nos 20 km de referência: o motor antigo gasta \(20 \div 16 = 1{,}25\) L; o novo gasta \(1{,}25 - 0{,}1 = 1{,}15\) L. Volte para km/L: \(20 \div 1{,}15 \approx 17{,}4\).<br>
+    <b>Por que 16,1 é tentador?</b> Porque parece que "economizar 0,1" vira "+0,1 km/L". Mas 0,1 é <b>litro</b>, não km/L — somar as duas é misturar unidades. Sempre que o enunciado der uma taxa e uma quantidade da unidade <b>de baixo</b>, converta antes de operar. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="3">
+    <div class="tag">N4 · ENEM 2021 (Q159) · você errou duas vezes</div>
+    <div class="stem">Quatro grupos trocam, <b>ao mesmo tempo</b>, os 4 pneus de um carro. Cada grupo tem 3 pessoas e leva 4 s (o tempo é <b>inversamente proporcional</b> ao nº de pessoas). Se um dos grupos fica com apenas <b>2 pessoas</b>, o tempo para trocar os quatro pneus passa a ser:</div>
+    <button class="opt">4,4 segundos.</button>
+    <button class="opt">4,5 segundos.</button>
+    <button class="opt">5,0 segundos.</button>
+    <button class="opt">6,0 segundos.</button>
+    <div class="fb"><b>6,0 segundos.</b> São <b>duas ideias juntas</b>, e é por isso que esta questão derruba tanta gente.<br>
+    <b>(1) Inversa:</b> \(3 \times 4 = 12\) pessoa-segundos por pneu. Com 2 pessoas: \(12 \div 2 = 6\) s.<br>
+    <b>(2) Gargalo:</b> os grupos trabalham em paralelo, então o carro só fica pronto quando o grupo <b>mais lento</b> termina → 6 s. Três grupos acabam em 4 s e ficam esperando.<br>
+    <b>Sobre os distratores:</b> tanto o <b>4,4</b> (que você marcou) quanto o <b>4,5</b> \(\left(\frac{4+4+4+6}{4}\right)\) saem da mesma ideia — tentar "distribuir" o atraso entre os quatro grupos. Mas em trabalho paralelo não se tira média: <b>manda o mais lento</b>. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N4 · estilo ENEM · composta</div>
+    <div class="stem">Uma gráfica tem 5 impressoras que, funcionando 8 h por dia, imprimem 20 000 panfletos em 4 dias. Para imprimir <b>30 000 panfletos em 3 dias</b>, funcionando <b>10 h por dia</b>, o número de impressoras necessário é:</div>
+    <button class="opt">8 impressoras.</button>
+    <button class="opt">6 impressoras.</button>
+    <button class="opt">10 impressoras.</button>
+    <button class="opt">12 impressoras.</button>
+    <div class="fb"><b>8 impressoras.</b> Reduza a "por unidade": a situação inicial tem \(5 \times 8 \times 4 = 160\) impressora-horas para 20 000 panfletos → \(20\,000 \div 160 = 125\) panfletos por impressora-hora.<br>
+    Agora o alvo: \(30\,000 \div 125 = 240\) impressora-horas necessárias. Cada impressora oferece \(3 \times 10 = 30\) horas. Logo \(240 \div 30 = 8\) impressoras. 🎯</div>
+  </div>
+
+  <div class="score" id="score">Responda as questões acima ☝️</div>
+
+  <h2>Para fixar (faça depois)</h2>
+  <p>• <b>Fonte primária recomendada:</b>
+     <a href="https://pt.khanacademy.org/math/pt-7-ano/x4ca80f463b3dba0e:proporcionalidade" target="_blank">Khan Academy — Proporcionalidade</a>
+     (gratuito, em português). Faça os exercícios de <i>proporcionalidade inversa</i> até acertar 5 seguidos.</p>
+  <p>• <b>O hábito que resolve:</b> antes de qualquer conta, pergunte "sobe ou desce?" e, se for inversa,
+     <b>multiplique e dê um nome ao resultado</b>. Se o nome faz sentido (km, operário-dias, pessoa-segundos),
+     você está no caminho certo.</p>
+  <p>• <b>Daqui a 2 dias</b> refaça só o Nível 4 de memória. Se as três saírem, a inversa fixou de vez.</p>
+
+  <div class="foot">
+    <p class="ask">👨‍🏫 <b>Eu sou seu professor aqui.</b> Se alguma dessas três ainda parecer confusa, me chame —
+    a gente refaz junto, do zero, no seu ritmo. Errar duas vezes a mesma questão não quer dizer nada sobre você;
+    quer dizer que a explicação anterior não serviu, e isso é problema meu, não seu.</p>
+    <p>Workspace de estudo · Missão: Matemática ENEM 2026 → TO/Fono USP Ribeirão Preto ·
+    Referência: <a href="../reference/proporcionalidade-inversa.html">Cartão de Proporcionalidade Inversa</a> ·
+    Anterior: <a href="0004-geometria-espacial.html">Lição 0004 — Geometria espacial</a> ·
+    Base: <a href="0002-regra-de-tres.html">Lição 0002 — Regra de três</a></p>
+  </div>
+
+</div>
+
+<script>
+  let answered = 0, hits = 0;
+  const total = document.querySelectorAll('.q').length;
+  document.querySelectorAll('.q').forEach(function(q){
+    const correct = parseInt(q.dataset.correct, 10);
+    const opts = q.querySelectorAll('.opt');
+    const fb = q.querySelector('.fb');
+    opts.forEach(function(btn, i){
+      btn.addEventListener('click', function(){
+        opts.forEach(function(b){ b.disabled = true; });
+        if(i === correct){ btn.classList.add('correct'); hits++; }
+        else { btn.classList.add('wrong'); opts[correct].classList.add('correct'); }
+        fb.classList.add('show');
+        answered++;
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    const el = document.getElementById('score');
+    if(answered < total){ el.textContent = answered + ' de ' + total + ' respondidas — continue 💪'; return; }
+    let msg = 'Você acertou ' + hits + ' de ' + total + '. ';
+    const pct = hits / total;
+    if(pct === 1) msg += 'Escada inteira — a inversa caiu! Refaça o Nível 4 em 2 dias pra selar. 🎯';
+    else if(pct >= 0.75) msg += 'Muito bom. Releia o cartão nos pontos que escaparam e refaça o Nível 4 em 2 dias.';
+    else if(pct >= 0.5) msg += 'Está vindo. Volte na "ideia central" e refaça a escada amanhã — o método precisa virar automático.';
+    else msg += 'Sem drama — me chame que a gente refaz juntos, passo a passo.';
+    el.textContent = msg;
+  }
+</script>
+</body>
+</html>

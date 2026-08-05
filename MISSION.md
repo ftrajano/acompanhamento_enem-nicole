@@ -10,9 +10,9 @@ A Nicole quer passar em **Terapia Ocupacional ou Fonoaudiologia na USP de Ribeir
 - Ela ganha confiança e perde o medo da matéria.
 
 ## Constraints
-- Prazo: **ENEM 2026**, ~5 meses a partir de junho/2026.
+- Prazo: **ENEM 2026** — 1º dia **08/11/2026**, 2º dia (**Matemática**) **15/11/2026** (Edital nº 64 do INEP). Em 04/08/2026 restam **~15 semanas**.
 - Disponibilidade: **bastante tempo** (7h+/semana) — dá pra aprofundar e treinar muito.
-- Nível atual: **a inferir a partir de um simulado** que a Nicole já fez (pendente de análise).
+- Nível atual: **50% no simulado ENEM 2021** ([registro 0001](learning-records/0001-diagnostico-simulado-2021.md)); após o Grupo 1 de lições, porcentagem dominada e proporcionalidade inversa ainda falhando ([registro 0002](learning-records/0002-diagnostico-grupo-1.md)).
 - Lições em **português**.
 
 ## Out of scope

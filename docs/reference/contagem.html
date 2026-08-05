@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cartão de referência — Contagem e Combinatória (ENEM)</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#dcd6c8; --accent:#7a1f2b; --bg:#fbf9f4; --hi:#fdf3d6; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 24px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.7; }
+  .card{ max-width:760px; margin:0 auto; }
+  header{ border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:24px; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:27px; margin:6px 0 0; font-weight:600; }
+  h2{ font-size:16px; font-family:-apple-system,Helvetica,Arial,sans-serif; letter-spacing:.02em;
+      margin:30px 0 8px; color:var(--accent); border-bottom:1px solid var(--line); padding-bottom:4px; }
+  p{margin:8px 0}
+  .lead{ color:var(--soft); font-style:italic; margin-top:6px; }
+  table{ border-collapse:collapse; width:100%; margin:10px 0; font-size:15px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:12px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  .rule{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:2; }
+  .rule b{ color:var(--accent); }
+  .flag{ background:#fdf0f0; border:1px solid #e6c9c9; border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:1.9; font-size:14.5px; }
+  .flag b{ color:var(--accent); }
+  ul{margin:8px 0 8px 0; padding-left:22px} li{margin:5px 0}
+  .foot{ margin-top:34px; padding-top:12px; border-top:1px solid var(--line);
+         font-size:13px; color:var(--soft); }
+  a{color:var(--accent)}
+  mjx-container{ color:var(--accent); }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+  @media print{ body{background:#fff;padding:0} .card{max-width:100%} h2{break-after:avoid} .flag{break-inside:avoid} }
+</style>
+<!-- MathJax: delimitadores só \( \) e \[ \] — NUNCA $...$, para não conflitar com "R$". -->
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div class="card">
+  <header>
+    <div class="kicker">Cartão de referência · Matemática ENEM</div>
+    <h1>Contagem &amp; Combinatória</h1>
+    <p class="lead">Desenhe as casinhas. Depois pergunte: a ordem importa?</p>
+  </header>
+
+  <h2>1. Princípio Fundamental da Contagem (PFC)</h2>
+  <p>Tarefa com etapas encadeadas → <b>multiplique</b> as opções de cada etapa.</p>
+  <div class="rule">
+    <b>Método das casinhas:</b> desenhe um traço para cada etapa, escreva quantas opções cabem em
+    cada uma, multiplique tudo.<br>
+    <i>Ex.:</i> 3 pães × 4 recheios = <b>12</b> sanduíches.
+  </div>
+  <p class="lead">Este princípio sozinho resolve a maioria das questões de contagem do ENEM — sem fórmula nenhuma.</p>
+
+  <h2>2. Repete ou não repete?</h2>
+  <table>
+    <tr><th>Caso</th><th>O que acontece</th><th>Senha de 3 dígitos</th></tr>
+    <tr><td><b>Pode</b> repetir</td><td>toda etapa tem o total</td><td>\(10 \times 10 \times 10 = 1\,000\)</td></tr>
+    <tr><td><b>Não pode</b> repetir</td><td>cada escolha gasta uma opção</td><td>\(10 \times 9 \times 8 = 720\)</td></tr>
+  </table>
+  <p>É a mesma ideia de <b>com/sem reposição</b> da probabilidade — ver
+  <a href="probabilidade.html">cartão de Probabilidade</a>.</p>
+
+  <h2>3. Fatorial</h2>
+  <p>\(n! = n \times (n-1) \times \cdots \times 2 \times 1\). Por convenção, \(0! = 1\).</p>
+  <table>
+    <tr><th>\(n\)</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th></tr>
+    <tr><td><b>\(n!\)</b></td><td>2</td><td>6</td><td>24</td><td>120</td><td>720</td><td>5 040</td></tr>
+  </table>
+  <p><b>Permutação simples:</b> colocar <b>todos</b> os \(n\) elementos em ordem → \(P_n = n!\).
+  <i>Ex.:</i> 5 pessoas numa fila = \(5! = 120\).</p>
+
+  <h2>4. A pergunta que decide tudo</h2>
+  <div class="rule">
+    <b>“Trocar a ordem cria um caso novo?”</b><br>
+    <b>SIM</b> → arranjo: multiplique direto.&nbsp;&nbsp; <b>NÃO</b> → combinação: divida pelas ordens repetidas.
+  </div>
+  <table>
+    <tr><th></th><th>Ordem IMPORTA (arranjo)</th><th>Ordem NÃO importa (combinação)</th></tr>
+    <tr><td><b>Exemplos</b></td>
+        <td>pódio, senha, fila, placa, cargos diferentes (presidente/tesoureiro)</td>
+        <td>comissão, time, 2 sabores de pizza, escolher 3 livros</td></tr>
+    <tr><td><b>Cálculo</b></td>
+        <td>\(A_{n,p} = n(n-1)\cdots\) &nbsp;(\(p\) fatores)</td>
+        <td>\(C_{n,p} = \frac{n!}{p!\,(n-p)!}\)</td></tr>
+    <tr><td><b>8 pessoas, 3 vagas</b></td>
+        <td>\(8 \times 7 \times 6 = 336\)</td>
+        <td>\(336 \div 3! = 56\)</td></tr>
+  </table>
+  <p><b>Teste prático:</b> “Ana, Beto, Carla” é diferente de “Carla, Beto, Ana”?<br>
+  No <b>pódio</b> → sim, muda tudo. Na <b>comissão</b> → não, é a mesma.</p>
+  <div class="flag">
+    <b>⚑ Atalho sem decorar fórmula.</b> Multiplique como se a ordem importasse e depois <b>divida por
+    \(p!\)</b>. É literalmente o que a fórmula faz: \(336 \div 6 = 56\).
+  </div>
+
+  <h2>5. Combinações que vale saber de cor</h2>
+  <table>
+    <tr><th>\(C_{n,2}\)</th><th>\(n=4\)</th><th>\(n=5\)</th><th>\(n=6\)</th><th>\(n=8\)</th><th>\(n=10\)</th></tr>
+    <tr><td><b>valor</b></td><td>6</td><td>10</td><td>15</td><td>28</td><td>45</td></tr>
+  </table>
+  <p>Atalho: \(C_{n,2} = \frac{n(n-1)}{2}\). E lembre que \(C_{n,p} = C_{n,\,n-p}\)
+  (escolher 8 entre 10 é o mesmo que <b>descartar</b> 2).</p>
+
+  <h2>6. Permutação com elementos repetidos</h2>
+  <p>Letras (ou objetos) iguais não geram casos novos → <b>divida pelos fatoriais das repetições</b>:</p>
+  <p>\[ P = \frac{n!}{a!\;b!\;\cdots} \]</p>
+  <p><i>Ex.:</i> anagramas de <b>ARARA</b> — 5 letras, com 3 “A” e 2 “R”:
+  \(\frac{5!}{3!\,2!} = \frac{120}{12} = 10\).</p>
+
+  <h2>7. Contagem com restrição</h2>
+  <div class="flag">
+    <b>⚑ Regra de ouro: comece pela posição que tem a restrição.</b><br>
+    <i>Ex.:</i> código de 4 algarismos distintos de {1..6} começando por par.<br>
+    1ª casa: só 2, 4, 6 → <b>3</b> opções. Depois sobram 5 algarismos: \(5 \times 4 \times 3 = 60\).
+    Total \(3 \times 60 = 180\).<br>
+    Se ignorar a restrição e for da esquerda pra direita, dá 360 — o dobro, e é o distrator clássico.
+  </div>
+  <p>Outra saída útil: contar <b>tudo</b> e subtrair o que não serve (o “complementar” da contagem).</p>
+
+  <h2>8. Contagem alimenta probabilidade</h2>
+  <p>\[ P = \frac{\text{contagem dos casos favoráveis}}{\text{contagem dos casos possíveis}} \]</p>
+  <p><i>Ex.:</i> 5 bolas (1 a 5), tirar 2, ambas ímpares →
+  \(\frac{C_{3,2}}{C_{5,2}} = \frac{3}{10}\).</p>
+  <p class="lead">Use sempre o <b>mesmo critério</b> em cima e embaixo: ou os dois com ordem, ou os dois sem.
+  Misturar é o erro que dá resposta errada sem parecer errada.</p>
+
+  <h2>9. Roteiro na hora da prova</h2>
+  <div class="rule">
+    <b>1)</b> A tarefa tem etapas? Desenhe as <b>casinhas</b>.<br>
+    <b>2)</b> Pode <b>repetir</b> elemento?<br>
+    <b>3)</b> A <b>ordem</b> importa? (se não, divida por \(p!\))<br>
+    <b>4)</b> Há <b>restrição</b>? Comece por ela.
+  </div>
+
+  <div class="foot">
+    Workspace de estudo da Nicole · Missão: Matemática ENEM 2026 → TO/Fono USP-RP.<br>
+    Usado na <a href="../lessons/0007-contagem.html">Lição 0007</a> ·
+    Cartão irmão: <a href="probabilidade.html">Probabilidade</a>.<br>
+    Fonte recomendada: <a href="https://pt.khanacademy.org/math/statistics-probability/counting-permutations-and-combinations">Khan Academy — Contagem, permutações e combinações</a>.
+  </div>
+</div>
+</body>
+</html>

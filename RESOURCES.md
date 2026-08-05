@@ -9,6 +9,15 @@
 - [ENEM-USP / Fuvest — documentos oficiais](https://www.fuvest.br/)
   Regras, pesos por curso e notas de corte do ENEM-USP. Use para: confirmar pesos das áreas e nota de corte de TO/Fono na FMRP.
 
+- [Temas de matemática que mais caem no ENEM — PrePara Enem](https://www.preparaenem.com/enem/temas-de-matematica-que-mais-caem-no-enem.htm)
+  Levantamento de frequência por tema. Use para: priorizar a ordem das lições. Achado-chave: **proporcionalidade direta e indireta é o tema nº 1 (213 questões)**, à frente de estatística (187) e geometria plana (110).
+- [Matemática no ENEM: assuntos mais cobrados — Passei Cursos](https://passeicursos.com.br/matematica-no-enem-veja-os-assuntos-mais-cobrados-e-como-direcionar-os-estudos/)
+  Distribuição por área: funções ~20%, geometria ~18%, probabilidade e estatística ~15%, matemática financeira ~12%. Confirma que probabilidade cai **todo ano**.
+- [Probabilidade — Khan Academy Brasil](https://pt.khanacademy.org/math/statistics-probability/probability-library)
+  Fundamentos de probabilidade em português, com exercícios. Fonte primária da Lição 0006.
+- [Contagem e combinatória — Khan Academy Brasil](https://pt.khanacademy.org/math/statistics-probability/counting-permutations-and-combinations)
+  Princípio multiplicativo, permutações e combinações. Fonte primária da Lição 0007.
+
 ## Wisdom (Communities)
 
 - [r/estudosBR](https://www.reddit.com/r/estudosBR/) e [r/Enem](https://www.reddit.com/r/Enem/)

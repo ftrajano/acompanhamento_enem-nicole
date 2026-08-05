@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lição 0008 — Revisão geral embaralhada</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#e2dccd; --accent:#7a1f2b; --green:#1c6b3f;
+         --red:#9b2226; --bg:#fbf9f4; --hi:#fdf3d6; --card:#ffffff; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 22px 80px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.62; }
+  .wrap{ max-width:720px; margin:0 auto; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:30px; line-height:1.2; margin:6px 0 4px; font-weight:600; }
+  .sub{ color:var(--soft); font-style:italic; margin:0 0 8px; }
+  .mission{ background:var(--hi); border-radius:8px; padding:12px 16px; font-size:14.5px; margin:18px 0 8px; }
+  .mission b{color:var(--accent)}
+  h2{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:15px; letter-spacing:.03em;
+      text-transform:uppercase; color:var(--accent); margin:34px 0 8px;
+      border-bottom:1px solid var(--line); padding-bottom:5px; }
+  p{margin:10px 0}
+  .keybox{ background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+           border-radius:0 8px 8px 0; padding:14px 18px; margin:16px 0; line-height:2; }
+  .keybox b{color:var(--accent)}
+  table{ border-collapse:collapse; width:100%; margin:12px 0; font-size:14.5px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11.5px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  a{color:var(--accent)}
+  .q{ background:var(--card); border:1px solid var(--line); border-radius:10px;
+      padding:18px 20px; margin:20px 0; }
+  .q .tag{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+           letter-spacing:.08em; text-transform:uppercase; color:var(--soft); }
+  .q .stem{ margin:6px 0 14px; }
+  .level{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-weight:700; letter-spacing:.04em;
+          color:var(--accent); margin:30px 0 6px; display:flex; align-items:center; gap:10px; font-size:14px; }
+  .level::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .level .lv{ background:var(--accent); color:#fff; border-radius:20px; padding:2px 11px; font-size:11px; letter-spacing:.06em; white-space:nowrap; }
+  .ladder-intro{ font-size:14.5px; color:var(--soft); margin:4px 0 0; }
+  .opt{ display:block; width:100%; text-align:left; font-family:inherit; font-size:16px;
+        background:#fff; border:1.5px solid var(--line); border-radius:8px; padding:11px 14px;
+        margin:7px 0; cursor:pointer; transition:.12s; }
+  .opt:hover{ border-color:var(--accent); background:var(--hi); }
+  .opt:disabled{ cursor:default; opacity:.95; }
+  .opt.correct{ border-color:var(--green); background:#e9f5ee; color:var(--green); font-weight:600; }
+  .opt.wrong{ border-color:var(--red); background:#fbeaea; color:var(--red); }
+  .fb{ display:none; margin-top:12px; padding:12px 14px; border-radius:8px; font-size:14.5px;
+       background:#f4f1e8; border:1px dashed var(--line); line-height:1.8; }
+  .fb.show{ display:block; }
+  .fb b{color:var(--accent)}
+  .score{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-align:center; font-size:15px;
+          color:var(--soft); margin:26px 0; }
+  .foot{ margin-top:40px; padding-top:14px; border-top:1px solid var(--line); font-size:13.5px; color:var(--soft); }
+  .ask{ background:#eef4ef; border-radius:8px; padding:12px 16px; font-size:14.5px; color:var(--ink); }
+  mjx-container{ color:inherit; }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+</style>
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Lição 0008 · Matemática ENEM · Revisão</div>
+  <h1>Revisão geral embaralhada</h1>
+  <p class="sub">Tudo misturado — como na prova de verdade.</p>
+
+  <div class="mission">
+    <b>Por que esta lição é diferente.</b> Aqui não tem matéria nova. Todas as sete lições anteriores
+    aparecem <b>fora de ordem e sem aviso</b> — e é justamente isso que a torna útil. Quando você faz uma
+    lista só de regra de três, já sabe que é regra de três antes de ler. Na prova, ninguém te conta.
+    <b>Escolher a ferramenta certa é uma habilidade separada</b> de saber usá-la, e é a única que só se
+    treina embaralhando.<br><br>
+    Vai parecer mais difícil que as outras lições. <b>Isso é de propósito e é bom sinal</b> — esse tipo de
+    esforço é o que faz o conteúdo durar até novembro, em vez de sumir em duas semanas.
+  </div>
+
+  <h2>Antes de começar</h2>
+  <p>Não releia os cartões agora. <b>Tente lembrar primeiro</b> — mesmo que erre. Lembrar com esforço
+  fixa muito mais do que reler com facilidade. Deixe os cartões para depois de responder:</p>
+  <p><a href="../reference/porcentagem.html">Porcentagem</a> ·
+     <a href="../reference/razao-proporcao.html">Razão e proporção</a> ·
+     <a href="../reference/proporcionalidade-inversa.html">Proporcionalidade inversa</a> ·
+     <a href="../reference/funcoes.html">Funções</a> ·
+     <a href="../reference/geometria-espacial.html">Geometria espacial</a> ·
+     <a href="../reference/probabilidade.html">Probabilidade</a> ·
+     <a href="../reference/contagem.html">Contagem</a></p>
+
+  <h2>Pratique — quatro rodadas embaralhadas</h2>
+  <p class="ladder-intro">19 questões. A <b>Rodada 1</b> é diferente: você só identifica a ferramenta,
+  sem resolver nada. Faça na ordem.</p>
+
+  <div class="level"><span class="lv">Rodada 1</span> Só escolha a ferramenta — não resolva</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">R1 · qual ferramenta?</div>
+    <div class="stem">“Um produto sofre um aumento de 20% e, depois, um desconto de 20%.” Para resolver, a ferramenta é:</div>
+    <button class="opt">multiplicadores: \(1{,}20 \times 0{,}80\).</button>
+    <button class="opt">somar as variações: \(+20-20\).</button>
+    <button class="opt">regra de três direta simples.</button>
+    <button class="opt">produto constante (inversa).</button>
+    <div class="fb"><b>Multiplicadores.</b> Variações percentuais <b>se multiplicam</b>, nunca se somam. Aqui \(1{,}20 \times 0{,}80 = 0{,}96\) → o preço fica <b>4% menor</b>, não igual.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">R1 · qual ferramenta?</div>
+    <div class="stem">“12 operários fazem uma obra em 10 dias. E 8 operários?” A ferramenta é:</div>
+    <button class="opt">produto constante — é inversa.</button>
+    <button class="opt">razão constante — é direta.</button>
+    <button class="opt">multiplicador percentual.</button>
+    <button class="opt">princípio da contagem.</button>
+    <div class="fb"><b>Produto constante (inversa).</b> Menos operários → mais dias. O produto \(12 \times 10 = 120\) <b>operário-dias</b> é o tamanho da obra e não muda.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">R1 · qual ferramenta?</div>
+    <div class="stem">“De 9 jogadores, quantos times de 5 podem ser formados?” A ferramenta é:</div>
+    <button class="opt">combinação — a ordem não importa.</button>
+    <button class="opt">arranjo — a ordem importa muito.</button>
+    <button class="opt">permutação de todos os nove.</button>
+    <button class="opt">princípio multiplicativo direto.</button>
+    <div class="fb"><b>Combinação.</b> Um time com os mesmos 5 jogadores é o mesmo time, em qualquer ordem que você os liste.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">R1 · qual ferramenta?</div>
+    <div class="stem">“Qual a probabilidade de haver <b>pelo menos um</b> acerto em 3 tentativas?” A ferramenta é:</div>
+    <button class="opt">complementar: \(1 - P(\text{nenhum})\).</button>
+    <button class="opt">somar as três probabilidades.</button>
+    <button class="opt">multiplicar as três probabilidades.</button>
+    <button class="opt">tirar a média das três chances.</button>
+    <div class="fb"><b>Complementar.</b> “Pelo menos um” → calcule o contrário (“nenhum”) e subtraia de 1. Somar conta os casos repetidos duas vezes.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">R1 · qual ferramenta?</div>
+    <div class="stem">Na parábola \(y = -2x^2 + 8x\), o que o sinal de \(a\) informa é:</div>
+    <button class="opt">\(a<0\) → existe ponto de máximo.</button>
+    <button class="opt">\(a<0\) → existe ponto de mínimo.</button>
+    <button class="opt">\(a<0\) → a reta é decrescente.</button>
+    <button class="opt">\(a<0\) → não existe vértice.</button>
+    <div class="fb"><b>Ponto de máximo.</b> \(a<0\) → boca para <b>baixo</b> → a curva sobe, atinge o topo e desce. Desenhe uma carinha triste: os cantos apontam pra baixo e o meio é o ponto mais <b>alto</b>.<br>
+    Se ajudar, pense no contexto típico do ENEM: arrecadação que cresce, atinge o pico e cai — isso é máximo. 🎯</div>
+  </div>
+
+  <div class="level"><span class="lv">Rodada 2</span> Um passo — temas alternados</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">R2 · porcentagem</div>
+    <div class="stem">Um tênis de R$ 250,00 está com 30% de desconto. O preço final é:</div>
+    <button class="opt">R$ 175,00</button>
+    <button class="opt">R$ 220,00</button>
+    <button class="opt">R$ 75,00</button>
+    <button class="opt">R$ 195,00</button>
+    <div class="fb"><b>R$ 175,00.</b> Multiplicador do desconto: \(250 \times 0{,}70 = 175\). O distrator R$ 75,00 é só o <b>valor do desconto</b> — leia se pedem o desconto ou o preço final.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">R2 · geometria espacial</div>
+    <div class="stem">Um sólido tem 12 vértices e 8 faces. Pela relação de Euler, o número de arestas é:</div>
+    <button class="opt">18 arestas</button>
+    <button class="opt">20 arestas</button>
+    <button class="opt">16 arestas</button>
+    <button class="opt">22 arestas</button>
+    <div class="fb"><b>18 arestas.</b> Euler: \(V - A + F = 2\), então \(A = V + F - 2 = 12 + 8 - 2 = 18\).<br>
+    Um jeito de não esquecer: as arestas são <b>sempre</b> o maior dos três números, e a fórmula é "soma os outros dois e tira 2". 🎯</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">R2 · probabilidade</div>
+    <div class="stem">Numa urna com 3 bolas azuis e 7 verdes, a probabilidade de tirar uma azul é:</div>
+    <button class="opt">30%</button>
+    <button class="opt">70%</button>
+    <button class="opt">43%</button>
+    <button class="opt">3%</button>
+    <div class="fb"><b>30%.</b> \(\frac{3}{10} = 0{,}3\). O distrator 43% é \(\frac{3}{7}\) — quem usou o outro grupo como total em vez do total geral.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">R2 · contagem</div>
+    <div class="stem">Quantos números de 3 algarismos <b>distintos</b> podem ser formados usando 1, 2, 3, 4 e 5?</div>
+    <button class="opt">60 números</button>
+    <button class="opt">125 números</button>
+    <button class="opt">10 números</button>
+    <button class="opt">120 números</button>
+    <div class="fb"><b>60 números.</b> \(5 \times 4 \times 3 = 60\) — cada escolha gasta um algarismo. O distrator 125 é \(5^3\), que valeria se pudesse repetir.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">R2 · funções</div>
+    <div class="stem">Na função \(y = 500 + 30x\), o número 30 representa:</div>
+    <button class="opt">a taxa de variação.</button>
+    <button class="opt">o valor inicial de \(y\).</button>
+    <button class="opt">o ponto de máximo.</button>
+    <button class="opt">a raiz da função.</button>
+    <div class="fb"><b>A taxa de variação.</b> Cada vez que \(x\) aumenta 1, \(y\) sobe 30. O 500 é o valor inicial (onde a reta corta o eixo \(y\)).</div>
+  </div>
+
+  <div class="level"><span class="lv">Rodada 3</span> Duas etapas — temas alternados</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">R3 · proporcionalidade inversa</div>
+    <div class="stem">Uma torneira enche uma piscina em 6 horas. <b>Três</b> torneiras iguais, juntas, enchem em:</div>
+    <button class="opt">2 horas</button>
+    <button class="opt">18 horas</button>
+    <button class="opt">3 horas</button>
+    <button class="opt">1,5 hora</button>
+    <div class="fb"><b>2 horas.</b> Produto constante: \(1 \times 6 = 6\) torneira-horas; \(6 \div 3 = 2\) h. Mais torneiras → menos tempo. Se você achou 18, tratou como direta.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">R3 · proporcionalidade inversa</div>
+    <div class="stem">Um trajeto feito a <b>120 km/h</b> leva 3 horas. A <b>80 km/h</b>, o mesmo trajeto leva:</div>
+    <button class="opt">4,5 horas</button>
+    <button class="opt">2 horas</button>
+    <button class="opt">4 horas</button>
+    <button class="opt">2,5 horas</button>
+    <div class="fb"><b>4,5 horas.</b> \(120 \times 3 = 360\) — e 360 <b>km</b> é a distância, o nome faz sentido. Depois \(360 \div 80 = 4{,}5\) h. Mais devagar → mais tempo. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">R3 · variação percentual</div>
+    <div class="stem">Um preço aumenta 25% e, em seguida, cai 20%. No fim das contas, o preço:</div>
+    <button class="opt">voltou ao valor inicial.</button>
+    <button class="opt">ficou 5% maior que antes.</button>
+    <button class="opt">ficou 5% menor que antes.</button>
+    <button class="opt">ficou 45% maior que antes.</button>
+    <div class="fb"><b>Voltou ao valor inicial.</b> \(1{,}25 \times 0{,}80 = 1{,}00\). Coincidência bonita — e um bom lembrete de que percentuais <b>não</b> se somam: aqui \(+25\) e \(-20\) não deram \(+5\).</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">R3 · probabilidade sem reposição</div>
+    <div class="stem">Numa caixa com 6 peças, 2 são defeituosas. Tirando 2 peças <b>sem reposição</b>, a probabilidade de ambas serem boas é:</div>
+    <button class="opt">\(\frac{2}{5}\)</button>
+    <button class="opt">\(\frac{4}{9}\)</button>
+    <button class="opt">\(\frac{1}{3}\)</button>
+    <button class="opt">\(\frac{2}{3}\)</button>
+    <div class="fb"><b>\(\frac{2}{5}\).</b> São 4 boas em 6: \(\frac{4}{6} \times \frac{3}{5} = \frac{12}{30} = \frac{2}{5}\). Sem reposição, <b>caem os dois</b> números. O distrator \(\frac{4}{9}\) é \(\left(\frac{4}{6}\right)^2\), o resultado <b>com</b> reposição.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">R3 · visualização 3D</div>
+    <div class="stem">Cortando um cubo com um plano que passa pelos três vértices vizinhos de um mesmo canto, a figura que aparece no corte é:</div>
+    <button class="opt">um triângulo equilátero.</button>
+    <button class="opt">um quadrado perfeito.</button>
+    <button class="opt">um hexágono regular.</button>
+    <button class="opt">um retângulo alongado.</button>
+    <div class="fb"><b>Um triângulo equilátero.</b> Os três vértices vizinhos estão todos à mesma distância um do outro (são diagonais de faces iguais) → os três lados do corte são iguais.<br>
+    Compare com o que você já viu: corte <b>paralelo a uma face</b> → quadrado; olhando na direção da <b>diagonal principal</b> → hexágono. Cada corte dá uma figura diferente. 🎯</div>
+  </div>
+
+  <div class="level"><span class="lv">Rodada 4</span> Nível ENEM — tudo junto</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">R4 · estilo ENEM · taxa invertida</div>
+    <div class="stem">Uma moto faz <b>25 km/L</b>. Um ajuste no motor economiza <b>0,2 L a cada 50 km</b> rodados. O novo desempenho, em km/L, é aproximadamente:</div>
+    <button class="opt">27,8 km/L</button>
+    <button class="opt">25,2 km/L</button>
+    <button class="opt">24,8 km/L</button>
+    <button class="opt">30,0 km/L</button>
+    <div class="fb"><b>≈ 27,8 km/L.</b> Mesma estrutura da Q165 do ENEM 2021, com outros números — se saiu, você aprendeu o <b>método</b>, não decorou a questão.<br>
+    Nos 50 km de referência: antes gastava \(50 \div 25 = 2\) L; agora gasta \(2 - 0{,}2 = 1{,}8\) L. Volte para km/L: \(50 \div 1{,}8 \approx 27{,}8\).<br>
+    O distrator <b>25,2</b> é somar 0,2 ao rendimento — mas 0,2 é <b>litro</b>, não km/L. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">R4 · estilo ENEM · trabalho em paralelo</div>
+    <div class="stem">Cinco equipes montam, <b>ao mesmo tempo</b>, cinco estandes (um cada). Quatro equipes levam 3 h e uma leva 5 h. O tempo até <b>todos</b> os estandes ficarem prontos é:</div>
+    <button class="opt">5 horas</button>
+    <button class="opt">3,4 horas</button>
+    <button class="opt">16 horas</button>
+    <button class="opt">3 horas</button>
+    <div class="fb"><b>5 horas.</b> A lógica do gargalo: em trabalho paralelo, tudo só acaba quando o <b>mais lento</b> acaba. Quatro equipes terminam em 3 h e esperam.<br>
+    Nem média (3,4 h) nem soma (16 h). Mesma armadilha da Q159 dos pneus. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">R4 · estilo ENEM · crescimento percentual</div>
+    <div class="stem">A população de uma cidade passou de 40 000 para 46 000 habitantes em cinco anos. O crescimento percentual no período foi de:</div>
+    <button class="opt">15%</button>
+    <button class="opt">6%</button>
+    <button class="opt">13%</button>
+    <button class="opt">1,15%</button>
+    <div class="fb"><b>15%.</b> Variação \(= \frac{46\,000 - 40\,000}{40\,000} = \frac{6\,000}{40\,000} = 0{,}15\). Divida sempre pelo valor <b>inicial</b>. O distrator 13% é dividir pelo valor final (\(6\,000 \div 46\,000\)) — erro clássico.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">R4 · estilo ENEM · contagem combinada</div>
+    <div class="stem">Um restaurante monta pratos com 1 tipo de arroz (2 opções), 1 proteína (4 opções) e <b>2 acompanhamentos diferentes</b> escolhidos entre 5. Quantos pratos distintos são possíveis?</div>
+    <button class="opt">80 pratos</button>
+    <button class="opt">160 pratos</button>
+    <button class="opt">40 pratos</button>
+    <button class="opt">800 pratos</button>
+    <div class="fb"><b>80 pratos.</b> Duas ideias na mesma questão.<br>
+    <b>Acompanhamentos:</b> "arroz com feijão e salada" é o mesmo prato que "arroz com salada e feijão" → a ordem <b>não</b> importa → \(C_{5,2} = 10\).<br>
+    <b>Etapas:</b> \(2 \times 4 \times 10 = 80\).<br>
+    O distrator <b>160</b> vem de usar \(5 \times 4 = 20\) nos acompanhamentos, contando cada dupla duas vezes. 🎯</div>
+  </div>
+
+  <div class="score" id="score">Responda as questões acima ☝️</div>
+
+  <h2>Como ler o seu resultado</h2>
+  <table>
+    <tr><th>Placar</th><th>O que significa</th><th>O que fazer</th></tr>
+    <tr><td><b>16–19</b></td><td>a base está sólida e você escolhe a ferramenta certa sozinha</td><td>partir para simulados cronometrados</td></tr>
+    <tr><td><b>12–15</b></td><td>você sabe os métodos, mas às vezes pega o errado</td><td>refazer esta lição em 3 dias — só isso</td></tr>
+    <tr><td><b>menos de 12</b></td><td>algum tema específico ainda não fixou</td><td>ver <b>quais</b> erraram e voltar só naquela lição</td></tr>
+  </table>
+  <p>O importante não é o número, e sim <b>quais</b> você errou. Anote os temas e me conte —
+  é assim que a gente decide o próximo passo.</p>
+
+  <h2>Para fixar (faça depois)</h2>
+  <p>• <b>Fonte primária recomendada:</b>
+     <a href="https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos" target="_blank">Provas e gabaritos oficiais do ENEM — INEP</a>.
+     Você já está pronta para encarar uma prova antiga inteira de Matemática, cronometrada (5 h para 45 questões).</p>
+  <p>• <b>Prática espaçada:</b> refaça esta lição <b>daqui a 3 dias</b> e depois <b>daqui a 2 semanas</b>.
+     Espaçar é chato e parece ineficiente — e é exatamente por isso que funciona.</p>
+  <p>• <b>Comunidade:</b> vale acompanhar o <a href="https://www.reddit.com/r/Enem/" target="_blank">r/Enem</a>
+     e o <a href="https://www.reddit.com/r/estudosBR/" target="_blank">r/estudosBR</a> — dúvidas, estratégia de
+     prova e relatos de quem passou. Falta pouco: a prova de Matemática é em <b>15 de novembro</b>.</p>
+
+  <div class="foot">
+    <p class="ask">👨‍🏫 <b>Eu sou seu professor aqui.</b> Me manda quais questões você errou — não precisa
+    acertar tudo, precisa é que a gente saiba onde mexer. Se um tema inteiro escorregou, a gente refaz ele
+    do zero com outra abordagem.</p>
+    <p>Workspace de estudo · Missão: Matemática ENEM 2026 → TO/Fono USP Ribeirão Preto ·
+    Anterior: <a href="0007-contagem.html">Lição 0007 — Contagem</a> ·
+    Revisa: <a href="0001-variacao-percentual.html">0001</a> ·
+    <a href="0002-regra-de-tres.html">0002</a> ·
+    <a href="0003-funcoes-graficos.html">0003</a> ·
+    <a href="0004-geometria-espacial.html">0004</a> ·
+    <a href="0005-proporcionalidade-inversa.html">0005</a> ·
+    <a href="0006-probabilidade.html">0006</a> ·
+    <a href="0007-contagem.html">0007</a></p>
+  </div>
+
+</div>
+
+<script>
+  let answered = 0, hits = 0;
+  const total = document.querySelectorAll('.q').length;
+  document.querySelectorAll('.q').forEach(function(q){
+    const correct = parseInt(q.dataset.correct, 10);
+    const opts = q.querySelectorAll('.opt');
+    const fb = q.querySelector('.fb');
+    opts.forEach(function(btn, i){
+      btn.addEventListener('click', function(){
+        opts.forEach(function(b){ b.disabled = true; });
+        if(i === correct){ btn.classList.add('correct'); hits++; }
+        else { btn.classList.add('wrong'); opts[correct].classList.add('correct'); }
+        fb.classList.add('show');
+        answered++;
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    const el = document.getElementById('score');
+    if(answered < total){ el.textContent = answered + ' de ' + total + ' respondidas — continue 💪'; return; }
+    let msg = 'Você acertou ' + hits + ' de ' + total + '. ';
+    const pct = hits / total;
+    if(pct >= 0.85) msg += 'Base sólida — e embaralhado, que é o mais difícil. Hora de simulado cronometrado. 🎯';
+    else if(pct >= 0.6) msg += 'Bom. Anote QUAIS você errou e refaça esta lição em 3 dias.';
+    else msg += 'Anote quais temas escaparam e volte naquelas lições — depois refaça esta. Me chame se quiser fazer junto.';
+    el.textContent = msg;
+  }
+</script>
+</body>
+</html>

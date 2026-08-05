@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cartão de referência — Probabilidade (ENEM)</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#dcd6c8; --accent:#7a1f2b; --bg:#fbf9f4; --hi:#fdf3d6; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 24px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.7; }
+  .card{ max-width:760px; margin:0 auto; }
+  header{ border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:24px; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:27px; margin:6px 0 0; font-weight:600; }
+  h2{ font-size:16px; font-family:-apple-system,Helvetica,Arial,sans-serif; letter-spacing:.02em;
+      margin:30px 0 8px; color:var(--accent); border-bottom:1px solid var(--line); padding-bottom:4px; }
+  p{margin:8px 0}
+  .lead{ color:var(--soft); font-style:italic; margin-top:6px; }
+  table{ border-collapse:collapse; width:100%; margin:10px 0; font-size:15px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:12px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  .rule{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:2; }
+  .rule b{ color:var(--accent); }
+  .flag{ background:#fdf0f0; border:1px solid #e6c9c9; border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:1.9; font-size:14.5px; }
+  .flag b{ color:var(--accent); }
+  ul{margin:8px 0 8px 0; padding-left:22px} li{margin:5px 0}
+  .foot{ margin-top:34px; padding-top:12px; border-top:1px solid var(--line);
+         font-size:13px; color:var(--soft); }
+  a{color:var(--accent)}
+  mjx-container{ color:var(--accent); }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+  @media print{ body{background:#fff;padding:0} .card{max-width:100%} h2{break-after:avoid} .flag{break-inside:avoid} }
+</style>
+<!-- MathJax: delimitadores só \( \) e \[ \] — NUNCA $...$, para não conflitar com "R$". -->
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div class="card">
+  <header>
+    <div class="kicker">Cartão de referência · Matemática ENEM</div>
+    <h1>Probabilidade</h1>
+    <p class="lead">Conte o que serve, conte o total, divida.</p>
+  </header>
+
+  <h2>1. A definição</h2>
+  <p>\[ P(A) = \frac{\text{número de casos favoráveis}}{\text{número de casos possíveis}} \]</p>
+  <p>Resultado sempre <b>entre 0 e 1</b> (ou 0% a 100%). \(P = 0\) → impossível; \(P = 1\) → certeza.</p>
+  <div class="rule">
+    <b>Conferência de 1 segundo:</b> deu maior que 1 ou negativo? A conta está errada.
+  </div>
+
+  <h2>2. As três ferramentas</h2>
+  <table>
+    <tr><th>Palavra no enunciado</th><th>Operação</th><th>Fórmula</th></tr>
+    <tr><td><b>“e”</b> · “ambos” · “seguidos”</td><td>multiplica</td><td>\(P(A) \times P(B)\)</td></tr>
+    <tr><td><b>“ou”</b> · “um dos dois”</td><td>soma</td><td>\(P(A) + P(B)\)</td></tr>
+    <tr><td><b>“pelo menos um”</b></td><td>dá a volta</td><td>\(1 - P(\text{nenhum})\)</td></tr>
+  </table>
+  <p class="lead">Circule essas palavras no enunciado antes de fazer qualquer conta — elas escolhem a ferramenta.</p>
+
+  <h2>3. Complementar — o atalho mais rentável</h2>
+  <p>\[ P(\text{não } A) = 1 - P(A) \]</p>
+  <div class="flag">
+    <b>⚑ Sempre que ler “pelo menos um”</b>, não liste os casos que servem. Calcule o contrário
+    (“nenhum”) e subtraia de 1. Uma conta em vez de várias.<br>
+    <i>Ex.:</i> 3 moedas, pelo menos uma cara → \(1 - \left(\frac{1}{2}\right)^3 = 1 - \frac{1}{8} = \frac{7}{8}\).<br>
+    <i>Ex.:</i> 5% de defeito, 2 peças, pelo menos uma defeituosa → \(1 - 0{,}95^2 = 0{,}0975 = 9{,}75\%\).
+  </div>
+  <p><b>Nunca some</b> \(5\% + 5\% = 10\%\): isso conta duas vezes o caso em que <b>as duas</b> dão defeito.
+  A resposta certa é sempre um pouco <b>menor</b> que a soma.</p>
+
+  <h2>4. Com ou sem reposição</h2>
+  <p>Duas retiradas seguidas. Pergunte: <b>a primeira voltou para o lugar?</b></p>
+  <table>
+    <tr><th>Caso</th><th>O que muda</th><th>Urna: 4 brancas em 10</th></tr>
+    <tr><td><b>Com</b> reposição</td><td>nada muda</td><td>\(\frac{4}{10} \times \frac{4}{10} = \frac{4}{25}\)</td></tr>
+    <tr><td><b>Sem</b> reposição</td><td>caem <b>os dois</b> números</td><td>\(\frac{4}{10} \times \frac{3}{9} = \frac{2}{15}\)</td></tr>
+  </table>
+  <div class="flag">
+    <b>⚑ Erro clássico:</b> baixar só o numerador (\(\frac{4}{10} \times \frac{3}{10}\)) e esquecer o
+    denominador. Sem reposição, a urna tem <b>uma bola a menos no total</b> também.
+  </div>
+
+  <h2>5. Probabilidade em tabela de dupla entrada</h2>
+  <p>O formato favorito do ENEM. Exemplo — 200 pessoas:</p>
+  <table>
+    <tr><th></th><th>Carro</th><th>Ônibus</th><th>Total</th></tr>
+    <tr><td><b>Homens</b></td><td>40</td><td>60</td><td>100</td></tr>
+    <tr><td><b>Mulheres</b></td><td>50</td><td>50</td><td>100</td></tr>
+    <tr><td><b>Total</b></td><td>90</td><td>110</td><td>200</td></tr>
+  </table>
+  <ul>
+    <li><b>“A e B”</b> → é uma <b>única casinha</b> da tabela. Mulher e ônibus: \(\frac{50}{200} = 0{,}25\).
+        Não multiplique nada.</li>
+    <li><b>“A ou B”</b> → some as linhas/colunas, mas <b>desconte a casinha contada duas vezes</b>.</li>
+    <li><b>“sabendo que”</b> → veja abaixo.</li>
+  </ul>
+
+  <h2>6. “Sabendo que” — o universo encolhe</h2>
+  <div class="flag">
+    <b>⚑ A palavra que muda tudo.</b> “Sabendo que”, “dado que”, “entre os homens”, “dos que usam carro”
+    → o denominador <b>deixa de ser o total geral</b> e passa a ser só o grupo citado.<br>
+    <i>Ex.:</i> sabendo que é homem, qual a chance de usar carro? \(\frac{40}{\mathbf{100}} = 0{,}40\)
+    — e <b>não</b> \(\frac{40}{200} = 0{,}20\).
+  </div>
+  <p>Na prova, <b>sublinhe</b> essa expressão assim que ela aparecer.</p>
+
+  <h2>7. Casos clássicos (decore os totais)</h2>
+  <table>
+    <tr><th>Experimento</th><th>Total de casos</th><th>Exemplos</th></tr>
+    <tr><td>1 dado</td><td>6</td><td>par = \(\frac{3}{6}\) · maior que 4 = \(\frac{2}{6}\)</td></tr>
+    <tr><td>2 dados</td><td>36</td><td>soma 7 = \(\frac{6}{36}\) · soma 12 = \(\frac{1}{36}\)</td></tr>
+    <tr><td>1 moeda</td><td>2</td><td>cara = \(\frac{1}{2}\)</td></tr>
+    <tr><td>\(n\) moedas</td><td>\(2^n\)</td><td>3 moedas → 8 casos</td></tr>
+    <tr><td>baralho</td><td>52</td><td>1 naipe = \(\frac{13}{52} = \frac{1}{4}\) · 1 figura = \(\frac{12}{52}\)</td></tr>
+  </table>
+
+  <h2>8. Roteiro na hora da prova</h2>
+  <div class="rule">
+    <b>1)</b> Qual é o <b>total</b> de casos possíveis? (cuidado: some tudo)<br>
+    <b>2)</b> Circule <b>“e”</b>, <b>“ou”</b>, <b>“pelo menos”</b>, <b>“sabendo que”</b>.<br>
+    <b>3)</b> Houve retirada dupla? <b>Com ou sem</b> reposição?<br>
+    <b>4)</b> Calcule — e confira se o resultado ficou entre 0 e 1.
+  </div>
+
+  <div class="foot">
+    Workspace de estudo da Nicole · Missão: Matemática ENEM 2026 → TO/Fono USP-RP.<br>
+    Usado na <a href="../lessons/0006-probabilidade.html">Lição 0006</a> ·
+    Cartão irmão: <a href="contagem.html">Contagem e Combinatória</a>.<br>
+    Fonte recomendada: <a href="https://pt.khanacademy.org/math/statistics-probability/probability-library">Khan Academy — Probabilidade</a>.
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lição 0006 — Probabilidade</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#e2dccd; --accent:#7a1f2b; --green:#1c6b3f;
+         --red:#9b2226; --bg:#fbf9f4; --hi:#fdf3d6; --card:#ffffff; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 22px 80px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.62; }
+  .wrap{ max-width:720px; margin:0 auto; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:30px; line-height:1.2; margin:6px 0 4px; font-weight:600; }
+  .sub{ color:var(--soft); font-style:italic; margin:0 0 8px; }
+  .mission{ background:var(--hi); border-radius:8px; padding:12px 16px; font-size:14.5px; margin:18px 0 8px; }
+  .mission b{color:var(--accent)}
+  h2{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:15px; letter-spacing:.03em;
+      text-transform:uppercase; color:var(--accent); margin:34px 0 8px;
+      border-bottom:1px solid var(--line); padding-bottom:5px; }
+  p{margin:10px 0}
+  .keybox{ background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+           border-radius:0 8px 8px 0; padding:14px 18px; margin:16px 0; line-height:2; }
+  .keybox b{color:var(--accent)}
+  .big{ text-align:center; background:var(--hi); border-radius:8px; padding:14px 16px; margin:16px 0;
+        font-size:17px; line-height:2; }
+  .big b{ color:var(--accent); }
+  table{ border-collapse:collapse; width:100%; margin:12px 0; font-size:14.5px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11.5px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  table.data{ font-size:15px; }
+  table.data th, table.data td{ text-align:center; border:1px solid var(--line); }
+  table.data td:first-child, table.data th:first-child{ text-align:left; font-weight:600; }
+  table.data tr:last-child{ background:#f4f1e8; font-weight:600; }
+  table.data td:last-child{ background:#f4f1e8; font-weight:600; }
+  a{color:var(--accent)}
+  .q{ background:var(--card); border:1px solid var(--line); border-radius:10px;
+      padding:18px 20px; margin:20px 0; }
+  .q .tag{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+           letter-spacing:.08em; text-transform:uppercase; color:var(--soft); }
+  .q .stem{ margin:6px 0 14px; }
+  .level{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-weight:700; letter-spacing:.04em;
+          color:var(--accent); margin:30px 0 6px; display:flex; align-items:center; gap:10px; font-size:14px; }
+  .level::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .level .lv{ background:var(--accent); color:#fff; border-radius:20px; padding:2px 11px; font-size:11px; letter-spacing:.06em; white-space:nowrap; }
+  .ladder-intro{ font-size:14.5px; color:var(--soft); margin:4px 0 0; }
+  .opt{ display:block; width:100%; text-align:left; font-family:inherit; font-size:16px;
+        background:#fff; border:1.5px solid var(--line); border-radius:8px; padding:11px 14px;
+        margin:7px 0; cursor:pointer; transition:.12s; }
+  .opt:hover{ border-color:var(--accent); background:var(--hi); }
+  .opt:disabled{ cursor:default; opacity:.95; }
+  .opt.correct{ border-color:var(--green); background:#e9f5ee; color:var(--green); font-weight:600; }
+  .opt.wrong{ border-color:var(--red); background:#fbeaea; color:var(--red); }
+  .fb{ display:none; margin-top:12px; padding:12px 14px; border-radius:8px; font-size:14.5px;
+       background:#f4f1e8; border:1px dashed var(--line); line-height:1.8; }
+  .fb.show{ display:block; }
+  .fb b{color:var(--accent)}
+  .score{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-align:center; font-size:15px;
+          color:var(--soft); margin:26px 0; }
+  .foot{ margin-top:40px; padding-top:14px; border-top:1px solid var(--line); font-size:13.5px; color:var(--soft); }
+  .ask{ background:#eef4ef; border-radius:8px; padding:12px 16px; font-size:14.5px; color:var(--ink); }
+  mjx-container{ color:inherit; }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+</style>
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Lição 0006 · Matemática ENEM · Probabilidade</div>
+  <h1>Probabilidade</h1>
+  <p class="sub">Conte o que serve, conte o total, divida. O resto é saber quando somar e quando multiplicar.</p>
+
+  <div class="mission">
+    <b>Por que esta lição?</b> Probabilidade cai <b>todos os anos</b> no ENEM — é praticamente ponto garantido
+    se você domina o básico. E tem uma vantagem grande a seu favor: quase sempre ela vem <b>junto com uma
+    tabela ou um gráfico</b>, que é exatamente o que você já faz bem (você acertou quase todo o bloco de
+    estatística e leitura de dados no simulado). Aqui você só vai aprender o que fazer <b>depois</b> de ler a tabela.
+  </div>
+
+  <h2>A ideia central (2 minutos)</h2>
+
+  <div class="big">
+    \[ P = \frac{\text{casos que me servem}}{\text{casos possíveis no total}} \]
+  </div>
+
+  <p>Só isso. Probabilidade é uma <b>fração de contagem</b>. Num dado de 6 faces, sair 4 é
+  \(\frac{1}{6}\); sair par é \(\frac{3}{6} = \frac{1}{2}\).</p>
+
+  <p>O resultado é sempre um número <b>entre 0 e 1</b> (ou entre 0% e 100%). Se sua conta deu 1,4 ou
+  um número negativo, tem erro — essa checagem sozinha já salva questão.</p>
+
+  <h2>As três ferramentas que resolvem quase tudo</h2>
+
+  <div class="keybox">
+    <b>1. “E” → multiplica.</b> Um evento <i>e depois</i> outro: \(P(A \text{ e } B) = P(A) \times P(B)\).<br>
+    <b>2. “OU” → soma.</b> Um <i>ou</i> outro, quando não podem acontecer juntos: \(P(A) + P(B)\).<br>
+    <b>3. “PELO MENOS UM” → dá a volta.</b> \(P(\text{pelo menos um}) = 1 - P(\text{nenhum})\).
+  </div>
+
+  <p>A terceira é a mais valiosa do ENEM. Sempre que ler <b>“pelo menos um”</b>, não tente listar todos os
+  casos que servem — calcule o <b>contrário</b> (o caso em que nada acontece) e subtraia de 1. É muito
+  mais rápido e quase nunca erra.</p>
+
+  <h2>A pegadinha do “com ou sem reposição”</h2>
+
+  <p>Quando você tira duas coisas seguidas, pergunte: <b>a primeira voltou para o lugar?</b></p>
+  <table>
+    <tr><th>Situação</th><th>O que muda</th><th>Urna com 4 brancas em 10</th></tr>
+    <tr><td><b>Com</b> reposição</td><td>nada muda na 2ª retirada</td><td>\(\frac{4}{10} \times \frac{4}{10}\)</td></tr>
+    <tr><td><b>Sem</b> reposição</td><td>cai o favorável <b>e</b> o total</td><td>\(\frac{4}{10} \times \frac{3}{9}\)</td></tr>
+  </table>
+  <p>Sem reposição, os <b>dois</b> números da fração diminuem — é aí que a maioria erra, esquecendo de
+  baixar o denominador.</p>
+
+  <p>Tudo isso, com os casos clássicos, está no
+  <a href="../reference/probabilidade.html">cartão de Probabilidade</a> — leia antes de praticar.</p>
+
+  <h2>Pratique — a escada de dificuldade</h2>
+  <p class="ladder-intro">18 questões que <b>sobem de nível</b>: da fração pura até a tabela de dupla
+  entrada no estilo da prova. Faça na ordem.</p>
+
+  <div class="level"><span class="lv">Nível 1</span> A fração da contagem</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · dado</div>
+    <div class="stem">Num dado comum de 6 faces, a probabilidade de sair o número 4 é:</div>
+    <button class="opt">\(\frac{1}{6}\)</button>
+    <button class="opt">\(\frac{4}{6}\)</button>
+    <button class="opt">\(\frac{1}{4}\)</button>
+    <button class="opt">\(\frac{6}{4}\)</button>
+    <div class="fb"><b>\(\frac{1}{6}\).</b> Um caso serve (a face 4), seis são possíveis. O número da face não entra na conta — o que conta é <b>quantas</b> faces servem.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · urna</div>
+    <div class="stem">Numa urna há 5 bolas azuis e 3 vermelhas. A probabilidade de tirar uma vermelha é:</div>
+    <button class="opt">\(\frac{3}{8}\)</button>
+    <button class="opt">\(\frac{3}{5}\)</button>
+    <button class="opt">\(\frac{5}{8}\)</button>
+    <button class="opt">\(\frac{1}{3}\)</button>
+    <div class="fb"><b>\(\frac{3}{8}\).</b> Cuidado com o total: são \(5 + 3 = 8\) bolas, não 5. O denominador é sempre <b>tudo</b> que pode sair.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · o intervalo</div>
+    <div class="stem">Uma probabilidade, escrita como fração ou decimal, é sempre um número:</div>
+    <button class="opt">entre 0 e 1.</button>
+    <button class="opt">entre 1 e 10.</button>
+    <button class="opt">maior do que 1.</button>
+    <button class="opt">negativo ou nulo.</button>
+    <div class="fb"><b>Entre 0 e 1.</b> Zero = impossível; um = certeza. Use isso como <b>conferência</b>: deu mais que 1, a conta está errada.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · complementar</div>
+    <div class="stem">A probabilidade de um evento acontecer é 0,25. A probabilidade de ele <b>não</b> acontecer é:</div>
+    <button class="opt">0,75</button>
+    <button class="opt">0,25</button>
+    <button class="opt">0,50</button>
+    <button class="opt">1,25</button>
+    <div class="fb"><b>0,75.</b> Acontecer e não acontecer somam 1 (100%). Logo \(1 - 0{,}25 = 0{,}75\). Essa ideia simples é a base do truque do "pelo menos um".</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · fração para porcentagem</div>
+    <div class="stem">Uma probabilidade de \(\frac{3}{4}\) equivale, em porcentagem, a:</div>
+    <button class="opt">75%</button>
+    <button class="opt">34%</button>
+    <button class="opt">43%</button>
+    <button class="opt">25%</button>
+    <div class="fb"><b>75%.</b> \(3 \div 4 = 0{,}75 \to 75\%\). O ENEM pede a resposta em fração, decimal ou porcentagem sem avisar — saiba trocar de roupa rápido.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 2</span> Aplicação — um passo</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · dado</div>
+    <div class="stem">Num dado comum, a probabilidade de sair um número <b>par</b> é:</div>
+    <button class="opt">\(\frac{1}{2}\)</button>
+    <button class="opt">\(\frac{1}{3}\)</button>
+    <button class="opt">\(\frac{1}{6}\)</button>
+    <button class="opt">\(\frac{2}{3}\)</button>
+    <div class="fb"><b>\(\frac{1}{2}\).</b> Servem 2, 4 e 6 → \(\frac{3}{6} = \frac{1}{2}\). Sempre simplifique no fim: as alternativas costumam vir simplificadas.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · sorteio numa turma</div>
+    <div class="stem">Uma turma tem 30 alunos: 18 meninas e 12 meninos. Sorteando um aluno ao acaso, a probabilidade de ser <b>menino</b> é:</div>
+    <button class="opt">0,40</button>
+    <button class="opt">0,60</button>
+    <button class="opt">0,12</button>
+    <button class="opt">0,25</button>
+    <div class="fb"><b>0,40.</b> \(\frac{12}{30} = 0{,}4 = 40\%\). O distrator 0,60 é a probabilidade de ser <b>menina</b> — leia sempre qual grupo a questão pediu.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · baralho</div>
+    <div class="stem">Num baralho de 52 cartas (4 naipes de 13 cartas), a probabilidade de tirar uma carta de <b>copas</b> é:</div>
+    <button class="opt">\(\frac{1}{4}\)</button>
+    <button class="opt">\(\frac{1}{13}\)</button>
+    <button class="opt">\(\frac{1}{52}\)</button>
+    <button class="opt">\(\frac{4}{13}\)</button>
+    <div class="fb"><b>\(\frac{1}{4}\).</b> São 13 cartas de copas em 52 → \(\frac{13}{52} = \frac{1}{4}\). Faz sentido: são 4 naipes de tamanhos iguais.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · controle de qualidade</div>
+    <div class="stem">Numa caixa há 10 peças, sendo 2 defeituosas. Tirando uma peça ao acaso, a probabilidade de ela ser <b>boa</b> é:</div>
+    <button class="opt">80%</button>
+    <button class="opt">20%</button>
+    <button class="opt">50%</button>
+    <button class="opt">18%</button>
+    <div class="fb"><b>80%.</b> São 8 boas em 10. Dava para ir pelo complementar também: \(100\% - 20\% = 80\%\).</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 3</span> Eventos sucessivos, reposição e “pelo menos um”</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · “e” → multiplica</div>
+    <div class="stem">Jogando uma moeda <b>duas</b> vezes, a probabilidade de sair cara nas duas é:</div>
+    <button class="opt">\(\frac{1}{4}\)</button>
+    <button class="opt">\(\frac{1}{2}\)</button>
+    <button class="opt">\(\frac{3}{4}\)</button>
+    <button class="opt">\(\frac{1}{8}\)</button>
+    <div class="fb"><b>\(\frac{1}{4}\).</b> Cara <b>e</b> cara → \(\frac{1}{2} \times \frac{1}{2} = \frac{1}{4}\). Confira listando: (cara,cara), (cara,coroa), (coroa,cara), (coroa,coroa) — um caso em quatro.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · com reposição</div>
+    <div class="stem">Numa urna com 4 bolas brancas e 6 pretas, tira-se uma bola, ela é <b>devolvida</b>, e tira-se outra. A probabilidade de as duas serem brancas é:</div>
+    <button class="opt">0,16</button>
+    <button class="opt">0,40</button>
+    <button class="opt">0,80</button>
+    <button class="opt">0,12</button>
+    <div class="fb"><b>0,16.</b> Com reposição, a urna volta ao estado original: \(\frac{4}{10} \times \frac{4}{10} = \frac{16}{100} = 0{,}16\).</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · sem reposição · a pegadinha</div>
+    <div class="stem">Mesma urna (4 brancas e 6 pretas), mas agora a primeira bola <b>não</b> é devolvida. A probabilidade de as duas serem brancas é:</div>
+    <button class="opt">\(\frac{2}{15}\)</button>
+    <button class="opt">\(\frac{4}{25}\)</button>
+    <button class="opt">\(\frac{4}{15}\)</button>
+    <button class="opt">\(\frac{1}{15}\)</button>
+    <div class="fb"><b>\(\frac{2}{15}\).</b> Sem reposição, <b>os dois números caem</b>: \(\frac{4}{10} \times \frac{3}{9} = \frac{12}{90} = \frac{2}{15} \approx 0{,}133\). O erro clássico é baixar só o de cima (\(\frac{4}{10} \times \frac{3}{10}\)) ou esquecer de baixar qualquer um (\(\frac{4}{25}\), que é o resultado com reposição).</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · “ou” → soma</div>
+    <div class="stem">Num dado comum, a probabilidade de sair <b>2 ou 5</b> é:</div>
+    <button class="opt">\(\frac{1}{3}\)</button>
+    <button class="opt">\(\frac{1}{36}\)</button>
+    <button class="opt">\(\frac{1}{6}\)</button>
+    <button class="opt">\(\frac{5}{6}\)</button>
+    <div class="fb"><b>\(\frac{1}{3}\).</b> São eventos que não podem acontecer juntos, então soma: \(\frac{1}{6} + \frac{1}{6} = \frac{2}{6} = \frac{1}{3}\). Repare no contraste com a questão da moeda: lá era "e" (multiplica), aqui é "ou" (soma).</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · “pelo menos um”</div>
+    <div class="stem">Jogando uma moeda <b>três</b> vezes, a probabilidade de sair <b>pelo menos uma</b> cara é:</div>
+    <button class="opt">\(\frac{7}{8}\)</button>
+    <button class="opt">\(\frac{1}{8}\)</button>
+    <button class="opt">\(\frac{3}{8}\)</button>
+    <button class="opt">\(\frac{1}{2}\)</button>
+    <div class="fb"><b>\(\frac{7}{8}\).</b> Dá a volta: o contrário de "pelo menos uma cara" é "<b>nenhuma</b> cara", ou seja, coroa nas três → \(\left(\frac{1}{2}\right)^3 = \frac{1}{8}\). Logo \(1 - \frac{1}{8} = \frac{7}{8}\).<br>Listar os casos que servem daria sete somas; o complementar deu uma conta só. <b>Guarde este atalho</b> — é o mais rentável da prova.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 4</span> Nível ENEM — probabilidade em tabela</div>
+
+  <p>As três próximas usam <b>a mesma tabela</b>. Uma pesquisa perguntou a 200 pessoas como elas vão ao trabalho:</p>
+
+  <table class="data">
+    <tr><th></th><th>Carro</th><th>Ônibus</th><th>Total</th></tr>
+    <tr><td>Homens</td><td>40</td><td>60</td><td>100</td></tr>
+    <tr><td>Mulheres</td><td>50</td><td>50</td><td>100</td></tr>
+    <tr><td>Total</td><td>90</td><td>110</td><td>200</td></tr>
+  </table>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N4 · estilo ENEM · tabela de dupla entrada</div>
+    <div class="stem">Escolhendo uma pessoa ao acaso, a probabilidade de ela ser <b>mulher e usar ônibus</b> é:</div>
+    <button class="opt">0,25</button>
+    <button class="opt">0,50</button>
+    <button class="opt">0,55</button>
+    <button class="opt">0,10</button>
+    <div class="fb"><b>0,25.</b> Vá direto à casinha onde "Mulheres" cruza com "Ônibus": 50 pessoas. O total continua sendo <b>todo mundo</b>: \(\frac{50}{200} = 0{,}25\).<br>Numa tabela assim, "A <b>e</b> B" é sempre uma <b>única casinha</b> — não precisa multiplicar nada.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N4 · estilo ENEM · o universo encolhe</div>
+    <div class="stem">Ainda na tabela: <b>sabendo que</b> a pessoa escolhida é homem, a probabilidade de ela usar <b>carro</b> é:</div>
+    <button class="opt">0,40</button>
+    <button class="opt">0,20</button>
+    <button class="opt">0,44</button>
+    <button class="opt">0,90</button>
+    <div class="fb"><b>0,40.</b> Quando o enunciado diz "<b>sabendo que</b>" (ou "dado que", ou "entre os homens"), o universo <b>encolhe</b>: você não está mais sorteando entre 200 pessoas, e sim entre os <b>100 homens</b>. Logo \(\frac{40}{100} = 0{,}40\).<br>O distrator <b>0,20</b> é \(\frac{40}{200}\) — quem esqueceu de encolher o denominador. Essa palavrinha muda tudo; sublinhe ela na prova.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N4 · estilo ENEM · duas retiradas na tabela</div>
+    <div class="stem">Escolhendo <b>duas</b> pessoas ao acaso (sem repetir), a probabilidade de <b>ambas</b> irem de carro é aproximadamente:</div>
+    <button class="opt">0,2013</button>
+    <button class="opt">0,2025</button>
+    <button class="opt">0,4500</button>
+    <button class="opt">0,0025</button>
+    <div class="fb"><b>≈ 0,2013.</b> São 90 pessoas de carro em 200. Sem reposição: \(\frac{90}{200} \times \frac{89}{199} = 0{,}45 \times 0{,}4472 \approx 0{,}2013\).<br>O distrator <b>0,2025</b> é \(0{,}45^2\) — o resultado <b>com</b> reposição. A diferença é pequena aqui porque o total é grande, mas o ENEM cobra o raciocínio certo. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N4 · estilo ENEM · complementar disfarçado</div>
+    <div class="stem">Numa linha de produção, 5% das peças saem com defeito. Escolhendo 2 peças ao acaso, a probabilidade de <b>pelo menos uma</b> ser defeituosa é aproximadamente:</div>
+    <button class="opt">9,75%</button>
+    <button class="opt">10,00%</button>
+    <button class="opt">5,00%</button>
+    <button class="opt">0,25%</button>
+    <div class="fb"><b>9,75%.</b> "Pelo menos uma" → dá a volta. A chance de <b>nenhuma</b> ser defeituosa é \(0{,}95 \times 0{,}95 = 0{,}9025\). Logo \(1 - 0{,}9025 = 0{,}0975 = 9{,}75\%\).<br><b>Por que 10% está errado?</b> Somar \(5\% + 5\%\) conta <b>duas vezes</b> o caso em que as duas peças são defeituosas. Por isso a resposta certa é sempre um pouquinho <b>menor</b> que a soma — e essa observação sozinha já elimina alternativas na prova. 🎯</div>
+  </div>
+
+  <div class="score" id="score">Responda as questões acima ☝️</div>
+
+  <h2>Para fixar (faça depois)</h2>
+  <p>• <b>Fonte primária recomendada:</b>
+     <a href="https://pt.khanacademy.org/math/statistics-probability/probability-library" target="_blank">Khan Academy — Probabilidade</a>
+     (gratuito, em português). Comece por "Probabilidade básica" e vá até "Eventos compostos".</p>
+  <p>• <b>O reflexo que vale ponto:</b> ao ler o enunciado, circule três palavras — <b>“e”</b> (multiplica),
+     <b>“ou”</b> (soma) e <b>“pelo menos”</b> (dá a volta). Elas dizem qual ferramenta usar antes de você fazer qualquer conta.</p>
+  <p>• <b>Daqui a 2 dias</b>, refaça os Níveis 3 e 4 de memória.</p>
+
+  <div class="foot">
+    <p class="ask">👨‍🏫 <b>Eu sou seu professor aqui.</b> Se a diferença entre “e” e “ou” ainda estiver
+    escorregadia, me chame — dá pra desenhar isso de um jeito que gruda.</p>
+    <p>Workspace de estudo · Missão: Matemática ENEM 2026 → TO/Fono USP Ribeirão Preto ·
+    Referência: <a href="../reference/probabilidade.html">Cartão de Probabilidade</a> ·
+    Anterior: <a href="0005-proporcionalidade-inversa.html">Lição 0005 — Proporcionalidade inversa</a> ·
+    Próxima: <a href="0007-contagem.html">Lição 0007 — Contagem</a></p>
+  </div>
+
+</div>
+
+<script>
+  let answered = 0, hits = 0;
+  const total = document.querySelectorAll('.q').length;
+  document.querySelectorAll('.q').forEach(function(q){
+    const correct = parseInt(q.dataset.correct, 10);
+    const opts = q.querySelectorAll('.opt');
+    const fb = q.querySelector('.fb');
+    opts.forEach(function(btn, i){
+      btn.addEventListener('click', function(){
+        opts.forEach(function(b){ b.disabled = true; });
+        if(i === correct){ btn.classList.add('correct'); hits++; }
+        else { btn.classList.add('wrong'); opts[correct].classList.add('correct'); }
+        fb.classList.add('show');
+        answered++;
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    const el = document.getElementById('score');
+    if(answered < total){ el.textContent = answered + ' de ' + total + ' respondidas — continue 💪'; return; }
+    let msg = 'Você acertou ' + hits + ' de ' + total + '. ';
+    const pct = hits / total;
+    if(pct === 1) msg += 'Escada inteira! Probabilidade virou ponto garantido na prova. 🎯';
+    else if(pct >= 0.75) msg += 'Muito bom. Releia o cartão nos pontos que escaparam e refaça o Nível 4 em 2 dias.';
+    else if(pct >= 0.5) msg += 'Bom começo. Volte nas três ferramentas ("e", "ou", "pelo menos") e refaça amanhã.';
+    else msg += 'Sem drama — me chame que a gente refaz juntos, passo a passo.';
+    el.textContent = msg;
+  }
+</script>
+</body>
+</html>

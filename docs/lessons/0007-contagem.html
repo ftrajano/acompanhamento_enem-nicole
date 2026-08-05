@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lição 0007 — Contagem e combinatória</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#e2dccd; --accent:#7a1f2b; --green:#1c6b3f;
+         --red:#9b2226; --bg:#fbf9f4; --hi:#fdf3d6; --card:#ffffff; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 22px 80px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.62; }
+  .wrap{ max-width:720px; margin:0 auto; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:30px; line-height:1.2; margin:6px 0 4px; font-weight:600; }
+  .sub{ color:var(--soft); font-style:italic; margin:0 0 8px; }
+  .mission{ background:var(--hi); border-radius:8px; padding:12px 16px; font-size:14.5px; margin:18px 0 8px; }
+  .mission b{color:var(--accent)}
+  h2{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:15px; letter-spacing:.03em;
+      text-transform:uppercase; color:var(--accent); margin:34px 0 8px;
+      border-bottom:1px solid var(--line); padding-bottom:5px; }
+  p{margin:10px 0}
+  .keybox{ background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+           border-radius:0 8px 8px 0; padding:14px 18px; margin:16px 0; line-height:2; }
+  .keybox b{color:var(--accent)}
+  .big{ text-align:center; background:var(--hi); border-radius:8px; padding:14px 16px; margin:16px 0;
+        font-size:17px; line-height:2; }
+  .big b{ color:var(--accent); }
+  table{ border-collapse:collapse; width:100%; margin:12px 0; font-size:14.5px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11.5px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  a{color:var(--accent)}
+  .q{ background:var(--card); border:1px solid var(--line); border-radius:10px;
+      padding:18px 20px; margin:20px 0; }
+  .q .tag{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+           letter-spacing:.08em; text-transform:uppercase; color:var(--soft); }
+  .q .stem{ margin:6px 0 14px; }
+  .level{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-weight:700; letter-spacing:.04em;
+          color:var(--accent); margin:30px 0 6px; display:flex; align-items:center; gap:10px; font-size:14px; }
+  .level::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .level .lv{ background:var(--accent); color:#fff; border-radius:20px; padding:2px 11px; font-size:11px; letter-spacing:.06em; white-space:nowrap; }
+  .ladder-intro{ font-size:14.5px; color:var(--soft); margin:4px 0 0; }
+  .opt{ display:block; width:100%; text-align:left; font-family:inherit; font-size:16px;
+        background:#fff; border:1.5px solid var(--line); border-radius:8px; padding:11px 14px;
+        margin:7px 0; cursor:pointer; transition:.12s; }
+  .opt:hover{ border-color:var(--accent); background:var(--hi); }
+  .opt:disabled{ cursor:default; opacity:.95; }
+  .opt.correct{ border-color:var(--green); background:#e9f5ee; color:var(--green); font-weight:600; }
+  .opt.wrong{ border-color:var(--red); background:#fbeaea; color:var(--red); }
+  .fb{ display:none; margin-top:12px; padding:12px 14px; border-radius:8px; font-size:14.5px;
+       background:#f4f1e8; border:1px dashed var(--line); line-height:1.8; }
+  .fb.show{ display:block; }
+  .fb b{color:var(--accent)}
+  .score{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-align:center; font-size:15px;
+          color:var(--soft); margin:26px 0; }
+  .foot{ margin-top:40px; padding-top:14px; border-top:1px solid var(--line); font-size:13.5px; color:var(--soft); }
+  .ask{ background:#eef4ef; border-radius:8px; padding:12px 16px; font-size:14.5px; color:var(--ink); }
+  mjx-container{ color:inherit; }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+</style>
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Lição 0007 · Matemática ENEM · Contagem</div>
+  <h1>Contagem &amp; combinatória</h1>
+  <p class="sub">Uma pergunta decide tudo: trocar a ordem cria um caso novo?</p>
+
+  <div class="mission">
+    <b>Por que esta lição?</b> Contagem é irmã da probabilidade que você acabou de ver — ela fornece o
+    <b>de cima</b> e o <b>de baixo</b> da fração. Além disso, a maioria das questões de contagem do ENEM
+    se resolve com <b>uma multiplicação só</b>, sem fórmula nenhuma. É dos assuntos com melhor relação
+    esforço/ponto da prova inteira.
+  </div>
+
+  <h2>A ideia central (2 minutos)</h2>
+
+  <p>Quase toda questão de contagem é isto: a tarefa tem <b>etapas</b>, e você <b>multiplica</b> as opções
+  de cada etapa.</p>
+
+  <div class="big">
+    3 tipos de pão &nbsp;<b>×</b>&nbsp; 4 recheios &nbsp;<b>=</b>&nbsp; <b>12</b> sanduíches
+  </div>
+
+  <p>Isso se chama <b>Princípio Fundamental da Contagem</b>, e ele resolve mais questões do ENEM do que
+  todas as fórmulas juntas. Desenhe uma casinha para cada etapa, escreva quantas opções cabem em cada
+  uma, e multiplique:</p>
+
+  <div class="keybox">
+    <b>Senha de 3 dígitos, podendo repetir:</b> \(10 \times 10 \times 10 = 1\,000\).<br>
+    <b>Senha de 3 dígitos, sem repetir:</b> \(10 \times 9 \times 8 = 720\) — cada escolha <b>gasta</b> uma opção.
+  </div>
+
+  <h2>Quando as fórmulas aparecem</h2>
+
+  <p>Fórmula só é necessária quando você escolhe um <b>grupo</b> de coisas. E aí tudo depende de uma
+  pergunta — do mesmo jeito que na <a href="0005-proporcionalidade-inversa.html">Lição 0005</a> tudo
+  dependia de "sobe ou desce?":</p>
+
+  <div class="big">
+    Trocar a <b>ordem</b><br>cria um caso <b>novo</b>?
+  </div>
+
+  <table>
+    <tr><th>Resposta</th><th>Nome</th><th>Exemplos</th><th>Como calcular</th></tr>
+    <tr><td><b>Sim</b>, a ordem importa</td><td>arranjo / permutação</td>
+        <td>pódio, senha, fila, placa</td><td>multiplique direto: \(8 \times 7 \times 6\)</td></tr>
+    <tr><td><b>Não</b>, a ordem tanto faz</td><td>combinação</td>
+        <td>comissão, time, 2 sabores de pizza</td><td>\(C_{n,p} = \frac{n!}{p!\,(n-p)!}\)</td></tr>
+  </table>
+
+  <p>O teste prático: <b>"João, Maria, Ana" é diferente de "Ana, Maria, João"?</b></p>
+  <ul>
+    <li>Se for o <b>pódio</b> de uma corrida — sim, é totalmente diferente. <b>Ordem importa.</b></li>
+    <li>Se for uma <b>comissão</b> de 3 pessoas — não, é a mesma comissão. <b>Ordem não importa.</b></li>
+  </ul>
+
+  <p>E o <b>fatorial</b> é só uma multiplicação decrescente: \(5! = 5 \times 4 \times 3 \times 2 \times 1 = 120\).
+  Ele aparece na combinação justamente para <b>descontar</b> as ordens que você não quer contar duas vezes.</p>
+
+  <p>Todos os casos, com os atalhos, estão no
+  <a href="../reference/contagem.html">cartão de Contagem</a> — leia antes de praticar.</p>
+
+  <h2>Pratique — a escada de dificuldade</h2>
+  <p class="ladder-intro">18 questões que <b>sobem de nível</b>: da multiplicação simples até contagem
+  com restrição e contagem alimentando probabilidade. Faça na ordem.</p>
+
+  <div class="level"><span class="lv">Nível 1</span> O princípio multiplicativo</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · duas etapas</div>
+    <div class="stem">Uma lanchonete tem 3 tipos de pão e 4 tipos de recheio. Quantos sanduíches diferentes (1 pão + 1 recheio) ela pode montar?</div>
+    <button class="opt">12 sanduíches</button>
+    <button class="opt">7 sanduíches</button>
+    <button class="opt">34 sanduíches</button>
+    <button class="opt">24 sanduíches</button>
+    <div class="fb"><b>\(3 \times 4 = 12\).</b> Duas etapas → multiplica. Somar (7) é o erro mais comum: some só quando as opções forem <b>alternativas</b> ("ou pão, ou recheio"), não etapas de uma mesma montagem.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · trajetos</div>
+    <div class="stem">De A até B há 2 caminhos; de B até C há 3 caminhos. Quantos trajetos de A até C, passando por B, existem?</div>
+    <button class="opt">6 trajetos</button>
+    <button class="opt">5 trajetos</button>
+    <button class="opt">9 trajetos</button>
+    <button class="opt">8 trajetos</button>
+    <div class="fb"><b>\(2 \times 3 = 6\).</b> Cada caminho até B pode ser seguido por qualquer um dos 3 até C.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · a regra</div>
+    <div class="stem">Pelo princípio fundamental da contagem, quando uma tarefa é feita em várias etapas, você deve:</div>
+    <button class="opt">multiplicar as opções de cada etapa.</button>
+    <button class="opt">somar as opções de cada etapa.</button>
+    <button class="opt">dividir as opções de cada etapa.</button>
+    <button class="opt">subtrair as opções de cada etapa.</button>
+    <div class="fb"><b>Multiplicar.</b> Etapas encadeadas → multiplica. Guarde a palavra-chave: se dá para dizer "primeiro isso, <b>depois</b> aquilo", é multiplicação.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · potência</div>
+    <div class="stem">Uma moeda é jogada 4 vezes seguidas. Quantos resultados diferentes são possíveis?</div>
+    <button class="opt">16 resultados</button>
+    <button class="opt">8 resultados</button>
+    <button class="opt">4 resultados</button>
+    <button class="opt">24 resultados</button>
+    <div class="fb"><b>\(2 \times 2 \times 2 \times 2 = 2^4 = 16\).</b> Quando todas as etapas têm o mesmo número de opções, vira potência. Isso conecta direto com a <a href="0006-probabilidade.html">Lição 0006</a>: esse 16 é o denominador das probabilidades com 4 moedas.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · fatorial</div>
+    <div class="stem">O valor de \(4!\) é:</div>
+    <button class="opt">24</button>
+    <button class="opt">12</button>
+    <button class="opt">16</button>
+    <button class="opt">10</button>
+    <div class="fb"><b>\(4! = 4 \times 3 \times 2 \times 1 = 24\).</b> Fatorial é só multiplicação decrescente até o 1. Vale saber de cor: \(3!=6\), \(4!=24\), \(5!=120\), \(6!=720\).</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 2</span> Aplicação — senhas, menus e filas</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · com repetição</div>
+    <div class="stem">Uma senha tem 3 dígitos, cada um de 0 a 9, e os dígitos <b>podem</b> se repetir. Quantas senhas existem?</div>
+    <button class="opt">1 000 senhas</button>
+    <button class="opt">720 senhas</button>
+    <button class="opt">30 senhas</button>
+    <button class="opt">100 senhas</button>
+    <div class="fb"><b>\(10 \times 10 \times 10 = 1\,000\).</b> São 10 dígitos (o zero conta!), e como pode repetir, nenhuma etapa perde opções.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · sem repetição</div>
+    <div class="stem">Mesma senha de 3 dígitos, mas agora os dígitos <b>não podem</b> se repetir. Quantas senhas existem?</div>
+    <button class="opt">720 senhas</button>
+    <button class="opt">1 000 senhas</button>
+    <button class="opt">504 senhas</button>
+    <button class="opt">27 senhas</button>
+    <div class="fb"><b>\(10 \times 9 \times 8 = 720\).</b> Cada escolha <b>gasta</b> um dígito, então a etapa seguinte tem uma opção a menos. Repare no paralelo com a urna <b>sem reposição</b> da <a href="0006-probabilidade.html">Lição 0006</a> — é a mesma ideia.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · três etapas</div>
+    <div class="stem">Um restaurante oferece 4 entradas, 5 pratos principais e 3 sobremesas. Quantos menus completos (uma de cada) são possíveis?</div>
+    <button class="opt">60 menus</button>
+    <button class="opt">12 menus</button>
+    <button class="opt">45 menus</button>
+    <button class="opt">20 menus</button>
+    <div class="fb"><b>\(4 \times 5 \times 3 = 60\).</b> Quantas etapas, tantos fatores.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · permutação</div>
+    <div class="stem">De quantas maneiras diferentes 5 pessoas podem formar uma fila?</div>
+    <button class="opt">120 maneiras</button>
+    <button class="opt">25 maneiras</button>
+    <button class="opt">20 maneiras</button>
+    <button class="opt">60 maneiras</button>
+    <div class="fb"><b>\(5! = 5 \times 4 \times 3 \times 2 \times 1 = 120\).</b> Cinco opções para o primeiro lugar, quatro para o segundo, e assim por diante. Colocar <b>todo mundo</b> em ordem é sempre \(n!\).</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 3</span> A ordem importa? Arranjo × combinação</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · a pergunta decisiva</div>
+    <div class="stem">Para decidir entre arranjo e combinação, a pergunta certa a se fazer é:</div>
+    <button class="opt">trocar a ordem cria um caso novo?</button>
+    <button class="opt">os elementos podem se repetir?</button>
+    <button class="opt">o total de opções é muito grande?</button>
+    <button class="opt">a tarefa tem etapas encadeadas?</button>
+    <div class="fb"><b>Trocar a ordem cria um caso novo?</b> Sim → arranjo (multiplica direto). Não → combinação (divide pelas ordens repetidas). Essa única pergunta decide praticamente toda questão de contagem do ENEM.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · ordem importa</div>
+    <div class="stem">Numa corrida com 8 atletas, de quantas formas diferentes pode ser formado o pódio (1º, 2º e 3º lugares)?</div>
+    <button class="opt">336 formas</button>
+    <button class="opt">56 formas</button>
+    <button class="opt">512 formas</button>
+    <button class="opt">24 formas</button>
+    <div class="fb"><b>\(8 \times 7 \times 6 = 336\).</b> No pódio a ordem importa muito — ouro e prata não são a mesma coisa. Multiplique direto, sem fórmula. Guarde o número <b>56</b>: ele aparece na próxima questão.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · ordem não importa</div>
+    <div class="stem">Do mesmo grupo de 8 pessoas, quantas <b>comissões</b> de 3 pessoas podem ser formadas?</div>
+    <button class="opt">56 comissões</button>
+    <button class="opt">336 comissões</button>
+    <button class="opt">24 comissões</button>
+    <button class="opt">512 comissões</button>
+    <div class="fb"><b>56 comissões.</b> Mesmos números da questão anterior, resposta diferente — porque numa comissão "Ana, Beto, Carla" é <b>a mesma</b> que "Carla, Beto, Ana".<br>
+    As 336 do pódio contam cada trio \(3! = 6\) vezes (uma para cada ordem). Então \(336 \div 6 = 56\). É exatamente isso que a fórmula faz: \(C_{8,3} = \frac{8!}{3!\,5!} = 56\). 🎯</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · por que a fórmula é assim</div>
+    <div class="stem">Na fórmula \(C_{n,p} = \frac{n!}{p!\,(n-p)!}\), o \(p!\) está no denominador para:</div>
+    <button class="opt">descontar as ordens repetidas.</button>
+    <button class="opt">aumentar o total de casos.</button>
+    <button class="opt">garantir um resultado inteiro.</button>
+    <button class="opt">simplificar a conta no final.</button>
+    <div class="fb"><b>Descontar as ordens repetidas.</b> Se você entendeu isso, não precisa decorar a fórmula: basta multiplicar como se a ordem importasse e depois dividir por \(p!\).</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · anagramas com letras repetidas</div>
+    <div class="stem">Quantos anagramas diferentes tem a palavra <b>ARARA</b>?</div>
+    <button class="opt">10 anagramas</button>
+    <button class="opt">120 anagramas</button>
+    <button class="opt">20 anagramas</button>
+    <button class="opt">60 anagramas</button>
+    <div class="fb"><b>10 anagramas.</b> São 5 letras, mas com repetição: 3 letras A e 2 letras R. Trocar dois "A" de lugar não gera palavra nova, então desconte:
+    \[ \frac{5!}{3!\,\cdot\,2!} = \frac{120}{6 \times 2} = 10 \]
+    Se todas as letras fossem distintas seriam \(5! = 120\) — o distrator. Mesma lógica de sempre: <b>divida pelas repetições que você não quer contar</b>.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 4</span> Nível ENEM</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N4 · estilo ENEM · placas</div>
+    <div class="stem">Uma placa de veículo no modelo antigo tem 3 letras (26 possíveis) seguidas de 4 algarismos (0 a 9), com repetição permitida em ambos. O número total de placas possíveis é:</div>
+    <button class="opt">175 760 000</button>
+    <button class="opt">17 576 000</button>
+    <button class="opt">1 757 600</button>
+    <button class="opt">67 600 000</button>
+    <div class="fb"><b>175 760 000.</b> \(26^3 \times 10^4 = 17\,576 \times 10\,000 = 175\,760\,000\).<br>
+    Dica de prova: quando os números ficam gigantes, trabalhe com <b>potências de 10</b> e confira a quantidade de zeros no fim — costuma ser o que separa as alternativas.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N4 · estilo ENEM · combinação</div>
+    <div class="stem">Uma pizzaria oferece 6 sabores. Um cliente quer uma pizza com <b>2 sabores diferentes</b>. Quantas pizzas distintas ele pode pedir?</div>
+    <button class="opt">15 pizzas</button>
+    <button class="opt">30 pizzas</button>
+    <button class="opt">12 pizzas</button>
+    <button class="opt">36 pizzas</button>
+    <div class="fb"><b>15 pizzas.</b> Meia calabresa + meia mussarela é <b>a mesma pizza</b> que meia mussarela + meia calabresa → a ordem não importa → combinação.
+    \[ C_{6,2} = \frac{6 \times 5}{2} = 15 \]
+    O distrator <b>30</b> é \(6 \times 5\) — quem contou cada pizza duas vezes. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N4 · estilo ENEM · contagem com restrição</div>
+    <div class="stem">Um código é formado por 4 algarismos <b>distintos</b>, escolhidos entre 1, 2, 3, 4, 5 e 6, e deve <b>começar por um algarismo par</b>. Quantos códigos existem?</div>
+    <button class="opt">180 códigos</button>
+    <button class="opt">360 códigos</button>
+    <button class="opt">60 códigos</button>
+    <button class="opt">120 códigos</button>
+    <div class="fb"><b>180 códigos.</b> A regra de ouro: <b>comece pela posição que tem restrição</b>.<br>
+    1ª casa: só pares (2, 4, 6) → <b>3</b> opções. Sobram 5 algarismos para as outras três casas, sem repetir: \(5 \times 4 \times 3 = 60\).<br>
+    Total: \(3 \times 60 = 180\). Se você tivesse começado pela esquerda ignorando a restrição, daria \(6 \times 5 \times 4 \times 3 = 360\) — o distrator. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N4 · estilo ENEM · contagem + probabilidade</div>
+    <div class="stem">De uma caixa com 5 bolas numeradas de 1 a 5, tiram-se 2 bolas ao acaso. A probabilidade de as duas terem números <b>ímpares</b> é:</div>
+    <button class="opt">\(\frac{3}{10}\)</button>
+    <button class="opt">\(\frac{3}{5}\)</button>
+    <button class="opt">\(\frac{1}{10}\)</button>
+    <button class="opt">\(\frac{2}{5}\)</button>
+    <div class="fb"><b>\(\frac{3}{10}\).</b> Aqui as duas lições se juntam: a <b>contagem</b> fornece o de cima e o de baixo da <b>probabilidade</b>.<br>
+    <b>Possíveis:</b> escolher 2 bolas entre 5, sem ordem → \(C_{5,2} = \frac{5 \times 4}{2} = 10\).<br>
+    <b>Favoráveis:</b> os ímpares são 1, 3 e 5 → escolher 2 entre 3 → \(C_{3,2} = 3\).<br>
+    Logo \(P = \frac{3}{10}\). Note que dava para fazer pelo caminho da Lição 0006 também: \(\frac{3}{5} \times \frac{2}{4} = \frac{6}{20} = \frac{3}{10}\). Os dois caminhos batem — sempre batem. 🎯</div>
+  </div>
+
+  <div class="score" id="score">Responda as questões acima ☝️</div>
+
+  <h2>Para fixar (faça depois)</h2>
+  <p>• <b>Fonte primária recomendada:</b>
+     <a href="https://pt.khanacademy.org/math/statistics-probability/counting-permutations-and-combinations" target="_blank">Khan Academy — Contagem, permutações e combinações</a>
+     (gratuito, em português).</p>
+  <p>• <b>O reflexo que vale ponto:</b> desenhe as <b>casinhas</b> antes de qualquer conta — uma por etapa.
+     Depois pergunte "a ordem importa?". Com essas duas coisas você resolve quase tudo <b>sem fórmula</b>.</p>
+  <p>• <b>Daqui a 2 dias</b>, refaça os Níveis 3 e 4 de memória.</p>
+
+  <div class="foot">
+    <p class="ask">👨‍🏫 <b>Eu sou seu professor aqui.</b> A diferença entre pódio e comissão é a coisa que
+    mais confunde nesse assunto — se ficou nebulosa, me chame que a gente destrincha com exemplos seus.</p>
+    <p>Workspace de estudo · Missão: Matemática ENEM 2026 → TO/Fono USP Ribeirão Preto ·
+    Referência: <a href="../reference/contagem.html">Cartão de Contagem</a> ·
+    Anterior: <a href="0006-probabilidade.html">Lição 0006 — Probabilidade</a> ·
+    Próxima: <a href="0008-revisao-interleaved.html">Lição 0008 — Revisão geral</a></p>
+  </div>
+
+</div>
+
+<script>
+  let answered = 0, hits = 0;
+  const total = document.querySelectorAll('.q').length;
+  document.querySelectorAll('.q').forEach(function(q){
+    const correct = parseInt(q.dataset.correct, 10);
+    const opts = q.querySelectorAll('.opt');
+    const fb = q.querySelector('.fb');
+    opts.forEach(function(btn, i){
+      btn.addEventListener('click', function(){
+        opts.forEach(function(b){ b.disabled = true; });
+        if(i === correct){ btn.classList.add('correct'); hits++; }
+        else { btn.classList.add('wrong'); opts[correct].classList.add('correct'); }
+        fb.classList.add('show');
+        answered++;
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    const el = document.getElementById('score');
+    if(answered < total){ el.textContent = answered + ' de ' + total + ' respondidas — continue 💪'; return; }
+    let msg = 'Você acertou ' + hits + ' de ' + total + '. ';
+    const pct = hits / total;
+    if(pct === 1) msg += 'Escada inteira! Contagem virou ponto fácil. 🎯';
+    else if(pct >= 0.75) msg += 'Muito bom. Releia o cartão nos pontos que escaparam e refaça o Nível 4 em 2 dias.';
+    else if(pct >= 0.5) msg += 'Bom começo. Volte na pergunta "a ordem importa?" e refaça amanhã.';
+    else msg += 'Sem drama — me chame que a gente refaz juntos, passo a passo.';
+    el.textContent = msg;
+  }
+</script>
+</body>
+</html>

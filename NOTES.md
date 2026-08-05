@@ -42,16 +42,45 @@
 - **Fraco (ordem de prioridade):** 1) porcentagem/variação percentual; 2) funções; 3) razão/proporção e regra de três; 4) geometria espacial/visualização 3D.
 
 ## Sequência de lições planejada
-- [x] 0001 — Variação percentual (método do multiplicador).
-- [x] 0002 — Razão, proporção e regra de três (incl. inversa) — questões 154, 159, 165.
-- [x] 0003 — Funções e seus gráficos (linear vs quadrática) — questões 141, 161, 162, 180.
-- [x] 0004 — Geometria espacial / visualização 3D (137, 168, 175) — com figuras SVG.
+**Grupo 1 (completo, resultados em [learning-records/0002](learning-records/0002-diagnostico-grupo-1.md)):**
+- [x] 0001 — Variação percentual (método do multiplicador). → **0 erros, dominado.**
+- [x] 0002 — Razão, proporção e regra de três (incl. inversa) — questões 154, 159, 165. → **3 erros, todos de INVERSA.**
+- [x] 0003 — Funções e seus gráficos (linear vs quadrática) — questões 141, 161, 162, 180. → **1 erro (sinal de \(a\)).**
+- [x] 0004 — Geometria espacial / visualização 3D (137, 168, 175). → **2 erros (Q175 e Euler).**
+
+**Grupo 2 (COMPLETO — aguardando desempenho da Nicole):**
+- [x] 0005 — Proporcionalidade inversa & grandezas compostas (REMEDIAÇÃO). 17 questões + cartão novo.
+- [x] 0006 — Probabilidade. 18 questões + cartão novo.
+- [x] 0007 — Contagem / princípio fundamental da contagem. 18 questões + cartão novo.
+- [x] 0008 — Revisão interleaved 0001–0007. 19 questões, Rodada 1 = só identificar a ferramenta.
 - [ ] Manter estatística/gráficos aquecida com prática espaçada (ponto forte).
+
+## Onde os 6 erros do Grupo 1 foram re-testados (checar estes primeiro no feedback)
+| Erro original | Re-testado em |
+|---|---|
+| trajeto 90 km/h (inversa) | 0005 N4 (mesmo item) · 0008 R3 (120 km/h, números novos) |
+| 16 km/L (Q165) | 0005 N4 (mesmo item) · **0008 R4 (25 km/L — números novos, testa transferência real)** |
+| 4 grupos/pneus (Q159) | 0005 N3 (gargalo isolado) e N4 (item real) · 0008 R4 (5 equipes/estandes) |
+| \(a<0\) → máximo | 0008 R1 (com mnemônico da carinha triste) |
+| Euler / prisma hexagonal | 0008 R2 (12 vértices, 8 faces → 18) |
+| cubo dentro de cubo (Q175) | 0008 R3 (seção do cubo → triângulo equilátero) |
+
+**O item mais informativo de todos é o 0008 R4 (moto 25 km/L):** é a Q165 com outros números. Se ela acertar esse e errar o da 0005, decorou; se acertar os dois, aprendeu o método.
+
+## Frequência dos temas no ENEM (base para priorizar)
+Ordem confirmada por levantamento externo (ver RESOURCES.md):
+1. **Proporcionalidade direta e indireta — 213 questões** ← o mais cobrado de todos
+2. Estatística — 187 · 3. Geometria plana — 110
+Por área: funções ~20%, geometria plana/espacial ~18%, probabilidade e estatística ~15%, matemática financeira ~12%. Probabilidade cai **todo ano**.
 
 ## Cadência de trabalho (definida pelo ftrajano)
 - Produzir as lições em **grupos de 4**. A cada grupo, **PARAR e coletar feedback** do desempenho real da Nicole antes de seguir.
-- **GRUPO 1 = lições 0001–0004 (COMPLETO).** → Próximo passo é o ftrajano trazer como a Nicole foi (acertos por nível em cada lição) para calibrar o Grupo 2.
-- Candidatos ao Grupo 2 (com base nos erros restantes do simulado 2021): combinatória 179, matrizes 157, sequências 136, probabilidade 142, trigonometria 156, bases numéricas 177, análise dimensional 163, comparação de áreas 171 — priorizar por frequência no ENEM; e incluir 1 lição de **revisão espaçada interleaved** misturando 0001–0004.
+- **GRUPO 1 = lições 0001–0004 (COMPLETO, feedback coletado em 04/08/2026).**
+- **GRUPO 2 = lições 0005–0008.** → Ao fim, coletar de novo o desempenho por nível.
+- Ainda não cobertos (candidatos ao Grupo 3): matrizes 157, sequências 136, trigonometria 156, bases numéricas 177, análise dimensional 163, comparação de áreas 171, matemática financeira (juros).
+
+## Lição de remediação — o que aprendi sobre o que NÃO funciona
+A Lição 0002 ensinou inversa, e mesmo assim a Nicole repetiu **o erro exato do simulado** em duas questões reais. Conclusão: repetir a mesma explicação não gera retenção. Numa remediação, usar um **modelo mental diferente** do da primeira lição (aqui: "produto constante" no lugar de "multiplica cruzado"), não só mais exercícios.
 
 ## Publicação (GitHub Pages)
 - Site publicado a partir da pasta **`docs/`** (Settings → Pages → branch `main`, pasta `/docs`).
@@ -62,4 +91,6 @@
 
 ## Pendências
 - [ ] Confirmar pesos das áreas no ENEM-USP para TO/Fono.
-- [ ] Após a Nicole fazer a Lição 0001, registrar desempenho e decidir se aprofunda porcentagem ou avança.
+- [x] ~~Após a Nicole fazer a Lição 0001, registrar desempenho~~ → feito: 0 erros, porcentagem dominada.
+- [ ] Após o Grupo 2, checar se a inversa finalmente fixou (é o teste decisivo da remediação).
+- [ ] Nas ~15 semanas restantes, reservar as últimas ~4 para simulados cronometrados completos.
