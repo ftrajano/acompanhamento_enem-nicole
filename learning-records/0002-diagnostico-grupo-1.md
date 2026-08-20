@@ -1,6 +1,6 @@
 # Diagnóstico do Grupo 1 (lições 0001–0004)
 
-**Data:** 04/08/2026. Nicole fez as quatro lições do Grupo 1. Relatados **6 erros** no total, concentrados em N3/N4.
+**Data:** 20/08/2026. Nicole fez as quatro lições do Grupo 1. Relatados **6 erros** no total, concentrados em N3/N4.
 
 ## O achado principal: proporcionalidade INVERSA
 
@@ -46,4 +46,4 @@ Isso desvia do plano "3 temas novos + 1 revisão" combinado antes de ver os dado
 
 ## Prazo revisado
 
-ENEM 2026: **1º dia 08/11**, **2º dia (Matemática) 15/11/2026** — Edital nº 64 do INEP, publicado em 22/05/2026. A partir de 04/08/2026 restam **~15 semanas**. A MISSION registrava "~5 meses a partir de junho/2026"; corrigido.
+ENEM 2026: **1º dia 08/11**, **2º dia (Matemática) 15/11/2026** — Edital nº 64 do INEP, publicado em 22/05/2026. A partir de 20/08/2026 restam **~12 semanas**. A MISSION registrava "~5 meses a partir de junho/2026"; corrigido.

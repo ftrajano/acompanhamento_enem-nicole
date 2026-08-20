@@ -75,7 +75,7 @@ Por área: funções ~20%, geometria plana/espacial ~18%, probabilidade e estat�
 
 ## Cadência de trabalho (definida pelo ftrajano)
 - Produzir as lições em **grupos de 4**. A cada grupo, **PARAR e coletar feedback** do desempenho real da Nicole antes de seguir.
-- **GRUPO 1 = lições 0001–0004 (COMPLETO, feedback coletado em 04/08/2026).**
+- **GRUPO 1 = lições 0001–0004 (COMPLETO, feedback coletado em 20/08/2026).**
 - **GRUPO 2 = lições 0005–0008.** → Ao fim, coletar de novo o desempenho por nível.
 - Ainda não cobertos (candidatos ao Grupo 3): matrizes 157, sequências 136, trigonometria 156, bases numéricas 177, análise dimensional 163, comparação de áreas 171, matemática financeira (juros).
 
@@ -93,4 +93,4 @@ A Lição 0002 ensinou inversa, e mesmo assim a Nicole repetiu **o erro exato do
 - [ ] Confirmar pesos das áreas no ENEM-USP para TO/Fono.
 - [x] ~~Após a Nicole fazer a Lição 0001, registrar desempenho~~ → feito: 0 erros, porcentagem dominada.
 - [ ] Após o Grupo 2, checar se a inversa finalmente fixou (é o teste decisivo da remediação).
-- [ ] Nas ~15 semanas restantes, reservar as últimas ~4 para simulados cronometrados completos.
+- [ ] Nas ~12 semanas restantes, reservar as últimas ~4 para simulados cronometrados completos.
