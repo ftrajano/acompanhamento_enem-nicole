@@ -20,6 +20,13 @@
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
   ```
 
+## REGRA NOVA (20/08/2026) — combater a ilusão de fluência
+O placar da lição subiu sem a prova subir (ver [learning-records/0004](learning-records/0004-ilusao-de-fluencia.md)).
+Causa: **o título da lição entrega o assunto**, que na prova é justamente o que ela precisa descobrir.
+- Toda lição nova deve terminar com um bloco **sem rótulo de tema**, interleaved com assuntos anteriores.
+- O rótulo (N1/N2/N3/tema) vale no ensino; **nunca** na prática final.
+- **Métrica de sucesso = simulado completo cronometrado**, não placar de lição.
+
 ## Padrão pedagógico das lições — ESCADA DE DIFICULDADE (aplicar em todas)
 - Quiz com **15–20 questões** (a Nicole pediu) organizadas em **4 níveis** que sobem de dificuldade:
   - **N1 Mecânica** — a operação pura / o método isolado.
@@ -47,7 +54,10 @@
   confirmadas em duas provas independentes.
 - **Alerta:** 0 erros na Lição 0001 (porcentagem) mas 5 erros de porcentagem na prova →
   fluência na lição não virou retenção em condição de prova.
-- [ ] PENDENTE: perguntar ao ftrajano se este simulado foi ANTES ou DEPOIS das lições 0001–0004.
+- **CONFIRMADO: foi DEPOIS das lições 0001–0004** → as lições não estão transferindo para a prova.
+- **12 dos 24 erros estão em temas já ensinados.** Se transferisse, seria 33/45 = 73%.
+  O ganho parado em material já visto é maior que o de qualquer tema novo.
+- → mudança de método registrada em [learning-records/0004](learning-records/0004-ilusao-de-fluencia.md).
 
 ## Diagnóstico (simulado ENEM 2021, 2º dia, Matemática)
 - Acertou 22/44 válidas (50%). Ver [learning-records/0001](learning-records/0001-diagnostico-simulado-2021.md).

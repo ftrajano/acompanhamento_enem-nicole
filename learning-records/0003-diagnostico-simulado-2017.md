@@ -82,10 +82,36 @@ Isso valida a aposta da Lição 0008 (revisão embaralhada) e diz que o Grupo 3 
 3. **Prioridade 3 — simulados cronometrados.** Restam ~12 semanas; reservar as últimas ~4.
 4. Matemática financeira (2 erros) nunca foi ensinada e é ~12% da prova — candidata a lição.
 
-## Ressalva de cronologia (PENDENTE — pedir ao ftrajano)
+## Cronologia — RESOLVIDA (20/08/2026)
 
-Não sei se este simulado foi feito **antes ou depois** das lições 0001–0004. Isso muda tudo:
-- **Antes** → é mais evidência da linha de base; as lições ainda não foram testadas em prova.
-- **Depois** → as lições não estão transferindo, e o Grupo 3 tem de mudar de método, não de tema.
+O ftrajano confirmou: este simulado foi feito **depois** das lições 0001–0004.
 
-Enquanto isso não for respondido, o Achado nº 3 fica com essa ressalva.
+Isso fecha a interpretação do Achado nº 3: **as lições não estão transferindo para condição de prova.**
+Quatro lições produziram zero ganho mensurável num simulado completo (50% → 46,7%, ou seja, estável
+dentro do ruído).
+
+### Quanto vale a lacuna de transferência
+
+Dos 24 erros, **exatamente metade (12) está em temas que as lições já cobriram**:
+
+| Tema ensinado | Questões erradas mesmo assim |
+|---|---|
+| Porcentagem / proporção (0001, 0002) | 144, 147, 158, 169, 173 |
+| Funções (0003) | 152, 161, 162, 168, 180 |
+| Geometria espacial (0004) | 142, 167 |
+
+Os outros 12 são de temas nunca ensinados (financeira, trigonometria, geometria plana/analítica,
+contagem, probabilidade, estatística, leitura de escala).
+
+**Se a transferência fosse completa nos temas já ensinados, ela iria de 21/45 para 33/45 = 73%.**
+Há 12 questões de ganho paradas em material que ela já viu. Isso é maior que qualquer ganho
+possível ensinando tema novo.
+
+### Ressalvas honestas
+
+- Provas diferentes têm dificuldades diferentes; 2017 e 2021 não são calibradas entre si. Uma
+  diferença de 3 pontos percentuais está dentro do ruído.
+- É uma medida por prova (n=1 de cada lado).
+- Não se sabe o intervalo entre as lições e este simulado, nem se foi cronometrado.
+
+Nada disso muda a direção: **não há sinal de ganho, e metade dos erros é em terreno já ensinado.**
