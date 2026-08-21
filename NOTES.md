@@ -36,6 +36,19 @@
 - Garantir acerto nas fáceis/médias antes de caçar as difíceis (a maioria das questões é de nível básico/médio).
 - Ancorar tudo na missão: chegar perto do corte ~780–790 (ENEM-USP, TO/Fono, FMRP).
 
+## Diagnóstico (simulado ENEM 2017, 2º dia, caderno azul) — 20/08/2026
+- Acertou **21/45 (46,7%)**. Em 2021 foi 22/44 (50%) → **estável, não melhorou.**
+- Ver [learning-records/0003](learning-records/0003-diagnostico-simulado-2017.md).
+- **92% dos erros caem na alternativa VIZINHA da correta** → ela calcula e erra no último passo,
+  não chuta. Intervenção deve mirar **precisão de execução e conferência**, não conteúdo novo.
+- Erros por área: geometria 5 · proporcionalidade/% 5 · funções 5 · contagem+prob 3 ·
+  financeira 2 · trigonometria 2 · estatística 1 · leitura de escala 1.
+- **As lacunas são as MESMAS de 2021** (porcentagem, funções, proporção, geometria) —
+  confirmadas em duas provas independentes.
+- **Alerta:** 0 erros na Lição 0001 (porcentagem) mas 5 erros de porcentagem na prova →
+  fluência na lição não virou retenção em condição de prova.
+- [ ] PENDENTE: perguntar ao ftrajano se este simulado foi ANTES ou DEPOIS das lições 0001–0004.
+
 ## Diagnóstico (simulado ENEM 2021, 2º dia, Matemática)
 - Acertou 22/44 válidas (50%). Ver [learning-records/0001](learning-records/0001-diagnostico-simulado-2021.md).
 - **Forte:** estatística + leitura de gráficos/tabelas; geometria métrica.
@@ -94,3 +107,6 @@ A Lição 0002 ensinou inversa, e mesmo assim a Nicole repetiu **o erro exato do
 - [x] ~~Após a Nicole fazer a Lição 0001, registrar desempenho~~ → feito: 0 erros, porcentagem dominada.
 - [ ] Após o Grupo 2, checar se a inversa finalmente fixou (é o teste decisivo da remediação).
 - [ ] Nas ~12 semanas restantes, reservar as últimas ~4 para simulados cronometrados completos.
+- [ ] **Grupo 3 (a definir):** virar a chave de conteúdo para EXECUÇÃO — lição de conferência
+      (unidade pedida, o que se pergunta, ordem de grandeza) + remediação de funções e geometria
+      + matemática financeira (nunca ensinada, ~12% da prova).
