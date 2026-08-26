@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lição 0013 — Exponencial e logaritmo</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#e2dccd; --accent:#7a1f2b; --green:#1c6b3f;
+         --red:#9b2226; --bg:#fbf9f4; --hi:#fdf3d6; --card:#ffffff; --blind:#2b4c6f; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 22px 80px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.62; }
+  .wrap{ max-width:720px; margin:0 auto; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:30px; line-height:1.2; margin:6px 0 4px; font-weight:600; }
+  .sub{ color:var(--soft); font-style:italic; margin:0 0 8px; }
+  .mission{ background:var(--hi); border-radius:8px; padding:12px 16px; font-size:14.5px; margin:18px 0 8px; }
+  .mission b{color:var(--accent)}
+  h2{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:15px; letter-spacing:.03em;
+      text-transform:uppercase; color:var(--accent); margin:34px 0 8px;
+      border-bottom:1px solid var(--line); padding-bottom:5px; }
+  p{margin:10px 0}
+  .keybox{ background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+           border-radius:0 8px 8px 0; padding:14px 18px; margin:16px 0; line-height:2; }
+  .keybox b{color:var(--accent)}
+  .big{ text-align:center; background:var(--hi); border-radius:8px; padding:14px 16px; margin:16px 0;
+        font-size:17px; line-height:2; }
+  .big b{ color:var(--accent); }
+  table{ border-collapse:collapse; width:100%; margin:12px 0; font-size:14.5px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11.5px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  a{color:var(--accent)}
+  .q{ background:var(--card); border:1px solid var(--line); border-radius:10px;
+      padding:18px 20px; margin:20px 0; }
+  .q .tag{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+           letter-spacing:.08em; text-transform:uppercase; color:var(--soft); }
+  .q .stem{ margin:6px 0 14px; }
+  .fig{ text-align:center; margin:12px 0; color:var(--accent); }
+  .fig svg{ max-width:100%; height:auto; }
+  .fig .cap{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:12px; color:var(--soft); margin-top:4px; }
+  .level{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-weight:700; letter-spacing:.04em;
+          color:var(--accent); margin:30px 0 6px; display:flex; align-items:center; gap:10px; font-size:14px; }
+  .level::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .level .lv{ background:var(--accent); color:#fff; border-radius:20px; padding:2px 11px; font-size:11px; letter-spacing:.06em; white-space:nowrap; }
+  .level.blind{ color:var(--blind); }
+  .level.blind .lv{ background:var(--blind); }
+  .ladder-intro{ font-size:14.5px; color:var(--soft); margin:4px 0 0; }
+  .opt{ display:block; width:100%; text-align:left; font-family:inherit; font-size:16px;
+        background:#fff; border:1.5px solid var(--line); border-radius:8px; padding:11px 14px;
+        margin:7px 0; cursor:pointer; transition:.12s; }
+  .opt:hover{ border-color:var(--accent); background:var(--hi); }
+  .opt:disabled{ cursor:default; opacity:.95; }
+  .opt.correct{ border-color:var(--green); background:#e9f5ee; color:var(--green); font-weight:600; }
+  .opt.wrong{ border-color:var(--red); background:#fbeaea; color:var(--red); }
+  .fb{ display:none; margin-top:12px; padding:12px 14px; border-radius:8px; font-size:14.5px;
+       background:#f4f1e8; border:1px dashed var(--line); line-height:1.8; }
+  .fb.show{ display:block; }
+  .fb b{color:var(--accent)}
+  .score{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-align:center; font-size:15px;
+          color:var(--soft); margin:26px 0; }
+  .foot{ margin-top:40px; padding-top:14px; border-top:1px solid var(--line); font-size:13.5px; color:var(--soft); }
+  .ask{ background:#eef4ef; border-radius:8px; padding:12px 16px; font-size:14.5px; color:var(--ink); }
+  mjx-container{ color:inherit; }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+</style>
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Lição 0013 · Matemática ENEM · Exponencial e log</div>
+  <h1>Exponencial &amp; logaritmo</h1>
+  <p class="sub">O que dobra, o que cai pela metade — e a pergunta “que expoente?”.</p>
+
+  <div class="mission">
+    <b>Por que esta lição?</b> Corrigi cinco simulados seus e este tema apareceu em <b>três de
+    quatro</b> — carbono 14 (2020), decibel (2023) e o resfriamento da caneca (2024). Você errou
+    os três. Mas repare: <b>nunca ensinamos isso aqui</b>. Não é lacuna sua, é lacuna do material,
+    e é a única grande que ainda estava aberta. A boa notícia é que o ENEM cobra sempre os mesmos
+    dois padrões, e nenhum deles exige calculadora.
+  </div>
+
+  <h2>A ideia central (3 minutos)</h2>
+
+  <p>Existem dois jeitos de uma coisa crescer. Guarde a diferença, porque ela decide tudo:</p>
+
+  <table>
+    <tr><th>Tipo</th><th>O que acontece a cada período</th><th>Exemplo</th></tr>
+    <tr><td><b>Linear</b></td><td><b>soma</b> sempre a mesma quantidade</td><td>salário sobe R$ 100 por ano</td></tr>
+    <tr><td><b>Exponencial</b></td><td><b>multiplica</b> sempre pelo mesmo fator</td><td>bactérias dobram por hora</td></tr>
+  </table>
+
+  <div class="big">
+    \[ f(t) = f_0 \cdot b^{\,t} \]
+  </div>
+
+  <p>O \(f_0\) é o valor inicial e o \(b\) é o <b>fator</b>. Se \(b > 1\), cresce (dobra, triplica);
+  se \(0 < b < 1\), decai (cai pela metade, perde 10%).</p>
+
+  <h2>Meia-vida: o padrão nº 1 do ENEM</h2>
+
+  <p>Quando algo cai <b>pela metade</b> a cada intervalo fixo, esse intervalo se chama <b>meia-vida</b>.
+  E aí não precisa de fórmula nenhuma — basta contar quantas metades passaram:</p>
+
+  <div class="keybox">
+    1 meia-vida → sobra \(\frac{1}{2}\) &nbsp;·&nbsp; 2 meias-vidas → sobra \(\frac{1}{4}\) &nbsp;·&nbsp;
+    3 → \(\frac{1}{8}\) &nbsp;·&nbsp; 4 → \(\frac{1}{16}\)
+  </div>
+
+  <p>Então, se um fóssil tem \(\frac{1}{8}\) do carbono original e a meia-vida é 5 730 anos:
+  \(\frac{1}{8}\) são <b>três</b> metades, logo \(3 \times 5\,730 = 17\,190\) anos. Fim.</p>
+
+  <div class="big">
+    A pergunta é sempre: <b>quantas vezes cortou pela metade?</b>
+  </div>
+
+  <h2>Logaritmo é uma pergunta, não um monstro</h2>
+
+  <p>\(\log_{10} 1000\) quer dizer: <b>“10 elevado a quanto dá 1000?”</b> Resposta: 3. Só isso.</p>
+
+  <div class="keybox">
+    \(\log 10 = 1\) &nbsp;·&nbsp; \(\log 100 = 2\) &nbsp;·&nbsp; \(\log 1\,000 = 3\) &nbsp;·&nbsp;
+    \(\log 1 = 0\) &nbsp;·&nbsp; \(\log 10^n = n\)<br>
+    <span style="font-size:14px">(quando não aparece a base, é 10)</span>
+  </div>
+
+  <p>Três propriedades resolvem quase tudo no ENEM:</p>
+
+  <table>
+    <tr><th>Propriedade</th><th>Em palavras</th></tr>
+    <tr><td>\(\log(a \cdot b) = \log a + \log b\)</td><td>produto vira <b>soma</b></td></tr>
+    <tr><td>\(\log\frac{a}{b} = \log a - \log b\)</td><td>divisão vira <b>subtração</b></td></tr>
+    <tr><td>\(\log a^n = n \cdot \log a\)</td><td>expoente <b>desce</b> multiplicando</td></tr>
+  </table>
+
+  <p>É por isso que o log aparece em <b>escalas</b> (decibel, Richter, pH): ele transforma números
+  gigantes em números pequenos e comparáveis.</p>
+
+  <h2>A assíntota: para onde a coisa vai parar</h2>
+
+  <p>Muita questão do ENEM tem a forma \(f(t) = a + c \cdot b^{\,t}\) com \(0<b<1\). Conforme \(t\)
+  cresce, a parte \(b^t\) vai encolhendo até quase zero — e a função <b>estaciona no \(a\)</b>.</p>
+
+  <div class="keybox">
+    <b>O \(a\) é o valor final</b> (a temperatura ambiente, o piso). <b>\(a + c\) é o valor inicial</b>
+    (em \(t = 0\), porque \(b^0 = 1\)).
+  </div>
+
+  <p>Ler esses dois números direto do gráfico costuma resolver metade da questão.</p>
+
+  <p>Tudo isso está no <a href="../reference/exponencial-log.html">cartão de Exponencial e Logaritmo</a>.</p>
+
+  <h2>Pratique — a escada de dificuldade</h2>
+  <p class="ladder-intro">20 questões. As últimas quatro vêm <b>sem dizer o assunto</b>. Faça na ordem.</p>
+
+  <div class="level"><span class="lv">Nível 1</span> Potências e a pergunta do log</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · potência</div>
+    <div class="stem">O valor de \(2^5\) é:</div>
+    <button class="opt">32</button>
+    <button class="opt">10</button>
+    <button class="opt">25</button>
+    <button class="opt">16</button>
+    <div class="fb"><b>32.</b> \(2 \times 2 \times 2 \times 2 \times 2\). Vale ter na ponta da língua: \(2^1\) a \(2^{10}\) = 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024.</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N1 · linear × exponencial</div>
+    <div class="stem">Uma grandeza é <b>exponencial</b> quando, a cada período, ela:</div>
+    <button class="opt">soma sempre o mesmo valor.</button>
+    <button class="opt">multiplica pelo mesmo fator.</button>
+    <button class="opt">cresce sem regra fixa.</button>
+    <button class="opt">mantém o valor constante.</button>
+    <div class="fb"><b>Multiplica pelo mesmo fator.</b> Somar sempre o mesmo valor é <b>linear</b> (reta). Essa distinção é o que separa as duas famílias de questão.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · log</div>
+    <div class="stem">O valor de \(\log 1\,000\) (base 10) é:</div>
+    <button class="opt">3</button>
+    <button class="opt">100</button>
+    <button class="opt">10</button>
+    <button class="opt">1 000</button>
+    <div class="fb"><b>3.</b> A pergunta é "10 elevado a quanto dá 1 000?" → \(10^3 = 1\,000\). Log <b>devolve o expoente</b>.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · log de 1</div>
+    <div class="stem">O valor de \(\log 1\) é:</div>
+    <button class="opt">0</button>
+    <button class="opt">1</button>
+    <button class="opt">10</button>
+    <button class="opt">não existe.</button>
+    <div class="fb"><b>0.</b> "10 elevado a quanto dá 1?" → \(10^0 = 1\). Qualquer número elevado a zero dá 1.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · meia-vida</div>
+    <div class="stem">Após <b>uma</b> meia-vida, a quantidade restante de uma substância é:</div>
+    <button class="opt">metade da inicial.</button>
+    <button class="opt">um quarto da inicial.</button>
+    <button class="opt">o dobro da inicial.</button>
+    <button class="opt">zero.</button>
+    <div class="fb"><b>Metade.</b> É a definição. Duas meias-vidas → um quarto; três → um oitavo. Nunca chega a zero — sempre sobra metade do que havia.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 2</span> Aplicação — um passo</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · crescimento</div>
+    <div class="stem">Uma cultura tem 100 bactérias e a população <b>dobra</b> a cada hora. Após 3 horas, haverá:</div>
+    <button class="opt">800 bactérias</button>
+    <button class="opt">600 bactérias</button>
+    <button class="opt">300 bactérias</button>
+    <button class="opt">400 bactérias</button>
+    <div class="fb"><b>800.</b> \(100 \to 200 \to 400 \to 800\), ou \(100 \times 2^3 = 800\).<br>
+    O distrator 600 é quem somou 100 três vezes — tratou como <b>linear</b>. Dobrar é multiplicar, não somar.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · meia-vida</div>
+    <div class="stem">Uma substância tem meia-vida de 10 anos. Partindo de 80 g, após <b>20 anos</b> restarão:</div>
+    <button class="opt">20 g</button>
+    <button class="opt">40 g</button>
+    <button class="opt">60 g</button>
+    <button class="opt">10 g</button>
+    <div class="fb"><b>20 g.</b> Vinte anos são <b>duas</b> meias-vidas: \(80 \to 40 \to 20\). Ou \(80 \times \frac{1}{4}\).</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · contando metades</div>
+    <div class="stem">Um material cai pela metade a cada 5 anos. Após <b>15 anos</b>, a fração restante é:</div>
+    <button class="opt">\(\frac{1}{8}\)</button>
+    <button class="opt">\(\frac{1}{3}\)</button>
+    <button class="opt">\(\frac{1}{15}\)</button>
+    <button class="opt">\(\frac{1}{6}\)</button>
+    <div class="fb"><b>\(\frac{1}{8}\).</b> \(15 \div 5 = 3\) meias-vidas → \(\frac{1}{2} \to \frac{1}{4} \to \frac{1}{8}\).<br>
+    <b>Este é o cálculo mais cobrado do tema.</b> Sempre: quantos períodos couberam? Corte pela metade essa quantidade de vezes.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · log de potência</div>
+    <div class="stem">O valor de \(\log 10^7\) é:</div>
+    <button class="opt">7</button>
+    <button class="opt">70</button>
+    <button class="opt">10</button>
+    <button class="opt">0,7</button>
+    <div class="fb"><b>7.</b> \(\log 10^n = n\). O log e a potência de 10 se cancelam — é o caso que mais aparece em escala de decibel.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 3</span> Duas etapas</div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N3 · do resto para o tempo</div>
+    <div class="stem">A meia-vida de um isótopo é 30 anos. Se restou <b>um quarto</b> da quantidade inicial, o tempo decorrido foi:</div>
+    <button class="opt">30 anos</button>
+    <button class="opt">60 anos</button>
+    <button class="opt">90 anos</button>
+    <button class="opt">120 anos</button>
+    <div class="fb"><b>60 anos.</b> Um quarto são <b>duas</b> metades → \(2 \times 30 = 60\).<br>
+    Repare que aqui a questão vai <b>ao contrário</b>: dá a fração e pede o tempo. O caminho é o mesmo — conte quantas metades a fração representa.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · propriedade do produto</div>
+    <div class="stem">Sabendo que \(\log 2 \approx 0{,}30\) e \(\log 5 \approx 0{,}70\), o valor de \(\log 10\) é:</div>
+    <button class="opt">1,00</button>
+    <button class="opt">0,21</button>
+    <button class="opt">0,40</button>
+    <button class="opt">2,10</button>
+    <div class="fb"><b>1,00.</b> Como \(10 = 2 \times 5\), então \(\log 10 = \log 2 + \log 5 = 0{,}30 + 0{,}70 = 1\).<br>
+    <b>Produto vira soma.</b> O ENEM dá esses valores no enunciado justamente para você combiná-los assim — nunca para multiplicar.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · propriedade do expoente</div>
+    <div class="stem">Sabendo que \(\log 2 \approx 0{,}30\), o valor de \(\log 8\) é:</div>
+    <button class="opt">0,90</button>
+    <button class="opt">2,40</button>
+    <button class="opt">0,30</button>
+    <button class="opt">1,20</button>
+    <div class="fb"><b>0,90.</b> \(8 = 2^3\), então \(\log 8 = 3 \times \log 2 = 3 \times 0{,}30 = 0{,}90\).<br>
+    <b>O expoente desce multiplicando.</b> Reescrever o número como potência é sempre o primeiro passo.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · a assíntota</div>
+    <div class="stem">Um líquido esfria segundo \(T(t) = 20 + 80 \cdot (0{,}5)^t\), com \(T\) em °C. A temperatura <b>inicial</b> e a temperatura <b>final</b> (após muito tempo) são:</div>
+    <button class="opt">100 °C e 20 °C</button>
+    <button class="opt">80 °C e 0 °C</button>
+    <button class="opt">20 °C e 100 °C</button>
+    <button class="opt">100 °C e 0 °C</button>
+    <div class="fb"><b>100 °C e 20 °C.</b><br>
+    <b>Inicial:</b> em \(t=0\), \((0{,}5)^0 = 1\), então \(T = 20 + 80 = 100\).<br>
+    <b>Final:</b> conforme \(t\) cresce, \((0{,}5)^t\) encolhe até quase zero, e sobra \(T = 20\) — a temperatura ambiente.<br>
+    Ou seja: <b>o número solto é o valor final</b>, e <b>a soma dos dois é o inicial</b>. Guarde, porque é exatamente a questão do ENEM no Nível 4.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 4</span> Nível ENEM — as três que você errou</div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N4 · ENEM 2020 (Q150) · você errou</div>
+    <div class="stem">A meia-vida do carbono 14 é de <b>5 730 anos</b>, e usa-se \(Q_t = Q_0 \cdot 2^{-t/5730}\). Um fóssil apresenta uma quantidade de carbono 14 igual a <b>um oitavo</b> da que tinha quando vivo. A idade aproximada desse fóssil é:</div>
+    <button class="opt">5 730 anos</button>
+    <button class="opt">11 460 anos</button>
+    <button class="opt">17 190 anos</button>
+    <button class="opt">45 840 anos</button>
+    <div class="fb"><b>17 190 anos.</b> Ignore a fórmula e conte metades: \(\frac{1}{8}\) é \(\frac{1}{2}\) três vezes → <b>3 meias-vidas</b> → \(3 \times 5\,730 = 17\,190\).<br>
+    Se quiser pela fórmula, dá no mesmo: \(2^{-t/5730} = \frac{1}{8} = 2^{-3} \Rightarrow \frac{t}{5730} = 3\).<br>
+    O distrator <b>45 840</b> é \(8 \times 5\,730\) — quem multiplicou pelo denominador da fração em vez de contar as metades. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N4 · ENEM 2023 (Q152) · você errou</div>
+    <div class="stem">O nível de intensidade sonora é \(N = 10 \cdot \log I - 10 \cdot \log I_0\), com \(I_0 = 10^{-12}\) W/m². Uma máquina produz som de intensidade \(I = 10^{-7}\) W/m². O valor de \(N\), em decibel, é:</div>
+    <button class="opt">40 dB</button>
+    <button class="opt">50 dB</button>
+    <button class="opt">60 dB</button>
+    <button class="opt">70 dB</button>
+    <div class="fb"><b>50 dB.</b> Junte os dois logs numa divisão (subtração vira divisão):
+    \[ N = 10 \cdot \log\frac{I}{I_0} = 10 \cdot \log\frac{10^{-7}}{10^{-12}} \]
+    Na divisão de potências de mesma base, <b>subtraem-se os expoentes</b>: \(\frac{10^{-7}}{10^{-12}} = 10^{-7-(-12)} = 10^{5}\).<br>
+    Então \(N = 10 \cdot \log 10^5 = 10 \times 5 = 50\) dB.<br>
+    A questão parece difícil pelo formato, mas é só isto: <b>divida as potências, some os expoentes com o sinal certo, e o log devolve o expoente</b>. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N4 · ENEM 2024 (Q148) · você errou</div>
+    <div class="stem">Uma caneca com <b>água fervendo (100 °C)</b> é retirada do micro-ondas. A temperatura é modelada por \(T(t) = a + 80 \cdot b^{\,t}\), com \(t\) em minutos. O gráfico mostra que, aos <b>10 minutos</b>, a temperatura é de <b>60 °C</b>. Os valores de \(a\) e \(b\) são:</div>
+    <button class="opt">\(a = 20\) e \(b = (0{,}5)^{1/10}\)</button>
+    <button class="opt">\(a = 100\) e \(b = 0{,}5\)</button>
+    <button class="opt">\(a = 20\) e \(b = 40\)</button>
+    <button class="opt">\(a = 80\) e \(b = (0{,}5)^{10}\)</button>
+    <div class="fb"><b>\(a = 20\) e \(b = (0{,}5)^{1/10}\).</b> Duas etapas.<br>
+    <b>1) Ache o \(a\) pelo instante inicial.</b> Em \(t = 0\), \(b^0 = 1\), então \(T(0) = a + 80\). Como a água está fervendo, \(T(0) = 100\) → \(a + 80 = 100\) → \(\mathbf{a = 20}\). (Faz sentido: 20 °C é a temperatura ambiente, onde a caneca vai parar.)<br>
+    <b>2) Ache o \(b\) pelo ponto do gráfico.</b> Em \(t = 10\), \(T = 60\):
+    \[ 20 + 80 \cdot b^{10} = 60 \;\Rightarrow\; b^{10} = \frac{40}{80} = 0{,}5 \;\Rightarrow\; b = (0{,}5)^{1/10} \]
+    Para "desfazer" um expoente 10, eleva-se a \(\frac{1}{10}\).<br>
+    <b>Por que \(a = 100\) engana?</b> Porque 100 é a temperatura inicial — mas na fórmula o \(a\) é o valor <b>final</b>, e o inicial é \(a + 80\). 🎯</div>
+  </div>
+
+  <div class="level blind"><span class="lv">Sem aviso</span> Misturadas — descubra você o assunto</div>
+  <p class="ladder-intro">Sem dizer o tema. Pergunte-se primeiro <b>“do que isto está falando?”</b></p>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Uma maquete na escala 1 : 50 tem volume de 8 cm³. O volume real do objeto é:</div>
+    <button class="opt">1 000 000 cm³</button>
+    <button class="opt">400 cm³</button>
+    <button class="opt">20 000 cm³</button>
+    <button class="opt">64 000 cm³</button>
+    <div class="fb"><b>1 000 000 cm³.</b> Era <a href="0010-volumes.html">volume e escala</a>: em volume o fator vai ao <b>cubo</b> → \(8 \times 50^3 = 8 \times 125\,000 = 1\,000\,000\).</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Um carro faz 14 km/L. Para percorrer 350 km, o consumo de combustível será de:</div>
+    <button class="opt">25 litros</button>
+    <button class="opt">4 900 litros</button>
+    <button class="opt">0,04 litro</button>
+    <button class="opt">36 litros</button>
+    <div class="fb"><b>25 L.</b> Era <a href="0005-proporcionalidade-inversa.html">taxa</a>: \(350 \div 14 = 25\). "km por litro" → para achar litros, <b>divida</b> a distância pelo rendimento.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Uma escada de 6 m apoiada na parede faz 30° com o solo. A altura que ela atinge é:</div>
+    <button class="opt">3 m</button>
+    <button class="opt">5,1 m</button>
+    <button class="opt">12 m</button>
+    <button class="opt">6 m</button>
+    <div class="fb"><b>3 m.</b> Era <a href="0011-trigonometria.html">trigonometria</a>: altura é o cateto oposto, escada é a hipotenusa → \(6 \times \operatorname{sen} 30° = 6 \times 0{,}5 = 3\).</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Numa sala com 12 pessoas, quantos apertos de mão ocorrem se cada uma cumprimenta todas as outras exatamente uma vez?</div>
+    <button class="opt">66 apertos</button>
+    <button class="opt">132 apertos</button>
+    <button class="opt">144 apertos</button>
+    <button class="opt">24 apertos</button>
+    <div class="fb"><b>66.</b> Era <a href="0007-contagem.html">contagem</a>: um aperto envolve uma <b>dupla</b>, e a ordem não importa → \(C_{12,2} = \frac{12 \times 11}{2} = 66\). O 132 é \(12 \times 11\), contando cada aperto duas vezes.</div>
+  </div>
+
+  <div class="score" id="score">Responda as questões acima ☝️</div>
+
+  <h2>Para fixar (faça depois)</h2>
+  <p>• <b>Fonte primária recomendada:</b>
+     <a href="https://pt.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:logs" target="_blank">Khan Academy — Logaritmos</a> (gratuito, em português).</p>
+  <p>• <b>Os dois reflexos desta lição:</b> em decaimento, pergunte <b>“quantas vezes cortou pela
+     metade?”</b>; em log, pergunte <b>“10 elevado a quanto?”</b>. Quase nenhuma questão do ENEM
+     precisa de mais que isso.</p>
+  <p>• <b>Daqui a 2 dias</b>, refaça o Nível 4 e o bloco sem aviso, de memória.</p>
+
+  <div class="foot">
+    <p class="ask">👨‍🏫 <b>Eu sou seu professor aqui.</b> Este tema tem fama de difícil e não é —
+    se alguma das três do Nível 4 ainda parecer impossível, me chame que a gente refaz devagar.</p>
+    <p>Workspace de estudo · Missão: Matemática ENEM 2026 → TO/Fono USP Ribeirão Preto ·
+    Referência: <a href="../reference/exponencial-log.html">Cartão de Exponencial e Logaritmo</a> ·
+    Anterior: <a href="0012-funcoes-trigonometricas.html">Lição 0012 — Funções seno e cosseno</a></p>
+  </div>
+
+</div>
+<script>
+  let answered = 0, hits = 0;
+  const total = document.querySelectorAll('.q').length;
+  document.querySelectorAll('.q').forEach(function(q){
+    const correct = parseInt(q.dataset.correct, 10);
+    const opts = q.querySelectorAll('.opt');
+    const fb = q.querySelector('.fb');
+    opts.forEach(function(btn, i){
+      btn.addEventListener('click', function(){
+        opts.forEach(function(b){ b.disabled = true; });
+        if(i === correct){ btn.classList.add('correct'); hits++; }
+        else { btn.classList.add('wrong'); opts[correct].classList.add('correct'); }
+        fb.classList.add('show');
+        answered++;
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    const el = document.getElementById('score');
+    if(answered < total){ el.textContent = answered + ' de ' + total + ' respondidas — continue 💪'; return; }
+    let msg = 'Você acertou ' + hits + ' de ' + total + '. ';
+    const pct = hits / total;
+    if(pct === 1) msg += 'Escada inteira, incluindo o bloco sem aviso! 🎯';
+    else if(pct >= 0.75) msg += 'Muito bom. Volte no cartão nos pontos que escaparam.';
+    else if(pct >= 0.5) msg += 'Está vindo. Releia a ideia central e refaça amanhã.';
+    else msg += 'Sem drama — me chame que a gente refaz juntos, passo a passo.';
+    el.textContent = msg;
+  }
+</script>
+</body>
+</html>

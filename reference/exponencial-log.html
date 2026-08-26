@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cartão de referência — Exponencial e Logaritmo (ENEM)</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#dcd6c8; --accent:#7a1f2b; --bg:#fbf9f4; --hi:#fdf3d6; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 24px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.7; }
+  .card{ max-width:760px; margin:0 auto; }
+  header{ border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:24px; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:27px; margin:6px 0 0; font-weight:600; }
+  h2{ font-size:16px; font-family:-apple-system,Helvetica,Arial,sans-serif; letter-spacing:.02em;
+      margin:30px 0 8px; color:var(--accent); border-bottom:1px solid var(--line); padding-bottom:4px; }
+  p{margin:8px 0}
+  .lead{ color:var(--soft); font-style:italic; margin-top:6px; }
+  table{ border-collapse:collapse; width:100%; margin:10px 0; font-size:15px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:12px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  .rule{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:2; }
+  .rule b{ color:var(--accent); }
+  .flag{ background:#fdf0f0; border:1px solid #e6c9c9; border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:1.9; font-size:14.5px; }
+  .flag b{ color:var(--accent); }
+  .fig{ text-align:center; margin:12px 0; color:var(--accent); }
+  ul{margin:8px 0 8px 0; padding-left:22px} li{margin:5px 0}
+  .foot{ margin-top:34px; padding-top:12px; border-top:1px solid var(--line);
+         font-size:13px; color:var(--soft); }
+  a{color:var(--accent)}
+  mjx-container{ color:var(--accent); }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+  @media print{ body{background:#fff;padding:0} .card{max-width:100%} h2{break-after:avoid} .flag{break-inside:avoid} }
+</style>
+<!-- MathJax: delimitadores só \( \) e \[ \] — NUNCA $...$, para não conflitar com "R$". -->
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+
+<div class="card">
+  <header>
+    <div class="kicker">Cartão de referência · Matemática ENEM</div>
+    <h1>Exponencial &amp; Logaritmo</h1>
+    <p class="lead">Quantas vezes cortou pela metade? Dez elevado a quanto?</p>
+  </header>
+  <h2>1. Linear × exponencial</h2>
+  <table>
+    <tr><th>Tipo</th><th>A cada período</th><th>Forma</th></tr>
+    <tr><td><b>Linear</b></td><td><b>soma</b> o mesmo valor</td><td>\(f(t) = f_0 + at\)</td></tr>
+    <tr><td><b>Exponencial</b></td><td><b>multiplica</b> pelo mesmo fator</td><td>\(f(t) = f_0 \cdot b^{\,t}\)</td></tr>
+  </table>
+  <p>\(b>1\) → cresce · \(0<b<1\) → decai. O \(f_0\) é o valor em \(t=0\) (porque \(b^0 = 1\)).</p>
+
+  <h2>2. Meia-vida — o padrão nº 1</h2>
+  <div class="rule">
+    <b>Não use fórmula. Conte metades.</b><br>
+    1 meia-vida → \(\frac{1}{2}\) · 2 → \(\frac{1}{4}\) · 3 → \(\frac{1}{8}\) · 4 → \(\frac{1}{16}\) · \(n\) → \(\frac{1}{2^n}\)
+  </div>
+  <p><i>Do tempo para a fração:</i> quantos períodos couberam? Corte pela metade essa quantidade de vezes.<br>
+  <i>Da fração para o tempo:</i> quantas metades a fração representa? Multiplique pela meia-vida.</p>
+  <p><b>Modelo (C14, ENEM 2020):</b> meia-vida 5 730 anos, restou \(\frac{1}{8}\) →
+  3 metades → \(3 \times 5\,730 = 17\,190\) anos.</p>
+  <div class="flag">
+    <b>⚑ Erro clássico:</b> multiplicar pelo <b>denominador</b> da fração (\(8 \times 5\,730\))
+    em vez de contar as metades (3).
+  </div>
+
+  <h2>3. Logaritmo é uma pergunta</h2>
+  <p>\(\log_{10} N\) pergunta: <b>“10 elevado a quanto dá \(N\)?”</b> (sem base escrita = base 10)</p>
+  <table>
+    <tr><th>\(\log 1\)</th><th>\(\log 10\)</th><th>\(\log 100\)</th><th>\(\log 1000\)</th><th>\(\log 10^n\)</th></tr>
+    <tr><td>0</td><td>1</td><td>2</td><td>3</td><td><b>\(n\)</b></td></tr>
+  </table>
+  <p>Valores que o ENEM costuma fornecer: \(\log 2 \approx 0{,}30\) · \(\log 3 \approx 0{,}48\) ·
+  \(\log 5 \approx 0{,}70\) · \(\log 7 \approx 0{,}85\).</p>
+
+  <h2>4. As três propriedades</h2>
+  <table>
+    <tr><th>Propriedade</th><th>Em palavras</th><th>Exemplo</th></tr>
+    <tr><td>\(\log(ab) = \log a + \log b\)</td><td>produto vira soma</td><td>\(\log 10 = \log 2 + \log 5\)</td></tr>
+    <tr><td>\(\log\frac{a}{b} = \log a - \log b\)</td><td>divisão vira subtração</td><td>\(\log 5 = \log 10 - \log 2\)</td></tr>
+    <tr><td>\(\log a^n = n\log a\)</td><td>expoente desce</td><td>\(\log 8 = 3\log 2 = 0{,}90\)</td></tr>
+  </table>
+  <div class="rule">
+    Quando o enunciado <b>dá</b> valores de log, é para você <b>combiná-los</b> com estas
+    propriedades — nunca para multiplicar entre si.
+  </div>
+
+  <h2>5. Potências de 10 na divisão</h2>
+  <p>\(\frac{10^{a}}{10^{b}} = 10^{a-b}\) — subtraia os expoentes, <b>com o sinal</b>.</p>
+  <p><b>Modelo (decibel, ENEM 2023):</b> \(N = 10\log\frac{I}{I_0}\), com \(I = 10^{-7}\) e \(I_0 = 10^{-12}\):<br>
+  \(\frac{10^{-7}}{10^{-12}} = 10^{-7-(-12)} = 10^{5}\) → \(N = 10 \times 5 = 50\) dB.</p>
+  <div class="flag">
+    <b>⚑ Cuidado com o sinal negativo</b> no expoente de baixo: \(-7 - (-12) = +5\), não \(-19\).
+  </div>
+
+  <h2>6. Assíntota: \(f(t) = a + c\,b^{\,t}\) com \(0<b<1\)</h2>
+  <div class="rule">
+    <b>\(a\)</b> = valor <b>final</b> (para onde estaciona; o "piso" do gráfico)<br>
+    <b>\(a + c\)</b> = valor <b>inicial</b> (em \(t = 0\))
+  </div>
+  <p><b>Modelo (resfriamento, ENEM 2024):</b> \(T(t) = a + 80b^{\,t}\), água fervendo.<br>
+  Em \(t=0\): \(a + 80 = 100 \Rightarrow a = 20\) (temperatura ambiente).<br>
+  Se em \(t=10\) tem-se \(T=60\): \(80b^{10} = 40 \Rightarrow b^{10} = 0{,}5 \Rightarrow b = (0{,}5)^{1/10}\).</p>
+  <div class="flag">
+    <b>⚑ O \(a\) NÃO é a temperatura inicial.</b> É a final. A inicial é \(a + c\).
+  </div>
+  <p>Para desfazer um expoente \(n\), eleve a \(\frac{1}{n}\).</p>
+
+  <h2>7. Onde isso cai no ENEM</h2>
+  <table>
+    <tr><th>Contexto</th><th>Modelo</th></tr>
+    <tr><td>Datação por carbono 14</td><td>meia-vida</td></tr>
+    <tr><td>Decibel (som)</td><td>\(10\log\frac{I}{I_0}\)</td></tr>
+    <tr><td>Escala Richter, pH</td><td>escala logarítmica</td></tr>
+    <tr><td>Resfriamento / aquecimento</td><td>\(a + c\,b^{\,t}\)</td></tr>
+    <tr><td>Juros compostos, população</td><td>\(f_0 \cdot b^{\,t}\) com \(b>1\)</td></tr>
+    <tr><td>Depreciação, remédio no sangue</td><td>\(f_0 \cdot b^{\,t}\) com \(b<1\)</td></tr>
+  </table>
+
+  <h2>8. Roteiro na hora da prova</h2>
+  <div class="rule">
+    <b>1)</b> É <b>soma</b> fixa (linear) ou <b>multiplicação</b> fixa (exponencial)?<br>
+    <b>2)</b> Se for decaimento pela metade: <b>quantas metades?</b><br>
+    <b>3)</b> Se tiver log: reescreva o número como <b>potência de 10</b> e o log devolve o expoente.<br>
+    <b>4)</b> Se a fórmula for \(a + c\,b^t\): o \(a\) é o <b>final</b>, o \(a+c\) é o <b>inicial</b>.
+  </div>
+
+  <div class="foot">
+    Workspace de estudo da Nicole · Missão: Matemática ENEM 2026 → TO/Fono USP-RP.<br>
+    Usado na <a href="../lessons/0013-exponencial-log.html">Lição 0013</a>.<br>Fonte: <a href="https://pt.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:logs">Khan Academy — Logaritmos</a>.
+  </div>
+</div>
+</body>
+</html>
