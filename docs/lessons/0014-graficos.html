@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lição 0014 — Leitura e interpretação de gráficos</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#e2dccd; --accent:#7a1f2b; --green:#1c6b3f;
+         --red:#9b2226; --bg:#fbf9f4; --hi:#fdf3d6; --card:#ffffff; --blind:#2b4c6f; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 22px 80px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.62; }
+  .wrap{ max-width:720px; margin:0 auto; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:30px; line-height:1.2; margin:6px 0 4px; font-weight:600; }
+  .sub{ color:var(--soft); font-style:italic; margin:0 0 8px; }
+  .mission{ background:var(--hi); border-radius:8px; padding:12px 16px; font-size:14.5px; margin:18px 0 8px; }
+  .mission b{color:var(--accent)}
+  h2{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:15px; letter-spacing:.03em;
+      text-transform:uppercase; color:var(--accent); margin:34px 0 8px;
+      border-bottom:1px solid var(--line); padding-bottom:5px; }
+  p{margin:10px 0}
+  .keybox{ background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+           border-radius:0 8px 8px 0; padding:14px 18px; margin:16px 0; line-height:2; }
+  .keybox b{color:var(--accent)}
+  .big{ text-align:center; background:var(--hi); border-radius:8px; padding:14px 16px; margin:16px 0;
+        font-size:17px; line-height:2; }
+  .big b{ color:var(--accent); }
+  table{ border-collapse:collapse; width:100%; margin:12px 0; font-size:14.5px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11.5px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  a{color:var(--accent)}
+  .q{ background:var(--card); border:1px solid var(--line); border-radius:10px;
+      padding:18px 20px; margin:20px 0; }
+  .q .tag{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+           letter-spacing:.08em; text-transform:uppercase; color:var(--soft); }
+  .q .stem{ margin:6px 0 14px; }
+  .fig{ text-align:center; margin:12px 0; color:var(--accent); }
+  .fig svg{ max-width:100%; height:auto; }
+  .fig .cap{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:12px; color:var(--soft); margin-top:4px; }
+  .level{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-weight:700; letter-spacing:.04em;
+          color:var(--accent); margin:30px 0 6px; display:flex; align-items:center; gap:10px; font-size:14px; }
+  .level::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .level .lv{ background:var(--accent); color:#fff; border-radius:20px; padding:2px 11px; font-size:11px; letter-spacing:.06em; white-space:nowrap; }
+  .level.blind{ color:var(--blind); }
+  .level.blind .lv{ background:var(--blind); }
+  .ladder-intro{ font-size:14.5px; color:var(--soft); margin:4px 0 0; }
+  .opt{ display:block; width:100%; text-align:left; font-family:inherit; font-size:16px;
+        background:#fff; border:1.5px solid var(--line); border-radius:8px; padding:11px 14px;
+        margin:7px 0; cursor:pointer; transition:.12s; }
+  .opt:hover{ border-color:var(--accent); background:var(--hi); }
+  .opt:disabled{ cursor:default; opacity:.95; }
+  .opt.correct{ border-color:var(--green); background:#e9f5ee; color:var(--green); font-weight:600; }
+  .opt.wrong{ border-color:var(--red); background:#fbeaea; color:var(--red); }
+  .fb{ display:none; margin-top:12px; padding:12px 14px; border-radius:8px; font-size:14.5px;
+       background:#f4f1e8; border:1px dashed var(--line); line-height:1.8; }
+  .fb.show{ display:block; }
+  .fb b{color:var(--accent)}
+  .score{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-align:center; font-size:15px;
+          color:var(--soft); margin:26px 0; }
+  .foot{ margin-top:40px; padding-top:14px; border-top:1px solid var(--line); font-size:13.5px; color:var(--soft); }
+  .ask{ background:#eef4ef; border-radius:8px; padding:12px 16px; font-size:14.5px; color:var(--ink); }
+  mjx-container{ color:inherit; }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+</style>
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Lição 0014 · Matemática ENEM · Gráficos</div>
+  <h1>Leitura &amp; interpretação de gráficos</h1>
+  <p class="sub">O gráfico conta uma história. Aprenda a ouvir.</p>
+
+  <div class="mission">
+    <b>Por que esta lição?</b> Corrigi cinco simulados seus e gráficos apareceram nos <b>quatro</b>
+    que consegui mapear — 10 erros no total. A <a href="0003-funcoes-graficos.html">Lição 0003</a>
+    ensinou a diferença entre reta e parábola, mas os seus erros são de outro tipo: gráfico de
+    enchimento de recipiente, receita × custo, reta de tendência, trechos com inclinações diferentes.
+    É <b>leitura</b>, não álgebra. E é das habilidades mais rentáveis do ENEM, porque aparece em
+    todas as áreas da prova.
+  </div>
+
+  <h2>A ideia central (2 minutos)</h2>
+
+  <p>Todo gráfico responde a uma pergunta: <b>“quando isto muda, o que acontece com aquilo?”</b>
+  Antes de qualquer conta, faça três leituras nesta ordem:</p>
+
+  <div class="big">
+    <b>1.</b> O que está em cada <b>eixo</b>? Em que <b>unidade</b>?<br>
+    <b>2.</b> A curva <b>sobe, desce ou fica parada</b>?<br>
+    <b>3.</b> Ela muda de <b>inclinação</b> em algum ponto? Por quê?
+  </div>
+
+  <p>Noventa por cento dos erros de gráfico vêm de pular o passo 1.</p>
+
+  <h2>A inclinação é uma taxa — e ela tem nome</h2>
+
+  <div class="keybox">
+    <b>Inclinação = \(\frac{\text{o que subiu no eixo vertical}}{\text{o que andou no horizontal}}\)</b><br>
+    Distância ÷ tempo → <b>velocidade</b> &nbsp;·&nbsp; Volume ÷ tempo → <b>vazão</b><br>
+    Custo ÷ quantidade → <b>preço unitário</b> &nbsp;·&nbsp; População ÷ ano → <b>crescimento anual</b>
+  </div>
+
+  <p>Reta <b>mais inclinada</b> = taxa maior (mais rápido, mais caro). Reta <b>horizontal</b> = nada
+  muda (parado, estável). Trecho <b>descendo</b> = a grandeza diminui.</p>
+
+  <p>Num gráfico feito de <b>vários segmentos</b>, cada trecho tem sua própria taxa — e a pergunta
+  costuma ser justamente "em que trecho foi mais rápido?". A resposta é: no mais inclinado.</p>
+
+  <h2>Duas curvas no mesmo gráfico</h2>
+
+  <p>Quando aparecem duas curvas, quase sempre a questão é sobre a <b>relação</b> entre elas:</p>
+
+  <table>
+    <tr><th>O que perguntam</th><th>Como se lê</th></tr>
+    <tr><td>Onde uma <b>ultrapassa</b> a outra</td><td>o ponto em que se <b>cruzam</b></td></tr>
+    <tr><td>Qual a <b>diferença</b> entre elas</td><td>a <b>distância vertical</b> entre as curvas</td></tr>
+    <tr><td>Onde a diferença é <b>máxima</b></td><td>onde o vão vertical é maior</td></tr>
+  </table>
+
+  <div class="keybox">
+    <b>Receita × Custo:</b> o cruzamento é o <b>ponto de equilíbrio</b> (lucro zero).<br>
+    Antes dele, custo maior → <b>prejuízo</b>. Depois, receita maior → <b>lucro</b>.<br>
+    E o <b>lucro</b> é a distância vertical entre as duas.
+  </div>
+
+  <h2>O truque do recipiente: formato ↔ curva</h2>
+
+  <p>Este cai muito e é fácil quando se entende. Enchendo um recipiente com <b>vazão constante</b>:</p>
+
+  <div class="keybox">
+    Parte <b>estreita</b> → o nível sobe <b>rápido</b> → curva <b>íngreme</b><br>
+    Parte <b>larga</b> → o nível sobe <b>devagar</b> → curva <b>suave</b><br>
+    Largura <b>constante</b> (cilindro, caixa) → curva é uma <b>reta</b>
+  </div>
+
+  <p>Numa garrafa que afina no gargalo, o nível sobe devagar no corpo e <b>acelera</b> no gargalo.
+  Repare na relação <b>inversa</b> — mais largo, mais devagar. É a mesma lógica da
+  <a href="0005-proporcionalidade-inversa.html">Lição 0005</a>.</p>
+
+  <p>Tudo isso está no <a href="../reference/graficos.html">cartão de Leitura de Gráficos</a>.</p>
+
+  <h2>Pratique — a escada de dificuldade</h2>
+  <p class="ladder-intro">20 questões. As últimas quatro vêm <b>sem dizer o assunto</b>. Faça na ordem.</p>
+
+  <div class="level"><span class="lv">Nível 1</span> Ler o que está escrito</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · o primeiro passo</div>
+    <div class="stem">Ao receber um gráfico numa questão, a primeira coisa a fazer é:</div>
+    <button class="opt">ler os eixos e suas unidades.</button>
+    <button class="opt">calcular a inclinação da reta.</button>
+    <button class="opt">procurar o ponto mais alto.</button>
+    <button class="opt">conferir as alternativas antes.</button>
+    <div class="fb"><b>Ler os eixos e as unidades.</b> Parece óbvio, mas é onde nasce a maioria dos erros: confundir minuto com hora, ou achar que o eixo vertical é o volume quando é a altura.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · reta horizontal</div>
+    <div class="stem">Num gráfico de distância × tempo, um trecho <b>horizontal</b> significa que o móvel:</div>
+    <button class="opt">está parado.</button>
+    <button class="opt">está voltando.</button>
+    <button class="opt">acelerou bastante.</button>
+    <button class="opt">chegou ao destino.</button>
+    <div class="fb"><b>Está parado.</b> O tempo passa (anda no eixo horizontal) mas a distância não muda. Inclinação zero = taxa zero.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · inclinação</div>
+    <div class="stem">Num gráfico de distância × tempo, o trecho <b>mais inclinado</b> corresponde a:</div>
+    <button class="opt">a maior velocidade.</button>
+    <button class="opt">a menor velocidade.</button>
+    <button class="opt">a maior distância total.</button>
+    <button class="opt">o maior tempo gasto.</button>
+    <div class="fb"><b>A maior velocidade.</b> Inclinação é distância ÷ tempo, que é exatamente a velocidade. Mais íngreme = mais rápido.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · nome da taxa</div>
+    <div class="stem">Num gráfico de <b>volume × tempo</b>, a inclinação representa:</div>
+    <button class="opt">a vazão.</button>
+    <button class="opt">a pressão.</button>
+    <button class="opt">a densidade.</button>
+    <button class="opt">a capacidade.</button>
+    <div class="fb"><b>A vazão</b> (litros por minuto, por exemplo). A inclinação sempre é "o de cima dividido pelo de baixo" — e esse quociente tem um nome no contexto.</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N1 · cruzamento</div>
+    <div class="stem">Num gráfico com as curvas de receita e de custo, o ponto onde elas se <b>cruzam</b> indica:</div>
+    <button class="opt">o lucro máximo.</button>
+    <button class="opt">lucro igual a zero.</button>
+    <button class="opt">o custo mínimo.</button>
+    <button class="opt">o fim da produção.</button>
+    <div class="fb"><b>Lucro zero</b> — o ponto de equilíbrio. Receita e custo são iguais ali. Antes dele há prejuízo; depois, lucro.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 2</span> Extrair números do gráfico</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · calculando a taxa</div>
+    <div class="stem">Um tanque passa de 0 a 600 litros em 20 minutos, com vazão constante. A vazão é:</div>
+    <button class="opt">30 L/min</button>
+    <button class="opt">12 000 L/min</button>
+    <button class="opt">0,03 L/min</button>
+    <button class="opt">620 L/min</button>
+    <div class="fb"><b>30 L/min.</b> \(600 \div 20 = 30\). A inclinação é sempre <b>divisão</b>: o quanto subiu dividido pelo quanto andou.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · comparando trechos</div>
+    <div class="stem">Uma viagem tem dois trechos: no primeiro, 60 km em 1 hora; no segundo, 60 km em 2 horas. No gráfico de distância × tempo, o segundo trecho aparece:</div>
+    <button class="opt">menos inclinado que o primeiro.</button>
+    <button class="opt">mais inclinado que o primeiro.</button>
+    <button class="opt">com a mesma inclinação.</button>
+    <button class="opt">como uma linha horizontal.</button>
+    <div class="fb"><b>Menos inclinado.</b> Mesma distância em mais tempo = mais devagar = inclinação menor (30 km/h contra 60 km/h).</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · diferença entre curvas</div>
+    <div class="stem">Para 100 unidades produzidas, a receita é R$ 8 000,00 e o custo é R$ 5 500,00. O lucro é:</div>
+    <button class="opt">R$ 2 500,00</button>
+    <button class="opt">R$ 13 500,00</button>
+    <button class="opt">R$ 8 000,00</button>
+    <button class="opt">R$ 25,00</button>
+    <div class="fb"><b>R$ 2 500,00.</b> Lucro \(=\) receita \(-\) custo. No gráfico, é a <b>distância vertical</b> entre as duas curvas naquele ponto.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · lendo o coeficiente</div>
+    <div class="stem">Uma reta num gráfico de custo × quantidade parte de R$ 900,00 quando a quantidade é zero. Esse valor representa:</div>
+    <button class="opt">o custo fixo.</button>
+    <button class="opt">o custo por unidade.</button>
+    <button class="opt">o lucro inicial.</button>
+    <button class="opt">o preço de venda.</button>
+    <div class="fb"><b>O custo fixo</b> — o que se paga mesmo sem produzir nada (aluguel, combustível do barco). O custo por unidade é a <b>inclinação</b>, não o ponto de partida.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 3</span> Formato, trechos e tendência</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · recipiente e curva</div>
+    <div class="stem">Um recipiente <b>cilíndrico</b> é enchido com vazão constante. O gráfico da <b>altura</b> da água em função do <b>tempo</b> é:</div>
+    <button class="opt">uma reta crescente.</button>
+    <button class="opt">uma curva que acelera.</button>
+    <button class="opt">uma curva que desacelera.</button>
+    <button class="opt">uma reta horizontal.</button>
+    <div class="fb"><b>Uma reta crescente.</b> Como a largura não muda, cada litro sobe sempre a mesma altura → taxa constante → reta.</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N3 · recipiente que afina</div>
+    <div class="stem">Uma garrafa é larga embaixo e <b>afina</b> no gargalo. Enchendo com vazão constante, o gráfico da altura × tempo:</div>
+    <button class="opt">é uma reta do início ao fim.</button>
+    <button class="opt">sobe devagar e depois acelera.</button>
+    <button class="opt">sobe rápido e depois desacelera.</button>
+    <button class="opt">sobe e depois desce.</button>
+    <div class="fb"><b>Sobe devagar e depois acelera.</b> Na parte larga, muito líquido para pouca altura → devagar. No gargalo estreito, pouco líquido já sobe muito → rápido.<br>
+    <b>Relação inversa:</b> mais largo → mais devagar. Se o recipiente <b>alargasse</b> em cima, seria o contrário.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · três trechos</div>
+    <div class="stem">Um gráfico de distância × tempo tem três trechos: o primeiro sobe, o segundo é horizontal e o terceiro sobe mais inclinado. A história é:</div>
+    <button class="opt">andou, parou e andou mais rápido.</button>
+    <button class="opt">andou, voltou e parou de vez.</button>
+    <button class="opt">acelerou sem parar nenhuma vez.</button>
+    <button class="opt">ficou parado o tempo inteiro.</button>
+    <div class="fb"><b>Andou, parou, andou mais rápido.</b> Ler gráfico de segmentos é <b>contar a história trecho a trecho</b>. Horizontal em distância × tempo é sempre "parado".</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · reta de tendência</div>
+    <div class="stem">Num gráfico de pontos (receita ano a ano) foi traçada uma reta de tendência crescente. Ela serve para:</div>
+    <button class="opt">resumir o comportamento e estimar valores.</button>
+    <button class="opt">mostrar o valor exato de cada ano.</button>
+    <button class="opt">indicar o ano de maior receita.</button>
+    <button class="opt">corrigir os dados que foram medidos.</button>
+    <div class="fb"><b>Resumir e estimar.</b> A reta de tendência não passa exatamente por todos os pontos — ela mostra a <b>direção geral</b> e permite projetar anos futuros. Os pontos são os dados reais; a reta é o resumo.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 4</span> Nível ENEM — no estilo das que você errou</div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N4 · estilo ENEM 2023 (Q158) · lucro mínimo</div>
+    <div class="stem">Um pescador tem <b>custo fixo diário de R$ 900,00</b> e vende cada quilograma de peixe por <b>R$ 5,00</b>. Para obter um lucro de <b>pelo menos R$ 800,00</b> por dia, ele precisa vender no mínimo:</div>
+    <button class="opt">160 kg</button>
+    <button class="opt">340 kg</button>
+    <button class="opt">180 kg</button>
+    <button class="opt">280 kg</button>
+    <div class="fb"><b>340 kg.</b> Monte a história: lucro \(=\) receita \(-\) custo \(= 5q - 900\).<br>
+    Quer lucro \(\geq 800\): \(5q - 900 \geq 800 \Rightarrow 5q \geq 1\,700 \Rightarrow q \geq 340\).<br>
+    <b>O erro que a questão espera:</b> esquecer o custo fixo e fazer \(800 \div 5 = 160\). Mas os primeiros R$ 900 vendidos só pagam a despesa — o lucro começa depois disso. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N4 · estilo ENEM 2020 (Q175) · receita × custo</div>
+    <div class="stem">Num gráfico, a receita é a reta que passa por (0; 0) e (20; 40) e o custo é a reta que passa por (0; 10) e (20; 30), ambos em reais. O gráfico do <b>lucro</b> (receita − custo) é uma reta que:</div>
+    <button class="opt">parte de 10 e sobe.</button>
+    <button class="opt">parte de 0 e é horizontal.</button>
+    <button class="opt">parte de −10 e sobe.</button>
+    <button class="opt">parte de 10 e desce.</button>
+    <div class="fb"><b>Parte de −10 e sobe.</b> Calcule o lucro em dois pontos e ligue:<br>
+    Em \(q=0\): \(0 - 10 = -10\) (só o custo fixo, prejuízo).<br>
+    Em \(q=20\): \(40 - 30 = +10\).<br>
+    Então a reta do lucro vai de \(-10\) até \(+10\) — cruza o zero no ponto de equilíbrio, em \(q=10\).<br>
+    <b>A dica geral:</b> para achar o gráfico de uma diferença, calcule a diferença em <b>dois pontos</b> e veja qual alternativa bate. Não precisa de álgebra. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N4 · estilo ENEM 2024 (Q141) · trechos com taxas diferentes</div>
+    <div class="stem">Um reservatório é enchido em dois trechos: nos primeiros 10 minutos entram 200 litros; nos 30 minutos seguintes, entram mais 300 litros. Comparando as vazões dos dois trechos:</div>
+    <button class="opt">a do primeiro é o dobro da do segundo.</button>
+    <button class="opt">a do segundo é o dobro da do primeiro.</button>
+    <button class="opt">as duas vazões são iguais.</button>
+    <button class="opt">a do segundo é o triplo da do primeiro.</button>
+    <div class="fb"><b>A do primeiro é o dobro.</b> Trecho 1: \(200 \div 10 = 20\) L/min. Trecho 2: \(300 \div 30 = 10\) L/min. Logo \(20 = 2 \times 10\).<br>
+    <b>Cuidado com a armadilha:</b> o segundo trecho tem <b>mais litros</b> (300 contra 200), o que sugere "mais rápido". Mas vazão é litro <b>por minuto</b> — e ele levou três vezes mais tempo. Sempre divida. 🎯</div>
+  </div>
+
+  <div class="level blind"><span class="lv">Sem aviso</span> Misturadas — descubra você o assunto</div>
+  <p class="ladder-intro">Sem dizer o tema. Pergunte-se primeiro <b>“do que isto está falando?”</b></p>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Uma substância tem meia-vida de 8 anos. Restando \(\frac{1}{16}\) da quantidade inicial, o tempo decorrido foi:</div>
+    <button class="opt">32 anos</button>
+    <button class="opt">128 anos</button>
+    <button class="opt">16 anos</button>
+    <button class="opt">24 anos</button>
+    <div class="fb"><b>32 anos.</b> Era <a href="0013-exponencial-log.html">meia-vida</a>: \(\frac{1}{16}\) são <b>4</b> metades → \(4 \times 8 = 32\).</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Uma piscina de 8 m × 4 m tem profundidade constante de 1,6 m, com a água 20 cm abaixo da borda. O volume de água, em litros, é:</div>
+    <button class="opt">44 800 litros</button>
+    <button class="opt">51 200 litros</button>
+    <button class="opt">448 litros</button>
+    <button class="opt">4 480 litros</button>
+    <div class="fb"><b>44 800 L.</b> Era <a href="0010-volumes.html">volume</a>: altura da água \(= 1{,}6 - 0{,}2 = 1{,}4\); \(8 \times 4 \times 1{,}4 = 44{,}8\) m³ = 44 800 L.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Numa urna com 5 bolas brancas e 15 pretas, a probabilidade de tirar uma branca é:</div>
+    <button class="opt">25%</button>
+    <button class="opt">33%</button>
+    <button class="opt">75%</button>
+    <button class="opt">20%</button>
+    <div class="fb"><b>25%.</b> Era <a href="0006-probabilidade.html">probabilidade</a>: \(\frac{5}{20} = 0{,}25\). O 33% é \(\frac{5}{15}\) — usou o outro grupo como total.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">15 operários fazem uma obra em 16 dias. Com 12 operários, no mesmo ritmo, a obra levará:</div>
+    <button class="opt">20 dias</button>
+    <button class="opt">13 dias</button>
+    <button class="opt">12,8 dias</button>
+    <button class="opt">24 dias</button>
+    <div class="fb"><b>20 dias.</b> Era <a href="0005-proporcionalidade-inversa.html">inversa</a>: \(15 \times 16 = 240\) operário-dias; \(240 \div 12 = 20\).</div>
+  </div>
+
+  <div class="score" id="score">Responda as questões acima ☝️</div>
+
+  <h2>Para fixar (faça depois)</h2>
+  <p>• <b>Fonte primária recomendada:</b>
+     <a href="https://pt.khanacademy.org/math/algebra/x2f8bb11595b61c86:linear-equations-graphs" target="_blank">Khan Academy — Gráficos de equações lineares</a> (gratuito, em português).</p>
+  <p>• <b>O reflexo que vale ponto:</b> antes de calcular, <b>leia os eixos em voz alta</b>
+     ("altura em centímetro, por tempo em minuto") e conte a história do gráfico em uma frase.
+     Se você consegue narrar, você consegue responder.</p>
+  <p>• <b>Daqui a 2 dias</b>, refaça o Nível 4 e o bloco sem aviso, de memória.</p>
+
+  <div class="foot">
+    <p class="ask">👨‍🏫 <b>Eu sou seu professor aqui.</b> Se algum formato de gráfico ainda parecer
+    confuso, me manda a questão que eu descrevo o desenho em palavras.</p>
+    <p>Workspace de estudo · Missão: Matemática ENEM 2026 → TO/Fono USP Ribeirão Preto ·
+    Referência: <a href="../reference/graficos.html">Cartão de Leitura de Gráficos</a> ·
+    Anterior: <a href="0013-exponencial-log.html">Lição 0013 — Exponencial e log</a> ·
+    Próxima: <a href="0015-geometria-plana-2.html">Lição 0015 — Geometria plana II</a></p>
+  </div>
+
+</div>
+<script>
+  let answered = 0, hits = 0;
+  const total = document.querySelectorAll('.q').length;
+  document.querySelectorAll('.q').forEach(function(q){
+    const correct = parseInt(q.dataset.correct, 10);
+    const opts = q.querySelectorAll('.opt');
+    const fb = q.querySelector('.fb');
+    opts.forEach(function(btn, i){
+      btn.addEventListener('click', function(){
+        opts.forEach(function(b){ b.disabled = true; });
+        if(i === correct){ btn.classList.add('correct'); hits++; }
+        else { btn.classList.add('wrong'); opts[correct].classList.add('correct'); }
+        fb.classList.add('show');
+        answered++;
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    const el = document.getElementById('score');
+    if(answered < total){ el.textContent = answered + ' de ' + total + ' respondidas — continue 💪'; return; }
+    let msg = 'Você acertou ' + hits + ' de ' + total + '. ';
+    const pct = hits / total;
+    if(pct === 1) msg += 'Escada inteira, incluindo o bloco sem aviso! 🎯';
+    else if(pct >= 0.75) msg += 'Muito bom. Volte no cartão nos pontos que escaparam.';
+    else if(pct >= 0.5) msg += 'Está vindo. Releia a ideia central e refaça amanhã.';
+    else msg += 'Sem drama — me chame que a gente refaz juntos, passo a passo.';
+    el.textContent = msg;
+  }
+</script>
+</body>
+</html>

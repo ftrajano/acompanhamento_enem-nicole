@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cartão de referência — Geometria Plana II (ENEM)</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#dcd6c8; --accent:#7a1f2b; --bg:#fbf9f4; --hi:#fdf3d6; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 24px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.7; }
+  .card{ max-width:760px; margin:0 auto; }
+  header{ border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:24px; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:27px; margin:6px 0 0; font-weight:600; }
+  h2{ font-size:16px; font-family:-apple-system,Helvetica,Arial,sans-serif; letter-spacing:.02em;
+      margin:30px 0 8px; color:var(--accent); border-bottom:1px solid var(--line); padding-bottom:4px; }
+  p{margin:8px 0}
+  .lead{ color:var(--soft); font-style:italic; margin-top:6px; }
+  table{ border-collapse:collapse; width:100%; margin:10px 0; font-size:15px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:12px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  .rule{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:2; }
+  .rule b{ color:var(--accent); }
+  .flag{ background:#fdf0f0; border:1px solid #e6c9c9; border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:1.9; font-size:14.5px; }
+  .flag b{ color:var(--accent); }
+  .fig{ text-align:center; margin:12px 0; color:var(--accent); }
+  ul{margin:8px 0 8px 0; padding-left:22px} li{margin:5px 0}
+  .foot{ margin-top:34px; padding-top:12px; border-top:1px solid var(--line);
+         font-size:13px; color:var(--soft); }
+  a{color:var(--accent)}
+  mjx-container{ color:var(--accent); }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+  @media print{ body{background:#fff;padding:0} .card{max-width:100%} h2{break-after:avoid} .flag{break-inside:avoid} }
+</style>
+<!-- MathJax: delimitadores só \( \) e \[ \] — NUNCA $...$, para não conflitar com "R$". -->
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+
+<div class="card">
+  <header>
+    <div class="kicker">Cartão de referência · Matemática ENEM</div>
+    <h1>Geometria Plana II</h1>
+    <p class="lead">Molduras, setores, otimização e a palavra “equidistante”.</p>
+  </header>
+  <h2>1. Moldura — fora menos dentro</h2>
+  <div class="rule">
+    área da moldura \(=\) <b>figura externa</b> \(-\) <b>figura interna</b>
+  </div>
+  <div class="flag">
+    <b>⚑ A pegadinha:</b> uma borda de largura \(x\) aumenta cada dimensão em <b>\(2x\)</b> —
+    ela existe dos dois lados.<br>
+    <i>Modelo:</i> piscina de 400 m² (lado 20) + calçada de 5 m → externo \(20+10 = 30\) →
+    calçada \(= 900 - 400 = 500\) m².
+  </div>
+  <p>Vale para: calçada em volta da piscina, moldura de foto, pista em volta do campo,
+  corredor em volta da sala.</p>
+
+  <h2>2. Mesmo perímetro: quanto mais lados, mais área</h2>
+  <table>
+    <tr><th>Figura (perímetro \(k\))</th><th>Área</th></tr>
+    <tr><td>triângulo equilátero</td><td>\(\approx 0{,}048\,k^2\)</td></tr>
+    <tr><td>quadrado</td><td>\(0{,}0625\,k^2\)</td></tr>
+    <tr><td>hexágono regular</td><td>\(\approx 0{,}072\,k^2\)</td></tr>
+    <tr><td><b>círculo</b></td><td>\(\approx 0{,}0796\,k^2\) (o máximo)</td></tr>
+  </table>
+  <div class="rule">
+    triângulo &lt; quadrado &lt; hexágono &lt; <b>círculo</b><br>
+    E o contrário também vale: <b>mesma área, quem gasta menos cerca</b> é o mais "redondo".
+  </div>
+
+  <h2>3. Setor circular (fatia de pizza)</h2>
+  <p>\[ A_{\text{setor}} = \frac{\alpha}{360°} \cdot \pi r^2 \]</p>
+  <table>
+    <tr><th>Ângulo</th><th>90°</th><th>60°</th><th>120°</th><th>180°</th></tr>
+    <tr><td><b>Fração do círculo</b></td><td>\(\frac{1}{4}\)</td><td>\(\frac{1}{6}\)</td><td>\(\frac{1}{3}\)</td><td>\(\frac{1}{2}\)</td></tr>
+  </table>
+  <p>Contextos: sensor de presença, holofote, regador giratório, ponteiro de relógio, leque.</p>
+  <div class="flag">
+    <b>⚑ Confira o ângulo de abertura</b> antes de responder — usar o círculo inteiro é o
+    distrator mais comum.
+  </div>
+
+  <h2>4. “Equidistante” — traduza sempre</h2>
+  <table>
+    <tr><th>O enunciado diz</th><th>Quer dizer</th></tr>
+    <tr><td>3 pontos equidistantes <b>entre si</b></td><td>triângulo <b>equilátero</b></td></tr>
+    <tr><td>1 ponto equidistante de <b>3 outros</b></td><td>é o <b>centro</b> da circunferência que passa por eles</td></tr>
+    <tr><td>equidistante de <b>2 pontos</b></td><td>está na <b>mediatriz</b> do segmento</td></tr>
+    <tr><td>equidistante de <b>2 retas</b></td><td>está na <b>bissetriz</b> do ângulo</td></tr>
+  </table>
+
+  <h2>5. Inscrito × circunscrito</h2>
+  <div class="rule">
+    Círculo <b>inscrito</b> num quadrado de lado \(\ell\) → <b>diâmetro \(= \ell\)</b>, logo \(r = \frac{\ell}{2}\).<br>
+    Quadrado <b>inscrito</b> num círculo de raio \(r\) → <b>diagonal \(= 2r\)</b>, logo \(\ell = r\sqrt{2}\).
+  </div>
+  <div class="flag">
+    <b>⚑ Erro clássico:</b> usar o lado do quadrado como raio do círculo inscrito. É o <b>diâmetro</b>.
+  </div>
+
+  <h2>6. Escala: o expoente muda com a dimensão</h2>
+  <table>
+    <tr><th>Comprimento</th><th>Área</th><th>Volume</th></tr>
+    <tr><td>\(\times k\)</td><td>\(\times k^2\)</td><td>\(\times k^3\)</td></tr>
+  </table>
+  <p><i>Modelo:</i> escala 1:200, área de 4,18 cm² na maquete → \(4{,}18 \times 200^2 = 167\,200\) cm².</p>
+
+  <h2>7. Malha quadriculada</h2>
+  <p>Distância <b>percorrida</b> (andando pelas ruas) = soma dos trechos.<br>
+  Distância <b>em linha reta</b> = Pitágoras.</p>
+  <p>Trios pitagóricos que sempre aparecem: <b>3-4-5</b> · 5-12-13 · 6-8-10 · 8-15-17.</p>
+
+  <h2>8. Roteiro na hora da prova</h2>
+  <div class="rule">
+    <b>1)</b> É <b>moldura</b>? Então fora menos dentro, com largura <b>dupla</b>.<br>
+    <b>2)</b> Fala em <b>equidistante</b>? Traduza (item 4).<br>
+    <b>3)</b> É <b>setor</b>? Que fração do círculo?<br>
+    <b>4)</b> Tem <b>escala</b>? Área vai ao <b>quadrado</b>.<br>
+    <b>5)</b> Perímetro fixo? <b>Mais lados = mais área.</b>
+  </div>
+
+  <div class="foot">
+    Workspace de estudo da Nicole · Missão: Matemática ENEM 2026 → TO/Fono USP-RP.<br>
+    Usado na <a href="../lessons/0015-geometria-plana-2.html">Lição 0015</a> · Cartão irmão: <a href="areas-perimetros.html">Áreas e Perímetros</a>.<br>Fonte: <a href="https://pt.khanacademy.org/math/basic-geo/basic-geo-area-and-perimeter">Khan Academy — Área e perímetro</a>.
+  </div>
+</div>
+</body>
+</html>

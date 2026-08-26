@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cartão de referência — Leitura de Gráficos (ENEM)</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#dcd6c8; --accent:#7a1f2b; --bg:#fbf9f4; --hi:#fdf3d6; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 24px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.7; }
+  .card{ max-width:760px; margin:0 auto; }
+  header{ border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:24px; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:27px; margin:6px 0 0; font-weight:600; }
+  h2{ font-size:16px; font-family:-apple-system,Helvetica,Arial,sans-serif; letter-spacing:.02em;
+      margin:30px 0 8px; color:var(--accent); border-bottom:1px solid var(--line); padding-bottom:4px; }
+  p{margin:8px 0}
+  .lead{ color:var(--soft); font-style:italic; margin-top:6px; }
+  table{ border-collapse:collapse; width:100%; margin:10px 0; font-size:15px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:12px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  .rule{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:2; }
+  .rule b{ color:var(--accent); }
+  .flag{ background:#fdf0f0; border:1px solid #e6c9c9; border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:1.9; font-size:14.5px; }
+  .flag b{ color:var(--accent); }
+  .fig{ text-align:center; margin:12px 0; color:var(--accent); }
+  ul{margin:8px 0 8px 0; padding-left:22px} li{margin:5px 0}
+  .foot{ margin-top:34px; padding-top:12px; border-top:1px solid var(--line);
+         font-size:13px; color:var(--soft); }
+  a{color:var(--accent)}
+  mjx-container{ color:var(--accent); }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+  @media print{ body{background:#fff;padding:0} .card{max-width:100%} h2{break-after:avoid} .flag{break-inside:avoid} }
+</style>
+<!-- MathJax: delimitadores só \( \) e \[ \] — NUNCA $...$, para não conflitar com "R$". -->
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+
+<div class="card">
+  <header>
+    <div class="kicker">Cartão de referência · Matemática ENEM</div>
+    <h1>Leitura de Gráficos</h1>
+    <p class="lead">O gráfico conta uma história. Leia os eixos primeiro.</p>
+  </header>
+  <h2>1. As três leituras, nesta ordem</h2>
+  <div class="rule">
+    <b>1)</b> O que está em cada <b>eixo</b>? Em que <b>unidade</b>?<br>
+    <b>2)</b> A curva <b>sobe, desce ou fica parada</b>?<br>
+    <b>3)</b> Ela muda de <b>inclinação</b>? Onde e por quê?
+  </div>
+  <p class="lead">A maioria dos erros vem de pular o passo 1.</p>
+
+  <h2>2. A inclinação tem nome</h2>
+  <p>Inclinação \(= \dfrac{\text{subiu no eixo vertical}}{\text{andou no horizontal}}\)</p>
+  <table>
+    <tr><th>Eixos</th><th>A inclinação é</th></tr>
+    <tr><td>distância × tempo</td><td><b>velocidade</b></td></tr>
+    <tr><td>volume × tempo</td><td><b>vazão</b></td></tr>
+    <tr><td>custo × quantidade</td><td><b>preço unitário</b></td></tr>
+    <tr><td>população × ano</td><td><b>crescimento anual</b></td></tr>
+  </table>
+  <div class="rule">
+    Mais inclinada = taxa <b>maior</b> · horizontal = taxa <b>zero</b> (parado, estável) ·
+    descendo = a grandeza <b>diminui</b>
+  </div>
+  <div class="flag">
+    <b>⚑ Armadilha:</b> um trecho com <b>mais</b> unidades acumuladas pode ter taxa <b>menor</b>,
+    se levou muito mais tempo. Taxa é sempre uma <b>divisão</b> — nunca compare só os totais.
+  </div>
+
+  <h2>3. Duas curvas no mesmo gráfico</h2>
+  <table>
+    <tr><th>Perguntam</th><th>Você olha</th></tr>
+    <tr><td>onde uma ultrapassa a outra</td><td>o <b>cruzamento</b></td></tr>
+    <tr><td>a diferença entre elas</td><td>a <b>distância vertical</b></td></tr>
+    <tr><td>onde a diferença é máxima</td><td>o maior vão vertical</td></tr>
+  </table>
+  <div class="rule">
+    <b>Receita × Custo:</b> cruzamento = <b>ponto de equilíbrio</b> (lucro zero).<br>
+    Antes: prejuízo. Depois: lucro. <b>Lucro = distância vertical entre as curvas.</b>
+  </div>
+  <p><b>Para achar o gráfico de uma diferença</b> (ex.: lucro), calcule a diferença em <b>dois
+  pontos</b> e veja qual alternativa passa por eles. Mais rápido que álgebra.</p>
+
+  <h2>4. Custo fixo × custo variável</h2>
+  <div class="rule">
+    Onde a reta <b>corta o eixo vertical</b> (quantidade zero) = <b>custo fixo</b>.<br>
+    A <b>inclinação</b> = custo por unidade.
+  </div>
+  <div class="flag">
+    <b>⚑ Erro clássico:</b> esquecer o custo fixo ao calcular quanto vender para ter certo lucro.
+    Lucro \(=\) receita \(-\) custo fixo \(-\) custo variável. As primeiras vendas só pagam a despesa.
+  </div>
+
+  <h2>5. Formato do recipiente ↔ formato da curva</h2>
+  <p>Enchendo com <b>vazão constante</b>, no gráfico de <b>altura × tempo</b>:</p>
+  <table>
+    <tr><th>Parte do recipiente</th><th>O nível sobe</th><th>A curva fica</th></tr>
+    <tr><td>estreita</td><td>rápido</td><td>íngreme</td></tr>
+    <tr><td>larga</td><td>devagar</td><td>suave</td></tr>
+    <tr><td>largura constante (cilindro, caixa)</td><td>uniforme</td><td><b>reta</b></td></tr>
+  </table>
+  <p class="lead">Relação <b>inversa</b>: mais largo → mais devagar. Garrafa que afina no gargalo →
+  a curva <b>acelera</b> no fim.</p>
+
+  <h2>6. Gráfico de segmentos: conte a história</h2>
+  <p>Cada trecho tem sua própria taxa. Traduza trecho a trecho:
+  "subiu → andou", "horizontal → parou", "mais inclinado → mais rápido".</p>
+
+  <h2>7. Reta de tendência</h2>
+  <p>Numa nuvem de pontos, a reta de tendência <b>não</b> passa por todos — ela resume a
+  <b>direção geral</b> e serve para <b>estimar</b> valores (inclusive futuros). Os pontos são os
+  dados; a reta é o resumo.</p>
+
+  <h2>8. Roteiro na hora da prova</h2>
+  <div class="rule">
+    <b>1)</b> Leia os eixos <b>em voz alta</b>, com unidade.<br>
+    <b>2)</b> Conte a história do gráfico em <b>uma frase</b>.<br>
+    <b>3)</b> Se pedirem taxa: <b>divida</b> (vertical ÷ horizontal).<br>
+    <b>4)</b> Se houver duas curvas: é <b>cruzamento</b> ou <b>diferença</b>?
+  </div>
+
+  <div class="foot">
+    Workspace de estudo da Nicole · Missão: Matemática ENEM 2026 → TO/Fono USP-RP.<br>
+    Usado na <a href="../lessons/0014-graficos.html">Lição 0014</a> · Cartão irmão: <a href="funcoes.html">Funções e Gráficos</a>.<br>Fonte: <a href="https://pt.khanacademy.org/math/algebra/x2f8bb11595b61c86:linear-equations-graphs">Khan Academy — Gráficos de equações lineares</a>.
+  </div>
+</div>
+</body>
+</html>

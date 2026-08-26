@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cartão de referência — Taxas e Razões II (ENEM)</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#dcd6c8; --accent:#7a1f2b; --bg:#fbf9f4; --hi:#fdf3d6; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 24px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.7; }
+  .card{ max-width:760px; margin:0 auto; }
+  header{ border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:24px; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:27px; margin:6px 0 0; font-weight:600; }
+  h2{ font-size:16px; font-family:-apple-system,Helvetica,Arial,sans-serif; letter-spacing:.02em;
+      margin:30px 0 8px; color:var(--accent); border-bottom:1px solid var(--line); padding-bottom:4px; }
+  p{margin:8px 0}
+  .lead{ color:var(--soft); font-style:italic; margin-top:6px; }
+  table{ border-collapse:collapse; width:100%; margin:10px 0; font-size:15px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:12px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  .rule{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:2; }
+  .rule b{ color:var(--accent); }
+  .flag{ background:#fdf0f0; border:1px solid #e6c9c9; border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:1.9; font-size:14.5px; }
+  .flag b{ color:var(--accent); }
+  .fig{ text-align:center; margin:12px 0; color:var(--accent); }
+  ul{margin:8px 0 8px 0; padding-left:22px} li{margin:5px 0}
+  .foot{ margin-top:34px; padding-top:12px; border-top:1px solid var(--line);
+         font-size:13px; color:var(--soft); }
+  a{color:var(--accent)}
+  mjx-container{ color:var(--accent); }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+  @media print{ body{background:#fff;padding:0} .card{max-width:100%} h2{break-after:avoid} .flag{break-inside:avoid} }
+</style>
+<!-- MathJax: delimitadores só \( \) e \[ \] — NUNCA $...$, para não conflitar com "R$". -->
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+
+<div class="card">
+  <header>
+    <div class="kicker">Cartão de referência · Matemática ENEM</div>
+    <h1>Taxas &amp; Razões II</h1>
+    <p class="lead">Leia a unidade. A palavra “por” é a barra da divisão.</p>
+  </header>
+  <h2>1. Toda taxa é uma divisão com nome</h2>
+  <div class="rule">
+    A palavra <b>“por”</b> é a barra da divisão.<br>
+    "75 gramas <b>por</b> metro quadrado" \(= \frac{75\ \text{g}}{1\ \text{m}^2}\)
+  </div>
+  <table>
+    <tr><th>Nome</th><th>Unidade</th><th>É só</th></tr>
+    <tr><td>Densidade demográfica</td><td>hab/km²</td><td>habitantes ÷ área</td></tr>
+    <tr><td>Densidade superficial</td><td>g/m²</td><td>massa ÷ área</td></tr>
+    <tr><td>Vazão</td><td>L/min</td><td>volume ÷ tempo</td></tr>
+    <tr><td>Consumo / rendimento</td><td>km/L</td><td>distância ÷ litros</td></tr>
+    <tr><td>Economia de corrida</td><td>mL/min por kg</td><td>(oxigênio ÷ tempo) ÷ massa</td></tr>
+    <tr><td>Velocidade</td><td>km/h</td><td>distância ÷ tempo</td></tr>
+  </table>
+  <p class="lead">Não se assuste com o nome. <b>Leia a unidade</b> — ela monta a conta sozinha.</p>
+
+  <h2>2. Os dois movimentos</h2>
+  <div class="rule">
+    <b>Tenho a taxa, quero o total → MULTIPLIQUE.</b> \(75\ \text{g/m}^2 \times 0{,}06\ \text{m}^2 = 4{,}5\) g<br>
+    <b>Tenho os totais, quero a taxa → DIVIDA.</b> \(500\ \text{km} \div 25\ \text{L} = 20\) km/L
+  </div>
+  <p><b>Confira pela unidade:</b> se ao multiplicar o m² cancelou e sobrou grama, está certo.</p>
+
+  <h2>3. Taxas gêmeas (invertidas)</h2>
+  <p>\(\text{gêmea} = \dfrac{1}{\text{taxa}}\)</p>
+  <table>
+    <tr><th>Taxa</th><th>Gêmea</th><th>Qual é melhor</th></tr>
+    <tr><td>km/L</td><td>L/km</td><td>km/L <b>maior</b> é melhor</td></tr>
+    <tr><td>L/100 km</td><td>km/L</td><td>L/100 km <b>menor</b> é melhor</td></tr>
+    <tr><td>hab/km²</td><td>km²/hab</td><td>—</td></tr>
+  </table>
+  <div class="rule">
+    <b>L/100 km → km/L:</b> \(\;\text{km/L} = \dfrac{100}{\text{L/100 km}}\)<br>
+    <i>Ex.:</i> 8 L/100 km \(\to \frac{100}{8} = 12{,}5\) km/L
+  </div>
+  <div class="flag">
+    <b>⚑ Confira o sentido.</b> Um consumo <b>baixo</b> em L/100 km tem que virar um número
+    <b>alto</b> em km/L. Se os dois derem parecido, provavelmente você não inverteu.
+  </div>
+
+  <h2>4. Juntar taxas de partes diferentes</h2>
+  <div class="flag">
+    <b>⚑ NUNCA tire média de taxas.</b><br>
+    Some os numeradores, some os denominadores, <b>depois</b> divida.
+  </div>
+  <p><i>Modelo:</i> parte X = 40 000 hab em 10 km²; parte Y = 20 000 hab em 30 km².<br>
+  Correto: \(\frac{40\,000 + 20\,000}{10 + 30} = \frac{60\,000}{40} = 1\,500\) hab/km².<br>
+  Errado: média de 4 000 e 666 = 2 333 — ignora que as partes têm tamanhos diferentes.</p>
+
+  <h2>5. Transmissão: polias, engrenagens, correias</h2>
+  <div class="rule">
+    Ligadas pela mesma correia → mesma velocidade na borda →
+    \[ n_1 \cdot r_1 = n_2 \cdot r_2 \]
+    (\(n\) = rotações por minuto, \(r\) = raio). É <b>produto constante</b>.
+  </div>
+  <p><b>Polia maior gira mais devagar.</b> Triplicou o raio → um terço das rotações.<br>
+  Vale igual para engrenagens (usando o número de <b>dentes</b>) e catraca de bicicleta.</p>
+
+  <h2>6. Taxas encadeadas</h2>
+  <p>Vá <b>unidade por unidade</b>, cancelando:</p>
+  <p><i>Modelo:</i> 20 000 folhas × 0,06 m²/folha \(=\) 1 200 m²;
+  1 200 m² × 75 g/m² \(=\) 90 000 g \(=\) <b>90 kg</b>.</p>
+  <div class="rule">
+    Cada multiplicação deve <b>cancelar</b> uma unidade e trazer a próxima. Se a unidade final
+    não for a pedida, algum passo está invertido.
+  </div>
+
+  <h2>7. Autonomia e reabastecimento</h2>
+  <p>Rendimento × capacidade do tanque = <b>distância máxima</b>.</p>
+  <p><i>Ex.:</i> 5 L/100 km → 20 km/L; tanque de 22 L → \(22 \times 20 = 440\) km.</p>
+
+  <h2>8. Roteiro na hora da prova</h2>
+  <div class="rule">
+    <b>1)</b> Escreva a <b>unidade</b> da taxa. O "por" é divisão.<br>
+    <b>2)</b> Quero o total (<b>multiplico</b>) ou a taxa (<b>divido</b>)?<br>
+    <b>3)</b> A unidade que tenho está <b>invertida</b> em relação à que preciso?<br>
+    <b>4)</b> São partes diferentes? <b>Some em cima, some embaixo, depois divida.</b><br>
+    <b>5)</b> Confira: o resultado saiu na unidade pedida?
+  </div>
+
+  <div class="foot">
+    Workspace de estudo da Nicole · Missão: Matemática ENEM 2026 → TO/Fono USP-RP.<br>
+    Usado na <a href="../lessons/0017-taxas-2.html">Lição 0017</a> · Cartão irmão: <a href="proporcionalidade-inversa.html">Proporcionalidade Inversa</a>.<br>Fonte: <a href="https://pt.khanacademy.org/math/pt-7-ano/x4ca80f463b3dba0e:proporcionalidade">Khan Academy — Proporcionalidade</a>.
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lição 0016 — Volumes II</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#e2dccd; --accent:#7a1f2b; --green:#1c6b3f;
+         --red:#9b2226; --bg:#fbf9f4; --hi:#fdf3d6; --card:#ffffff; --blind:#2b4c6f; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 22px 80px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.62; }
+  .wrap{ max-width:720px; margin:0 auto; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:30px; line-height:1.2; margin:6px 0 4px; font-weight:600; }
+  .sub{ color:var(--soft); font-style:italic; margin:0 0 8px; }
+  .mission{ background:var(--hi); border-radius:8px; padding:12px 16px; font-size:14.5px; margin:18px 0 8px; }
+  .mission b{color:var(--accent)}
+  h2{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:15px; letter-spacing:.03em;
+      text-transform:uppercase; color:var(--accent); margin:34px 0 8px;
+      border-bottom:1px solid var(--line); padding-bottom:5px; }
+  p{margin:10px 0}
+  .keybox{ background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+           border-radius:0 8px 8px 0; padding:14px 18px; margin:16px 0; line-height:2; }
+  .keybox b{color:var(--accent)}
+  .big{ text-align:center; background:var(--hi); border-radius:8px; padding:14px 16px; margin:16px 0;
+        font-size:17px; line-height:2; }
+  .big b{ color:var(--accent); }
+  table{ border-collapse:collapse; width:100%; margin:12px 0; font-size:14.5px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11.5px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  a{color:var(--accent)}
+  .q{ background:var(--card); border:1px solid var(--line); border-radius:10px;
+      padding:18px 20px; margin:20px 0; }
+  .q .tag{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+           letter-spacing:.08em; text-transform:uppercase; color:var(--soft); }
+  .q .stem{ margin:6px 0 14px; }
+  .fig{ text-align:center; margin:12px 0; color:var(--accent); }
+  .fig svg{ max-width:100%; height:auto; }
+  .fig .cap{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:12px; color:var(--soft); margin-top:4px; }
+  .level{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-weight:700; letter-spacing:.04em;
+          color:var(--accent); margin:30px 0 6px; display:flex; align-items:center; gap:10px; font-size:14px; }
+  .level::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .level .lv{ background:var(--accent); color:#fff; border-radius:20px; padding:2px 11px; font-size:11px; letter-spacing:.06em; white-space:nowrap; }
+  .level.blind{ color:var(--blind); }
+  .level.blind .lv{ background:var(--blind); }
+  .ladder-intro{ font-size:14.5px; color:var(--soft); margin:4px 0 0; }
+  .opt{ display:block; width:100%; text-align:left; font-family:inherit; font-size:16px;
+        background:#fff; border:1.5px solid var(--line); border-radius:8px; padding:11px 14px;
+        margin:7px 0; cursor:pointer; transition:.12s; }
+  .opt:hover{ border-color:var(--accent); background:var(--hi); }
+  .opt:disabled{ cursor:default; opacity:.95; }
+  .opt.correct{ border-color:var(--green); background:#e9f5ee; color:var(--green); font-weight:600; }
+  .opt.wrong{ border-color:var(--red); background:#fbeaea; color:var(--red); }
+  .fb{ display:none; margin-top:12px; padding:12px 14px; border-radius:8px; font-size:14.5px;
+       background:#f4f1e8; border:1px dashed var(--line); line-height:1.8; }
+  .fb.show{ display:block; }
+  .fb b{color:var(--accent)}
+  .score{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-align:center; font-size:15px;
+          color:var(--soft); margin:26px 0; }
+  .foot{ margin-top:40px; padding-top:14px; border-top:1px solid var(--line); font-size:13.5px; color:var(--soft); }
+  .ask{ background:#eef4ef; border-radius:8px; padding:12px 16px; font-size:14.5px; color:var(--ink); }
+  mjx-container{ color:inherit; }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+</style>
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Lição 0016 · Matemática ENEM · Geometria espacial</div>
+  <h1>Volumes II</h1>
+  <p class="sub">Cone, tronco, revolução — e o raio que entra ao quadrado.</p>
+
+  <div class="mission">
+    <b>Por que esta lição?</b> Volume foi o bloco que <b>mais</b> te derrubou: 14 erros, nos quatro
+    simulados. A <a href="0010-volumes.html">Lição 0010</a> cobriu as fórmulas, os litros e o
+    encaixe. Aqui estão os padrões que sobraram e que se repetem: <b>tronco</b> (cone cortado),
+    <b>sólido de revolução</b>, <b>deslocamento de água</b> e o comportamento do <b>raio</b> quando
+    o volume é fixo. Nenhum é difícil — todos são reconhecíveis.
+  </div>
+
+  <h2>Padrão 1 — o tronco é uma subtração</h2>
+
+  <p>Tronco de cone (ou de pirâmide) é o que sobra quando se corta a <b>ponta</b>. Não decore
+  fórmula de tronco:</p>
+
+  <div class="big">
+    tronco \(=\) <b>sólido inteiro</b> \(-\) <b>ponta removida</b>
+  </div>
+
+  <div class="fig">
+    <svg width="200" height="160" viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M30 140 L100 20 L170 140 Z" stroke-dasharray="4 4" opacity=".45"/>
+      <path d="M30 140 L170 140 L135 80 L65 80 Z"/>
+      <line x1="65" y1="80" x2="135" y2="80"/>
+      <text x="104" y="115" font-size="11" fill="currentColor" stroke="none">tronco</text>
+      <text x="86" y="52" font-size="10" fill="currentColor" stroke="none" opacity=".6">ponta</text>
+    </svg>
+    <div class="cap">o que sobra depois de tirar a ponta</div>
+  </div>
+
+  <p>Lembre também que <b>cone e pirâmide são \(\frac{1}{3}\)</b> do cilindro/prisma de mesma base
+  e altura:</p>
+
+  <div class="keybox">
+    <b>Cilindro:</b> \(V = \pi r^2 h\) &nbsp;·&nbsp; <b>Cone:</b> \(V = \frac{\pi r^2 h}{3}\)<br>
+    <b>Prisma:</b> \(V = A_b \cdot h\) &nbsp;·&nbsp; <b>Pirâmide:</b> \(V = \frac{A_b \cdot h}{3}\)
+  </div>
+
+  <h2>Padrão 2 — sólidos de revolução</h2>
+
+  <p>Gire uma figura plana 360° em torno de um eixo e nasce um sólido. O ENEM adora, e é só
+  reconhecer o par:</p>
+
+  <table>
+    <tr><th>Girando esta figura plana…</th><th>…aparece</th></tr>
+    <tr><td>retângulo (por um lado)</td><td><b>cilindro</b></td></tr>
+    <tr><td>triângulo retângulo (por um cateto)</td><td><b>cone</b></td></tr>
+    <tr><td>trapézio retângulo (pelo lado perpendicular)</td><td><b>tronco de cone</b></td></tr>
+    <tr><td>semicírculo (pelo diâmetro)</td><td><b>esfera</b></td></tr>
+  </table>
+
+  <p>A dica prática: o lado que fica <b>colado no eixo</b> vira a <b>altura</b>, e o lado
+  perpendicular a ele vira o <b>raio</b>.</p>
+
+  <h2>Padrão 3 — deslocamento de água</h2>
+
+  <div class="keybox">
+    Um objeto submerso <b>empurra</b> um volume de água igual ao <b>seu próprio volume</b>.<br>
+    <b>Volume do objeto = área da base × quanto o nível subiu</b>
+  </div>
+
+  <p>Se num recipiente de base 200 cm² o nível sobe 3 cm ao mergulhar uma pedra, a pedra tem
+  \(200 \times 3 = 600\) cm³. É a mesma conta ao contrário quando perguntam quanto o nível vai subir.</p>
+
+  <h2>Padrão 4 — no cilindro, o raio entra ao quadrado</h2>
+
+  <p>Este derruba muita gente. Em \(V = \pi r^2 h\), <b>raio e altura não têm o mesmo peso</b>:</p>
+
+  <div class="big">
+    dobrar a <b>altura</b> → volume \(\times 2\)<br>
+    dobrar o <b>raio</b> → volume \(\times 4\)
+  </div>
+
+  <p><i>Consequência:</i> se dois cilindros têm o <b>mesmo volume</b> e a altura de um é \(\frac{1}{4}\)
+  da do outro, o raio dele não é 4 vezes maior — é <b>2 vezes</b>, porque
+  \(r^2\) é que precisa quadruplicar.</p>
+
+  <p>Tudo isso está no <a href="../reference/volumes-2.html">cartão de Volumes II</a>.</p>
+
+  <h2>Pratique — a escada de dificuldade</h2>
+  <p class="ladder-intro">20 questões. As últimas quatro vêm <b>sem dizer o assunto</b>. Faça na ordem.</p>
+
+  <div class="level"><span class="lv">Nível 1</span> Os padrões isolados</div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N1 · cone</div>
+    <div class="stem">Um cilindro tem volume 90 cm³. Um cone de mesma base e mesma altura tem volume:</div>
+    <button class="opt">45 cm³</button>
+    <button class="opt">30 cm³</button>
+    <button class="opt">270 cm³</button>
+    <button class="opt">90 cm³</button>
+    <div class="fb"><b>30 cm³.</b> O cone é <b>um terço</b>: \(90 \div 3 = 30\). O mesmo vale para pirâmide × prisma.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · tronco</div>
+    <div class="stem">Para calcular o volume de um <b>tronco de cone</b>, o caminho mais simples é:</div>
+    <button class="opt">cone inteiro menos a ponta cortada.</button>
+    <button class="opt">somar os dois círculos das bases.</button>
+    <button class="opt">multiplicar as duas bases pela altura.</button>
+    <button class="opt">dividir o cone inteiro por dois.</button>
+    <div class="fb"><b>Cone inteiro menos a ponta.</b> Tronco é sempre uma <b>subtração</b> — não precisa decorar fórmula própria.</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N1 · revolução</div>
+    <div class="stem">Girando um <b>retângulo</b> 360° em torno de um de seus lados, obtém-se:</div>
+    <button class="opt">um cone.</button>
+    <button class="opt">um cilindro.</button>
+    <button class="opt">uma esfera.</button>
+    <button class="opt">um cubo.</button>
+    <div class="fb"><b>Um cilindro.</b> O lado colado no eixo vira a altura; o lado perpendicular vira o raio.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · revolução</div>
+    <div class="stem">Girando um <b>triângulo retângulo</b> 360° em torno de um de seus catetos, obtém-se:</div>
+    <button class="opt">um cone.</button>
+    <button class="opt">um cilindro.</button>
+    <button class="opt">um tronco de cone.</button>
+    <button class="opt">uma pirâmide.</button>
+    <div class="fb"><b>Um cone.</b> O cateto no eixo é a altura; o outro cateto é o raio; a hipotenusa vira a <b>geratriz</b> (a lateral inclinada).</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · deslocamento</div>
+    <div class="stem">Ao mergulhar uma pedra num recipiente com água, o volume de água deslocado é:</div>
+    <button class="opt">igual ao volume da pedra.</button>
+    <button class="opt">igual à massa da pedra.</button>
+    <button class="opt">o dobro do volume da pedra.</button>
+    <button class="opt">sempre 1 litro.</button>
+    <div class="fb"><b>Igual ao volume da pedra.</b> A água precisa sair do lugar que a pedra ocupa. É a forma mais fácil de medir o volume de um objeto irregular.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 2</span> Aplicação — um passo</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · cone</div>
+    <div class="stem">Usando \(\pi \approx 3\), o volume de um cone de raio 5 cm e altura 12 cm é:</div>
+    <button class="opt">300 cm³</button>
+    <button class="opt">900 cm³</button>
+    <button class="opt">180 cm³</button>
+    <button class="opt">100 cm³</button>
+    <div class="fb"><b>300 cm³.</b> \(\frac{\pi r^2 h}{3} = \frac{3 \times 25 \times 12}{3} = 300\). O 900 é o cilindro correspondente — faltou dividir por 3.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · deslocamento</div>
+    <div class="stem">Num aquário de base 300 cm², mergulhar um objeto faz o nível da água subir 4 cm. O volume do objeto é:</div>
+    <button class="opt">1 200 cm³</button>
+    <button class="opt">75 cm³</button>
+    <button class="opt">304 cm³</button>
+    <button class="opt">120 cm³</button>
+    <div class="fb"><b>1 200 cm³.</b> \(300 \times 4 = 1\,200\). Volume deslocado \(=\) área da base \(\times\) subida do nível.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · dobrar o raio</div>
+    <div class="stem">Um cilindro tem seu raio <b>dobrado</b>, mantida a mesma altura. Seu volume fica:</div>
+    <button class="opt">4 vezes maior.</button>
+    <button class="opt">2 vezes maior.</button>
+    <button class="opt">8 vezes maior.</button>
+    <button class="opt">o mesmo.</button>
+    <div class="fb"><b>4 vezes maior.</b> Em \(\pi r^2 h\) o raio está <b>ao quadrado</b>: \((2r)^2 = 4r^2\). Já dobrar a altura só dobraria o volume.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · vazão e volume</div>
+    <div class="stem">Uma cisterna cilíndrica de <b>3 m² de área da base</b> recebe água com vazão constante de 0,6 m³ por hora. O nível da água sobe, por hora:</div>
+    <button class="opt">0,2 m</button>
+    <button class="opt">1,8 m</button>
+    <button class="opt">5,0 m</button>
+    <button class="opt">3,6 m</button>
+    <div class="fb"><b>0,2 m.</b> Volume \(=\) base \(\times\) altura, então altura \(= \frac{0{,}6}{3} = 0{,}2\) m por hora.<br>
+    Quando a base é dada em m², não precisa do raio nem de \(\pi\) — o problema já entregou a área.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 3</span> Duas etapas</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · tronco</div>
+    <div class="stem">De um cone de raio 6 cm e altura 12 cm retira-se, do topo, um cone menor de raio 3 cm e altura 6 cm. Usando \(\pi \approx 3\), o volume do <b>tronco</b> que sobra é:</div>
+    <button class="opt">378 cm³</button>
+    <button class="opt">432 cm³</button>
+    <button class="opt">54 cm³</button>
+    <button class="opt">216 cm³</button>
+    <div class="fb"><b>378 cm³.</b><br>
+    Cone grande \(= \frac{3 \times 36 \times 12}{3} = 432\).<br>
+    Cone pequeno \(= \frac{3 \times 9 \times 6}{3} = 54\).<br>
+    Tronco \(= 432 - 54 = 378\).<br>
+    Repare que o cone pequeno tem metade das medidas mas <b>não</b> metade do volume — tem \(\frac{1}{8}\). Reduzir tudo pela metade divide o volume por \(2^3\).</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N3 · volume fixo</div>
+    <div class="stem">Duas caixas-d'água cilíndricas têm o <b>mesmo volume</b>. A altura da caixa B é <b>25% da altura</b> da caixa A. Se o raio de A é \(R\), o raio de B é:</div>
+    <button class="opt">\(4R\)</button>
+    <button class="opt">\(2R\)</button>
+    <button class="opt">\(\frac{R}{2}\)</button>
+    <button class="opt">\(\frac{R}{4}\)</button>
+    <div class="fb"><b>\(2R\).</b> Igualando os volumes: \(\pi R^2 h = \pi r^2 \cdot 0{,}25h\).<br>
+    Cortando \(\pi\) e \(h\): \(R^2 = 0{,}25\,r^2 \Rightarrow r^2 = 4R^2 \Rightarrow r = 2R\).<br>
+    <b>A armadilha é o \(4R\):</b> a altura caiu para \(\frac{1}{4}\), então o <b>quadrado</b> do raio é que precisa quadruplicar — e o raio dobra. Sempre que o raio estiver no problema, lembre que ele entra ao quadrado. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · quantos cabem</div>
+    <div class="stem">Um reservatório tem 12 m³. Se cada morador consome 80 litros por dia, esse reservatório abastece <b>50 moradores</b> por quantos dias?</div>
+    <button class="opt">3 dias</button>
+    <button class="opt">30 dias</button>
+    <button class="opt">150 dias</button>
+    <button class="opt">1 dia</button>
+    <div class="fb"><b>3 dias.</b> Duas etapas: \(12\) m³ \(= 12\,000\) L. Consumo diário do grupo \(= 50 \times 80 = 4\,000\) L. Logo \(12\,000 \div 4\,000 = 3\) dias.<br>
+    O passo que se esquece é a conversão para litros — sem ela a conta não fecha.</div>
+  </div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N3 · geratriz do cone</div>
+    <div class="stem">Um cone tem altura 4 m e raio da base 3 m. A <b>geratriz</b> (a medida da lateral, do topo até a borda da base) é:</div>
+    <button class="opt">7 m</button>
+    <button class="opt">3,5 m</button>
+    <button class="opt">5 m</button>
+    <button class="opt">12 m</button>
+    <div class="fb"><b>5 m.</b> Altura, raio e geratriz formam um <b>triângulo retângulo</b>: \(g^2 = h^2 + r^2 = 16 + 9 = 25 \Rightarrow g = 5\).<br>
+    É o trio 3-4-5 de novo. Sempre que a questão falar em "mangueira que desce do topo até a borda" ou "lateral do cone", é geratriz — e sai por Pitágoras.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 4</span> Nível ENEM — no estilo das que você errou</div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N4 · estilo ENEM 2024 (Q144) · sólido de revolução</div>
+    <div class="stem">Uma professora recorta um <b>trapézio retângulo</b> e o gira 360° em torno do seu lado perpendicular às bases. O sólido obtido é:</div>
+    <button class="opt">um cilindro.</button>
+    <button class="opt">um tronco de cone.</button>
+    <button class="opt">uma esfera.</button>
+    <button class="opt">duas pirâmides unidas.</button>
+    <div class="fb"><b>Um tronco de cone.</b> Pense por partes: as duas bases do trapézio (paralelas e de tamanhos <b>diferentes</b>) viram os dois círculos, um maior e um menor. O lado inclinado varre a lateral.<br>
+    Se as duas bases fossem <b>iguais</b>, seria um retângulo e daria um cilindro. É justamente a <b>diferença</b> entre elas que produz o tronco. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N4 · estilo ENEM 2020 (Q168) · deslocamento</div>
+    <div class="stem">Num recipiente de base retangular <b>40 cm × 25 cm</b>, a água está a 8 cm de altura. Para que a água chegue a <b>15 cm</b>, serão colocadas esferas de <b>350 cm³</b> cada. O número mínimo de esferas é:</div>
+    <button class="opt">10</button>
+    <button class="opt">15</button>
+    <button class="opt">20</button>
+    <button class="opt">25</button>
+    <div class="fb"><b>20 esferas.</b> Três passos:<br>
+    <b>1) Quanto o nível precisa subir?</b> \(15 - 8 = 7\) cm.<br>
+    <b>2) Que volume corresponde a isso?</b> Base \(= 40 \times 25 = 1\,000\) cm²; volume \(= 1\,000 \times 7 = 7\,000\) cm³.<br>
+    <b>3) Quantas esferas?</b> \(7\,000 \div 350 = 20\).<br>
+    <b>O erro clássico</b> é usar a altura final (15 cm) em vez da <b>subida</b> (7 cm). A água que já estava lá não precisa ser deslocada. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N4 · estilo ENEM 2023 (Q142) · cilindro e consumo</div>
+    <div class="stem">Um reservatório cilíndrico tem base de raio <b>5 m</b> e é enchido até a altura de <b>2 m</b>. Ele abastece <b>75 moradores</b>, cada um consumindo <b>200 litros por dia</b>. Usando \(\pi \approx 3\), a água dura:</div>
+    <button class="opt">10 dias</button>
+    <button class="opt">15 dias</button>
+    <button class="opt">5 dias</button>
+    <button class="opt">20 dias</button>
+    <div class="fb"><b>10 dias.</b><br>
+    <b>1) Volume:</b> \(\pi r^2 h = 3 \times 25 \times 2 = 150\) m³ \(= 150\,000\) L.<br>
+    <b>2) Consumo diário:</b> \(75 \times 200 = 15\,000\) L.<br>
+    <b>3) Duração:</b> \(150\,000 \div 15\,000 = 10\) dias.<br>
+    Questão longa mas de passos simples. O risco é errar a conversão m³ → litros, ou usar o diâmetro no lugar do raio. 🎯</div>
+  </div>
+
+  <div class="level blind"><span class="lv">Sem aviso</span> Misturadas — descubra você o assunto</div>
+  <p class="ladder-intro">Sem dizer o tema. Pergunte-se primeiro <b>“do que isto está falando?”</b></p>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Com 36 m de cerca, o formato que delimita a maior área é:</div>
+    <button class="opt">o hexágono regular.</button>
+    <button class="opt">o quadrado.</button>
+    <button class="opt">o triângulo equilátero.</button>
+    <button class="opt">todos delimitam o mesmo.</button>
+    <div class="fb"><b>O hexágono.</b> Era <a href="0015-geometria-plana-2.html">otimização</a>: mesmo perímetro, <b>mais lados = mais área</b>.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">A temperatura de um líquido é \(T(t) = 25 + 60 \cdot (0{,}5)^{t}\), com \(t\) em horas. A temperatura após muito tempo tende a:</div>
+    <button class="opt">25 °C</button>
+    <button class="opt">85 °C</button>
+    <button class="opt">60 °C</button>
+    <button class="opt">0 °C</button>
+    <div class="fb"><b>25 °C.</b> Era <a href="0013-exponencial-log.html">exponencial</a>: \((0{,}5)^t\) encolhe até quase zero, e sobra o \(a = 25\). O 85 é a temperatura <b>inicial</b> (\(25+60\)).</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Num gráfico de distância × tempo, um trecho horizontal seguido de um trecho muito inclinado indica que o móvel:</div>
+    <button class="opt">ficou parado e depois acelerou.</button>
+    <button class="opt">acelerou e depois parou.</button>
+    <button class="opt">voltou ao ponto de partida.</button>
+    <button class="opt">manteve velocidade constante.</button>
+    <div class="fb"><b>Ficou parado e depois acelerou.</b> Era <a href="0014-graficos.html">leitura de gráfico</a>: horizontal = parado; mais inclinado = mais rápido.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">De 9 jogadores, quantos times de 5 podem ser formados?</div>
+    <button class="opt">126 times</button>
+    <button class="opt">45 times</button>
+    <button class="opt">15 120 times</button>
+    <button class="opt">362 880 times</button>
+    <div class="fb"><b>126.</b> Era <a href="0007-contagem.html">contagem</a>: num time a ordem não importa → \(C_{9,5} = 126\). O 15 120 é o arranjo \(9 \times 8 \times 7 \times 6 \times 5\), que conta cada time \(5!\) vezes.</div>
+  </div>
+
+  <div class="score" id="score">Responda as questões acima ☝️</div>
+
+  <h2>Para fixar (faça depois)</h2>
+  <p>• <b>Fonte primária recomendada:</b>
+     <a href="https://pt.khanacademy.org/math/basic-geo/basic-geo-volume-surface-area" target="_blank">Khan Academy — Volume e área de superfície</a> (gratuito, em português).</p>
+  <p>• <b>Os quatro padrões desta lição:</b> tronco é <b>subtração</b> · revolução tem pares fixos
+     (retângulo→cilindro, triângulo→cone, trapézio→tronco) · deslocamento usa a <b>subida</b> do
+     nível, não a altura final · no cilindro o <b>raio entra ao quadrado</b>.</p>
+  <p>• <b>Daqui a 2 dias</b>, refaça o Nível 4 e o bloco sem aviso, de memória.</p>
+
+  <div class="foot">
+    <p class="ask">👨‍🏫 <b>Eu sou seu professor aqui.</b> Sólido de revolução é difícil de imaginar —
+    se não estiver "girando" na sua cabeça, me chame que eu descrevo de outro jeito.</p>
+    <p>Workspace de estudo · Missão: Matemática ENEM 2026 → TO/Fono USP Ribeirão Preto ·
+    Referência: <a href="../reference/volumes-2.html">Cartão de Volumes II</a> ·
+    Anterior: <a href="0015-geometria-plana-2.html">Lição 0015 — Geometria plana II</a> ·
+    Próxima: <a href="0017-taxas-2.html">Lição 0017 — Taxas e razões II</a></p>
+  </div>
+
+</div>
+<script>
+  let answered = 0, hits = 0;
+  const total = document.querySelectorAll('.q').length;
+  document.querySelectorAll('.q').forEach(function(q){
+    const correct = parseInt(q.dataset.correct, 10);
+    const opts = q.querySelectorAll('.opt');
+    const fb = q.querySelector('.fb');
+    opts.forEach(function(btn, i){
+      btn.addEventListener('click', function(){
+        opts.forEach(function(b){ b.disabled = true; });
+        if(i === correct){ btn.classList.add('correct'); hits++; }
+        else { btn.classList.add('wrong'); opts[correct].classList.add('correct'); }
+        fb.classList.add('show');
+        answered++;
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    const el = document.getElementById('score');
+    if(answered < total){ el.textContent = answered + ' de ' + total + ' respondidas — continue 💪'; return; }
+    let msg = 'Você acertou ' + hits + ' de ' + total + '. ';
+    const pct = hits / total;
+    if(pct === 1) msg += 'Escada inteira, incluindo o bloco sem aviso! 🎯';
+    else if(pct >= 0.75) msg += 'Muito bom. Volte no cartão nos pontos que escaparam.';
+    else if(pct >= 0.5) msg += 'Está vindo. Releia a ideia central e refaça amanhã.';
+    else msg += 'Sem drama — me chame que a gente refaz juntos, passo a passo.';
+    el.textContent = msg;
+  }
+</script>
+</body>
+</html>

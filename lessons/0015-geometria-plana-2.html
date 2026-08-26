@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lição 0015 — Geometria plana II</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#e2dccd; --accent:#7a1f2b; --green:#1c6b3f;
+         --red:#9b2226; --bg:#fbf9f4; --hi:#fdf3d6; --card:#ffffff; --blind:#2b4c6f; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 22px 80px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.62; }
+  .wrap{ max-width:720px; margin:0 auto; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:30px; line-height:1.2; margin:6px 0 4px; font-weight:600; }
+  .sub{ color:var(--soft); font-style:italic; margin:0 0 8px; }
+  .mission{ background:var(--hi); border-radius:8px; padding:12px 16px; font-size:14.5px; margin:18px 0 8px; }
+  .mission b{color:var(--accent)}
+  h2{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:15px; letter-spacing:.03em;
+      text-transform:uppercase; color:var(--accent); margin:34px 0 8px;
+      border-bottom:1px solid var(--line); padding-bottom:5px; }
+  p{margin:10px 0}
+  .keybox{ background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+           border-radius:0 8px 8px 0; padding:14px 18px; margin:16px 0; line-height:2; }
+  .keybox b{color:var(--accent)}
+  .big{ text-align:center; background:var(--hi); border-radius:8px; padding:14px 16px; margin:16px 0;
+        font-size:17px; line-height:2; }
+  .big b{ color:var(--accent); }
+  table{ border-collapse:collapse; width:100%; margin:12px 0; font-size:14.5px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11.5px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  a{color:var(--accent)}
+  .q{ background:var(--card); border:1px solid var(--line); border-radius:10px;
+      padding:18px 20px; margin:20px 0; }
+  .q .tag{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+           letter-spacing:.08em; text-transform:uppercase; color:var(--soft); }
+  .q .stem{ margin:6px 0 14px; }
+  .fig{ text-align:center; margin:12px 0; color:var(--accent); }
+  .fig svg{ max-width:100%; height:auto; }
+  .fig .cap{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:12px; color:var(--soft); margin-top:4px; }
+  .level{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-weight:700; letter-spacing:.04em;
+          color:var(--accent); margin:30px 0 6px; display:flex; align-items:center; gap:10px; font-size:14px; }
+  .level::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .level .lv{ background:var(--accent); color:#fff; border-radius:20px; padding:2px 11px; font-size:11px; letter-spacing:.06em; white-space:nowrap; }
+  .level.blind{ color:var(--blind); }
+  .level.blind .lv{ background:var(--blind); }
+  .ladder-intro{ font-size:14.5px; color:var(--soft); margin:4px 0 0; }
+  .opt{ display:block; width:100%; text-align:left; font-family:inherit; font-size:16px;
+        background:#fff; border:1.5px solid var(--line); border-radius:8px; padding:11px 14px;
+        margin:7px 0; cursor:pointer; transition:.12s; }
+  .opt:hover{ border-color:var(--accent); background:var(--hi); }
+  .opt:disabled{ cursor:default; opacity:.95; }
+  .opt.correct{ border-color:var(--green); background:#e9f5ee; color:var(--green); font-weight:600; }
+  .opt.wrong{ border-color:var(--red); background:#fbeaea; color:var(--red); }
+  .fb{ display:none; margin-top:12px; padding:12px 14px; border-radius:8px; font-size:14.5px;
+       background:#f4f1e8; border:1px dashed var(--line); line-height:1.8; }
+  .fb.show{ display:block; }
+  .fb b{color:var(--accent)}
+  .score{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-align:center; font-size:15px;
+          color:var(--soft); margin:26px 0; }
+  .foot{ margin-top:40px; padding-top:14px; border-top:1px solid var(--line); font-size:13.5px; color:var(--soft); }
+  .ask{ background:#eef4ef; border-radius:8px; padding:12px 16px; font-size:14.5px; color:var(--ink); }
+  mjx-container{ color:inherit; }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+</style>
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Lição 0015 · Matemática ENEM · Geometria plana</div>
+  <h1>Geometria plana II</h1>
+  <p class="sub">Molduras, setores, otimização — e a pergunta “que figura é essa, afinal?”.</p>
+
+  <div class="mission">
+    <b>Por que esta lição?</b> Geometria plana foi o segundo bloco que mais te derrubou:
+    <b>13 erros, nos quatro simulados</b>. A <a href="0009-areas-perimetros.html">Lição 0009</a>
+    cobriu as fórmulas e as figuras compostas, mas os seus erros vão além disso — calçada em volta
+    da piscina, maior área com cerca fixa, pontos equidistantes, setor circular de um sensor.
+    São padrões que se repetem prova após prova e que dá para reconhecer de longe.
+  </div>
+
+  <h2>Padrão 1 — a moldura</h2>
+
+  <p>Calçada em volta da piscina, margem de uma foto, pista em volta do campo, corredor em volta da
+  sala. Sempre a mesma ideia:</p>
+
+  <div class="big">
+    área da moldura \(=\) <b>figura de fora</b> \(-\) <b>figura de dentro</b>
+  </div>
+
+  <div class="fig">
+    <svg width="230" height="160" viewBox="0 0 230 160" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="15" y="15" width="200" height="130"/>
+      <rect x="50" y="42" width="130" height="76"/>
+      <line x1="15" y1="30" x2="50" y2="30" stroke-width="1.3"/>
+      <text x="20" y="26" font-size="11" fill="currentColor" stroke="none">5 m</text>
+      <text x="98" y="86" font-size="12" fill="currentColor" stroke="none">piscina</text>
+    </svg>
+    <div class="cap">a moldura tem largura constante dos dois lados</div>
+  </div>
+
+  <div class="keybox">
+    <b>A pegadinha:</b> uma calçada de 5 m ao redor aumenta o lado em <b>10 m</b>, não em 5 —
+    porque ela existe dos <b>dois lados</b>.
+  </div>
+
+  <p><i>Modelo:</i> piscina quadrada de 400 m² → lado 20 m. Com calçada de 5 m, o quadrado externo
+  tem lado \(20 + 5 + 5 = 30\) m. Calçada \(= 30^2 - 400 = 900 - 400 = 500\) m².</p>
+
+  <h2>Padrão 2 — mesmo perímetro, qual tem mais área?</h2>
+
+  <p>Com uma quantidade fixa de cerca, qual formato cerca <b>mais terreno</b>? A resposta é sempre a
+  mesma, e vale decorar:</p>
+
+  <div class="big">
+    <b>Quanto mais lados, maior a área.</b><br>
+    triângulo &lt; quadrado &lt; hexágono &lt; … &lt; <b>círculo</b>
+  </div>
+
+  <p>Com o mesmo perímetro \(k\): triângulo equilátero \(\approx 0{,}048k^2\), quadrado
+  \(= 0{,}0625k^2\), hexágono regular \(\approx 0{,}072k^2\). O círculo é o campeão absoluto.</p>
+
+  <p>E o contrário também cai: <b>mesma área, qual gasta menos cerca?</b> Mesma resposta — quanto
+  mais "redondo", mais econômico.</p>
+
+  <h2>Padrão 3 — setor circular (a fatia de pizza)</h2>
+
+  <p>Sensor de presença, holofote, regador giratório, ponteiro de relógio. É um pedaço do círculo,
+  e a área sai por <b>proporção direta</b> com o ângulo:</p>
+
+  <div class="big">
+    \[ A_{\text{setor}} = \frac{\alpha}{360°} \cdot \pi r^2 \]
+  </div>
+
+  <p>Um setor de 90° é \(\frac{1}{4}\) do círculo; de 60°, \(\frac{1}{6}\); de 120°, \(\frac{1}{3}\).
+  Não precisa nem da fórmula se você pensar em <b>que fração do círculo é</b>.</p>
+
+  <h2>Padrão 4 — “equidistante” é uma palavra-chave</h2>
+
+  <div class="keybox">
+    <b>Equidistantes entre si</b> (3 pontos) → formam um <b>triângulo equilátero</b>.<br>
+    <b>Um ponto equidistante de outros três</b> → é o <b>centro</b> da circunferência que passa
+    pelos três.<br>
+    <b>Equidistante de dois pontos</b> → está na <b>mediatriz</b> do segmento que os liga.
+  </div>
+
+  <p>Sempre que o enunciado disser "à mesma distância de", pare e traduza para uma dessas três.</p>
+
+  <h2>Padrão 5 — escala em área vai ao quadrado</h2>
+
+  <p>Já apareceu na <a href="0010-volumes.html">Lição 0010</a> com volume; aqui é a versão plana:</p>
+
+  <div class="keybox">
+    Escala \(1:k\) → comprimento \(\times k\) &nbsp;·&nbsp; <b>área \(\times k^2\)</b>
+    &nbsp;·&nbsp; volume \(\times k^3\)
+  </div>
+
+  <p>Tudo isso está no <a href="../reference/geometria-plana-2.html">cartão de Geometria Plana II</a>.</p>
+
+  <h2>Pratique — a escada de dificuldade</h2>
+  <p class="ladder-intro">20 questões. As últimas quatro vêm <b>sem dizer o assunto</b>. Faça na ordem.</p>
+
+  <div class="level"><span class="lv">Nível 1</span> Os padrões isolados</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · moldura</div>
+    <div class="stem">Um quadrado de lado 10 cm recebe uma moldura de 2 cm de largura em toda a volta. O lado do quadrado <b>externo</b> passa a ser:</div>
+    <button class="opt">14 cm</button>
+    <button class="opt">12 cm</button>
+    <button class="opt">20 cm</button>
+    <button class="opt">10 cm</button>
+    <div class="fb"><b>14 cm.</b> A moldura entra dos <b>dois lados</b>: \(10 + 2 + 2 = 14\).<br>
+    Marcar 12 é o erro clássico — somar a largura uma vez só.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · setor</div>
+    <div class="stem">Um setor circular de 90° é que fração do círculo completo?</div>
+    <button class="opt">um quarto</button>
+    <button class="opt">um terço</button>
+    <button class="opt">metade</button>
+    <button class="opt">um nono</button>
+    <div class="fb"><b>Um quarto.</b> \(\frac{90}{360} = \frac{1}{4}\). Pensar em fração é mais rápido que aplicar fórmula.</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N1 · perímetro fixo</div>
+    <div class="stem">Com a mesma quantidade de cerca, a figura que delimita a <b>maior</b> área é:</div>
+    <button class="opt">o triângulo equilátero.</button>
+    <button class="opt">o hexágono regular.</button>
+    <button class="opt">o quadrado.</button>
+    <button class="opt">todas dão a mesma área.</button>
+    <div class="fb"><b>O hexágono.</b> Quanto mais lados, maior a área para o mesmo perímetro. A ordem é triângulo &lt; quadrado &lt; hexágono &lt; círculo.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · equidistante</div>
+    <div class="stem">Três pontos <b>equidistantes entre si</b> formam:</div>
+    <button class="opt">um triângulo equilátero.</button>
+    <button class="opt">um triângulo retângulo.</button>
+    <button class="opt">uma reta.</button>
+    <button class="opt">um quadrado.</button>
+    <div class="fb"><b>Triângulo equilátero.</b> Se as três distâncias são iguais, os três lados são iguais. "Equidistante" é palavra-chave — traduza sempre.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · escala em área</div>
+    <div class="stem">Numa escala 1 : 20, uma área de 3 cm² na maquete corresponde, no real, a:</div>
+    <button class="opt">1 200 cm²</button>
+    <button class="opt">60 cm²</button>
+    <button class="opt">24 000 cm²</button>
+    <button class="opt">400 cm²</button>
+    <div class="fb"><b>1 200 cm².</b> Em área o fator vai ao <b>quadrado</b>: \(3 \times 20^2 = 3 \times 400 = 1\,200\).<br>
+    O distrator 60 multiplicou por 20, como se fosse comprimento.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 2</span> Aplicação — um passo</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · área da moldura</div>
+    <div class="stem">Uma foto quadrada de 16 cm de lado recebe uma moldura de 3 cm em toda a volta. A área <b>só da moldura</b> é:</div>
+    <button class="opt">228 cm²</button>
+    <button class="opt">484 cm²</button>
+    <button class="opt">96 cm²</button>
+    <button class="opt">160 cm²</button>
+    <div class="fb"><b>228 cm².</b> Externo: \(16 + 6 = 22\) → \(22^2 = 484\). Foto: \(16^2 = 256\). Moldura \(= 484 - 256 = 228\).<br>
+    O 484 é a área <b>total</b> — leia se pedem a moldura ou o conjunto.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · setor</div>
+    <div class="stem">Um regador giratório alcança 6 m e cobre um setor de 120°. Usando \(\pi \approx 3\), a área regada é:</div>
+    <button class="opt">36 m²</button>
+    <button class="opt">108 m²</button>
+    <button class="opt">12 m²</button>
+    <button class="opt">72 m²</button>
+    <div class="fb"><b>36 m².</b> \(120°\) é \(\frac{1}{3}\) do círculo. Círculo inteiro \(= 3 \times 36 = 108\); um terço \(= 36\) m².</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · do lado à área</div>
+    <div class="stem">Uma piscina quadrada tem área de 225 m². Seu lado mede:</div>
+    <button class="opt">15 m</button>
+    <button class="opt">112,5 m</button>
+    <button class="opt">56,25 m</button>
+    <button class="opt">22,5 m</button>
+    <div class="fb"><b>15 m.</b> \(\sqrt{225} = 15\). Quando a questão dá a <b>área</b> de um quadrado e você precisa das medidas, comece extraindo a raiz.</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N2 · centro</div>
+    <div class="stem">Um ponto que fica à <b>mesma distância</b> de três outros pontos não alinhados é:</div>
+    <button class="opt">o ponto médio entre eles.</button>
+    <button class="opt">o centro da circunferência que passa pelos três.</button>
+    <button class="opt">sempre o vértice do ângulo reto.</button>
+    <button class="opt">o ponto mais alto do triângulo.</button>
+    <div class="fb"><b>O centro da circunferência que passa pelos três.</b> Se está à mesma distância dos três, essa distância é o <b>raio</b> — e os três pontos estão sobre a circunferência.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 3</span> Duas etapas</div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N3 · área → lado → moldura</div>
+    <div class="stem">Uma piscina quadrada tem área de 400 m². Ao redor dela será feita uma calçada de <b>5 m</b> de largura constante. A área da calçada é:</div>
+    <button class="opt">400 m²</button>
+    <button class="opt">500 m²</button>
+    <button class="opt">900 m²</button>
+    <button class="opt">200 m²</button>
+    <div class="fb"><b>500 m².</b> Três passos:<br>
+    <b>1)</b> lado da piscina \(= \sqrt{400} = 20\) m.<br>
+    <b>2)</b> lado externo \(= 20 + 5 + 5 = 30\) m → área total \(= 900\) m².<br>
+    <b>3)</b> calçada \(= 900 - 400 = 500\) m².<br>
+    O 900 é a área total (o distrator para quem parou no passo 2); o 200 sai de somar 5 uma vez só.</div>
+  </div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N3 · otimização com cerca</div>
+    <div class="stem">Um jardineiro tem 24 m de cerca. Comparando um triângulo equilátero, um quadrado e um hexágono regular feitos com toda essa cerca, a <b>maior área</b> será a do:</div>
+    <button class="opt">triângulo, porque tem lados maiores.</button>
+    <button class="opt">quadrado, porque é mais simétrico.</button>
+    <button class="opt">hexágono, porque tem mais lados.</button>
+    <button class="opt">os três terão a mesma área.</button>
+    <div class="fb"><b>Hexágono.</b> Lado \(= 24 \div 6 = 4\) m, e a área fica \(\approx 41{,}6\) m², contra 36 m² do quadrado (lado 6) e \(\approx 27{,}7\) m² do triângulo (lado 8).<br>
+    <b>Regra geral:</b> mesmo perímetro, <b>mais lados → mais área</b>. Não precisa calcular nada. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · círculo dentro de quadrado</div>
+    <div class="stem">Um círculo está inscrito num quadrado de lado 12 cm (encosta nos quatro lados). Usando \(\pi \approx 3\), a área <b>fora</b> do círculo e dentro do quadrado é:</div>
+    <button class="opt">36 cm²</button>
+    <button class="opt">108 cm²</button>
+    <button class="opt">144 cm²</button>
+    <button class="opt">72 cm²</button>
+    <div class="fb"><b>36 cm².</b> O círculo inscrito tem <b>diâmetro igual ao lado</b>, logo raio 6.<br>
+    Quadrado \(= 144\); círculo \(= 3 \times 36 = 108\); sobra \(= 144 - 108 = 36\).<br>
+    O passo que derruba: usar 12 como raio. Inscrito → o <b>diâmetro</b> é que vale o lado.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · malha quadriculada</div>
+    <div class="stem">Numa malha de quadras de 100 m de lado, uma pessoa anda 3 quadras para leste e 4 para o norte. A distância <b>em linha reta</b> entre o início e o fim é:</div>
+    <button class="opt">500 m</button>
+    <button class="opt">700 m</button>
+    <button class="opt">350 m</button>
+    <button class="opt">100 m</button>
+    <div class="fb"><b>500 m.</b> Pitágoras: \(\sqrt{300^2 + 400^2} = \sqrt{250\,000} = 500\).<br>
+    O 700 é a distância <b>percorrida a pé</b> (3+4 quadras) — leia se pedem o trajeto ou a linha reta. O trio 3-4-5 aparece o tempo todo: guarde.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 4</span> Nível ENEM — no estilo das que você errou</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N4 · estilo ENEM 2024 (Q164) · equidistantes</div>
+    <div class="stem">Uma prefeitura construirá <b>três postos de saúde equidistantes entre si</b>, e de modo que as distâncias dos três ao <b>hospital</b> sejam iguais. A figura formada pelos três postos e a posição do hospital são:</div>
+    <button class="opt">triângulo equilátero, com o hospital no centro dele.</button>
+    <button class="opt">triângulo retângulo, com o hospital num vértice.</button>
+    <button class="opt">linha reta, com o hospital no meio dela.</button>
+    <button class="opt">quadrado, com o hospital fora dele.</button>
+    <div class="fb"><b>Triângulo equilátero com o hospital no centro.</b> Duas traduções, uma de cada frase:<br>
+    "Postos equidistantes <b>entre si</b>" → os três lados são iguais → <b>equilátero</b>.<br>
+    "Distâncias iguais <b>ao hospital</b>" → o hospital está à mesma distância dos três vértices → é o <b>centro</b> da circunferência que passa por eles.<br>
+    Questão de vocabulário, não de conta. Traduzir "equidistante" resolve. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N4 · estilo ENEM 2024 (Q155) · região do sensor</div>
+    <div class="stem">Um sensor de presença é instalado num canto e cobre um <b>setor circular de 90°</b> com alcance de 8 m. Usando \(\pi \approx 3\), a área monitorada é:</div>
+    <button class="opt">192 m²</button>
+    <button class="opt">48 m²</button>
+    <button class="opt">64 m²</button>
+    <button class="opt">24 m²</button>
+    <div class="fb"><b>48 m².</b> Círculo completo \(= 3 \times 8^2 = 192\) m². Um setor de 90° é \(\frac{1}{4}\) disso → \(192 \div 4 = 48\).<br>
+    O distrator <b>192</b> é o círculo inteiro — quem esqueceu que o sensor só varre um quarto. Sempre confira o <b>ângulo de abertura</b>. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N4 · estilo ENEM 2024 (Q151) · da maquete ao real</div>
+    <div class="stem">Uma maquete foi feita na escala 1 : 200. Um salão aparece na maquete com área de <b>4,18 cm²</b>. A área real do salão é:</div>
+    <button class="opt">836 cm²</button>
+    <button class="opt">8 360 cm²</button>
+    <button class="opt">167 200 cm²</button>
+    <button class="opt">33 440 000 cm²</button>
+    <div class="fb"><b>167 200 cm² (≈ 16,7 m²).</b> Em área o fator é \(k^2\): \(4{,}18 \times 200^2 = 4{,}18 \times 40\,000 = 167\,200\).<br>
+    O distrator 836 usou \(k\) (comprimento) e o último usou \(k^3\) (volume). <b>Comprimento \(k\), área \(k^2\), volume \(k^3\)</b> — a mesma família de erro aparece nas três formas. 🎯</div>
+  </div>
+
+  <div class="level blind"><span class="lv">Sem aviso</span> Misturadas — descubra você o assunto</div>
+  <p class="ladder-intro">Sem dizer o tema. Pergunte-se primeiro <b>“do que isto está falando?”</b></p>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Num gráfico de volume × tempo, um tanque vai de 0 a 900 litros em 15 minutos. A inclinação da reta representa:</div>
+    <button class="opt">a vazão, de 60 L/min.</button>
+    <button class="opt">a vazão, de 13 500 L/min.</button>
+    <button class="opt">a capacidade, de 900 L.</button>
+    <button class="opt">o tempo total, de 15 min.</button>
+    <div class="fb"><b>Vazão de 60 L/min.</b> Era <a href="0014-graficos.html">leitura de gráfico</a>: inclinação \(= 900 \div 15 = 60\), e volume ÷ tempo se chama vazão.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">O nível sonoro é \(N = 10 \cdot \log\frac{I}{I_0}\), com \(I_0 = 10^{-12}\) W/m². Para \(I = 10^{-4}\) W/m², o valor de \(N\) é:</div>
+    <button class="opt">80 dB</button>
+    <button class="opt">40 dB</button>
+    <button class="opt">120 dB</button>
+    <button class="opt">8 dB</button>
+    <div class="fb"><b>80 dB.</b> Era <a href="0013-exponencial-log.html">logaritmo</a>: \(\frac{10^{-4}}{10^{-12}} = 10^{8}\), e \(10 \times \log 10^8 = 10 \times 8 = 80\).</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Um cone e um cilindro têm a mesma base e a mesma altura. Se o cilindro tem 60 cm³, o cone tem:</div>
+    <button class="opt">20 cm³</button>
+    <button class="opt">30 cm³</button>
+    <button class="opt">180 cm³</button>
+    <button class="opt">60 cm³</button>
+    <div class="fb"><b>20 cm³.</b> Era <a href="0010-volumes.html">volume</a>: o cone é <b>um terço</b> do cilindro de mesma base e altura.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Um trajeto a 80 km/h leva 2,5 horas. A 100 km/h, o mesmo trajeto levará:</div>
+    <button class="opt">2 horas</button>
+    <button class="opt">3,1 horas</button>
+    <button class="opt">1,8 hora</button>
+    <button class="opt">3 horas</button>
+    <div class="fb"><b>2 horas.</b> Era <a href="0005-proporcionalidade-inversa.html">inversa</a>: \(80 \times 2{,}5 = 200\) km; \(200 \div 100 = 2\) h.</div>
+  </div>
+
+  <div class="score" id="score">Responda as questões acima ☝️</div>
+
+  <h2>Para fixar (faça depois)</h2>
+  <p>• <b>Fonte primária recomendada:</b>
+     <a href="https://pt.khanacademy.org/math/basic-geo/basic-geo-area-and-perimeter" target="_blank">Khan Academy — Área e perímetro</a> (gratuito, em português).</p>
+  <p>• <b>Os cinco padrões desta lição:</b> moldura (fora menos dentro, largura <b>dupla</b>) ·
+     mais lados = mais área · setor é fração do círculo · "equidistante" tem tradução ·
+     área em escala vai ao <b>quadrado</b>.</p>
+  <p>• <b>Daqui a 2 dias</b>, refaça o Nível 4 e o bloco sem aviso, de memória.</p>
+
+  <div class="foot">
+    <p class="ask">👨‍🏫 <b>Eu sou seu professor aqui.</b> Se algum desses padrões não estiver
+    "aparecendo" na hora da prova, me manda a questão que a gente identifica junto.</p>
+    <p>Workspace de estudo · Missão: Matemática ENEM 2026 → TO/Fono USP Ribeirão Preto ·
+    Referência: <a href="../reference/geometria-plana-2.html">Cartão de Geometria Plana II</a> ·
+    Anterior: <a href="0014-graficos.html">Lição 0014 — Gráficos</a> ·
+    Próxima: <a href="0016-volumes-2.html">Lição 0016 — Volumes II</a></p>
+  </div>
+
+</div>
+<script>
+  let answered = 0, hits = 0;
+  const total = document.querySelectorAll('.q').length;
+  document.querySelectorAll('.q').forEach(function(q){
+    const correct = parseInt(q.dataset.correct, 10);
+    const opts = q.querySelectorAll('.opt');
+    const fb = q.querySelector('.fb');
+    opts.forEach(function(btn, i){
+      btn.addEventListener('click', function(){
+        opts.forEach(function(b){ b.disabled = true; });
+        if(i === correct){ btn.classList.add('correct'); hits++; }
+        else { btn.classList.add('wrong'); opts[correct].classList.add('correct'); }
+        fb.classList.add('show');
+        answered++;
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    const el = document.getElementById('score');
+    if(answered < total){ el.textContent = answered + ' de ' + total + ' respondidas — continue 💪'; return; }
+    let msg = 'Você acertou ' + hits + ' de ' + total + '. ';
+    const pct = hits / total;
+    if(pct === 1) msg += 'Escada inteira, incluindo o bloco sem aviso! 🎯';
+    else if(pct >= 0.75) msg += 'Muito bom. Volte no cartão nos pontos que escaparam.';
+    else if(pct >= 0.5) msg += 'Está vindo. Releia a ideia central e refaça amanhã.';
+    else msg += 'Sem drama — me chame que a gente refaz juntos, passo a passo.';
+    el.textContent = msg;
+  }
+</script>
+</body>
+</html>

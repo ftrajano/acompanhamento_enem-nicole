@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cartão de referência — Volumes II (ENEM)</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#dcd6c8; --accent:#7a1f2b; --bg:#fbf9f4; --hi:#fdf3d6; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 24px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.7; }
+  .card{ max-width:760px; margin:0 auto; }
+  header{ border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:24px; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:27px; margin:6px 0 0; font-weight:600; }
+  h2{ font-size:16px; font-family:-apple-system,Helvetica,Arial,sans-serif; letter-spacing:.02em;
+      margin:30px 0 8px; color:var(--accent); border-bottom:1px solid var(--line); padding-bottom:4px; }
+  p{margin:8px 0}
+  .lead{ color:var(--soft); font-style:italic; margin-top:6px; }
+  table{ border-collapse:collapse; width:100%; margin:10px 0; font-size:15px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:12px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  .rule{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:2; }
+  .rule b{ color:var(--accent); }
+  .flag{ background:#fdf0f0; border:1px solid #e6c9c9; border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:1.9; font-size:14.5px; }
+  .flag b{ color:var(--accent); }
+  .fig{ text-align:center; margin:12px 0; color:var(--accent); }
+  ul{margin:8px 0 8px 0; padding-left:22px} li{margin:5px 0}
+  .foot{ margin-top:34px; padding-top:12px; border-top:1px solid var(--line);
+         font-size:13px; color:var(--soft); }
+  a{color:var(--accent)}
+  mjx-container{ color:var(--accent); }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+  @media print{ body{background:#fff;padding:0} .card{max-width:100%} h2{break-after:avoid} .flag{break-inside:avoid} }
+</style>
+<!-- MathJax: delimitadores só \( \) e \[ \] — NUNCA $...$, para não conflitar com "R$". -->
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+
+<div class="card">
+  <header>
+    <div class="kicker">Cartão de referência · Matemática ENEM</div>
+    <h1>Volumes II</h1>
+    <p class="lead">Tronco é subtração. E o raio entra ao quadrado.</p>
+  </header>
+  <h2>1. As fórmulas (e o padrão por trás)</h2>
+  <table>
+    <tr><th>Sólido</th><th>Volume</th></tr>
+    <tr><td>Prisma / bloco</td><td>\(A_b \cdot h\)</td></tr>
+    <tr><td>Cilindro</td><td>\(\pi r^2 h\)</td></tr>
+    <tr><td>Pirâmide</td><td>\(\frac{A_b \cdot h}{3}\)</td></tr>
+    <tr><td>Cone</td><td>\(\frac{\pi r^2 h}{3}\)</td></tr>
+    <tr><td>Esfera</td><td>\(\frac{4}{3}\pi r^3\)</td></tr>
+  </table>
+  <p class="lead">Tudo é <b>base × altura</b>; o que "termina em ponta" (cone, pirâmide) divide por 3.</p>
+
+  <h2>2. Tronco = subtração</h2>
+  <div class="rule">
+    <b>tronco = sólido inteiro − ponta removida</b><br>
+    Não existe necessidade de decorar fórmula de tronco.
+  </div>
+  <div class="flag">
+    <b>⚑ Reduzir todas as medidas pela metade divide o volume por \(2^3 = 8\)</b>, não por 2.
+    Um cone com metade da altura e metade do raio tem \(\frac{1}{8}\) do volume.
+  </div>
+
+  <h2>3. Sólidos de revolução</h2>
+  <table>
+    <tr><th>Figura plana girada 360°</th><th>Sólido obtido</th></tr>
+    <tr><td>retângulo (por um lado)</td><td><b>cilindro</b></td></tr>
+    <tr><td>triângulo retângulo (por um cateto)</td><td><b>cone</b></td></tr>
+    <tr><td>trapézio retângulo (pelo lado perpendicular)</td><td><b>tronco de cone</b></td></tr>
+    <tr><td>semicírculo (pelo diâmetro)</td><td><b>esfera</b></td></tr>
+  </table>
+  <div class="rule">
+    O lado <b>colado no eixo</b> vira a <b>altura</b>; o lado <b>perpendicular</b> a ele vira o <b>raio</b>.
+  </div>
+  <p>No trapézio, as duas bases (de tamanhos <b>diferentes</b>) viram os dois círculos do tronco.
+  Se fossem iguais, seria retângulo → cilindro.</p>
+
+  <h2>4. Deslocamento de água</h2>
+  <div class="rule">
+    <b>Volume do objeto = área da base × quanto o nível SUBIU</b>
+  </div>
+  <div class="flag">
+    <b>⚑ Use a SUBIDA, não a altura final.</b> Se a água vai de 8 cm para 15 cm, o que conta são
+    os <b>7 cm</b> — a água que já estava lá não precisa ser deslocada.
+  </div>
+
+  <h2>5. No cilindro, o raio entra ao quadrado</h2>
+  <div class="rule">
+    dobrar a <b>altura</b> → volume \(\times 2\)<br>
+    dobrar o <b>raio</b> → volume \(\times 4\)
+  </div>
+  <p><b>Consequência (volume fixo):</b> se a altura cai para \(\frac{1}{4}\), o raio <b>dobra</b> —
+  porque \(r^2\) é que precisa quadruplicar.<br>
+  \(\pi R^2 h = \pi r^2 (0{,}25h) \Rightarrow r^2 = 4R^2 \Rightarrow r = 2R\).</p>
+  <div class="flag">
+    <b>⚑ Erro clássico:</b> responder \(4R\). O fator 4 vale para o <b>quadrado</b> do raio.
+  </div>
+
+  <h2>6. Cone: altura, raio e geratriz</h2>
+  <div class="rule">
+    \(g^2 = h^2 + r^2\) — os três formam um <b>triângulo retângulo</b>.
+  </div>
+  <p>A geratriz é a lateral inclinada (do topo até a borda da base). Aparece como "mangueira de
+  luz", "fita que contorna", "lateral da barraca". Trio mais comum: <b>3-4-5</b>.</p>
+
+  <h2>7. Sequência típica das questões longas</h2>
+  <div class="rule">
+    <b>1)</b> Calcule o volume no sólido certo.<br>
+    <b>2)</b> Converta para <b>litros</b> se for líquido (1 m³ = 1 000 L).<br>
+    <b>3)</b> Divida pelo consumo/vazão para achar tempo ou duração.
+  </div>
+  <p><i>Modelo:</i> cilindro \(r=5\), \(h=2\), \(\pi \approx 3\) → 150 m³ = 150 000 L;
+  75 moradores × 200 L/dia = 15 000 L/dia → dura <b>10 dias</b>.</p>
+
+  <h2>8. Roteiro na hora da prova</h2>
+  <div class="rule">
+    <b>1)</b> Que sólido é? Termina em <b>ponta</b> (÷3) ou não?<br>
+    <b>2)</b> É <b>tronco</b>? Então inteiro menos a ponta.<br>
+    <b>3)</b> É <b>revolução</b>? Identifique o par (item 3).<br>
+    <b>4)</b> É <b>deslocamento</b>? Use a subida do nível.<br>
+    <b>5)</b> Mexeram no <b>raio</b>? Lembre do quadrado.
+  </div>
+
+  <div class="foot">
+    Workspace de estudo da Nicole · Missão: Matemática ENEM 2026 → TO/Fono USP-RP.<br>
+    Usado na <a href="../lessons/0016-volumes-2.html">Lição 0016</a> · Cartão irmão: <a href="volumes.html">Volumes e Sólidos</a>.<br>Fonte: <a href="https://pt.khanacademy.org/math/basic-geo/basic-geo-volume-surface-area">Khan Academy — Volume e área de superfície</a>.
+  </div>
+</div>
+</body>
+</html>

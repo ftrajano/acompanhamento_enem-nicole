@@ -145,6 +145,23 @@ Ver [learning-records/0007](learning-records/0007-serie-cinco-simulados.md).
 - Com isso, **10 das 11 questões que persistiam no 2017 têm lição dedicada.** Ficam de fora só a
   136 (matemática financeira) e a 170 (leitura de escala) → candidatas ao Grupo 4.
 
+**Grupo 4 (COMPLETO — 26/08/2026) — construído a partir dos 4 simulados de LINHA DE BASE:**
+- [x] 0013 — Exponencial e logaritmo. 20 questões + cartão. (3 de 4 simulados, nenhuma lição antes.)
+- [x] 0014 — Leitura e interpretação de gráficos. 20 + cartão. (10 erros, 4 de 4.)
+- [x] 0015 — Geometria plana II: moldura, setor, equidistante, otimização. 20 + cartão. (13 erros, 4 de 4.)
+- [x] 0016 — Volumes II: tronco, revolução, deslocamento, raio ao quadrado. 20 + cartão. (14 erros, 4 de 4.)
+- [x] 0017 — Taxas e razões II: vazão, densidade, L/100 km, polias. 20 + cartão. (11 erros, 4 de 4.)
+- **37 questões reais dos simulados de linha de base** alimentaram estas 5 lições.
+
+## ⚠️ LIÇÃO APRENDIDA (26/08/2026) — não confundir cobertura com suficiência
+Eu quase parei no Grupo 4 depois de UMA lição (a 0013), com o argumento de que os outros blocos
+"já tinham lição". Errado: as lições 0009/0010/0005 foram construídas com 2–3 questões do simulado
+2017, e a linha de base trouxe 13, 14 e 11 erros nesses mesmos blocos — com sub-habilidades que
+elas nem tocavam (tronco, revolução, moldura, setor, polias, densidade composta).
+**Regra:** volume de erro novo num tema já coberto = motivo para uma SEGUNDA lição, não para
+declarar o tema resolvido. E quando o ftrajano já autorizou produzir material, produzir — não
+voltar a perguntar.
+
 ## Onde os 6 erros do Grupo 1 foram re-testados (checar estes primeiro no feedback)
 | Erro original | Re-testado em |
 |---|---|
