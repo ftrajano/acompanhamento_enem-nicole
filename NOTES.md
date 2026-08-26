@@ -61,6 +61,21 @@ Causa: **o título da lição entrega o assunto**, que na prova é justamente o 
   O ganho parado em material já visto é maior que o de qualquer tema novo.
 - → mudança de método registrada em [learning-records/0004](learning-records/0004-ilusao-de-fluencia.md).
 
+## Diagnóstico (simulado ENEM 2020, 2º dia, azul) — 26/08/2026
+- **19/44 = 43,2%** (a 157 foi anulada). Ver [learning-records/0006](learning-records/0006-diagnostico-simulado-2020.md).
+- Série em prova INÉDITA: 2021 → 50,0% · 2017 → 46,7% · 2020 → 43,2%. **Não subiu.**
+- 🚨 **DESEMPENHO DESABA NO FIM:** 136–150 = 53% · 151–165 = 50% · **166–180 = 27%**.
+  Adjacência dos erros no bloco final = 36% (≈ chute). No 2017 a adjacência geral era 92%.
+  → assinatura de **falta de tempo/energia**, não de conteúdo.
+- **18 dos 25 erros têm lição pronta.** Se transferisse: 37/44 = 84%.
+  Destaque: Q147 é o km/L ↔ L/km da lição 0005 (que ela já errou 2× na Q165/2021);
+  Q151 é irmã da Q175/2021 (figuras planas num sólido).
+- Temas SEM lição entre os erros: função exponencial (150), gráfico receita−custo (175),
+  função potência (149), gráfico de vazão (166), quadriculado (158), azulejos (171), matriz (178).
+- ⛔ **DUAS PENDÊNCIAS antes de decidir o Grupo 4:** (1) o simulado foi cronometrado e quanto durou?
+  (2) ela chegou a FAZER as lições 0005–0012 (publicadas em 20/08)?
+- Prazo atualizado: 26/08 → 15/11 = **81 dias ≈ 11,6 semanas**.
+
 ## REFAZER o 2017 após revisar as lições — 20/08/2026
 - A Nicole revisou as lições 0001–0004 e refez as 24 que errou: **recuperou 13 (54%)**.
 - Placar: 21/45 (46,7%) → **34/45 (75,6%)**. Ver [learning-records/0005](learning-records/0005-refazer-2017-apos-revisao.md).
