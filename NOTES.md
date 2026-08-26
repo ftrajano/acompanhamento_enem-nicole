@@ -61,7 +61,20 @@ Causa: **o título da lição entrega o assunto**, que na prova é justamente o 
   O ganho parado em material já visto é maior que o de qualquer tema novo.
 - → mudança de método registrada em [learning-records/0004](learning-records/0004-ilusao-de-fluencia.md).
 
-## SÉRIE DE 5 SIMULADOS — consolidado 26/08/2026 ⭐ LER PRIMEIRO
+## ⭐ CRONOLOGIA — LER ANTES DE TUDO (esclarecida 26/08/2026)
+| Momento | Prova | Resultado |
+|---|---|---|
+| **Antes de qualquer material** | 2021 · 2020 · 2023 · 2024 | 50,0 · 43,2 · 50,0 · 44,4 |
+| Depois do **Grupo 1** (0001–0004) | 2017 (1ª vez) | 46,7% |
+| Depois de revisar de novo | 2017 (refazendo) | 75,6% *(mesma prova, inflado)* |
+
+- **LINHA DE BASE = 46,9% ± 3,1**, medida com 4 provas independentes. Sólida.
+- **Só o Grupo 1 foi testado** → sem ganho detectável na 1ª passada.
+- 🚨 **Os Grupos 2 e 3 (lições 0005–0012) NUNCA foram medidos.** Oito lições sem avaliação.
+- ❗ Não repetir o erro que eu cometi: **não interpretar erros de 2020/2023/2024 como falha das
+  lições 0005–0012** — aquelas provas são anteriores ao material.
+
+## SÉRIE DE 5 SIMULADOS — consolidado 26/08/2026
 Ver [learning-records/0007](learning-records/0007-serie-cinco-simulados.md).
 - **PLATÔ:** 2021 50,0% · 2017 46,7% · 2020 43,2% · 2023 50,0% · 2024 44,4%.
   Média **46,9% ± 2,8**. Cinco provas inéditas, sem tendência. Não está subindo.
@@ -73,7 +86,11 @@ Ver [learning-records/0007](learning-records/0007-serie-cinco-simulados.md).
   volume e sólidos (14) · geometria plana (13) · taxas/razões/vazão (11) · funções e gráficos (10).
 - **Nunca ensinado e cai todo ano: EXPONENCIAL E LOGARITMO** (2020 Q150 meia-vida,
   2023 Q152 decibel, 2024 Q148 resfriamento). Buraco mais óbvio ainda aberto.
-- ⛔ Pendências: (1) foram cronometrados? (2) **ela fez as lições 0005–0012?** (3) ordem cronológica?
+- ✅ Cronologia resolvida (ver bloco acima). Pendência restante: **foram cronometrados?**
+- ✅ **VALIDAÇÃO DO MATERIAL:** as lições dos Grupos 2 e 3 foram feitas a partir dos erros de 2017,
+  e as 4 provas de linha de base apontam os MESMOS blocos prioritários. O material mira onde deve.
+- ❌ **Lacunas reais que sobraram:** (1) exponencial e logaritmo — 3 de 4 simulados, nenhuma lição;
+  (2) leitura de gráficos — 10 erros, 4 de 4; a 0003 só cobre reta vs parábola.
 
 ## Diagnóstico (simulado ENEM 2020, 2º dia, azul) — 26/08/2026
 - **19/44 = 43,2%** (a 157 foi anulada). Ver [learning-records/0006](learning-records/0006-diagnostico-simulado-2020.md).

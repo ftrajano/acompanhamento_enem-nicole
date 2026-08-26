@@ -1,5 +1,11 @@
 # Série de cinco simulados — o que se repete
 
+> ⚠️ **CORRIGIDO em 26/08/2026, mesmo dia.** Este registro foi escrito antes de saber a cronologia.
+> O ftrajano esclareceu: **2020, 2023 e 2024 foram feitas ANTES de estudar o material**, e a de 2017
+> foi feita depois do Grupo 1 (e depois refeita após nova revisão). Isso muda a leitura — ver a
+> seção "Cronologia correta" no fim. As seções intermediárias ficam como registro do raciocínio,
+> mas **as inferências sobre falha de transferência estão erradas** e são retificadas no fim.
+
 **Data:** 26/08/2026. Com 2021, 2017, 2020, 2023 e 2024 corrigidos, dá para separar sinal de ruído.
 
 ## A nota é estável — e não está subindo
@@ -99,3 +105,73 @@ agulha. As duas frentes com evidência:
 
 A pergunta 2 é a que mais importa: se as lições não foram feitas, o platô não é falha do método —
 é material não consumido, e a conversa é outra.
+
+
+---
+
+# Cronologia correta (esclarecida em 26/08/2026)
+
+| Momento | Prova | Resultado |
+|---|---|---|
+| Antes de qualquer material | 2021 | 50,0% |
+| Antes de qualquer material | 2020 | 43,2% |
+| Antes de qualquer material | 2023 | 50,0% |
+| Antes de qualquer material | 2024 | 44,4% |
+| **Depois do Grupo 1** (lições 0001–0004) | 2017 (1ª vez) | 46,7% |
+| Depois de revisar de novo | 2017 (refazendo) | 75,6% *(mesma prova, inflado)* |
+
+## O que isso corrige
+
+**1. Não existe "platô apesar do material".** Quatro das cinco medições são **linha de base**, feitas
+antes de estudar qualquer coisa. A leitura certa é: a linha de base dela é
+**46,9% ± 3,1 (faixa 43,2–50,0)**, medida com solidez incomum — quatro provas independentes.
+
+**2. As inferências de falha de transferência caem.** Eu havia escrito coisas como "Q147/2020 é o
+km/L da Lição 0005 e ainda assim ela errou". Isso não faz sentido: **a prova de 2020 é anterior à
+lição**. O mesmo vale para todas as menções a 0005, 0009 e 0010 nas provas de 2020, 2023 e 2024.
+
+**3. O que de fato foi testado:** apenas o **Grupo 1**. Depois dele, a de 2017 deu 46,7% — dentro da
+faixa da base, ou seja, sem ganho detectável naquela primeira passada. Depois de **revisar**, a mesma
+prova subiu para 75,6%.
+
+**4. Os Grupos 2 e 3 (lições 0005–0012) nunca foram medidos.** Oito lições sem nenhuma avaliação.
+
+## O que continua valendo — e ficou mais forte
+
+O **mapa de necessidades** por tema. Ele agora é ainda melhor, porque vem de quatro provas de linha
+de base independentes, sem contaminação de estudo:
+
+| Tema | Erros | Aparece em | Lição que cobre |
+|---|---|---|---|
+| Volume e sólidos | 14 | 4 de 4 | **0010** ✓ |
+| Geometria plana | 13 | 4 de 4 | **0009** ✓ |
+| Taxas, razões e vazão | 11 | 4 de 4 | **0005** ✓ |
+| Funções e gráficos | 10 | 4 de 4 | 0003 (só reta e parábola — **parcial**) |
+| Porcentagem | 5 | 3 de 4 | **0001** ✓ |
+| Funções trigonométricas | 3 | 3 de 4 | **0012** ✓ |
+| **Exponencial e logaritmo** | 3 | 3 de 4 | ❌ **nenhuma** |
+| Contagem | 3 | 3 de 4 | **0007** ✓ |
+
+**Isto é uma validação independente do material.** As lições dos Grupos 2 e 3 foram construídas a
+partir dos erros do simulado 2017; quatro provas que ela fez antes de estudar apontam exatamente
+os mesmos blocos prioritários. O material está mirando onde deve.
+
+## As duas lacunas reais que sobraram
+
+1. **Exponencial e logaritmo** — cai em 3 de 4 simulados (2020 Q150 meia-vida do carbono 14,
+   2023 Q152 decibel, 2024 Q148 resfriamento) e **não tem nenhuma lição**. → Lição 0013.
+2. **Leitura e interpretação de gráficos** — 10 erros, 4 de 4 simulados. A Lição 0003 cobre reta
+   vs. parábola, mas os erros são de outro tipo: gráfico de vazão, receita × custo, reta de
+   tendência, gráficos de segmentos, intensidade de sinal. → Lição 0014.
+
+## O que fazer com as ~11,6 semanas
+
+O dado que **não temos** é o mais importante: como ela vai em prova inédita **depois** de estudar
+0005–0012. Nenhuma decisão grande deve ser tomada antes disso.
+
+Sequência proposta:
+1. Fechar as duas lacunas (0013 e 0014).
+2. Ela **faz** as lições 0005–0014.
+3. **Simulado inédito e cronometrado** — usar 2019 (já está no computador dele) ou 2018/2022,
+   que continuam sem uso, com o [protocolo](../reference/protocolo-simulado.html).
+4. Comparar com a base de 46,9%. Aí sim se sabe se o método funciona.
