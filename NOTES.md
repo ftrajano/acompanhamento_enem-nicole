@@ -61,6 +61,20 @@ Causa: **o título da lição entrega o assunto**, que na prova é justamente o 
   O ganho parado em material já visto é maior que o de qualquer tema novo.
 - → mudança de método registrada em [learning-records/0004](learning-records/0004-ilusao-de-fluencia.md).
 
+## SÉRIE DE 5 SIMULADOS — consolidado 26/08/2026 ⭐ LER PRIMEIRO
+Ver [learning-records/0007](learning-records/0007-serie-cinco-simulados.md).
+- **PLATÔ:** 2021 50,0% · 2017 46,7% · 2020 43,2% · 2023 50,0% · 2024 44,4%.
+  Média **46,9% ± 2,8**. Cinco provas inéditas, sem tendência. Não está subindo.
+- **Correção de achado:** a adjacência de 92% do 2017 era outlier (2023 64%, 2024 56%, 2020 48%;
+  acaso ≈44%). Não é traço dela — em prova inédita ela **chuta uma parte relevante**.
+- **Efeito de posição** (3 simulados somados): 58% → 42% → 38%. Queda real, maior do 1º para o
+  2º terço, mas irregular (2023 desabou no meio e recuperou no fim) → não é cansaço puro.
+- **OS 4 BLOCOS QUE FALHAM EM 4 DE 4 SIMULADOS** (48 dos 78 erros = 62%):
+  volume e sólidos (14) · geometria plana (13) · taxas/razões/vazão (11) · funções e gráficos (10).
+- **Nunca ensinado e cai todo ano: EXPONENCIAL E LOGARITMO** (2020 Q150 meia-vida,
+  2023 Q152 decibel, 2024 Q148 resfriamento). Buraco mais óbvio ainda aberto.
+- ⛔ Pendências: (1) foram cronometrados? (2) **ela fez as lições 0005–0012?** (3) ordem cronológica?
+
 ## Diagnóstico (simulado ENEM 2020, 2º dia, azul) — 26/08/2026
 - **19/44 = 43,2%** (a 157 foi anulada). Ver [learning-records/0006](learning-records/0006-diagnostico-simulado-2020.md).
 - Série em prova INÉDITA: 2021 → 50,0% · 2017 → 46,7% · 2020 → 43,2%. **Não subiu.**
