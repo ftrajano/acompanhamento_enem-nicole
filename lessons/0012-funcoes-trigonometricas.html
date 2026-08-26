@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lição 0012 — Funções seno e cosseno</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#e2dccd; --accent:#7a1f2b; --green:#1c6b3f;
+         --red:#9b2226; --bg:#fbf9f4; --hi:#fdf3d6; --card:#ffffff; --blind:#2b4c6f; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 22px 80px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.62; }
+  .wrap{ max-width:720px; margin:0 auto; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:30px; line-height:1.2; margin:6px 0 4px; font-weight:600; }
+  .sub{ color:var(--soft); font-style:italic; margin:0 0 8px; }
+  .mission{ background:var(--hi); border-radius:8px; padding:12px 16px; font-size:14.5px; margin:18px 0 8px; }
+  .mission b{color:var(--accent)}
+  h2{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:15px; letter-spacing:.03em;
+      text-transform:uppercase; color:var(--accent); margin:34px 0 8px;
+      border-bottom:1px solid var(--line); padding-bottom:5px; }
+  p{margin:10px 0}
+  .keybox{ background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+           border-radius:0 8px 8px 0; padding:14px 18px; margin:16px 0; line-height:2; }
+  .keybox b{color:var(--accent)}
+  .big{ text-align:center; background:var(--hi); border-radius:8px; padding:14px 16px; margin:16px 0;
+        font-size:17px; line-height:2; }
+  .big b{ color:var(--accent); }
+  table{ border-collapse:collapse; width:100%; margin:12px 0; font-size:14.5px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11.5px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  a{color:var(--accent)}
+  .q{ background:var(--card); border:1px solid var(--line); border-radius:10px;
+      padding:18px 20px; margin:20px 0; }
+  .q .tag{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+           letter-spacing:.08em; text-transform:uppercase; color:var(--soft); }
+  .q .stem{ margin:6px 0 14px; }
+  .fig{ text-align:center; margin:12px 0; color:var(--accent); }
+  .fig svg{ max-width:100%; height:auto; }
+  .fig .cap{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:12px; color:var(--soft); margin-top:4px; }
+  .level{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-weight:700; letter-spacing:.04em;
+          color:var(--accent); margin:30px 0 6px; display:flex; align-items:center; gap:10px; font-size:14px; }
+  .level::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .level .lv{ background:var(--accent); color:#fff; border-radius:20px; padding:2px 11px; font-size:11px; letter-spacing:.06em; white-space:nowrap; }
+  .level.blind{ color:var(--blind); }
+  .level.blind .lv{ background:var(--blind); }
+  .ladder-intro{ font-size:14.5px; color:var(--soft); margin:4px 0 0; }
+  .opt{ display:block; width:100%; text-align:left; font-family:inherit; font-size:16px;
+        background:#fff; border:1.5px solid var(--line); border-radius:8px; padding:11px 14px;
+        margin:7px 0; cursor:pointer; transition:.12s; }
+  .opt:hover{ border-color:var(--accent); background:var(--hi); }
+  .opt:disabled{ cursor:default; opacity:.95; }
+  .opt.correct{ border-color:var(--green); background:#e9f5ee; color:var(--green); font-weight:600; }
+  .opt.wrong{ border-color:var(--red); background:#fbeaea; color:var(--red); }
+  .fb{ display:none; margin-top:12px; padding:12px 14px; border-radius:8px; font-size:14.5px;
+       background:#f4f1e8; border:1px dashed var(--line); line-height:1.8; }
+  .fb.show{ display:block; }
+  .fb b{color:var(--accent)}
+  .score{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-align:center; font-size:15px;
+          color:var(--soft); margin:26px 0; }
+  .foot{ margin-top:40px; padding-top:14px; border-top:1px solid var(--line); font-size:13.5px; color:var(--soft); }
+  .ask{ background:#eef4ef; border-radius:8px; padding:12px 16px; font-size:14.5px; color:var(--ink); }
+  mjx-container{ color:inherit; }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+</style>
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Lição 0012 · Matemática ENEM · Trigonometria</div>
+  <h1>Funções seno e cosseno</h1>
+  <p class="sub">Tudo que sobe, desce e repete — em três números.</p>
+
+  <div class="mission">
+    <b>Por que esta lição?</b> Ela fecha a última questão que resistiu no simulado 2017: a
+    <b>166</b>, da pressão arterial. É o tipo de questão que assusta pela cara — aparece
+    \(P(t) = A + B\cos(kt)\) e parece cálculo avançado. Não é: são <b>três continhas</b>, e a
+    maior delas é uma média. Depois desta lição você fecha o bloco de trigonometria inteiro.
+  </div>
+
+  <h2>A ideia central (3 minutos)</h2>
+
+  <p>Existem fenômenos que <b>sobem, descem e repetem para sempre</b>: batimento cardíaco, maré,
+  temperatura ao longo do dia, roda-gigante, som. Todos são descritos pela mesma forma:</p>
+
+  <div class="big">
+    \[ f(t) = A + B\cos(kt) \]
+  </div>
+
+  <p>Cada letra tem um papel concreto, e você lê os três direto do enunciado:</p>
+
+  <div class="fig">
+    <svg width="380" height="180" viewBox="0 0 380 180" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="20" y1="90" x2="365" y2="90" stroke-width="1.2" stroke-dasharray="5 4"/>
+      <path d="M20 40 Q 63 40 63 90 Q 63 140 106 140 Q 149 140 149 90 Q 149 40 192 40 Q 235 40 235 90 Q 235 140 278 140 Q 321 140 321 90 Q 321 40 364 40" fill="none"/>
+      <line x1="20" y1="40" x2="365" y2="40" stroke-width="1" stroke-dasharray="3 3" opacity=".5"/>
+      <line x1="20" y1="140" x2="365" y2="140" stroke-width="1" stroke-dasharray="3 3" opacity=".5"/>
+      <line x1="340" y1="40" x2="340" y2="90" stroke-width="1.4"/>
+      <text x="345" y="68" font-size="12" fill="currentColor" stroke="none">B</text>
+      <text x="24" y="86" font-size="12" fill="currentColor" stroke="none">A</text>
+      <line x1="20" y1="160" x2="192" y2="160" stroke-width="1.4"/>
+      <text x="94" y="175" font-size="12" fill="currentColor" stroke="none">período T</text>
+      <text x="330" y="36" font-size="11" fill="currentColor" stroke="none">máx</text>
+      <text x="330" y="153" font-size="11" fill="currentColor" stroke="none">mín</text>
+    </svg>
+    <div class="cap">\(A\) é a linha do meio · \(B\) é a distância até o topo · \(T\) é o tempo de uma volta</div>
+  </div>
+
+  <div class="keybox">
+    <b>\(A\) — o valor médio.</b> A linha central, no meio entre o máximo e o mínimo:
+    \(A = \frac{\text{máx} + \text{mín}}{2}\)<br>
+    <b>\(B\) — a amplitude.</b> Quanto sobe (e desce) a partir do meio:
+    \(B = \frac{\text{máx} - \text{mín}}{2}\)<br>
+    <b>\(k\) — a velocidade da repetição.</b> Ligada ao período por \(k = \frac{2\pi}{T}\)
+  </div>
+
+  <p>Uma leitura que ajuda: <b>\(A\) é a média, \(B\) é o "raio"</b>. Se algo varia entre 78 e 120,
+  o meio é 99 e ele sobe e desce 21 a partir dali. Máximo \(= A + B\), mínimo \(= A - B\).</p>
+
+  <h2>O período — a única parte que confunde</h2>
+
+  <p>O <b>período \(T\)</b> é o tempo que o fenômeno leva para dar uma volta completa e começar de
+  novo. E o \(k\) da fórmula não é o período: é o que faz o cosseno completar uma volta em \(T\).</p>
+
+  <div class="big">
+    \[ T = \frac{2\pi}{k} \qquad\Longleftrightarrow\qquad k = \frac{2\pi}{T} \]
+  </div>
+
+  <p>Repare na relação <b>inversa</b> — a mesma ideia da <a href="0005-proporcionalidade-inversa.html">Lição
+  0005</a>: <b>período curto</b> (repete rápido) significa <b>\(k\) grande</b>. Um coração acelerado
+  tem \(T\) pequeno e \(k\) grande.</p>
+
+  <div class="keybox">
+    <b>Cuidado com a unidade do enunciado.</b> "90 batimentos por <b>minuto</b>" não é o período —
+    é a frequência. O período é o inverso: \(T = \frac{60}{90} = \frac{2}{3}\) segundo por batimento.
+  </div>
+
+  <p>Tudo isso está no <a href="../reference/funcoes-trigonometricas.html">cartão de Funções Seno e Cosseno</a>.</p>
+
+  <h2>Pratique — a escada de dificuldade</h2>
+  <p class="ladder-intro">19 questões. As últimas quatro vêm <b>sem dizer o assunto</b>. Faça na ordem.</p>
+
+  <div class="level"><span class="lv">Nível 1</span> Ler os três números</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · valor médio</div>
+    <div class="stem">Uma grandeza varia entre um mínimo de 10 e um máximo de 30. Seu <b>valor médio</b> \(A\) é:</div>
+    <button class="opt">20</button>
+    <button class="opt">10</button>
+    <button class="opt">40</button>
+    <button class="opt">15</button>
+    <div class="fb"><b>20.</b> \(A = \frac{30 + 10}{2} = 20\). É a linha do meio do gráfico.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · amplitude</div>
+    <div class="stem">A mesma grandeza varia entre 10 e 30. Sua <b>amplitude</b> \(B\) é:</div>
+    <button class="opt">10</button>
+    <button class="opt">20</button>
+    <button class="opt">40</button>
+    <button class="opt">30</button>
+    <div class="fb"><b>10.</b> \(B = \frac{30 - 10}{2} = 10\). Cuidado: a amplitude é <b>metade</b> da variação total. A variação inteira é 20, mas ela sobe só 10 acima do meio.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · máximo</div>
+    <div class="stem">Numa função \(f(t) = 50 + 8\cos(kt)\), o valor <b>máximo</b> é:</div>
+    <button class="opt">58</button>
+    <button class="opt">50</button>
+    <button class="opt">42</button>
+    <button class="opt">400</button>
+    <div class="fb"><b>58.</b> O cosseno vale no máximo 1, então o máximo é \(50 + 8 \times 1 = 58\). O mínimo é \(50 - 8 = 42\).</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N1 · período</div>
+    <div class="stem">O <b>período</b> de uma função periódica é:</div>
+    <button class="opt">a diferença entre máximo e mínimo.</button>
+    <button class="opt">o tempo de uma repetição completa.</button>
+    <button class="opt">o valor médio da função.</button>
+    <button class="opt">o maior valor que ela atinge.</button>
+    <div class="fb"><b>O tempo de uma repetição completa.</b> É "quanto demora até tudo começar de novo".</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · relação k e T</div>
+    <div class="stem">Se o período de \(\cos(kt)\) é \(T\), então \(k\) vale:</div>
+    <button class="opt">\(\frac{2\pi}{T}\)</button>
+    <button class="opt">\(\frac{T}{2\pi}\)</button>
+    <button class="opt">\(2\pi T\)</button>
+    <button class="opt">\(\frac{\pi}{T}\)</button>
+    <div class="fb"><b>\(k = \frac{2\pi}{T}\).</b> Relação <b>inversa</b>: período curto → \(k\) grande. Vale nos dois sentidos, então \(T = \frac{2\pi}{k}\).</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 2</span> Aplicação — um passo</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · dos dados para a fórmula</div>
+    <div class="stem">A temperatura de uma cidade varia entre 16 °C e 28 °C ao longo do dia. Os valores de \(A\) e \(B\) são, respectivamente:</div>
+    <button class="opt">22 e 6</button>
+    <button class="opt">22 e 12</button>
+    <button class="opt">16 e 28</button>
+    <button class="opt">12 e 6</button>
+    <div class="fb"><b>\(A = 22\), \(B = 6\).</b> Média: \(\frac{28+16}{2} = 22\). Amplitude: \(\frac{28-16}{2} = 6\). Confira: \(22 + 6 = 28\) ✓ e \(22 - 6 = 16\) ✓.<br>
+    O distrator 12 é a variação <b>total</b> — falta dividir por 2.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · período a partir da frequência</div>
+    <div class="stem">Um fenômeno se repete <b>30 vezes por minuto</b>. Seu período, em segundos, é:</div>
+    <button class="opt">2 segundos</button>
+    <button class="opt">30 segundos</button>
+    <button class="opt">0,5 segundo</button>
+    <button class="opt">60 segundos</button>
+    <div class="fb"><b>2 s.</b> \(T = \frac{60}{30} = 2\) segundos por repetição. <b>Frequência e período são inversos</b>: quantas vezes por minuto ↔ quantos segundos cada uma.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · achando o k</div>
+    <div class="stem">Uma função \(\cos(kt)\) tem período \(T = 4\) segundos. O valor de \(k\) é:</div>
+    <button class="opt">\(\frac{\pi}{2}\)</button>
+    <button class="opt">\(2\pi\)</button>
+    <button class="opt">\(8\pi\)</button>
+    <button class="opt">\(4\pi\)</button>
+    <div class="fb"><b>\(k = \frac{2\pi}{4} = \frac{\pi}{2}\).</b> Substituiu direto na fórmula.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · lendo o gráfico</div>
+    <div class="stem">Um gráfico oscila entre 4 e 10, cruzando a linha do meio a cada 3 segundos (ou seja, o período é 6 s). A função é:</div>
+    <button class="opt">\(7 + 3\cos\left(\frac{\pi}{3}t\right)\)</button>
+    <button class="opt">\(7 + 6\cos\left(\frac{\pi}{3}t\right)\)</button>
+    <button class="opt">\(3 + 7\cos\left(\frac{\pi}{6}t\right)\)</button>
+    <button class="opt">\(7 + 3\cos(6t)\)</button>
+    <div class="fb"><b>\(7 + 3\cos\left(\frac{\pi}{3}t\right)\).</b> \(A = \frac{10+4}{2} = 7\); \(B = \frac{10-4}{2} = 3\); \(k = \frac{2\pi}{6} = \frac{\pi}{3}\).<br>
+    Confira sempre pelos extremos: \(7+3 = 10\) ✓ e \(7-3 = 4\) ✓.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 3</span> Duas etapas</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · da fórmula para os extremos</div>
+    <div class="stem">A altura de uma cadeira numa roda-gigante é \(h(t) = 12 + 10\cos\left(\frac{\pi}{15}t\right)\), com \(t\) em segundos. A altura <b>mínima</b> e o <b>período</b> são:</div>
+    <button class="opt">2 m e 30 s</button>
+    <button class="opt">2 m e 15 s</button>
+    <button class="opt">12 m e 30 s</button>
+    <button class="opt">22 m e 15 s</button>
+    <div class="fb"><b>2 m e 30 s.</b> Mínimo \(= A - B = 12 - 10 = 2\) m. Período \(= \frac{2\pi}{k} = \frac{2\pi}{\pi/15} = 2\pi \times \frac{15}{\pi} = 30\) s.<br>
+    Na divisão o \(\pi\) cancela — é sempre assim nessas questões, o que torna a conta mais simples do que parece.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · batimentos para período</div>
+    <div class="stem">Um coração bate <b>120 vezes por minuto</b>. O período de um batimento, em segundos, e o \(k\) correspondente são:</div>
+    <button class="opt">0,5 s e \(4\pi\)</button>
+    <button class="opt">2 s e \(\pi\)</button>
+    <button class="opt">0,5 s e \(2\pi\)</button>
+    <button class="opt">120 s e \(\frac{\pi}{60}\)</button>
+    <div class="fb"><b>\(T = 0{,}5\) s e \(k = 4\pi\).</b> \(T = \frac{60}{120} = 0{,}5\) s. Depois \(k = \frac{2\pi}{0{,}5} = 4\pi\).<br>
+    Faz sentido: coração acelerado → período curto → \(k\) grande.</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N3 · comparando</div>
+    <div class="stem">Duas funções têm o mesmo \(A\) e o mesmo \(B\), mas a primeira tem \(k = 2\pi\) e a segunda \(k = 4\pi\). Comparadas, elas:</div>
+    <button class="opt">atingem valores máximos diferentes.</button>
+    <button class="opt">repetem-se com velocidades diferentes.</button>
+    <button class="opt">têm linhas médias diferentes.</button>
+    <button class="opt">são exatamente iguais.</button>
+    <div class="fb"><b>Repetem-se com velocidades diferentes.</b> \(A\) e \(B\) decidem <b>onde</b> a curva fica (meio e altura); \(k\) decide <b>quão rápido</b> ela oscila. A segunda tem período pela metade — repete duas vezes mais rápido.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · montando do zero</div>
+    <div class="stem">A maré varia entre 1 m e 5 m, completando um ciclo a cada 12 horas. A função que descreve a altura é:</div>
+    <button class="opt">\(3 + 2\cos\left(\frac{\pi}{6}t\right)\)</button>
+    <button class="opt">\(3 + 4\cos\left(\frac{\pi}{6}t\right)\)</button>
+    <button class="opt">\(2 + 3\cos\left(\frac{\pi}{12}t\right)\)</button>
+    <button class="opt">\(3 + 2\cos(12t)\)</button>
+    <div class="fb"><b>\(3 + 2\cos\left(\frac{\pi}{6}t\right)\).</b> \(A = \frac{5+1}{2} = 3\); \(B = \frac{5-1}{2} = 2\); \(k = \frac{2\pi}{12} = \frac{\pi}{6}\).<br>
+    Este é exatamente o roteiro da questão do ENEM logo abaixo — só mudam os números.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 4</span> Nível ENEM — a que você errou duas vezes</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N4 · ENEM 2017 (Q166) · você errou nas duas tentativas</div>
+    <div class="stem">Um cientista modela a pressão arterial por \(P(t) = A + B\cos(kt)\), com \(A\), \(B\), \(k\) positivos e \(t\) em segundos. Um batimento é o intervalo entre duas pressões máximas sucessivas. Os dados: <b>pressão mínima 78</b>, <b>pressão máxima 120</b>, <b>90 batimentos por minuto</b>. A função é:</div>
+    <button class="opt">\(P(t) = 99 + 21\cos(3\pi t)\)</button>
+    <button class="opt">\(P(t) = 78 + 42\cos(3\pi t)\)</button>
+    <button class="opt">\(P(t) = 99 + 21\cos(2\pi t)\)</button>
+    <button class="opt">\(P(t) = 99 + 21\cos(t)\)</button>
+    <div class="fb"><b>\(P(t) = 99 + 21\cos(3\pi t)\).</b> Três continhas, na ordem.<br>
+    <b>1) \(A\) — o meio:</b> \(\frac{120 + 78}{2} = \frac{198}{2} = 99\).<br>
+    <b>2) \(B\) — a amplitude:</b> \(\frac{120 - 78}{2} = \frac{42}{2} = 21\). Confira: \(99+21 = 120\) ✓ e \(99-21 = 78\) ✓.<br>
+    <b>3) \(k\) — pelo período:</b> 90 batimentos por minuto → \(T = \frac{60}{90} = \frac{2}{3}\) s. Logo \(k = \frac{2\pi}{2/3} = 2\pi \times \frac{3}{2} = 3\pi\).<br>
+    <b>Os dois erros embutidos nos distratores:</b> usar \(A = 78\) e \(B = 42\) é confundir o <b>mínimo</b> com a média e a variação <b>total</b> com a amplitude — falta dividir por 2 nas duas. E \(2\pi\) sai de assumir período de 1 segundo, esquecendo de converter os 90 por minuto. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N4 · estilo ENEM · lendo de volta</div>
+    <div class="stem">A temperatura de um forno é \(T(t) = 180 + 20\cos\left(\frac{\pi}{5}t\right)\), com \(t\) em minutos. A temperatura <b>máxima</b> e o intervalo entre dois picos são:</div>
+    <button class="opt">200 °C e 5 minutos</button>
+    <button class="opt">200 °C e 10 minutos</button>
+    <button class="opt">180 °C e 10 minutos</button>
+    <button class="opt">220 °C e 5 minutos</button>
+    <div class="fb"><b>200 °C e 10 minutos.</b> Máxima \(= 180 + 20 = 200\). O intervalo entre picos é o próprio <b>período</b>: \(T = \frac{2\pi}{\pi/5} = 10\) minutos.<br>
+    "Intervalo entre dois máximos sucessivos" é sempre o período — foi assim que a Q166 definiu batimento cardíaco. 🎯</div>
+  </div>
+
+  <div class="level blind"><span class="lv">Sem aviso</span> Misturadas — descubra você o assunto</div>
+  <p class="ladder-intro">Sem dizer o tema. Pergunte-se primeiro <b>“do que isto está falando?”</b></p>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Uma escada de 10 m encostada na parede faz 60° com o chão. Usando \(\sqrt{3} \approx 1{,}7\), a altura que ela alcança na parede é:</div>
+    <button class="opt">8,5 m</button>
+    <button class="opt">5,0 m</button>
+    <button class="opt">17,0 m</button>
+    <button class="opt">10,0 m</button>
+    <div class="fb"><b>8,5 m.</b> Era <a href="0011-trigonometria.html">trigonometria</a>: a altura é o cateto oposto e a escada é a hipotenusa → \(10 \times \operatorname{sen} 60° = 10 \times 0{,}85 = 8{,}5\) m. Usar cosseno daria 5, que é a distância da parede.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Um cubo de aresta 30 cm precisa ser guardado numa caixa de 40 cm × 28 cm × 50 cm. O cubo:</div>
+    <button class="opt">não cabe: um lado tem 28 cm.</button>
+    <button class="opt">cabe, pois a caixa é maior.</button>
+    <button class="opt">cabe exatamente, sem folga.</button>
+    <button class="opt">cabe se apoiado na diagonal.</button>
+    <div class="fb"><b>Não cabe.</b> Era <a href="0010-volumes.html">volume e encaixe</a>: a caixa tem 56 000 cm³ contra 27 000 do cubo, mas o lado de 28 cm é menor que a aresta de 30. <b>Caber é dimensão por dimensão.</b></div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Um trajeto feito a 100 km/h leva 3 horas. A 75 km/h, o mesmo trajeto levará:</div>
+    <button class="opt">4 horas</button>
+    <button class="opt">2,25 horas</button>
+    <button class="opt">3,75 horas</button>
+    <button class="opt">5 horas</button>
+    <div class="fb"><b>4 horas.</b> Era <a href="0005-proporcionalidade-inversa.html">inversa</a>: \(100 \times 3 = 300\) km (o nome faz sentido — é a distância); \(300 \div 75 = 4\) h. Mais devagar → mais tempo.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Numa turma de 25 alunos, 15 são meninas. Sorteando um aluno, a probabilidade de ser <b>menino</b> é:</div>
+    <button class="opt">40%</button>
+    <button class="opt">60%</button>
+    <button class="opt">15%</button>
+    <button class="opt">25%</button>
+    <div class="fb"><b>40%.</b> Era <a href="0006-probabilidade.html">probabilidade</a>: são \(25 - 15 = 10\) meninos → \(\frac{10}{25} = 0{,}4\). O 60% é a chance de ser menina — leia sempre qual grupo foi pedido.</div>
+  </div>
+
+  <div class="score" id="score">Responda as questões acima ☝️</div>
+
+  <h2>Para fixar (faça depois)</h2>
+  <p>• <b>Fonte primária recomendada:</b>
+     <a href="https://pt.khanacademy.org/math/trigonometry/trig-function-graphs" target="_blank">Khan Academy — Gráficos de funções trigonométricas</a> (gratuito, em português).</p>
+  <p>• <b>O roteiro que resolve qualquer uma dessas:</b> ache o <b>meio</b> (\(A\)), ache o
+     <b>quanto sobe</b> (\(B\)), ache o <b>período</b> e converta em \(k\). Nessa ordem, sempre.</p>
+  <p>• <b>A conferência de 5 segundos:</b> \(A + B\) tem que dar o máximo e \(A - B\) o mínimo.
+     Se não der, você trocou alguma coisa.</p>
+
+  <div class="foot">
+    <p class="ask">👨‍🏫 <b>Eu sou seu professor aqui.</b> Esta era a última questão que faltava do
+    simulado 2017 — se ela sair, você fechou o ciclo inteiro. Qualquer dúvida, me chame.</p>
+    <p>Workspace de estudo · Missão: Matemática ENEM 2026 → TO/Fono USP Ribeirão Preto ·
+    Referência: <a href="../reference/funcoes-trigonometricas.html">Cartão de Funções Seno e Cosseno</a> ·
+    Anterior: <a href="0011-trigonometria.html">Lição 0011 — Trigonometria</a></p>
+  </div>
+
+</div>
+<script>
+  let answered = 0, hits = 0;
+  const total = document.querySelectorAll('.q').length;
+  document.querySelectorAll('.q').forEach(function(q){
+    const correct = parseInt(q.dataset.correct, 10);
+    const opts = q.querySelectorAll('.opt');
+    const fb = q.querySelector('.fb');
+    opts.forEach(function(btn, i){
+      btn.addEventListener('click', function(){
+        opts.forEach(function(b){ b.disabled = true; });
+        if(i === correct){ btn.classList.add('correct'); hits++; }
+        else { btn.classList.add('wrong'); opts[correct].classList.add('correct'); }
+        fb.classList.add('show');
+        answered++;
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    const el = document.getElementById('score');
+    if(answered < total){ el.textContent = answered + ' de ' + total + ' respondidas — continue 💪'; return; }
+    let msg = 'Você acertou ' + hits + ' de ' + total + '. ';
+    const pct = hits / total;
+    if(pct === 1) msg += 'Escada inteira, incluindo o bloco sem aviso! 🎯';
+    else if(pct >= 0.75) msg += 'Muito bom. Volte no cartão nos pontos que escaparam.';
+    else if(pct >= 0.5) msg += 'Está vindo. Releia a ideia central e refaça amanhã.';
+    else msg += 'Sem drama — me chame que a gente refaz juntos, passo a passo.';
+    el.textContent = msg;
+  }
+</script>
+</body>
+</html>

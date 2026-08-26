@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cartão de referência — Áreas, Perímetros e Encaixe (ENEM)</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#dcd6c8; --accent:#7a1f2b; --bg:#fbf9f4; --hi:#fdf3d6; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 24px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.7; }
+  .card{ max-width:760px; margin:0 auto; }
+  header{ border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:24px; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:27px; margin:6px 0 0; font-weight:600; }
+  h2{ font-size:16px; font-family:-apple-system,Helvetica,Arial,sans-serif; letter-spacing:.02em;
+      margin:30px 0 8px; color:var(--accent); border-bottom:1px solid var(--line); padding-bottom:4px; }
+  p{margin:8px 0}
+  .lead{ color:var(--soft); font-style:italic; margin-top:6px; }
+  table{ border-collapse:collapse; width:100%; margin:10px 0; font-size:15px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:12px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  .rule{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:2; }
+  .rule b{ color:var(--accent); }
+  .flag{ background:#fdf0f0; border:1px solid #e6c9c9; border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:1.9; font-size:14.5px; }
+  .flag b{ color:var(--accent); }
+  .fig{ text-align:center; margin:12px 0; color:var(--accent); }
+  ul{margin:8px 0 8px 0; padding-left:22px} li{margin:5px 0}
+  .foot{ margin-top:34px; padding-top:12px; border-top:1px solid var(--line);
+         font-size:13px; color:var(--soft); }
+  a{color:var(--accent)}
+  mjx-container{ color:var(--accent); }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+  @media print{ body{background:#fff;padding:0} .card{max-width:100%} h2{break-after:avoid} .flag{break-inside:avoid} }
+</style>
+<!-- MathJax: delimitadores só \( \) e \[ \] — NUNCA $...$, para não conflitar com "R$". -->
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div class="card">
+  <header>
+    <div class="kicker">Cartão de referência · Matemática ENEM</div>
+    <h1>Áreas, Perímetros &amp; Encaixe</h1>
+    <p class="lead">Quebre em pedaços simples. Some o que tem, subtraia o que falta.</p>
+  </header>
+
+  <h2>1. Fórmulas básicas</h2>
+  <table>
+    <tr><th>Figura</th><th>Área</th><th>Perímetro</th></tr>
+    <tr><td>Retângulo</td><td>\(b \times h\)</td><td>\(2(b+h)\)</td></tr>
+    <tr><td>Quadrado</td><td>\(\ell^2\)</td><td>\(4\ell\)</td></tr>
+    <tr><td>Triângulo</td><td>\(\frac{b \times h}{2}\)</td><td>soma dos lados</td></tr>
+    <tr><td>Círculo</td><td>\(\pi r^2\)</td><td>\(2\pi r\)</td></tr>
+    <tr><td>Trapézio</td><td>\(\frac{(B+b) \times h}{2}\)</td><td>soma dos lados</td></tr>
+    <tr><td>Losango</td><td>\(\frac{D \times d}{2}\)</td><td>\(4\ell\)</td></tr>
+  </table>
+  <div class="rule">
+    <b>Perímetro</b> = contorno, unidade simples (cm, m).<br>
+    <b>Área</b> = superfície, unidade ao quadrado (cm², m²).<br>
+    Cercar, moldura, barra de rodapé → perímetro. Pintar, gramar, ladrilhar → área.
+  </div>
+
+  <h2>2. Figura composta — a única regra</h2>
+  <div class="rule">
+    Quebre em figuras simples. <b>Some</b> as partes que existem; <b>subtraia</b> os buracos.
+  </div>
+  <ul>
+    <li>Sala em <b>L</b> → retângulo grande <b>menos</b> o canto que falta (mais rápido que somar dois).</li>
+    <li><b>Arruela</b> / pista circular → círculo maior menos o menor.</li>
+    <li>Praça com <b>canteiro</b> no meio → total menos o canteiro.</li>
+    <li>Janela com arco → retângulo <b>mais</b> semicírculo.</li>
+  </ul>
+
+  <h2>3. Conversão de unidades — o fator é ao quadrado</h2>
+  <div class="flag">
+    <b>⚑ Erro clássico.</b> \(1\ \text{m} = 100\ \text{cm}\), mas \(1\ \text{m}^2 = 10\,000\ \text{cm}^2\).<br>
+    Em <b>área</b> o fator vai ao <b>quadrado</b>; em <b>volume</b>, ao <b>cubo</b> (\(1\ \text{m}^3 = 10^6\ \text{cm}^3\)).<br>
+    Converta <b>antes</b> de calcular, nunca depois.
+  </div>
+  <table>
+    <tr><th>Comprimento</th><th>Área</th><th>Volume</th></tr>
+    <tr><td>\(\times 100\)</td><td>\(\times 10\,000\)</td><td>\(\times 1\,000\,000\)</td></tr>
+  </table>
+  <p>O mesmo vale para <b>escala</b>: escala \(1:k\) em comprimento vira \(1:k^2\) em área e
+  \(1:k^3\) em volume.</p>
+
+  <h2>4. Encaixe — duas medidas, dois papéis</h2>
+  <div class="flag">
+    <b>⚑ A armadilha (ENEM 2017, Q140).</b> Quando o objeto tem duas larguras diferentes,
+    <b>cada uma governa uma coisa</b>:<br>
+    • a parte <b>mais larga</b> decide o <b>espaçamento</b> (é ela que encosta na vizinha);<br>
+    • a parte <b>apoiada</b> decide o <b>tamanho do suporte</b> (é ela que precisa caber).<br>
+    A parte larga <b>pode</b> passar da borda; a apoiada, não.
+  </div>
+  <p><i>Modelo:</i> 4 taças, base \(r=4\), borda \(r=5\), em fila.<br>
+  Centros a \(2 \times 5 = 10\) de distância → vão \(= 3 \times 10 = 30\).<br>
+  Comprimento \(= 30 + 4 + 4 = 38\); largura \(= 2 \times 4 = 8\); <b>área \(= 304\)</b>.</p>
+  <p class="lead">Pergunte sempre: <b>o que encosta em quê? o que precisa estar apoiado?</b></p>
+
+  <h2>5. Círculos empilhados — o triângulo escondido</h2>
+  <div class="fig">
+    <svg width="190" height="165" viewBox="0 0 190 165" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="60" cy="120" r="34"/><circle cx="128" cy="120" r="34"/><circle cx="94" cy="61" r="34"/>
+      <path d="M60 120 L128 120 L94 61 Z" stroke-width="1.4" stroke-dasharray="4 3"/>
+      <circle cx="60" cy="120" r="2.5" fill="currentColor"/><circle cx="128" cy="120" r="2.5" fill="currentColor"/>
+      <circle cx="94" cy="61" r="2.5" fill="currentColor"/>
+      <line x1="6" y1="156" x2="184" y2="156"/>
+    </svg>
+  </div>
+  <p>Ligando os centros aparece um <b>triângulo equilátero de lado \(2r\)</b>, cuja altura é \(r\sqrt{3}\).</p>
+  <div class="rule">
+    Altura de <b>3 círculos empilhados</b> em pirâmide: \(\;h = r(2 + \sqrt{3}) \approx 3{,}7\,r\)
+  </div>
+  <p>Se a pilha estiver sobre algo (carroceria, mesa), <b>some a altura desse apoio</b> — o ENEM
+  sempre pergunta a altura a partir do <b>chão</b>.</p>
+
+  <h2>6. Triângulos úteis (guardar de cor)</h2>
+  <table>
+    <tr><th>Triângulo</th><th>Altura</th><th>Área</th></tr>
+    <tr><td>Equilátero de lado \(\ell\)</td><td>\(\frac{\ell\sqrt{3}}{2}\)</td><td>\(\frac{\ell^2\sqrt{3}}{4}\)</td></tr>
+  </table>
+  <p>Aproximações que o ENEM costuma dar: \(\sqrt{2} \approx 1{,}4\) · \(\sqrt{3} \approx 1{,}7\) ·
+  \(\pi \approx 3{,}14\) (às vezes 3).</p>
+
+  <h2>7. Roteiro na hora da prova</h2>
+  <div class="rule">
+    <b>1)</b> É <b>contorno</b> ou <b>superfície</b>? (perímetro ou área)<br>
+    <b>2)</b> As <b>unidades</b> estão todas iguais? Converta antes.<br>
+    <b>3)</b> Dá para <b>quebrar</b> em figuras simples, ou tirar um pedaço de uma maior?<br>
+    <b>4)</b> É encaixe? Então: <b>o que encosta em quê</b> e <b>o que precisa estar apoiado</b>?<br>
+    <b>5)</b> A altura é medida <b>de onde</b>? Do chão ou da base da peça?
+  </div>
+
+  <div class="foot">
+    Workspace de estudo da Nicole · Missão: Matemática ENEM 2026 → TO/Fono USP-RP.<br>
+    Usado na <a href="../lessons/0009-areas-perimetros.html">Lição 0009</a> ·
+    Cartões irmãos: <a href="geometria-espacial.html">Geometria Espacial</a> ·
+    <a href="volumes.html">Volumes e Sólidos</a>.<br>
+    Fonte recomendada: <a href="https://pt.khanacademy.org/math/basic-geo/basic-geo-area-and-perimeter">Khan Academy — Área e perímetro</a>.
+  </div>
+</div>
+</body>
+</html>

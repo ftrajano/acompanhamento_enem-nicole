@@ -90,6 +90,15 @@ Causa: **o título da lição entrega o assunto**, que na prova é justamente o 
 - [x] 0008 — Revisão interleaved 0001–0007. 19 questões, Rodada 1 = só identificar a ferramenta.
 - [ ] Manter estatística/gráficos aquecida com prática espaçada (ponto forte).
 
+**Grupo 3 (COMPLETO — 20/08/2026) — alvo: os blocos que a revisão NÃO moveu:**
+- [x] 0009 — Áreas, perímetros e encaixe. 20 questões + cartão. Fecha Q140 e Q153.
+- [x] 0010 — Volumes e sólidos. 20 questões + cartão. Fecha Q142, Q167 e Q144.
+- [x] 0011 — Trigonometria no triângulo retângulo. 19 questões + cartão. Fecha Q138. **Tema nunca ensinado antes.**
+- [x] 0012 — Funções seno e cosseno. 19 questões + cartão. Fecha Q166.
+- Todas seguem a REGRA NOVA: terminam com bloco **"Sem aviso"** (4 questões interleaved, sem rótulo de tema).
+- Com isso, **10 das 11 questões que persistiam no 2017 têm lição dedicada.** Ficam de fora só a
+  136 (matemática financeira) e a 170 (leitura de escala) → candidatas ao Grupo 4.
+
 ## Onde os 6 erros do Grupo 1 foram re-testados (checar estes primeiro no feedback)
 | Erro original | Re-testado em |
 |---|---|
@@ -129,6 +138,6 @@ A Lição 0002 ensinou inversa, e mesmo assim a Nicole repetiu **o erro exato do
 - [x] ~~Após a Nicole fazer a Lição 0001, registrar desempenho~~ → feito: 0 erros, porcentagem dominada.
 - [ ] Após o Grupo 2, checar se a inversa finalmente fixou (é o teste decisivo da remediação).
 - [ ] Nas ~12 semanas restantes, reservar as últimas ~4 para simulados cronometrados completos.
-- [ ] **Grupo 3 (a definir):** virar a chave de conteúdo para EXECUÇÃO — lição de conferência
+- [x] ~~**Grupo 3 (a definir):**~~ → FEITO: lições 0009–0012 (ver abaixo). Original: virar a chave de conteúdo para EXECUÇÃO — lição de conferência
       (unidade pedida, o que se pergunta, ordem de grandeza) + remediação de funções e geometria
       + matemática financeira (nunca ensinada, ~12% da prova).

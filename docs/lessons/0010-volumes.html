@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lição 0010 — Volumes e sólidos</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#e2dccd; --accent:#7a1f2b; --green:#1c6b3f;
+         --red:#9b2226; --bg:#fbf9f4; --hi:#fdf3d6; --card:#ffffff; --blind:#2b4c6f; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 22px 80px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.62; }
+  .wrap{ max-width:720px; margin:0 auto; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:30px; line-height:1.2; margin:6px 0 4px; font-weight:600; }
+  .sub{ color:var(--soft); font-style:italic; margin:0 0 8px; }
+  .mission{ background:var(--hi); border-radius:8px; padding:12px 16px; font-size:14.5px; margin:18px 0 8px; }
+  .mission b{color:var(--accent)}
+  h2{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:15px; letter-spacing:.03em;
+      text-transform:uppercase; color:var(--accent); margin:34px 0 8px;
+      border-bottom:1px solid var(--line); padding-bottom:5px; }
+  p{margin:10px 0}
+  .keybox{ background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+           border-radius:0 8px 8px 0; padding:14px 18px; margin:16px 0; line-height:2; }
+  .keybox b{color:var(--accent)}
+  .big{ text-align:center; background:var(--hi); border-radius:8px; padding:14px 16px; margin:16px 0;
+        font-size:17px; line-height:2; }
+  .big b{ color:var(--accent); }
+  table{ border-collapse:collapse; width:100%; margin:12px 0; font-size:14.5px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11.5px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  a{color:var(--accent)}
+  .q{ background:var(--card); border:1px solid var(--line); border-radius:10px;
+      padding:18px 20px; margin:20px 0; }
+  .q .tag{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+           letter-spacing:.08em; text-transform:uppercase; color:var(--soft); }
+  .q .stem{ margin:6px 0 14px; }
+  .fig{ text-align:center; margin:12px 0; color:var(--accent); }
+  .fig svg{ max-width:100%; height:auto; }
+  .fig .cap{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:12px; color:var(--soft); margin-top:4px; }
+  .level{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-weight:700; letter-spacing:.04em;
+          color:var(--accent); margin:30px 0 6px; display:flex; align-items:center; gap:10px; font-size:14px; }
+  .level::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .level .lv{ background:var(--accent); color:#fff; border-radius:20px; padding:2px 11px; font-size:11px; letter-spacing:.06em; white-space:nowrap; }
+  .level.blind{ color:var(--blind); }
+  .level.blind .lv{ background:var(--blind); }
+  .ladder-intro{ font-size:14.5px; color:var(--soft); margin:4px 0 0; }
+  .opt{ display:block; width:100%; text-align:left; font-family:inherit; font-size:16px;
+        background:#fff; border:1.5px solid var(--line); border-radius:8px; padding:11px 14px;
+        margin:7px 0; cursor:pointer; transition:.12s; }
+  .opt:hover{ border-color:var(--accent); background:var(--hi); }
+  .opt:disabled{ cursor:default; opacity:.95; }
+  .opt.correct{ border-color:var(--green); background:#e9f5ee; color:var(--green); font-weight:600; }
+  .opt.wrong{ border-color:var(--red); background:#fbeaea; color:var(--red); }
+  .fb{ display:none; margin-top:12px; padding:12px 14px; border-radius:8px; font-size:14.5px;
+       background:#f4f1e8; border:1px dashed var(--line); line-height:1.8; }
+  .fb.show{ display:block; }
+  .fb b{color:var(--accent)}
+  .score{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-align:center; font-size:15px;
+          color:var(--soft); margin:26px 0; }
+  .foot{ margin-top:40px; padding-top:14px; border-top:1px solid var(--line); font-size:13.5px; color:var(--soft); }
+  .ask{ background:#eef4ef; border-radius:8px; padding:12px 16px; font-size:14.5px; color:var(--ink); }
+  mjx-container{ color:inherit; }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+</style>
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Lição 0010 · Matemática ENEM · Geometria espacial</div>
+  <h1>Volumes &amp; sólidos</h1>
+  <p class="sub">Cabe? Só depois pergunte quanto sobra.</p>
+
+  <div class="mission">
+    <b>Por que esta lição?</b> Ela fecha as três questões de volume que resistiram no simulado 2017 —
+    a das caixas de mudança (142), a do melão (167) e a da piscina (144). Você errou as três
+    <b>duas vezes</b>, mesmo depois de revisar. Não é teimosia: são três armadilhas diferentes, e
+    nenhuma delas foi ensinada até agora. A <a href="0004-geometria-espacial.html">Lição 0004</a>
+    tratou de <b>enxergar</b> sólidos; esta trata de <b>medir</b>.
+  </div>
+
+  <h2>A ideia central (2 minutos)</h2>
+
+  <div class="keybox">
+    <b>Bloco (caixa):</b> \(V = a \times b \times c\)<br>
+    <b>Qualquer prisma ou cilindro:</b> \(V = (\text{área da base}) \times \text{altura}\)<br>
+    <b>Cilindro:</b> \(V = \pi r^2 h\) &nbsp;·&nbsp; <b>Esfera:</b> \(V = \frac{4}{3}\pi r^3\)<br>
+    <b>Cone ou pirâmide:</b> \(V = \frac{(\text{área da base}) \times \text{altura}}{3}\)
+  </div>
+
+  <p>Repare que quase tudo é <b>base × altura</b>. Cone e pirâmide são o mesmo, dividido por 3 —
+  é a única exceção que vale decorar.</p>
+
+  <h2>Litros e metros cúbicos</h2>
+
+  <div class="big">
+    <b>1 m³ = 1 000 litros</b> &nbsp;·&nbsp; <b>1 litro = 1 000 cm³</b>
+  </div>
+
+  <p>Sempre que a questão falar em <b>líquido</b> (água, combustível, produto de piscina), ela vai
+  querer litros — e o volume vai sair em m³. Essa conversão sozinha vale questão.</p>
+
+  <div class="keybox">
+    <b>Atenção ao expoente:</b> comprimento \(\times 100\) · área \(\times 10\,000\) · volume \(\times 1\,000\,000\).<br>
+    Numa <b>escala \(1:k\)</b>, o volume real é \(k^{\mathbf{3}}\) vezes o da maquete — não \(k\).
+  </div>
+
+  <h2>Armadilha 1 — “cabe?” vem antes de “quanto sobra?”</h2>
+
+  <p>Quando a questão pede a melhor caixa para guardar algo, existem <b>dois filtros, nessa ordem</b>:</p>
+
+  <div class="big">
+    <b>1.</b> Descarte tudo que <b>não cabe</b><br>
+    <b>2.</b> Só entre as que sobraram, escolha a de <b>menor volume</b>
+  </div>
+
+  <p>E "caber" não é comparar volumes: é <b>cada dimensão</b> do objeto ser menor ou igual à
+  correspondente da caixa. Uma caixa pode ter volume enorme e mesmo assim não servir, se for
+  estreita demais numa direção. É esse pulo que a Q142 cobra.</p>
+
+  <h2>Armadilha 2 — o corte de uma esfera</h2>
+
+  <p>Corte uma bola com um plano. Aparece um <b>círculo</b>, e vale um Pitágoras escondido:</p>
+
+  <div class="fig">
+    <svg width="230" height="180" viewBox="0 0 230 180" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="115" cy="95" r="70"/>
+      <line x1="45" y1="55" x2="185" y2="55"/>
+      <line x1="115" y1="95" x2="115" y2="55" stroke-dasharray="4 3"/>
+      <line x1="115" y1="95" x2="185" y2="55" stroke-dasharray="4 3"/>
+      <line x1="115" y1="55" x2="115" y2="25" stroke-width="1.4"/>
+      <circle cx="115" cy="95" r="2.5" fill="currentColor"/>
+      <text x="120" y="80" font-size="12" fill="currentColor" stroke="none">d</text>
+      <text x="152" y="82" font-size="12" fill="currentColor" stroke="none">R</text>
+      <text x="146" y="48" font-size="12" fill="currentColor" stroke="none">r</text>
+      <text x="122" y="40" font-size="12" fill="currentColor" stroke="none">h</text>
+    </svg>
+    <div class="cap">\(r\) = raio do corte · \(d\) = distância do centro · \(h\) = altura da calota</div>
+  </div>
+
+  <div class="keybox">
+    <b>\(r^2 + d^2 = R^2\)</b> &nbsp;— o raio do corte, a distância ao centro e o raio da bola.<br>
+    <b>\(h = R - d\)</b> &nbsp;— a altura da calota que você cortou fora.
+  </div>
+
+  <p>Leia junto: quanto <b>mais longe do centro</b> você corta (\(d\) grande), <b>menor</b> o círculo do
+  corte e <b>mais fina</b> a fatia removida. Essa relação inversa é o coração da questão do melão.</p>
+
+  <p>Tudo isso está no <a href="../reference/volumes.html">cartão de Volumes e Sólidos</a>.</p>
+
+  <h2>Pratique — a escada de dificuldade</h2>
+  <p class="ladder-intro">20 questões. As últimas quatro vêm <b>sem dizer o assunto</b>. Faça na ordem.</p>
+
+  <div class="level"><span class="lv">Nível 1</span> As fórmulas na mão</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · bloco</div>
+    <div class="stem">Uma caixa mede 4 cm × 3 cm × 2 cm. Seu volume é:</div>
+    <button class="opt">24 cm³</button>
+    <button class="opt">9 cm³</button>
+    <button class="opt">26 cm³</button>
+    <button class="opt">12 cm³</button>
+    <div class="fb"><b>\(4 \times 3 \times 2 = 24\) cm³.</b> Volume é sempre três medidas multiplicadas — por isso a unidade tem expoente 3.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · cubo</div>
+    <div class="stem">O volume de um cubo de aresta 5 cm é:</div>
+    <button class="opt">125 cm³</button>
+    <button class="opt">25 cm³</button>
+    <button class="opt">75 cm³</button>
+    <button class="opt">150 cm³</button>
+    <div class="fb"><b>\(5^3 = 125\) cm³.</b> No cubo as três medidas são iguais. O 25 é a área de <b>uma face</b>; o 150 é a área total das 6 faces.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · cilindro</div>
+    <div class="stem">Usando \(\pi \approx 3\), o volume de um cilindro de raio 2 cm e altura 10 cm é:</div>
+    <button class="opt">120 cm³</button>
+    <button class="opt">60 cm³</button>
+    <button class="opt">40 cm³</button>
+    <button class="opt">240 cm³</button>
+    <div class="fb"><b>\(\pi r^2 h = 3 \times 4 \times 10 = 120\) cm³.</b> É a <b>área da base</b> (\(\pi r^2 = 12\)) vezes a altura. Cuidado para não usar o diâmetro no lugar do raio.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · litros</div>
+    <div class="stem">Um metro cúbico corresponde a quantos litros?</div>
+    <button class="opt">1 000 litros</button>
+    <button class="opt">100 litros</button>
+    <button class="opt">10 litros</button>
+    <button class="opt">1 000 000 litros</button>
+    <div class="fb"><b>1 000 litros.</b> Guarde esta e a irmã dela: <b>1 litro = 1 000 cm³</b> (ou seja, uma caixinha de 10 × 10 × 10 cm).</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N1 · cone</div>
+    <div class="stem">Um cone e um cilindro têm a mesma base e a mesma altura. O volume do cone é:</div>
+    <button class="opt">igual ao do cilindro.</button>
+    <button class="opt">um terço do cilindro.</button>
+    <button class="opt">metade do cilindro.</button>
+    <button class="opt">o dobro do cilindro.</button>
+    <div class="fb"><b>Um terço.</b> Vale igual para pirâmide × prisma. É a única divisão que aparece nas fórmulas de volume — o resto é base × altura.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 2</span> Aplicação e conversão</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · caixa d'água</div>
+    <div class="stem">Uma caixa d'água em forma de bloco mede 2 m × 1,5 m × 1 m. Cheia, ela comporta:</div>
+    <button class="opt">3 000 litros</button>
+    <button class="opt">300 litros</button>
+    <button class="opt">3 litros</button>
+    <button class="opt">30 000 litros</button>
+    <div class="fb"><b>3 000 L.</b> Volume \(= 2 \times 1{,}5 \times 1 = 3\) m³; e \(3 \times 1\,000 = 3\,000\) L.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · aquário</div>
+    <div class="stem">Um aquário mede 50 cm × 30 cm × 40 cm. Sua capacidade, em litros, é:</div>
+    <button class="opt">60 litros</button>
+    <button class="opt">600 litros</button>
+    <button class="opt">6 litros</button>
+    <button class="opt">120 litros</button>
+    <div class="fb"><b>60 L.</b> \(50 \times 30 \times 40 = 60\,000\) cm³; e \(60\,000 \div 1\,000 = 60\) L.<br>
+    Trabalhar em cm e dividir por 1 000 no fim costuma ser mais seguro que converter tudo para metro antes.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · esfera</div>
+    <div class="stem">Usando \(\pi \approx 3\), o volume de uma esfera de raio 3 cm é:</div>
+    <button class="opt">108 cm³</button>
+    <button class="opt">36 cm³</button>
+    <button class="opt">81 cm³</button>
+    <button class="opt">27 cm³</button>
+    <div class="fb"><b>\(\frac{4}{3}\pi r^3 = \frac{4}{3} \times 3 \times 27 = 108\) cm³.</b> Faça na ordem: primeiro \(r^3 = 27\), depois multiplique.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · escala</div>
+    <div class="stem">Uma maquete foi feita na escala 1 : 100 e tem volume de 5 cm³. O volume real do objeto é:</div>
+    <button class="opt">5 000 000 cm³</button>
+    <button class="opt">500 cm³</button>
+    <button class="opt">50 000 cm³</button>
+    <button class="opt">500 000 cm³</button>
+    <div class="fb"><b>5 000 000 cm³ (= 5 m³).</b> Em volume a escala vai ao <b>cubo</b>: \(5 \times 100^3 = 5 \times 1\,000\,000\).<br>
+    O distrator 500 é multiplicar por 100 (como se fosse comprimento) e 50 000 é por \(100^2\) (como se fosse área). <b>Comprimento \(k\), área \(k^2\), volume \(k^3\).</b></div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 3</span> Duas etapas</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · o nível não é a profundidade</div>
+    <div class="stem">Uma piscina retangular de 10 m × 4 m tem profundidade constante de 2 m, mas a água é mantida <b>30 cm abaixo da borda</b>. O volume de água é:</div>
+    <button class="opt">68 m³</button>
+    <button class="opt">80 m³</button>
+    <button class="opt">12 m³</button>
+    <button class="opt">74 m³</button>
+    <div class="fb"><b>68 m³.</b> A altura da <b>água</b> é \(2 - 0{,}30 = 1{,}70\) m, não 2 m. Logo \(10 \times 4 \times 1{,}7 = 68\).<br>
+    O distrator 80 usa a profundidade total — é o erro que a questão quer. <b>Leia sempre se a medida dada é da piscina ou da água.</b></div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N3 · cabe ou não cabe</div>
+    <div class="stem">Um cubo de 50 cm de aresta precisa ser guardado numa caixa de 60 cm × 45 cm × 70 cm. O cubo:</div>
+    <button class="opt">cabe, pois a caixa tem volume maior.</button>
+    <button class="opt">não cabe, pois um lado tem 45 cm.</button>
+    <button class="opt">cabe, se for girado na diagonal.</button>
+    <button class="opt">cabe exatamente, sem folga alguma.</button>
+    <div class="fb"><b>Não cabe.</b> A caixa tem volume \(189\,000\) cm³ contra \(125\,000\) do cubo — bem maior. Mas <b>volume maior não garante encaixe</b>: o lado de 45 cm é menor que os 50 cm da aresta, e o cubo não passa.<br>
+    <b>Caber é comparar dimensão por dimensão</b>, nunca volumes. Guarde isto para a Q142 no Nível 4.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · corte na esfera</div>
+    <div class="stem">Uma bola de raio 10 cm é cortada por um plano que passa a 6 cm do centro. O raio do círculo do corte é:</div>
+    <button class="opt">8 cm</button>
+    <button class="opt">4 cm</button>
+    <button class="opt">16 cm</button>
+    <button class="opt">6 cm</button>
+    <div class="fb"><b>8 cm.</b> Pitágoras: \(r^2 + d^2 = R^2 \Rightarrow r^2 = 100 - 36 = 64 \Rightarrow r = 8\).<br>
+    O distrator 4 é subtrair direto (\(10 - 6\)) — mas a relação é entre os <b>quadrados</b>, não entre as medidas.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · comparar a sobra</div>
+    <div class="stem">Um objeto de volume 400 cm³ cabe tanto na caixa A (volume 620 cm³) quanto na caixa B (volume 540 cm³). Se o objetivo é deixar o <b>menor espaço livre</b>, deve-se escolher:</div>
+    <button class="opt">a caixa B, que sobra 140 cm³.</button>
+    <button class="opt">a caixa A, que sobra 220 cm³.</button>
+    <button class="opt">a caixa A, que é mais espaçosa.</button>
+    <button class="opt">qualquer uma, pois ambas servem.</button>
+    <div class="fb"><b>Caixa B.</b> Sobra \(= 540 - 400 = 140\), contra \(620 - 400 = 220\) da A. Entre as que <b>cabem</b>, a de menor volume é a que deixa menos espaço livre.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 4</span> Nível ENEM — as que você errou duas vezes</div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N4 · ENEM 2017 (Q142) · você errou nas duas tentativas</div>
+    <div class="stem">Um objeto <b>cúbico de 80 cm de aresta</b> precisa ser guardado. Há cinco caixas:<br>
+    <b>1:</b> 86 × 86 × 86 &nbsp; <b>2:</b> 75 × 82 × 90 &nbsp; <b>3:</b> 85 × 82 × 90 &nbsp; <b>4:</b> 82 × 95 × 82 &nbsp; <b>5:</b> 80 × 95 × 85<br>
+    Deve-se escolher a caixa em que o objeto <b>caiba</b> deixando o <b>menor espaço livre</b>. A escolhida é a de número:</div>
+    <button class="opt">1</button>
+    <button class="opt">2</button>
+    <button class="opt">3</button>
+    <button class="opt">4</button>
+    <div class="fb"><b>Caixa 3.</b> Aplique os dois filtros na ordem certa.<br>
+    <b>Filtro 1 — cabe?</b> Toda dimensão precisa ser \(\geq 80\). A <b>caixa 2 tem um lado de 75 cm</b> → está fora, o cubo nem entra.<br>
+    <b>Filtro 2 — menor sobra</b> (cubo \(= 80^3 = 512\,000\) cm³):<br>
+    caixa 1 = 636 056 → sobra 124 056 · <b>caixa 3 = 627 300 → sobra 115 300</b> · caixa 4 = 638 780 → sobra 126 780 · caixa 5 = 646 000 → sobra 134 000.<br>
+    <b>Por que a 2 é tão tentadora?</b> Porque ela tem o <b>menor volume de todas</b> (553 500) — quem compara só volumes cai nela. Foi a que você marcou. Mas volume menor não quer dizer que caiba: <b>cabe é dimensão por dimensão</b>. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N4 · ENEM 2017 (Q167) · você errou nas duas tentativas</div>
+    <div class="stem">Um melão <b>esférico de 10 cm de diâmetro</b> servirá de suporte para doces. Será retirada uma calota, de modo que o raio \(r\) da seção circular do corte seja de <b>pelo menos 3 cm</b> (para o melão não rolar). Ao mesmo tempo, o chefe quer a <b>maior área possível</b> na região onde espeta os doces. A altura \(h\) da calota cortada, em cm, deve ser:</div>
+    <button class="opt">\(5 - \frac{\sqrt{91}}{2}\)</button>
+    <button class="opt">\(10 - \sqrt{91}\)</button>
+    <button class="opt">1</button>
+    <button class="opt">4</button>
+    <div class="fb"><b>\(h = 1\) cm.</b> Raio da bola \(R = 5\) (metade do diâmetro — não use 10!).<br>
+    <b>Passo 1 — a restrição.</b> \(r^2 + d^2 = R^2\), com \(r \geq 3\): \(9 + d^2 \leq 25 \Rightarrow d \leq 4\). O corte pode ficar no máximo a 4 cm do centro.<br>
+    <b>Passo 2 — o objetivo.</b> "Maior área para os doces" = <b>menor calota removida</b>. Como \(h = R - d\), quanto <b>maior</b> o \(d\), <b>menor</b> o \(h\). Então use o \(d\) máximo: \(d = 4\).<br>
+    <b>Passo 3:</b> \(h = 5 - 4 = 1\) cm.<br>
+    O distrator <b>4</b> (que você marcou na 1ª vez) é o próprio \(d\) — a distância ao centro, não a altura da calota. São medidas diferentes: uma vai do centro até o corte, a outra do corte até o topo. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N4 · ENEM 2017 (Q144) · você errou nas duas tentativas</div>
+    <div class="stem">Uma empresa adiciona <b>1,5 mL</b> de um produto para cada <b>1 000 L</b> de água da piscina. A piscina é retangular, com <b>profundidade constante de 1,7 m</b>, largura <b>3 m</b> e comprimento <b>5 m</b>. O nível da água é mantido a <b>50 cm da borda</b>. A quantidade de produto, em mL, é:</div>
+    <button class="opt">11,25</button>
+    <button class="opt">27,00</button>
+    <button class="opt">28,80</button>
+    <button class="opt">32,25</button>
+    <div class="fb"><b>27,00 mL.</b> Três etapas, e a primeira é a que derruba.<br>
+    <b>1) Altura da água:</b> \(1{,}7 - 0{,}5 = 1{,}2\) m — <b>não</b> 1,7. O nível está 50 cm abaixo da borda.<br>
+    <b>2) Volume:</b> \(3 \times 5 \times 1{,}2 = 18\) m³ \(= 18\,000\) L.<br>
+    <b>3) Produto:</b> \(\frac{18\,000}{1\,000} \times 1{,}5 = 18 \times 1{,}5 = 27\) mL.<br>
+    Repare que os passos 2 e 3 são a <a href="0005-proporcionalidade-inversa.html">regra de três</a> que você já domina — o que fez você errar foi o passo 1, geométrico. 🎯</div>
+  </div>
+
+  <div class="level blind"><span class="lv">Sem aviso</span> Misturadas — descubra você o assunto</div>
+  <p class="ladder-intro">Sem dizer o tema. Pergunte-se primeiro <b>“do que isto está falando?”</b></p>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Uma obra seria feita por 12 operários em 20 dias. Com apenas 8 operários, no mesmo ritmo, ela levará:</div>
+    <button class="opt">30 dias</button>
+    <button class="opt">13 dias</button>
+    <button class="opt">28 dias</button>
+    <button class="opt">40 dias</button>
+    <div class="fb"><b>30 dias.</b> Era <a href="0005-proporcionalidade-inversa.html">inversa</a>: \(12 \times 20 = 240\) operário-dias; \(240 \div 8 = 30\).</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Uma sala retangular de 8 m por 5 m terá o rodapé instalado em todo o contorno. O comprimento de rodapé necessário é:</div>
+    <button class="opt">26 m</button>
+    <button class="opt">40 m</button>
+    <button class="opt">13 m</button>
+    <button class="opt">80 m</button>
+    <div class="fb"><b>26 m.</b> Era <a href="0009-areas-perimetros.html">perímetro</a>, não área: \(2 \times (8+5) = 26\) m. Rodapé é contorno; os 40 m² seriam para o piso.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Jogando dois dados comuns, a probabilidade de a soma dar 12 é:</div>
+    <button class="opt">\(\frac{1}{36}\)</button>
+    <button class="opt">\(\frac{1}{12}\)</button>
+    <button class="opt">\(\frac{1}{6}\)</button>
+    <button class="opt">\(\frac{2}{36}\)</button>
+    <div class="fb"><b>\(\frac{1}{36}\).</b> Era <a href="0006-probabilidade.html">probabilidade</a>: só (6,6) serve, entre \(6 \times 6 = 36\) resultados possíveis.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Uma senha tem 4 dígitos, de 0 a 9, que <b>não podem</b> se repetir. Quantas senhas existem?</div>
+    <button class="opt">5 040 senhas</button>
+    <button class="opt">10 000 senhas</button>
+    <button class="opt">210 senhas</button>
+    <button class="opt">40 senhas</button>
+    <div class="fb"><b>5 040.</b> Era <a href="0007-contagem.html">contagem</a>: \(10 \times 9 \times 8 \times 7 = 5\,040\). Cada escolha gasta um dígito. Com repetição seriam \(10^4 = 10\,000\).</div>
+  </div>
+
+  <div class="score" id="score">Responda as questões acima ☝️</div>
+
+  <h2>Para fixar (faça depois)</h2>
+  <p>• <b>Fonte primária recomendada:</b>
+     <a href="https://pt.khanacademy.org/math/basic-geo/basic-geo-volume-surface-area" target="_blank">Khan Academy — Volume e área de superfície</a> (gratuito, em português).</p>
+  <p>• <b>Os três reflexos desta lição:</b> (1) a medida dada é do recipiente ou do <b>conteúdo</b>?
+     (2) em escala, volume vai ao <b>cubo</b>; (3) <b>cabe</b> é dimensão por dimensão, nunca volume por volume.</p>
+  <p>• <b>Daqui a 2 dias</b>, refaça o Nível 4 e o bloco sem aviso, de memória.</p>
+
+  <div class="foot">
+    <p class="ask">👨‍🏫 <b>Eu sou seu professor aqui.</b> A do melão é a mais difícil das três — se o
+    \(d\) e o \(h\) ainda se confundirem na sua cabeça, me chame que a gente desenha junto.</p>
+    <p>Workspace de estudo · Missão: Matemática ENEM 2026 → TO/Fono USP Ribeirão Preto ·
+    Referência: <a href="../reference/volumes.html">Cartão de Volumes e Sólidos</a> ·
+    Anterior: <a href="0009-areas-perimetros.html">Lição 0009 — Áreas e perímetros</a> ·
+    Próxima: <a href="0011-trigonometria.html">Lição 0011 — Trigonometria</a></p>
+  </div>
+
+</div>
+<script>
+  let answered = 0, hits = 0;
+  const total = document.querySelectorAll('.q').length;
+  document.querySelectorAll('.q').forEach(function(q){
+    const correct = parseInt(q.dataset.correct, 10);
+    const opts = q.querySelectorAll('.opt');
+    const fb = q.querySelector('.fb');
+    opts.forEach(function(btn, i){
+      btn.addEventListener('click', function(){
+        opts.forEach(function(b){ b.disabled = true; });
+        if(i === correct){ btn.classList.add('correct'); hits++; }
+        else { btn.classList.add('wrong'); opts[correct].classList.add('correct'); }
+        fb.classList.add('show');
+        answered++;
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    const el = document.getElementById('score');
+    if(answered < total){ el.textContent = answered + ' de ' + total + ' respondidas — continue 💪'; return; }
+    let msg = 'Você acertou ' + hits + ' de ' + total + '. ';
+    const pct = hits / total;
+    if(pct === 1) msg += 'Escada inteira, incluindo o bloco sem aviso! 🎯';
+    else if(pct >= 0.75) msg += 'Muito bom. Volte no cartão nos pontos que escaparam.';
+    else if(pct >= 0.5) msg += 'Está vindo. Releia a ideia central e refaça amanhã.';
+    else msg += 'Sem drama — me chame que a gente refaz juntos, passo a passo.';
+    el.textContent = msg;
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cartão de referência — Volumes e Sólidos (ENEM)</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#dcd6c8; --accent:#7a1f2b; --bg:#fbf9f4; --hi:#fdf3d6; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 24px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.7; }
+  .card{ max-width:760px; margin:0 auto; }
+  header{ border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:24px; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:27px; margin:6px 0 0; font-weight:600; }
+  h2{ font-size:16px; font-family:-apple-system,Helvetica,Arial,sans-serif; letter-spacing:.02em;
+      margin:30px 0 8px; color:var(--accent); border-bottom:1px solid var(--line); padding-bottom:4px; }
+  p{margin:8px 0}
+  .lead{ color:var(--soft); font-style:italic; margin-top:6px; }
+  table{ border-collapse:collapse; width:100%; margin:10px 0; font-size:15px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:12px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  .rule{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:2; }
+  .rule b{ color:var(--accent); }
+  .flag{ background:#fdf0f0; border:1px solid #e6c9c9; border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:1.9; font-size:14.5px; }
+  .flag b{ color:var(--accent); }
+  .fig{ text-align:center; margin:12px 0; color:var(--accent); }
+  ul{margin:8px 0 8px 0; padding-left:22px} li{margin:5px 0}
+  .foot{ margin-top:34px; padding-top:12px; border-top:1px solid var(--line);
+         font-size:13px; color:var(--soft); }
+  a{color:var(--accent)}
+  mjx-container{ color:var(--accent); }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+  @media print{ body{background:#fff;padding:0} .card{max-width:100%} h2{break-after:avoid} .flag{break-inside:avoid} }
+</style>
+<!-- MathJax: delimitadores só \( \) e \[ \] — NUNCA $...$, para não conflitar com "R$". -->
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+
+<div class="card">
+  <header>
+    <div class="kicker">Cartão de referência · Matemática ENEM</div>
+    <h1>Volumes &amp; Sólidos</h1>
+    <p class="lead">Cabe? Só depois pergunte quanto sobra.</p>
+  </header>
+  <h2>1. As fórmulas</h2>
+  <table>
+    <tr><th>Sólido</th><th>Volume</th></tr>
+    <tr><td>Bloco / caixa</td><td>\(a \times b \times c\)</td></tr>
+    <tr><td>Cubo</td><td>\(a^3\)</td></tr>
+    <tr><td>Prisma qualquer</td><td>\((\text{área da base}) \times h\)</td></tr>
+    <tr><td>Cilindro</td><td>\(\pi r^2 h\)</td></tr>
+    <tr><td>Pirâmide / cone</td><td>\(\frac{(\text{área da base}) \times h}{3}\)</td></tr>
+    <tr><td>Esfera</td><td>\(\frac{4}{3}\pi r^3\)</td></tr>
+  </table>
+  <p class="lead">Quase tudo é <b>base × altura</b>. Cone e pirâmide são a mesma coisa dividida por 3.</p>
+
+  <h2>2. Litros e metros cúbicos</h2>
+  <div class="rule">
+    <b>1 m³ = 1 000 litros</b> &nbsp;·&nbsp; <b>1 litro = 1 000 cm³</b> (uma caixinha de 10×10×10 cm)
+  </div>
+  <p>Questão de líquido (água, combustível, produto) quase sempre pede litros, e o volume sai em m³.</p>
+
+  <h2>3. Unidades e escala — o expoente muda</h2>
+  <table>
+    <tr><th></th><th>Comprimento</th><th>Área</th><th>Volume</th></tr>
+    <tr><td>m → cm</td><td>\(\times 100\)</td><td>\(\times 10\,000\)</td><td>\(\times 1\,000\,000\)</td></tr>
+    <tr><td>Escala \(1:k\)</td><td>\(k\)</td><td>\(k^2\)</td><td>\(k^{\mathbf{3}}\)</td></tr>
+  </table>
+  <div class="flag">
+    <b>⚑ Erro clássico (ENEM 2017, Q158).</b> Escala 1:400, peça de 25 cm³ → o real é
+    \(25 \times 400^3\), não \(25 \times 400\). <b>Volume vai ao cubo.</b>
+  </div>
+
+  <h2>4. “Cabe?” vem antes de “quanto sobra?”</h2>
+  <div class="flag">
+    <b>⚑ A armadilha (ENEM 2017, Q142).</b> Dois filtros, nesta ordem:<br>
+    <b>1)</b> descarte tudo que <b>não cabe</b> — e caber é <b>cada dimensão</b> do objeto ser \(\leq\) à da caixa;<br>
+    <b>2)</b> só entre as que sobraram, escolha a de <b>menor volume</b>.<br>
+    Uma caixa de volume menor pode não servir se for estreita demais numa direção.
+  </div>
+  <p><i>Modelo:</i> cubo de 80 cm. A caixa 75×82×90 tem o menor volume de todas — mas 75 &lt; 80,
+  então está fora antes de qualquer conta.</p>
+
+  <h2>5. O nível do líquido não é a profundidade</h2>
+  <div class="flag">
+    <b>⚑ ENEM 2017, Q144.</b> "Piscina de 1,7 m de profundidade, água mantida a 50 cm da borda"
+    → a altura da <b>água</b> é \(1{,}7 - 0{,}5 = 1{,}2\) m.<br>
+    Sempre leia se a medida é do <b>recipiente</b> ou do <b>conteúdo</b>.
+  </div>
+
+  <h2>6. Corte numa esfera</h2>
+  <div class="rule">
+    <b>\(r^2 + d^2 = R^2\)</b> — \(r\) = raio do círculo do corte, \(d\) = distância do centro,
+    \(R\) = raio da bola.<br>
+    <b>\(h = R - d\)</b> — altura da calota removida.
+  </div>
+  <p>Relação inversa: cortando <b>mais longe</b> do centro (\(d\) maior), o círculo fica <b>menor</b>
+  e a fatia removida fica <b>mais fina</b>.</p>
+  <p><i>Modelo (Q167):</i> \(R=5\), exige-se \(r \geq 3\) → \(d \leq 4\); para a maior área restante,
+  use \(d = 4\) → \(h = 1\).</p>
+
+  <h2>7. Roteiro na hora da prova</h2>
+  <div class="rule">
+    <b>1)</b> A medida é do recipiente ou do <b>conteúdo</b>?<br>
+    <b>2)</b> Precisa converter para <b>litros</b>?<br>
+    <b>3)</b> Tem <b>escala</b>? Então o fator vai ao <b>cubo</b>.<br>
+    <b>4)</b> É de encaixe? <b>Cabe</b> primeiro (dimensão por dimensão), <b>sobra</b> depois.
+  </div>
+
+  <div class="foot">
+    Workspace de estudo da Nicole · Missão: Matemática ENEM 2026 → TO/Fono USP-RP.<br>
+    Usado na <a href="../lessons/0010-volumes.html">Lição 0010</a> · Cartões irmãos: <a href="areas-perimetros.html">Áreas e Perímetros</a> · <a href="geometria-espacial.html">Geometria Espacial</a>.<br>Fonte: <a href="https://pt.khanacademy.org/math/basic-geo/basic-geo-volume-surface-area">Khan Academy — Volume e área de superfície</a>.
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cartão de referência — Funções Seno e Cosseno (ENEM)</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#dcd6c8; --accent:#7a1f2b; --bg:#fbf9f4; --hi:#fdf3d6; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 24px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.7; }
+  .card{ max-width:760px; margin:0 auto; }
+  header{ border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:24px; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:27px; margin:6px 0 0; font-weight:600; }
+  h2{ font-size:16px; font-family:-apple-system,Helvetica,Arial,sans-serif; letter-spacing:.02em;
+      margin:30px 0 8px; color:var(--accent); border-bottom:1px solid var(--line); padding-bottom:4px; }
+  p{margin:8px 0}
+  .lead{ color:var(--soft); font-style:italic; margin-top:6px; }
+  table{ border-collapse:collapse; width:100%; margin:10px 0; font-size:15px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:12px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  .rule{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:2; }
+  .rule b{ color:var(--accent); }
+  .flag{ background:#fdf0f0; border:1px solid #e6c9c9; border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:1.9; font-size:14.5px; }
+  .flag b{ color:var(--accent); }
+  .fig{ text-align:center; margin:12px 0; color:var(--accent); }
+  ul{margin:8px 0 8px 0; padding-left:22px} li{margin:5px 0}
+  .foot{ margin-top:34px; padding-top:12px; border-top:1px solid var(--line);
+         font-size:13px; color:var(--soft); }
+  a{color:var(--accent)}
+  mjx-container{ color:var(--accent); }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+  @media print{ body{background:#fff;padding:0} .card{max-width:100%} h2{break-after:avoid} .flag{break-inside:avoid} }
+</style>
+<!-- MathJax: delimitadores só \( \) e \[ \] — NUNCA $...$, para não conflitar com "R$". -->
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+
+<div class="card">
+  <header>
+    <div class="kicker">Cartão de referência · Matemática ENEM</div>
+    <h1>Funções Seno &amp; Cosseno</h1>
+    <p class="lead">O meio, o quanto sobe, e a velocidade da repetição.</p>
+  </header>
+  <h2>1. A forma geral</h2>
+  <p>\[ f(t) = A + B\cos(kt) \]</p>
+  <table>
+    <tr><th>Letra</th><th>É o quê</th><th>Como achar</th></tr>
+    <tr><td><b>\(A\)</b></td><td>valor médio (linha do meio)</td><td>\(\frac{\text{máx} + \text{mín}}{2}\)</td></tr>
+    <tr><td><b>\(B\)</b></td><td>amplitude (quanto sobe do meio)</td><td>\(\frac{\text{máx} - \text{mín}}{2}\)</td></tr>
+    <tr><td><b>\(k\)</b></td><td>velocidade da repetição</td><td>\(\frac{2\pi}{T}\)</td></tr>
+  </table>
+  <div class="rule">
+    <b>máximo \(= A + B\)</b> &nbsp;·&nbsp; <b>mínimo \(= A - B\)</b><br>
+    Use como <b>conferência</b>: se \(A+B\) não der o máximo do enunciado, você trocou algo.
+  </div>
+
+  <h2>2. Período e frequência</h2>
+  <div class="rule">
+    <b>Período \(T\)</b> = tempo de uma repetição completa.<br>
+    \(T = \frac{2\pi}{k}\) &nbsp;⟺&nbsp; \(k = \frac{2\pi}{T}\)
+  </div>
+  <div class="flag">
+    <b>⚑ Cuidado com a unidade.</b> "90 batimentos por <b>minuto</b>" é <b>frequência</b>, não período.
+    O período é o inverso: \(T = \frac{60}{90} = \frac{2}{3}\) s.<br>
+    Regra: \(T = \frac{60}{\text{quantas vezes por minuto}}\) (em segundos).
+  </div>
+  <p>Relação <b>inversa</b>, igual à proporcionalidade indireta: período curto → \(k\) grande.</p>
+
+  <h2>3. O modelo resolvido (ENEM 2017, Q166)</h2>
+  <p>Pressão mínima 78, máxima 120, 90 batimentos por minuto:</p>
+  <div class="rule">
+    <b>1)</b> \(A = \frac{120+78}{2} = 99\)<br>
+    <b>2)</b> \(B = \frac{120-78}{2} = 21\) &nbsp;(confere: \(99+21=120\) ✓, \(99-21=78\) ✓)<br>
+    <b>3)</b> \(T = \frac{60}{90} = \frac{2}{3}\) s → \(k = \frac{2\pi}{2/3} = 3\pi\)<br>
+    <b>→</b> \(P(t) = 99 + 21\cos(3\pi t)\)
+  </div>
+  <div class="flag">
+    <b>⚑ Os dois erros embutidos nos distratores:</b><br>
+    • usar o <b>mínimo</b> como \(A\) e a variação <b>total</b> como \(B\) (faltou dividir por 2 nas duas);<br>
+    • esquecer de converter os 90 por minuto e assumir \(T = 1\) s.
+  </div>
+
+  <h2>4. Vocabulário do enunciado</h2>
+  <table>
+    <tr><th>O enunciado diz</th><th>Quer dizer</th></tr>
+    <tr><td>"intervalo entre dois máximos sucessivos"</td><td>o <b>período</b> \(T\)</td></tr>
+    <tr><td>"quantas vezes por minuto"</td><td>frequência → \(T = \frac{60}{f}\)</td></tr>
+    <tr><td>"varia entre X e Y"</td><td>mínimo e máximo → dá \(A\) e \(B\)</td></tr>
+    <tr><td>"valor médio"</td><td>\(A\)</td></tr>
+    <tr><td>"amplitude"</td><td>\(B\) (metade da variação total)</td></tr>
+  </table>
+
+  <h2>5. Onde isso aparece no ENEM</h2>
+  <p>Batimento cardíaco e pressão arterial · maré · temperatura ao longo do dia ·
+  roda-gigante · som e ondas · marés de energia. Sempre a mesma fórmula, muda só o contexto.</p>
+
+  <h2>6. Roteiro na hora da prova</h2>
+  <div class="rule">
+    <b>1)</b> Ache o <b>máximo</b> e o <b>mínimo</b> no enunciado.<br>
+    <b>2)</b> \(A\) = média deles. \(B\) = metade da diferença.<br>
+    <b>3)</b> Ache o <b>período</b> (cuidado com minuto × segundo) e faça \(k = \frac{2\pi}{T}\).<br>
+    <b>4)</b> Confira: \(A+B\) = máximo? \(A-B\) = mínimo?
+  </div>
+
+  <div class="foot">
+    Workspace de estudo da Nicole · Missão: Matemática ENEM 2026 → TO/Fono USP-RP.<br>
+    Usado na <a href="../lessons/0012-funcoes-trigonometricas.html">Lição 0012</a> · Cartão irmão: <a href="trigonometria.html">Trigonometria</a>.<br>Fonte: <a href="https://pt.khanacademy.org/math/trigonometry/trig-function-graphs">Khan Academy — Gráficos de funções trigonométricas</a>.
+  </div>
+</div>
+</body>
+</html>

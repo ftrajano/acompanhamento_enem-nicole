@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cartão de referência — Trigonometria (ENEM)</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#dcd6c8; --accent:#7a1f2b; --bg:#fbf9f4; --hi:#fdf3d6; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 24px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.7; }
+  .card{ max-width:760px; margin:0 auto; }
+  header{ border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:24px; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:27px; margin:6px 0 0; font-weight:600; }
+  h2{ font-size:16px; font-family:-apple-system,Helvetica,Arial,sans-serif; letter-spacing:.02em;
+      margin:30px 0 8px; color:var(--accent); border-bottom:1px solid var(--line); padding-bottom:4px; }
+  p{margin:8px 0}
+  .lead{ color:var(--soft); font-style:italic; margin-top:6px; }
+  table{ border-collapse:collapse; width:100%; margin:10px 0; font-size:15px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:12px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  .rule{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:2; }
+  .rule b{ color:var(--accent); }
+  .flag{ background:#fdf0f0; border:1px solid #e6c9c9; border-left:4px solid var(--accent);
+         padding:12px 16px; margin:14px 0; border-radius:0 6px 6px 0; line-height:1.9; font-size:14.5px; }
+  .flag b{ color:var(--accent); }
+  .fig{ text-align:center; margin:12px 0; color:var(--accent); }
+  ul{margin:8px 0 8px 0; padding-left:22px} li{margin:5px 0}
+  .foot{ margin-top:34px; padding-top:12px; border-top:1px solid var(--line);
+         font-size:13px; color:var(--soft); }
+  a{color:var(--accent)}
+  mjx-container{ color:var(--accent); }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+  @media print{ body{background:#fff;padding:0} .card{max-width:100%} h2{break-after:avoid} .flag{break-inside:avoid} }
+</style>
+<!-- MathJax: delimitadores só \( \) e \[ \] — NUNCA $...$, para não conflitar com "R$". -->
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+
+<div class="card">
+  <header>
+    <div class="kicker">Cartão de referência · Matemática ENEM</div>
+    <h1>Trigonometria no Triângulo Retângulo</h1>
+    <p class="lead">Quais dois lados aparecem? Isso escolhe a razão.</p>
+  </header>
+  <h2>1. As três razões (SOH-CAH-TOA)</h2>
+  <div class="rule">
+    <b>sen</b> \(= \frac{\text{oposto}}{\text{hipotenusa}}\) &nbsp;·&nbsp;
+    <b>cos</b> \(= \frac{\text{adjacente}}{\text{hipotenusa}}\) &nbsp;·&nbsp;
+    <b>tan</b> \(= \frac{\text{oposto}}{\text{adjacente}}\)
+  </div>
+  <p><b>Oposto</b> = o cateto longe do ângulo. <b>Adjacente</b> = o que encosta nele.
+  <b>Hipotenusa</b> = sempre o lado de frente para o ângulo reto (o maior).</p>
+
+  <h2>2. Ângulos notáveis (decorar)</h2>
+  <table>
+    <tr><th></th><th>30°</th><th>45°</th><th>60°</th></tr>
+    <tr><td><b>sen</b></td><td>\(\frac{1}{2}\)</td><td>\(\frac{\sqrt{2}}{2}\)</td><td>\(\frac{\sqrt{3}}{2}\)</td></tr>
+    <tr><td><b>cos</b></td><td>\(\frac{\sqrt{3}}{2}\)</td><td>\(\frac{\sqrt{2}}{2}\)</td><td>\(\frac{1}{2}\)</td></tr>
+    <tr><td><b>tan</b></td><td>\(\frac{\sqrt{3}}{3}\)</td><td>\(1\)</td><td>\(\sqrt{3}\)</td></tr>
+  </table>
+  <div class="rule">
+    Decore só a linha do <b>seno</b>: numeradores \(\sqrt{1}, \sqrt{2}, \sqrt{3}\) sobre 2.<br>
+    O <b>cosseno é a mesma linha de trás para frente</b>.
+  </div>
+  <p>Valores aproximados: \(\frac{\sqrt{2}}{2} \approx 0{,}7\) · \(\frac{\sqrt{3}}{2} \approx 0{,}85\) ·
+  \(\sqrt{2} \approx 1{,}4\) · \(\sqrt{3} \approx 1{,}7\).</p>
+
+  <h2>3. Como escolher a razão</h2>
+  <table>
+    <tr><th>Os dois lados do problema são…</th><th>Use</th></tr>
+    <tr><td>oposto e hipotenusa</td><td><b>seno</b></td></tr>
+    <tr><td>adjacente e hipotenusa</td><td><b>cosseno</b></td></tr>
+    <tr><td>os dois catetos</td><td><b>tangente</b></td></tr>
+  </table>
+  <p class="lead">Identificar <b>quais dois lados aparecem</b> escolhe a razão sozinho.</p>
+
+  <h2>4. Conferência que salva questão</h2>
+  <div class="flag">
+    <b>⚑ Seno e cosseno ficam sempre entre 0 e 1</b> (é cateto ÷ hipotenusa, e a hipotenusa é o maior lado).
+    Deu 1,3? Refaça — provavelmente você dividiu ao contrário.<br>
+    O <b>máximo do seno é 1</b>, em 90°. Isso resolve "qual o valor máximo" sem conta.
+  </div>
+  <p>De 0° a 90°: <b>seno cresce</b> (0 → 1), <b>cosseno decresce</b> (1 → 0).</p>
+
+  <h2>5. O seno não é proporcional ao ângulo</h2>
+  <div class="flag">
+    <b>⚑ ENEM 2017, Q138.</b> 30° é um terço de 90°, mas \(\operatorname{sen} 30° = 0{,}5\), não \(0{,}33\).<br>
+    <i>Modelo:</i> \(I(x) = \kappa\operatorname{sen}(x)\); máximo \(= \kappa\); em 30° vale \(0{,}5\kappa\)
+    → <b>50%</b> do máximo. A constante some na divisão.
+  </div>
+
+  <h2>6. Triângulos que sempre caem</h2>
+  <table>
+    <tr><th>Figura</th><th>Relação</th></tr>
+    <tr><td>Equilátero de lado \(\ell\)</td><td>altura \(= \frac{\ell\sqrt{3}}{2}\)</td></tr>
+    <tr><td>Quadrado de lado \(\ell\)</td><td>diagonal \(= \ell\sqrt{2}\)</td></tr>
+    <tr><td>Retângulo qualquer</td><td>Pitágoras: \(a^2 + b^2 = c^2\)</td></tr>
+  </table>
+  <p>Faltou um lado? <b>Pitágoras acha</b>, e aí a razão trigonométrica sai.</p>
+
+  <h2>7. Roteiro na hora da prova</h2>
+  <div class="rule">
+    <b>1)</b> Desenhe o triângulo e marque o ângulo dado.<br>
+    <b>2)</b> Qual lado você <b>tem</b> e qual você <b>quer</b>?<br>
+    <b>3)</b> Isso escolhe a razão (tabela do item 3).<br>
+    <b>4)</b> Substitua o valor notável e resolva.<br>
+    <b>5)</b> Confira: o resultado faz sentido de tamanho?
+  </div>
+
+  <div class="foot">
+    Workspace de estudo da Nicole · Missão: Matemática ENEM 2026 → TO/Fono USP-RP.<br>
+    Usado na <a href="../lessons/0011-trigonometria.html">Lição 0011</a> · Cartão irmão: <a href="funcoes-trigonometricas.html">Funções Seno e Cosseno</a>.<br>Fonte: <a href="https://pt.khanacademy.org/math/trigonometry/trigonometry-right-triangles">Khan Academy — Trigonometria no triângulo retângulo</a>.
+  </div>
+</div>
+</body>
+</html>

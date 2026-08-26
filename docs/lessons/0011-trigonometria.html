@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lição 0011 — Trigonometria no triângulo retângulo</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#e2dccd; --accent:#7a1f2b; --green:#1c6b3f;
+         --red:#9b2226; --bg:#fbf9f4; --hi:#fdf3d6; --card:#ffffff; --blind:#2b4c6f; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 22px 80px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.62; }
+  .wrap{ max-width:720px; margin:0 auto; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:30px; line-height:1.2; margin:6px 0 4px; font-weight:600; }
+  .sub{ color:var(--soft); font-style:italic; margin:0 0 8px; }
+  .mission{ background:var(--hi); border-radius:8px; padding:12px 16px; font-size:14.5px; margin:18px 0 8px; }
+  .mission b{color:var(--accent)}
+  h2{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:15px; letter-spacing:.03em;
+      text-transform:uppercase; color:var(--accent); margin:34px 0 8px;
+      border-bottom:1px solid var(--line); padding-bottom:5px; }
+  p{margin:10px 0}
+  .keybox{ background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+           border-radius:0 8px 8px 0; padding:14px 18px; margin:16px 0; line-height:2; }
+  .keybox b{color:var(--accent)}
+  .big{ text-align:center; background:var(--hi); border-radius:8px; padding:14px 16px; margin:16px 0;
+        font-size:17px; line-height:2; }
+  .big b{ color:var(--accent); }
+  table{ border-collapse:collapse; width:100%; margin:12px 0; font-size:14.5px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11.5px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  a{color:var(--accent)}
+  .q{ background:var(--card); border:1px solid var(--line); border-radius:10px;
+      padding:18px 20px; margin:20px 0; }
+  .q .tag{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+           letter-spacing:.08em; text-transform:uppercase; color:var(--soft); }
+  .q .stem{ margin:6px 0 14px; }
+  .fig{ text-align:center; margin:12px 0; color:var(--accent); }
+  .fig svg{ max-width:100%; height:auto; }
+  .fig .cap{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:12px; color:var(--soft); margin-top:4px; }
+  .level{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-weight:700; letter-spacing:.04em;
+          color:var(--accent); margin:30px 0 6px; display:flex; align-items:center; gap:10px; font-size:14px; }
+  .level::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .level .lv{ background:var(--accent); color:#fff; border-radius:20px; padding:2px 11px; font-size:11px; letter-spacing:.06em; white-space:nowrap; }
+  .level.blind{ color:var(--blind); }
+  .level.blind .lv{ background:var(--blind); }
+  .ladder-intro{ font-size:14.5px; color:var(--soft); margin:4px 0 0; }
+  .opt{ display:block; width:100%; text-align:left; font-family:inherit; font-size:16px;
+        background:#fff; border:1.5px solid var(--line); border-radius:8px; padding:11px 14px;
+        margin:7px 0; cursor:pointer; transition:.12s; }
+  .opt:hover{ border-color:var(--accent); background:var(--hi); }
+  .opt:disabled{ cursor:default; opacity:.95; }
+  .opt.correct{ border-color:var(--green); background:#e9f5ee; color:var(--green); font-weight:600; }
+  .opt.wrong{ border-color:var(--red); background:#fbeaea; color:var(--red); }
+  .fb{ display:none; margin-top:12px; padding:12px 14px; border-radius:8px; font-size:14.5px;
+       background:#f4f1e8; border:1px dashed var(--line); line-height:1.8; }
+  .fb.show{ display:block; }
+  .fb b{color:var(--accent)}
+  .score{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-align:center; font-size:15px;
+          color:var(--soft); margin:26px 0; }
+  .foot{ margin-top:40px; padding-top:14px; border-top:1px solid var(--line); font-size:13.5px; color:var(--soft); }
+  .ask{ background:#eef4ef; border-radius:8px; padding:12px 16px; font-size:14.5px; color:var(--ink); }
+  mjx-container{ color:inherit; }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+</style>
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Lição 0011 · Matemática ENEM · Trigonometria</div>
+  <h1>Trigonometria no triângulo retângulo</h1>
+  <p class="sub">Três razões, três ângulos. É menos do que parece.</p>
+
+  <div class="mission">
+    <b>Por que esta lição?</b> Trigonometria é o único bloco onde você recuperou <b>zero</b> —
+    errou as duas questões (138 e 166) nas duas tentativas. E é justo: <b>nunca ensinamos isso aqui</b>.
+    Não é lacuna sua, é lacuna do material. Então esta lição começa do zero mesmo, sem pressupor nada.
+    A boa notícia: o ENEM cobra trigonometria de forma bem previsível — quase sempre um triângulo
+    retângulo e um dos três ângulos notáveis.
+  </div>
+
+  <h2>A ideia central (3 minutos)</h2>
+
+  <p>Num triângulo <b>retângulo</b> (com um ângulo de 90°), os lados ganham nome <b>em relação ao
+  ângulo que você está olhando</b>:</p>
+
+  <div class="fig">
+    <svg width="290" height="170" viewBox="0 0 290 170" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M30 140 L250 140 L250 30 Z"/>
+      <path d="M250 122 L232 122 L232 140" stroke-width="1.5"/>
+      <path d="M62 140 A32 32 0 0 0 52 118" stroke-width="1.5"/>
+      <text x="66" y="132" font-size="13" fill="currentColor" stroke="none">x</text>
+      <text x="120" y="158" font-size="12.5" fill="currentColor" stroke="none">cateto adjacente</text>
+      <text x="256" y="90" font-size="12.5" fill="currentColor" stroke="none" transform="rotate(90 256 90)">cateto oposto</text>
+      <text x="108" y="78" font-size="12.5" fill="currentColor" stroke="none" transform="rotate(-26 108 78)">hipotenusa</text>
+    </svg>
+    <div class="cap">a hipotenusa é sempre o lado de frente para o ângulo reto</div>
+  </div>
+
+  <div class="keybox">
+    <b>seno</b> \(= \frac{\text{cateto oposto}}{\text{hipotenusa}}\) &nbsp;·&nbsp;
+    <b>cosseno</b> \(= \frac{\text{cateto adjacente}}{\text{hipotenusa}}\) &nbsp;·&nbsp;
+    <b>tangente</b> \(= \frac{\text{cateto oposto}}{\text{cateto adjacente}}\)
+  </div>
+
+  <p>Para não confundir, muita gente usa <b>SOH-CAH-TOA</b>: <b>S</b>eno = <b>O</b>posto sobre
+  <b>H</b>ipotenusa, <b>C</b>osseno = <b>A</b>djacente sobre <b>H</b>ipotenusa, <b>T</b>angente =
+  <b>O</b>posto sobre <b>A</b>djacente.</p>
+
+  <p>Repare: <b>oposto</b> é o cateto que fica <i>longe</i> do ângulo, do outro lado.
+  <b>Adjacente</b> é o que <i>encosta</i> no ângulo. Se você trocar o ângulo de referência,
+  os dois trocam de papel.</p>
+
+  <h2>Os três ângulos notáveis (decore esta tabela)</h2>
+
+  <table>
+    <tr><th></th><th>30°</th><th>45°</th><th>60°</th></tr>
+    <tr><td><b>seno</b></td><td>\(\frac{1}{2}\)</td><td>\(\frac{\sqrt{2}}{2}\)</td><td>\(\frac{\sqrt{3}}{2}\)</td></tr>
+    <tr><td><b>cosseno</b></td><td>\(\frac{\sqrt{3}}{2}\)</td><td>\(\frac{\sqrt{2}}{2}\)</td><td>\(\frac{1}{2}\)</td></tr>
+    <tr><td><b>tangente</b></td><td>\(\frac{\sqrt{3}}{3}\)</td><td>\(1\)</td><td>\(\sqrt{3}\)</td></tr>
+  </table>
+
+  <p>Truque para não decorar errado: os senos, de 30° para 60°, são
+  \(\frac{1}{2}, \frac{\sqrt{2}}{2}, \frac{\sqrt{3}}{2}\) — o numerador vai
+  \(\sqrt{1}, \sqrt{2}, \sqrt{3}\). E o <b>cosseno é a tabela do seno de trás para frente</b>.</p>
+
+  <div class="keybox">
+    <b>O valor que mais cai:</b> \(\operatorname{sen} 30° = \frac{1}{2} = 0{,}5\). Meio. Guarde este.
+  </div>
+
+  <p>Aproximações usuais: \(\sqrt{2} \approx 1{,}4\) e \(\sqrt{3} \approx 1{,}7\), então
+  \(\frac{\sqrt{2}}{2} \approx 0{,}7\) e \(\frac{\sqrt{3}}{2} \approx 0{,}85\).</p>
+
+  <h2>Seno e cosseno nunca passam de 1</h2>
+
+  <p>Como são um cateto <b>dividido pela hipotenusa</b>, e a hipotenusa é sempre o maior lado,
+  o resultado fica sempre entre 0 e 1. É a mesma checagem da probabilidade:</p>
+
+  <div class="big">
+    Se deu \(\operatorname{sen} x = 1{,}3\), <b>tem erro na conta.</b>
+  </div>
+
+  <p>E quando \(x\) vai de 0° a 90°, o <b>seno cresce</b> de 0 até 1 (máximo em 90°), enquanto o
+  <b>cosseno decresce</b> de 1 até 0. Isso resolve questões de "qual a intensidade máxima" sem conta
+  nenhuma — o máximo do seno é 1.</p>
+
+  <p>Tudo isso está no <a href="../reference/trigonometria.html">cartão de Trigonometria</a>.</p>
+
+  <h2>Pratique — a escada de dificuldade</h2>
+  <p class="ladder-intro">19 questões. As últimas quatro vêm <b>sem dizer o assunto</b>. Faça na ordem.</p>
+
+  <div class="level"><span class="lv">Nível 1</span> As três razões</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · definição</div>
+    <div class="stem">Num triângulo retângulo, o <b>seno</b> de um ângulo agudo é:</div>
+    <button class="opt">cateto oposto ÷ hipotenusa.</button>
+    <button class="opt">cateto adjacente ÷ hipotenusa.</button>
+    <button class="opt">cateto oposto ÷ adjacente.</button>
+    <button class="opt">hipotenusa ÷ cateto oposto.</button>
+    <div class="fb"><b>Oposto sobre hipotenusa.</b> SOH: <b>S</b>eno, <b>O</b>posto, <b>H</b>ipotenusa.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · valor notável</div>
+    <div class="stem">O valor de \(\operatorname{sen} 30°\) é:</div>
+    <button class="opt">\(\frac{1}{2}\)</button>
+    <button class="opt">\(\frac{\sqrt{3}}{2}\)</button>
+    <button class="opt">\(\frac{\sqrt{2}}{2}\)</button>
+    <button class="opt">\(\sqrt{3}\)</button>
+    <div class="fb"><b>\(\frac{1}{2}\).</b> É o valor mais cobrado da tabela toda. \(\frac{\sqrt{3}}{2}\) é o <b>cosseno</b> de 30° — não troque.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · valor notável</div>
+    <div class="stem">O valor de \(\cos 60°\) é:</div>
+    <button class="opt">\(\frac{1}{2}\)</button>
+    <button class="opt">\(\frac{\sqrt{3}}{2}\)</button>
+    <button class="opt">\(1\)</button>
+    <button class="opt">\(\frac{\sqrt{2}}{2}\)</button>
+    <div class="fb"><b>\(\frac{1}{2}\).</b> Repare na simetria: \(\cos 60° = \operatorname{sen} 30°\). O cosseno é a tabela do seno ao contrário.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · calculando</div>
+    <div class="stem">Num triângulo retângulo, o cateto oposto ao ângulo \(x\) mede 3 e a hipotenusa mede 5. Então \(\operatorname{sen} x\) vale:</div>
+    <button class="opt">0,6</button>
+    <button class="opt">0,8</button>
+    <button class="opt">1,67</button>
+    <button class="opt">0,75</button>
+    <div class="fb"><b>0,6.</b> \(\operatorname{sen} x = \frac{3}{5} = 0{,}6\). O 1,67 é \(\frac{5}{3}\) — dividiu ao contrário; e note que passou de 1, o que já denuncia o erro.</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N1 · limite</div>
+    <div class="stem">Para um ângulo agudo, o seno é sempre um número:</div>
+    <button class="opt">maior do que 1.</button>
+    <button class="opt">entre 0 e 1.</button>
+    <button class="opt">negativo.</button>
+    <button class="opt">igual a 1.</button>
+    <div class="fb"><b>Entre 0 e 1.</b> É cateto ÷ hipotenusa, e a hipotenusa é sempre o maior lado. Use como conferência: passou de 1, refaça.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 2</span> Aplicação — um passo</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · altura</div>
+    <div class="stem">Uma rampa de 20 m de comprimento faz 30° com o solo. A altura que ela atinge é:</div>
+    <button class="opt">10 m</button>
+    <button class="opt">17 m</button>
+    <button class="opt">40 m</button>
+    <button class="opt">14 m</button>
+    <div class="fb"><b>10 m.</b> A altura é o cateto <b>oposto</b> ao ângulo e a rampa é a hipotenusa → use seno: \(20 \times \operatorname{sen} 30° = 20 \times 0{,}5 = 10\) m.<br>
+    O 17 sai de usar cosseno — que daria a distância <b>horizontal</b> percorrida, não a altura.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · sombra</div>
+    <div class="stem">Um poste projeta uma sombra de 10 m quando os raios solares fazem 45° com o solo. A altura do poste é:</div>
+    <button class="opt">10 m</button>
+    <button class="opt">14 m</button>
+    <button class="opt">7 m</button>
+    <button class="opt">5 m</button>
+    <div class="fb"><b>10 m.</b> Altura e sombra são os dois catetos → use tangente: \(\tan 45° = \frac{h}{10} = 1 \Rightarrow h = 10\).<br>
+    A 45° a altura é <b>igual</b> à sombra — vale guardar como imagem mental.</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N2 · escolher a razão</div>
+    <div class="stem">Você conhece a hipotenusa e quer achar o cateto <b>adjacente</b> ao ângulo dado. A razão a usar é:</div>
+    <button class="opt">o seno.</button>
+    <button class="opt">o cosseno.</button>
+    <button class="opt">a tangente.</button>
+    <button class="opt">o teorema de Pitágoras.</button>
+    <div class="fb"><b>O cosseno.</b> CAH: <b>C</b>osseno liga <b>A</b>djacente e <b>H</b>ipotenusa. Escolher a razão certa é decidir <b>quais dois lados</b> aparecem no problema.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · triângulo equilátero</div>
+    <div class="stem">A altura de um triângulo equilátero de lado 10 cm é:</div>
+    <button class="opt">\(5\sqrt{3}\) cm</button>
+    <button class="opt">\(10\sqrt{3}\) cm</button>
+    <button class="opt">5 cm</button>
+    <button class="opt">\(5\sqrt{2}\) cm</button>
+    <div class="fb"><b>\(5\sqrt{3} \approx 8{,}5\) cm.</b> A altura corta o equilátero em dois triângulos de 30-60-90. Ela é o cateto oposto ao ângulo de 60°: \(10 \times \operatorname{sen} 60° = 10 \times \frac{\sqrt{3}}{2} = 5\sqrt{3}\).<br>
+    Fórmula pronta: \(h = \frac{\ell\sqrt{3}}{2}\). É a mesma que apareceu no empilhamento de canos da <a href="0009-areas-perimetros.html">Lição 0009</a>.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 3</span> Duas etapas</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · duas razões</div>
+    <div class="stem">De um ponto no solo, vê-se o topo de um prédio sob 60°. A distância do ponto até a base é 30 m. Usando \(\sqrt{3} \approx 1{,}7\), a altura do prédio é:</div>
+    <button class="opt">51 m</button>
+    <button class="opt">30 m</button>
+    <button class="opt">17 m</button>
+    <button class="opt">60 m</button>
+    <div class="fb"><b>51 m.</b> Altura e distância no solo são os <b>dois catetos</b> → tangente: \(\tan 60° = \sqrt{3} = \frac{h}{30} \Rightarrow h = 30\sqrt{3} \approx 51\) m.<br>
+    Quando o problema dá a distância <b>no chão</b> (e não a linha de visada), é tangente. Se desse a linha de visada, seria seno.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · percentual de um máximo</div>
+    <div class="stem">Uma grandeza vale \(G(x) = 40 \cdot \operatorname{sen}(x)\), com \(x\) entre 0° e 90°. Seu <b>valor máximo</b> é:</div>
+    <button class="opt">40</button>
+    <button class="opt">20</button>
+    <button class="opt">80</button>
+    <button class="opt">1</button>
+    <div class="fb"><b>40.</b> O seno vale no máximo <b>1</b> (em 90°), então o máximo de \(G\) é \(40 \times 1 = 40\).<br>
+    Guarde esta ideia — ela resolve sozinha a questão do ENEM no Nível 4.</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N3 · comparando ângulos</div>
+    <div class="stem">Conforme o ângulo agudo <b>aumenta</b> de 0° para 90°:</div>
+    <button class="opt">seno e cosseno aumentam.</button>
+    <button class="opt">o seno aumenta e o cosseno diminui.</button>
+    <button class="opt">o seno diminui e o cosseno aumenta.</button>
+    <button class="opt">seno e cosseno não mudam.</button>
+    <div class="fb"><b>Seno aumenta, cosseno diminui.</b> Confira na tabela: \(\operatorname{sen}\) vai \(\frac{1}{2} \to \frac{\sqrt{2}}{2} \to \frac{\sqrt{3}}{2}\) (subindo) e \(\cos\) faz o caminho inverso.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · Pitágoras junto</div>
+    <div class="stem">Num triângulo retângulo, os catetos medem 6 e 8. O seno do ângulo oposto ao cateto de 6 é:</div>
+    <button class="opt">0,6</button>
+    <button class="opt">0,8</button>
+    <button class="opt">0,75</button>
+    <button class="opt">1,33</button>
+    <div class="fb"><b>0,6.</b> Primeiro a hipotenusa, por Pitágoras: \(\sqrt{6^2 + 8^2} = \sqrt{100} = 10\). Depois \(\operatorname{sen} = \frac{6}{10} = 0{,}6\).<br>
+    O 0,75 é \(\frac{6}{8}\), que seria a <b>tangente</b>. Trigonometria e Pitágoras andam juntos: quando falta um lado, Pitágoras acha.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 4</span> Nível ENEM — a que você errou duas vezes</div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N4 · ENEM 2017 (Q138) · você errou nas duas tentativas</div>
+    <div class="stem">Raios de sol atingem a superfície de um lago formando um ângulo \(x\) com ela. A intensidade luminosa na superfície é dada por \(I(x) = \kappa \cdot \operatorname{sen}(x)\), com \(\kappa\) constante e \(x\) entre 0° e 90°. Quando \(x = 30°\), a intensidade se reduz a que percentual de seu <b>valor máximo</b>?</div>
+    <button class="opt">33%</button>
+    <button class="opt">50%</button>
+    <button class="opt">57%</button>
+    <button class="opt">70%</button>
+    <div class="fb"><b>50%.</b> Duas ideias, e nenhuma exige calculadora.<br>
+    <b>1) Qual é o máximo?</b> O seno vale no máximo 1, então \(I_{\max} = \kappa \times 1 = \kappa\).<br>
+    <b>2) Quanto vale em 30°?</b> \(I(30°) = \kappa \cdot \operatorname{sen} 30° = \kappa \times \frac{1}{2} = 0{,}5\kappa\).<br>
+    Comparando: \(\frac{0{,}5\kappa}{\kappa} = 0{,}5 = \mathbf{50\%}\). O \(\kappa\) some na divisão — nem precisa saber quanto vale.<br>
+    <b>Por que 33% engana?</b> Porque 30° é um terço de 90°, e é tentador achar que a intensidade cai proporcionalmente ao ângulo. Mas o seno <b>não é proporcional</b> ao ângulo: metade do ângulo não dá metade do seno. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N4 · estilo ENEM · rampa acessível</div>
+    <div class="stem">Uma rampa de acesso deve vencer um desnível de 1,2 m com inclinação de 30° em relação ao solo. O comprimento da rampa deve ser:</div>
+    <button class="opt">2,4 m</button>
+    <button class="opt">0,6 m</button>
+    <button class="opt">1,4 m</button>
+    <button class="opt">2,1 m</button>
+    <div class="fb"><b>2,4 m.</b> O desnível é o cateto oposto e a rampa é a hipotenusa → seno: \(\operatorname{sen} 30° = \frac{1{,}2}{L} \Rightarrow 0{,}5 = \frac{1{,}2}{L} \Rightarrow L = 2{,}4\) m.<br>
+    Atenção ao sentido da divisão: aqui o que você <b>procura</b> está embaixo da fração, então multiplique cruzado. 🎯</div>
+  </div>
+
+  <div class="level blind"><span class="lv">Sem aviso</span> Misturadas — descubra você o assunto</div>
+  <p class="ladder-intro">Sem dizer o tema. Pergunte-se primeiro <b>“do que isto está falando?”</b></p>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Uma piscina de 6 m × 3 m tem profundidade constante de 1,5 m, mas a água fica 20 cm abaixo da borda. O volume de água, em litros, é:</div>
+    <button class="opt">23 400 litros</button>
+    <button class="opt">27 000 litros</button>
+    <button class="opt">234 litros</button>
+    <button class="opt">2 340 litros</button>
+    <div class="fb"><b>23 400 L.</b> Era <a href="0010-volumes.html">volume</a>: altura da água \(= 1{,}5 - 0{,}2 = 1{,}3\); \(6 \times 3 \times 1{,}3 = 23{,}4\) m³ \(= 23\,400\) L. O 27 000 usa a profundidade cheia.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">O preço de um produto caiu de R$ 250,00 para R$ 200,00. A redução percentual foi de:</div>
+    <button class="opt">20%</button>
+    <button class="opt">25%</button>
+    <button class="opt">50%</button>
+    <button class="opt">80%</button>
+    <div class="fb"><b>20%.</b> Era <a href="0001-variacao-percentual.html">variação percentual</a>: \(\frac{250-200}{250} = \frac{50}{250} = 0{,}20\). Divida sempre pelo valor <b>inicial</b> — dividir por 200 daria 25%, o distrator.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Numa avenida, a probabilidade de um semáforo estar verde é \(\frac{2}{3}\). Passando por dois semáforos independentes, a probabilidade de <b>ambos</b> estarem verdes é:</div>
+    <button class="opt">\(\frac{4}{9}\)</button>
+    <button class="opt">\(\frac{4}{3}\)</button>
+    <button class="opt">\(\frac{2}{3}\)</button>
+    <button class="opt">\(\frac{1}{3}\)</button>
+    <div class="fb"><b>\(\frac{4}{9}\).</b> Era <a href="0006-probabilidade.html">probabilidade</a>: "ambos" → multiplica → \(\frac{2}{3} \times \frac{2}{3} = \frac{4}{9}\). O \(\frac{4}{3}\) passa de 1, então já estaria descartado.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Um mapa está na escala 1 : 50 000. Dois pontos separados por 4 cm no mapa estão, na realidade, a:</div>
+    <button class="opt">2 km</button>
+    <button class="opt">200 km</button>
+    <button class="opt">20 km</button>
+    <button class="opt">200 m</button>
+    <div class="fb"><b>2 km.</b> Era <a href="0002-regra-de-tres.html">escala</a>: \(4 \times 50\,000 = 200\,000\) cm \(= 2\,000\) m \(= 2\) km. Cuidado só com a conversão no fim.</div>
+  </div>
+
+  <div class="score" id="score">Responda as questões acima ☝️</div>
+
+  <h2>Para fixar (faça depois)</h2>
+  <p>• <b>Fonte primária recomendada:</b>
+     <a href="https://pt.khanacademy.org/math/trigonometry/trigonometry-right-triangles" target="_blank">Khan Academy — Trigonometria no triângulo retângulo</a> (gratuito, em português).</p>
+  <p>• <b>O reflexo que vale ponto:</b> identifique <b>quais dois lados</b> aparecem no problema —
+     isso escolhe a razão sozinho. Oposto + hipotenusa → seno. Adjacente + hipotenusa → cosseno.
+     Os dois catetos → tangente.</p>
+  <p>• <b>Decore só a linha do seno</b> (\(\frac{1}{2}, \frac{\sqrt{2}}{2}, \frac{\sqrt{3}}{2}\)) —
+     o cosseno é ela de trás para frente.</p>
+
+  <div class="foot">
+    <p class="ask">👨‍🏫 <b>Eu sou seu professor aqui.</b> Se "oposto" e "adjacente" ainda embaralharem,
+    me chame — tem um jeito de fixar isso em dois minutos.</p>
+    <p>Workspace de estudo · Missão: Matemática ENEM 2026 → TO/Fono USP Ribeirão Preto ·
+    Referência: <a href="../reference/trigonometria.html">Cartão de Trigonometria</a> ·
+    Anterior: <a href="0010-volumes.html">Lição 0010 — Volumes</a> ·
+    Próxima: <a href="0012-funcoes-trigonometricas.html">Lição 0012 — Funções seno e cosseno</a></p>
+  </div>
+
+</div>
+<script>
+  let answered = 0, hits = 0;
+  const total = document.querySelectorAll('.q').length;
+  document.querySelectorAll('.q').forEach(function(q){
+    const correct = parseInt(q.dataset.correct, 10);
+    const opts = q.querySelectorAll('.opt');
+    const fb = q.querySelector('.fb');
+    opts.forEach(function(btn, i){
+      btn.addEventListener('click', function(){
+        opts.forEach(function(b){ b.disabled = true; });
+        if(i === correct){ btn.classList.add('correct'); hits++; }
+        else { btn.classList.add('wrong'); opts[correct].classList.add('correct'); }
+        fb.classList.add('show');
+        answered++;
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    const el = document.getElementById('score');
+    if(answered < total){ el.textContent = answered + ' de ' + total + ' respondidas — continue 💪'; return; }
+    let msg = 'Você acertou ' + hits + ' de ' + total + '. ';
+    const pct = hits / total;
+    if(pct === 1) msg += 'Escada inteira, incluindo o bloco sem aviso! 🎯';
+    else if(pct >= 0.75) msg += 'Muito bom. Volte no cartão nos pontos que escaparam.';
+    else if(pct >= 0.5) msg += 'Está vindo. Releia a ideia central e refaça amanhã.';
+    else msg += 'Sem drama — me chame que a gente refaz juntos, passo a passo.';
+    el.textContent = msg;
+  }
+</script>
+</body>
+</html>

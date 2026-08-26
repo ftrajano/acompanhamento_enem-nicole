@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lição 0009 — Áreas, perímetros e encaixe</title>
+<style>
+  :root{ --ink:#1a1a1a; --soft:#6b6b6b; --line:#e2dccd; --accent:#7a1f2b; --green:#1c6b3f;
+         --red:#9b2226; --bg:#fbf9f4; --hi:#fdf3d6; --card:#ffffff; --blind:#2b4c6f; }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0; padding:48px 22px 80px;
+        font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.62; }
+  .wrap{ max-width:720px; margin:0 auto; }
+  .kicker{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-transform:uppercase;
+           letter-spacing:.18em; font-size:11px; color:var(--accent); font-weight:700; }
+  h1{ font-size:30px; line-height:1.2; margin:6px 0 4px; font-weight:600; }
+  .sub{ color:var(--soft); font-style:italic; margin:0 0 8px; }
+  .mission{ background:var(--hi); border-radius:8px; padding:12px 16px; font-size:14.5px; margin:18px 0 8px; }
+  .mission b{color:var(--accent)}
+  h2{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:15px; letter-spacing:.03em;
+      text-transform:uppercase; color:var(--accent); margin:34px 0 8px;
+      border-bottom:1px solid var(--line); padding-bottom:5px; }
+  p{margin:10px 0}
+  .keybox{ background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+           border-radius:0 8px 8px 0; padding:14px 18px; margin:16px 0; line-height:2; }
+  .keybox b{color:var(--accent)}
+  .big{ text-align:center; background:var(--hi); border-radius:8px; padding:14px 16px; margin:16px 0;
+        font-size:17px; line-height:2; }
+  .big b{ color:var(--accent); }
+  table{ border-collapse:collapse; width:100%; margin:12px 0; font-size:14.5px; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11.5px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--soft); }
+  a{color:var(--accent)}
+  .q{ background:var(--card); border:1px solid var(--line); border-radius:10px;
+      padding:18px 20px; margin:20px 0; }
+  .q .tag{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+           letter-spacing:.08em; text-transform:uppercase; color:var(--soft); }
+  .q .stem{ margin:6px 0 14px; }
+  .fig{ text-align:center; margin:12px 0; color:var(--accent); }
+  .fig svg{ max-width:100%; height:auto; }
+  .fig .cap{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-size:12px; color:var(--soft); margin-top:4px; }
+  .level{ font-family:-apple-system,Helvetica,Arial,sans-serif; font-weight:700; letter-spacing:.04em;
+          color:var(--accent); margin:30px 0 6px; display:flex; align-items:center; gap:10px; font-size:14px; }
+  .level::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .level .lv{ background:var(--accent); color:#fff; border-radius:20px; padding:2px 11px; font-size:11px; letter-spacing:.06em; white-space:nowrap; }
+  .level.blind{ color:var(--blind); }
+  .level.blind .lv{ background:var(--blind); }
+  .ladder-intro{ font-size:14.5px; color:var(--soft); margin:4px 0 0; }
+  .opt{ display:block; width:100%; text-align:left; font-family:inherit; font-size:16px;
+        background:#fff; border:1.5px solid var(--line); border-radius:8px; padding:11px 14px;
+        margin:7px 0; cursor:pointer; transition:.12s; }
+  .opt:hover{ border-color:var(--accent); background:var(--hi); }
+  .opt:disabled{ cursor:default; opacity:.95; }
+  .opt.correct{ border-color:var(--green); background:#e9f5ee; color:var(--green); font-weight:600; }
+  .opt.wrong{ border-color:var(--red); background:#fbeaea; color:var(--red); }
+  .fb{ display:none; margin-top:12px; padding:12px 14px; border-radius:8px; font-size:14.5px;
+       background:#f4f1e8; border:1px dashed var(--line); line-height:1.8; }
+  .fb.show{ display:block; }
+  .fb b{color:var(--accent)}
+  .score{ font-family:-apple-system,Helvetica,Arial,sans-serif; text-align:center; font-size:15px;
+          color:var(--soft); margin:26px 0; }
+  .foot{ margin-top:40px; padding-top:14px; border-top:1px solid var(--line); font-size:13.5px; color:var(--soft); }
+  .ask{ background:#eef4ef; border-radius:8px; padding:12px 16px; font-size:14.5px; color:var(--ink); }
+  mjx-container{ color:inherit; }
+  mjx-container[display="false"]{ vertical-align:-0.15em; }
+</style>
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Lição 0009 · Matemática ENEM · Geometria plana</div>
+  <h1>Áreas, perímetros &amp; encaixe</h1>
+  <p class="sub">Somar, subtrair e descobrir qual medida governa o quê.</p>
+
+  <div class="mission">
+    <b>Por que esta lição?</b> Quando você revisou as lições e refez o simulado de 2017, recuperou
+    13 das 24 questões — mas <b>geometria só recuperou 1 de 5</b>. É o bloco que não se mexeu, e por
+    um motivo justo: a <a href="0004-geometria-espacial.html">Lição 0004</a> ensinou a <b>contar e
+    enxergar</b> sólidos, não a <b>medir</b>. São coisas diferentes, e é medir que está faltando.
+    Geometria plana é o 3º tema mais cobrado do ENEM (110 questões), então vale bastante ponto.
+  </div>
+
+  <h2>A ideia central (2 minutos)</h2>
+
+  <div class="keybox">
+    <b>Retângulo:</b> \(A = b \times h\) &nbsp;·&nbsp; <b>Triângulo:</b> \(A = \frac{b \times h}{2}\)<br>
+    <b>Círculo:</b> \(A = \pi r^2\) &nbsp;·&nbsp; <b>Trapézio:</b> \(A = \frac{(B + b) \times h}{2}\)<br>
+    <b>Perímetro</b> é o contorno (mede em cm); <b>área</b> é a superfície (mede em cm²).
+  </div>
+
+  <p>Isso resolve o básico. Mas o ENEM quase nunca pede uma figura pura — ele pede uma
+  <b>figura composta</b>. E aí a regra é só uma:</p>
+
+  <div class="big">
+    Quebre em pedaços simples.<br>
+    <b>Some</b> o que tem, <b>subtraia</b> o que falta.
+  </div>
+
+  <p>Uma sala em L? Dois retângulos somados. Uma arruela? Círculo grande menos círculo pequeno.
+  Um canteiro com um lago no meio? Subtraia. Não existe fórmula de "figura esquisita" — existe
+  decomposição.</p>
+
+  <h2>A armadilha do encaixe</h2>
+
+  <p>Este é o tipo que derrubou você na prova, e ele tem um nome: quando um objeto tem
+  <b>duas medidas diferentes</b>, cada uma governa uma coisa. Confundir as duas é o erro.</p>
+
+  <div class="fig">
+    <svg width="360" height="110" viewBox="0 0 360 110" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="8" y="30" width="304" height="64" stroke-dasharray="0"/>
+      <g stroke-dasharray="5 4" opacity=".55">
+        <circle cx="40" cy="62" r="40"/><circle cx="120" cy="62" r="40"/>
+        <circle cx="200" cy="62" r="40"/><circle cx="280" cy="62" r="40"/>
+      </g>
+      <circle cx="40" cy="62" r="32"/><circle cx="120" cy="62" r="32"/>
+      <circle cx="200" cy="62" r="32"/><circle cx="280" cy="62" r="32"/>
+      <line x1="40" y1="14" x2="120" y2="14" stroke-width="1.4"/>
+      <text x="62" y="11" font-size="11" fill="currentColor" stroke="none">80 = 2×40</text>
+    </svg>
+    <div class="cap">visto de cima — linha cheia: a base · tracejado: a borda de cima</div>
+  </div>
+
+  <div class="keybox">
+    <b>A borda (a parte larga)</b> decide o <b>espaçamento</b> — é ela que encosta na vizinha.<br>
+    <b>A base (a parte estreita)</b> decide o <b>apoio</b> — é ela que precisa caber na bandeja.
+  </div>
+
+  <p>A borda pode passar da bandeja sem problema; a base, não. Sempre pergunte: <b>o que encosta
+  em quê?</b> e <b>o que precisa estar apoiado?</b></p>
+
+  <h2>Círculos empilhados: o triângulo escondido</h2>
+
+  <p>Três canos (ou latas, ou troncos) empilhados em pirâmide é figura clássica do ENEM. O segredo:
+  ligue os três <b>centros</b> e aparece um <b>triângulo equilátero de lado \(2r\)</b>.</p>
+
+  <div class="fig">
+    <svg width="220" height="190" viewBox="0 0 220 190" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="70" cy="140" r="38"/><circle cx="146" cy="140" r="38"/><circle cx="108" cy="74" r="38"/>
+      <g stroke-width="1.5" stroke-dasharray="4 3" opacity=".8">
+        <path d="M70 140 L146 140 L108 74 Z"/>
+      </g>
+      <circle cx="70" cy="140" r="2.5" fill="currentColor"/>
+      <circle cx="146" cy="140" r="2.5" fill="currentColor"/>
+      <circle cx="108" cy="74" r="2.5" fill="currentColor"/>
+      <line x1="8" y1="178" x2="212" y2="178" stroke-width="2"/>
+      <text x="96" y="156" font-size="11" fill="currentColor" stroke="none">2r</text>
+    </svg>
+    <div class="cap">os centros formam um triângulo equilátero de lado \(2r\)</div>
+  </div>
+
+  <p>A altura desse triângulo é \(\frac{2r\sqrt{3}}{2} = r\sqrt{3}\). Somando o raio de baixo e o de
+  cima, a pilha inteira mede:</p>
+
+  <div class="big">
+    altura de 3 círculos empilhados \(= \mathbf{r(2 + \sqrt{3})}\)
+  </div>
+
+  <p>Com \(\sqrt{3} \approx 1{,}7\), isso é \(3{,}7\,r\). Guarde — cai muito.</p>
+
+  <p>Tudo isso está no <a href="../reference/areas-perimetros.html">cartão de Áreas e Perímetros</a>.</p>
+
+  <h2>Pratique — a escada de dificuldade</h2>
+  <p class="ladder-intro">20 questões. As últimas quatro vêm <b>sem dizer o assunto</b> — como na
+  prova. Faça na ordem.</p>
+
+  <div class="level"><span class="lv">Nível 1</span> As fórmulas na mão</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · retângulo</div>
+    <div class="stem">A área de um retângulo de 12 cm por 5 cm é:</div>
+    <button class="opt">60 cm²</button>
+    <button class="opt">34 cm²</button>
+    <button class="opt">17 cm²</button>
+    <button class="opt">30 cm²</button>
+    <div class="fb"><b>\(12 \times 5 = 60\) cm².</b> O distrator 34 é o <b>perímetro</b> — repare na unidade: área vem em cm², perímetro em cm.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · triângulo</div>
+    <div class="stem">Um triângulo tem base 10 cm e altura 6 cm. Sua área é:</div>
+    <button class="opt">30 cm²</button>
+    <button class="opt">60 cm²</button>
+    <button class="opt">16 cm²</button>
+    <button class="opt">15 cm²</button>
+    <div class="fb"><b>\(\frac{10 \times 6}{2} = 30\) cm².</b> Triângulo é sempre <b>metade</b> do retângulo de mesma base e altura. Esquecer o ÷2 dá 60 — o erro mais comum.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · círculo</div>
+    <div class="stem">Usando \(\pi \approx 3\), a área de um círculo de raio 3 cm é:</div>
+    <button class="opt">27 cm²</button>
+    <button class="opt">18 cm²</button>
+    <button class="opt">9 cm²</button>
+    <button class="opt">54 cm²</button>
+    <div class="fb"><b>\(\pi r^2 = 3 \times 3^2 = 27\) cm².</b> Cuidado: eleva o raio ao quadrado <b>antes</b> de multiplicar por \(\pi\). O 18 sai de \(2\pi r\), que é o <b>comprimento</b> da circunferência.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N1 · perímetro</div>
+    <div class="stem">O perímetro de um retângulo de 12 cm por 5 cm é:</div>
+    <button class="opt">34 cm</button>
+    <button class="opt">60 cm</button>
+    <button class="opt">17 cm</button>
+    <button class="opt">24 cm</button>
+    <div class="fb"><b>\(2 \times (12 + 5) = 34\) cm.</b> Perímetro é a volta inteira: dois lados de 12 e dois de 5.</div>
+  </div>
+
+  <div class="q" data-correct="1">
+    <div class="tag">N1 · trapézio</div>
+    <div class="stem">Um trapézio tem bases 10 cm e 6 cm, e altura 4 cm. Sua área é:</div>
+    <button class="opt">40 cm²</button>
+    <button class="opt">32 cm²</button>
+    <button class="opt">60 cm²</button>
+    <button class="opt">20 cm²</button>
+    <div class="fb"><b>\(\frac{(10+6) \times 4}{2} = 32\) cm².</b> Uma leitura que ajuda: é a <b>média das bases</b> \(\left(\frac{10+6}{2} = 8\right)\) vezes a altura → \(8 \times 4 = 32\).</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 2</span> Aplicação — um passo</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · piso</div>
+    <div class="stem">Um piso de 4 m por 3 m será coberto por ladrilhos quadrados de 20 cm de lado. Quantos ladrilhos são necessários?</div>
+    <button class="opt">300 ladrilhos</button>
+    <button class="opt">60 ladrilhos</button>
+    <button class="opt">120 ladrilhos</button>
+    <button class="opt">600 ladrilhos</button>
+    <div class="fb"><b>300.</b> Piso: \(4 \times 3 = 12\) m². Ladrilho: \(0{,}20 \times 0{,}20 = 0{,}04\) m². Logo \(12 \div 0{,}04 = 300\).<br>
+    <b>Converta as unidades antes de dividir</b> — misturar metro com centímetro é o erro nº 1 aqui.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · cerca</div>
+    <div class="stem">Um terreno retangular mede 30 m por 20 m e será totalmente cercado. O comprimento de cerca necessário é:</div>
+    <button class="opt">100 m</button>
+    <button class="opt">600 m</button>
+    <button class="opt">50 m</button>
+    <button class="opt">120 m</button>
+    <div class="fb"><b>\(2 \times (30 + 20) = 100\) m.</b> Cercar é contorno → <b>perímetro</b>. Se pedisse grama para cobrir, aí sim seria área (600 m²). Leia sempre se o problema é de contorno ou de superfície.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · subtrair</div>
+    <div class="stem">Um círculo de raio 5 cm está inscrito num quadrado de lado 10 cm. A área que sobra do quadrado (fora do círculo), usando \(\pi \approx 3{,}14\), é:</div>
+    <button class="opt">21,5 cm²</button>
+    <button class="opt">78,5 cm²</button>
+    <button class="opt">100 cm²</button>
+    <button class="opt">45,0 cm²</button>
+    <div class="fb"><b>21,5 cm².</b> Quadrado \(= 100\); círculo \(= 3{,}14 \times 25 = 78{,}5\); sobra \(= 100 - 78{,}5 = 21{,}5\).<br>
+    Este é o modelo da <b>subtração</b>: a região "que sobra" é sempre o todo menos o que está dentro.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N2 · unidades</div>
+    <div class="stem">Um terreno tem 2 500 000 cm². Essa área, em metros quadrados, é:</div>
+    <button class="opt">250 m²</button>
+    <button class="opt">25 000 m²</button>
+    <button class="opt">2 500 m²</button>
+    <button class="opt">25 m²</button>
+    <div class="fb"><b>250 m².</b> \(1\) m² \(= 100 \times 100 = 10\,000\) cm². Logo \(2\,500\,000 \div 10\,000 = 250\).<br>
+    <b>Em área o fator é ao quadrado:</b> 100 vira 10 000. Esse detalhe derruba muita questão — e volta na próxima lição, com volume (fator ao cubo).</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 3</span> Figuras compostas e encaixe</div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · composta</div>
+    <div class="stem">Uma janela tem a forma de um retângulo de 10 dm por 6 dm com um semicírculo de raio 3 dm em cima. Usando \(\pi \approx 3{,}14\), a área total é aproximadamente:</div>
+    <button class="opt">74,1 dm²</button>
+    <button class="opt">88,3 dm²</button>
+    <button class="opt">60,0 dm²</button>
+    <button class="opt">102,6 dm²</button>
+    <div class="fb"><b>≈ 74,1 dm².</b> Retângulo \(= 60\). Semicírculo \(= \frac{3{,}14 \times 3^2}{2} = \frac{28{,}26}{2} = 14{,}13\). Total \(\approx 74{,}1\).<br>
+    Quebrou em dois pedaços simples e somou. O distrator 88,3 é quem somou o círculo <b>inteiro</b>.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · terreno em L</div>
+    <div class="stem">Um terreno em forma de L é um retângulo de 20 m × 15 m do qual se retirou um canto retangular de 8 m × 5 m. A área do terreno é:</div>
+    <button class="opt">260 m²</button>
+    <button class="opt">340 m²</button>
+    <button class="opt">300 m²</button>
+    <button class="opt">40 m²</button>
+    <div class="fb"><b>260 m².</b> \(20 \times 15 = 300\); o canto retirado vale \(8 \times 5 = 40\); logo \(300 - 40 = 260\).<br>
+    Sempre que a figura tiver um "pedaço faltando", é mais rápido pegar o retângulo inteiro e <b>subtrair</b> do que somar as partes.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · encaixe simples</div>
+    <div class="stem">Três discos de raio 2 cm são colocados lado a lado, encostando um no outro, dentro de uma caixa retangular rasa. A menor área possível para o fundo da caixa é:</div>
+    <button class="opt">48 cm²</button>
+    <button class="opt">24 cm²</button>
+    <button class="opt">36 cm²</button>
+    <button class="opt">16 cm²</button>
+    <div class="fb"><b>48 cm².</b> Cada disco tem diâmetro 4. Três em fila → comprimento \(3 \times 4 = 12\); largura \(= 4\). Área \(= 12 \times 4 = 48\).<br>
+    Aqui o raio é o mesmo para tudo. Na próxima questão ele deixa de ser — e é aí que mora a armadilha.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N3 · empilhamento</div>
+    <div class="stem">Três canos de raio 1 m são empilhados em pirâmide (dois embaixo, um em cima). Usando \(\sqrt{3} \approx 1{,}7\), a altura total da pilha é:</div>
+    <button class="opt">3,7 m</button>
+    <button class="opt">4,0 m</button>
+    <button class="opt">2,7 m</button>
+    <button class="opt">6,0 m</button>
+    <div class="fb"><b>3,7 m.</b> Use a fórmula da pilha: \(r(2 + \sqrt{3}) = 1 \times 3{,}7 = 3{,}7\) m.<br>
+    De onde vem: os centros formam triângulo equilátero de lado 2, cuja altura é \(\sqrt{3}\). Somando o raio de baixo (1) e o de cima (1): \(1 + \sqrt{3} + 1\).<br>
+    O distrator <b>6,0</b> é somar os três diâmetros — o erro de quem imagina os canos empilhados <b>em coluna</b>, não em pirâmide.</div>
+  </div>
+
+  <div class="level"><span class="lv">Nível 4</span> Nível ENEM — as que você errou duas vezes</div>
+
+  <div class="q" data-correct="2">
+    <div class="tag">N4 · ENEM 2017 (Q140) · você errou nas duas tentativas</div>
+    <div class="stem">Um garçom precisa escolher uma bandeja retangular para servir <b>quatro taças</b> de espumante, dispostas em <b>uma única fileira</b> paralela ao lado maior, com as <b>bases totalmente apoiadas</b>. A base e a borda superior das taças são círculos de raio <b>4 cm</b> e <b>5 cm</b>. A área mínima da bandeja, em cm², é:</div>
+    <button class="opt">192</button>
+    <button class="opt">300</button>
+    <button class="opt">304</button>
+    <button class="opt">320</button>
+    <div class="fb"><b>304 cm².</b> Separe as duas medidas — é isso que a questão testa.<br>
+    <b>Espaçamento (manda a borda, r = 5):</b> as bordas é que encostam, então os centros ficam a \(2 \times 5 = 10\) cm um do outro. Quatro taças → três vãos → \(3 \times 10 = 30\) cm entre o primeiro e o último centro.<br>
+    <b>Tamanho da bandeja (manda a base, r = 4):</b> a base precisa estar apoiada, então sobra 4 cm para cada lado: comprimento \(= 30 + 4 + 4 = 38\). Largura \(=\) diâmetro da base \(= 8\).<br>
+    <b>Área \(= 38 \times 8 = 304\).</b> A borda pode passar da bandeja — só a base não pode. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="3">
+    <div class="tag">N4 · ENEM 2017 (Q153) · você errou nas duas tentativas</div>
+    <div class="stem">Um caminhão transporta <b>três canos</b> empilhados em pirâmide, cada um com raio externo <b>0,60 m</b>. Eles estão sobre uma carroceria cuja parte superior está a <b>1,30 m</b> do solo. Usando \(\sqrt{3} \approx 1{,}7\), a altura do ponto mais alto da carga em relação ao solo é:</div>
+    <button class="opt">2,50 m</button>
+    <button class="opt">2,92 m</button>
+    <button class="opt">3,10 m</button>
+    <button class="opt">3,52 m</button>
+    <div class="fb"><b>3,52 m.</b> Duas etapas.<br>
+    <b>1) A pilha:</b> \(r(2 + \sqrt{3}) = 0{,}60 \times 3{,}7 = 2{,}22\) m.<br>
+    <b>2) O chão:</b> some a carroceria → \(2{,}22 + 1{,}30 = 3{,}52\) m.<br>
+    O erro clássico é parar no passo 1 e esquecer que a carga está <b>em cima</b> de algo. Sempre releia de onde a altura está sendo medida — do chão ou da base da carga. 🎯</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">N4 · estilo ENEM · composta com subtração</div>
+    <div class="stem">Uma praça quadrada de 40 m de lado terá um canteiro circular de raio 10 m no centro, e o resto será gramado. Usando \(\pi \approx 3\), a área gramada é:</div>
+    <button class="opt">1 300 m²</button>
+    <button class="opt">300 m²</button>
+    <button class="opt">1 600 m²</button>
+    <button class="opt">1 900 m²</button>
+    <div class="fb"><b>1 300 m².</b> Praça \(= 40^2 = 1\,600\). Canteiro \(= 3 \times 10^2 = 300\). Gramado \(= 1\,600 - 300 = 1\,300\).</div>
+  </div>
+
+  <div class="level blind"><span class="lv">Sem aviso</span> Misturadas — descubra você o assunto</div>
+  <p class="ladder-intro">Daqui em diante <b>não digo o tema</b>. É de propósito: na prova, descobrir
+  qual ferramenta usar é metade da questão. Leia com calma e pergunte-se primeiro
+  <b>“do que isto está falando?”</b></p>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Uma torneira enche um tanque em 8 horas. Quatro torneiras iguais, juntas, enchem o mesmo tanque em:</div>
+    <button class="opt">2 horas</button>
+    <button class="opt">32 horas</button>
+    <button class="opt">4 horas</button>
+    <button class="opt">12 horas</button>
+    <div class="fb"><b>2 horas.</b> Era <a href="0005-proporcionalidade-inversa.html">proporcionalidade inversa</a>: \(1 \times 8 = 8\) torneira-horas; \(8 \div 4 = 2\) h.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Numa caixa há 4 bolas verdes e 6 amarelas. Tirando duas bolas <b>sem reposição</b>, a probabilidade de ambas serem amarelas é:</div>
+    <button class="opt">\(\frac{1}{3}\)</button>
+    <button class="opt">\(\frac{9}{25}\)</button>
+    <button class="opt">\(\frac{3}{5}\)</button>
+    <button class="opt">\(\frac{2}{5}\)</button>
+    <div class="fb"><b>\(\frac{1}{3}\).</b> Era <a href="0006-probabilidade.html">probabilidade sem reposição</a>: \(\frac{6}{10} \times \frac{5}{9} = \frac{30}{90} = \frac{1}{3}\). Caem <b>os dois</b> números.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">Um produto de R$ 80,00 sofre aumento de 25% e, depois, desconto de 20%. O preço final é:</div>
+    <button class="opt">R$ 80,00</button>
+    <button class="opt">R$ 84,00</button>
+    <button class="opt">R$ 76,00</button>
+    <button class="opt">R$ 85,00</button>
+    <div class="fb"><b>R$ 80,00.</b> Era <a href="0001-variacao-percentual.html">variação percentual</a>: \(80 \times 1{,}25 \times 0{,}80 = 80\). Percentuais <b>se multiplicam</b>; +25 e −20 não dão +5.</div>
+  </div>
+
+  <div class="q" data-correct="0">
+    <div class="tag">?</div>
+    <div class="stem">De um grupo de 7 pessoas, quantas duplas diferentes podem ser formadas?</div>
+    <button class="opt">21 duplas</button>
+    <button class="opt">42 duplas</button>
+    <button class="opt">14 duplas</button>
+    <button class="opt">49 duplas</button>
+    <div class="fb"><b>21.</b> Era <a href="0007-contagem.html">contagem</a>: numa dupla a ordem não importa → \(C_{7,2} = \frac{7 \times 6}{2} = 21\). O distrator 42 é \(7 \times 6\), contando cada dupla duas vezes.</div>
+  </div>
+
+  <div class="score" id="score">Responda as questões acima ☝️</div>
+
+  <h2>Para fixar (faça depois)</h2>
+  <p>• <b>Fonte primária recomendada:</b>
+     <a href="https://pt.khanacademy.org/math/basic-geo/basic-geo-area-and-perimeter" target="_blank">Khan Academy — Área e perímetro</a> (gratuito, em português).</p>
+  <p>• <b>O reflexo que vale ponto:</b> antes de calcular, pergunte <b>“contorno ou superfície?”</b> e
+     <b>“dá para quebrar em pedaços simples?”</b>. E em problemas de encaixe: <b>o que encosta em quê,
+     e o que precisa estar apoiado?</b></p>
+  <p>• <b>Daqui a 2 dias</b>, refaça o Nível 4 e o bloco sem aviso, de memória.</p>
+
+  <div class="foot">
+    <p class="ask">👨‍🏫 <b>Eu sou seu professor aqui.</b> A questão da bandeja é sacana mesmo — se ainda
+    parecer estranha, me chame que eu desenho de outro jeito.</p>
+    <p>Workspace de estudo · Missão: Matemática ENEM 2026 → TO/Fono USP Ribeirão Preto ·
+    Referência: <a href="../reference/areas-perimetros.html">Cartão de Áreas e Perímetros</a> ·
+    Anterior: <a href="0008-revisao-interleaved.html">Lição 0008 — Revisão</a> ·
+    Próxima: <a href="0010-volumes.html">Lição 0010 — Volumes</a></p>
+  </div>
+
+</div>
+<script>
+  let answered = 0, hits = 0;
+  const total = document.querySelectorAll('.q').length;
+  document.querySelectorAll('.q').forEach(function(q){
+    const correct = parseInt(q.dataset.correct, 10);
+    const opts = q.querySelectorAll('.opt');
+    const fb = q.querySelector('.fb');
+    opts.forEach(function(btn, i){
+      btn.addEventListener('click', function(){
+        opts.forEach(function(b){ b.disabled = true; });
+        if(i === correct){ btn.classList.add('correct'); hits++; }
+        else { btn.classList.add('wrong'); opts[correct].classList.add('correct'); }
+        fb.classList.add('show');
+        answered++;
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    const el = document.getElementById('score');
+    if(answered < total){ el.textContent = answered + ' de ' + total + ' respondidas — continue 💪'; return; }
+    let msg = 'Você acertou ' + hits + ' de ' + total + '. ';
+    const pct = hits / total;
+    if(pct === 1) msg += 'Escada inteira, incluindo o bloco sem aviso! 🎯';
+    else if(pct >= 0.75) msg += 'Muito bom. Volte no cartão nos pontos que escaparam.';
+    else if(pct >= 0.5) msg += 'Está vindo. Releia a ideia central e refaça amanhã.';
+    else msg += 'Sem drama — me chame que a gente refaz juntos, passo a passo.';
+    el.textContent = msg;
+  }
+</script>
+</body>
+</html>
