@@ -21,7 +21,8 @@
   ```
 
 ## REGRA NOVA (20/08/2026) — combater a ilusão de fluência
-O placar da lição subiu sem a prova subir (ver [learning-records/0004](learning-records/0004-ilusao-de-fluencia.md)).
+O placar da lição sobe sem a prova subir na primeira passada (ver
+[learning-records/0004](learning-records/0004-ilusao-de-fluencia.md), com a atualização no fim).
 Causa: **o título da lição entrega o assunto**, que na prova é justamente o que ela precisa descobrir.
 - Toda lição nova deve terminar com um bloco **sem rótulo de tema**, interleaved com assuntos anteriores.
 - O rótulo (N1/N2/N3/tema) vale no ensino; **nunca** na prática final.
@@ -54,10 +55,21 @@ Causa: **o título da lição entrega o assunto**, que na prova é justamente o 
   confirmadas em duas provas independentes.
 - **Alerta:** 0 erros na Lição 0001 (porcentagem) mas 5 erros de porcentagem na prova →
   fluência na lição não virou retenção em condição de prova.
-- **CONFIRMADO: foi DEPOIS das lições 0001–0004** → as lições não estão transferindo para a prova.
+- **CONFIRMADO: foi DEPOIS das lições 0001–0004.** ⚠️ MATIZADO no bloco seguinte: ao REVISAR as
+  lições ela recuperou 13 dessas 24. Então o material converte; o que falta testar é prova inédita.
 - **12 dos 24 erros estão em temas já ensinados.** Se transferisse, seria 33/45 = 73%.
   O ganho parado em material já visto é maior que o de qualquer tema novo.
 - → mudança de método registrada em [learning-records/0004](learning-records/0004-ilusao-de-fluencia.md).
+
+## REFAZER o 2017 após revisar as lições — 20/08/2026
+- A Nicole revisou as lições 0001–0004 e refez as 24 que errou: **recuperou 13 (54%)**.
+- Placar: 21/45 (46,7%) → **34/45 (75,6%)**. Ver [learning-records/0005](learning-records/0005-refazer-2017-apos-revisao.md).
+- **Taxa de recuperação por área:** contagem/prob 100% · estatística 100% · proporção/% 80% ·
+  funções 60% · financeira 50% · **geometria 20%** · **trigonometria 0%** · leitura de escala 0%.
+- Nas 11 que persistem ela **mudou de resposta em 10** (7 foram para mais longe) → não é
+  misconception fixa, é lacuna de conteúdo. Pede ensino do zero, não remediação.
+- ⚠️ É a MESMA prova refeita → 75,6% está inflado por familiaridade. Nota real só em prova inédita.
+- → **GRUPO 3 = geometria + trigonometria.**
 
 ## Diagnóstico (simulado ENEM 2021, 2º dia, Matemática)
 - Acertou 22/44 válidas (50%). Ver [learning-records/0001](learning-records/0001-diagnostico-simulado-2021.md).

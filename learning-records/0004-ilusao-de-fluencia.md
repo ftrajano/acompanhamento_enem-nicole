@@ -48,3 +48,22 @@ a conta e escorrega no fim. Não é desconhecimento do tema; é execução e esc
 Não re-ensinar porcentagem do zero. Ela acerta quando sabe que é porcentagem. Re-ensinar o conteúdo
 atacaria o sintoma errado — e a Lição 0002 já mostrou que repetir a mesma explicação não gera
 retenção (ver [registro 0002](0002-diagnostico-grupo-1.md)).
+
+
+---
+
+## ATUALIZAÇÃO (20/08/2026, mesmo dia)
+
+Este registro foi escrito antes de um teste que mudou parte da conclusão. A Nicole **revisou as
+lições e refez as questões erradas do 2017: recuperou 13 de 24** — ver
+[registro 0005](0005-refazer-2017-apos-revisao.md).
+
+**O que se mantém:** o placar da lição continua sendo um sinal ruim isolado, e a métrica boa
+continua sendo simulado completo. As mudanças 1–4 acima seguem válidas.
+
+**O que se corrige:** a frase "as lições não estão transferindo" era forte demais. As lições
+**convertem quando revisitadas**. O que continua sem teste é a transferência para questões
+**inéditas** — o refazer usou as mesmas questões, o que infla o resultado por familiaridade.
+
+**O que muda no Grupo 3:** o alvo deixa de ser genérico ("execução") e passa a ser específico —
+**geometria e trigonometria**, os dois blocos que a revisão não moveu.
